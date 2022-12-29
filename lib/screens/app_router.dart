@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:ishonch/screens/main/main_page.dart';
+import 'package:ishonch/screens/bottom_nav/bottom_nav_page.dart';
+import 'package:ishonch/screens/onbording/onbording_page.dart';
 import 'package:ishonch/screens/splash/splash_page.dart';
 
-abstract class RoutName {
-  static const main = 'main';
+abstract class RouteName {
+  static const bottomNavigation = 'bottomNavigation';
   static const splash = 'splash';
-  // static const login = 'login';
+  static const onbording = 'onbording';
   // static const register = 'register';
   // static const forgot = 'forgot';
   // static const home = 'home';
@@ -19,16 +20,16 @@ abstract class RoutName {
 class AppRoutes {
   static Route generateRoute(RouteSettings settings) {
     switch (settings.name) {
-      case RoutName.splash:
+      case RouteName.splash:
         return MaterialPageRoute(builder: (_) => SplashPage());
-      // case RoutName.login:
-      //   return MaterialPageRoute(builder: (_) => LoginPage());
+      case RouteName.onbording:
+        return MaterialPageRoute(builder: (_) => OnboardinPage());
       // case RoutName.register:
       //   return MaterialPageRoute(builder: (_) => RegisterPage());
       // case RoutName.forgot:
       //   return MaterialPageRoute(builder: (_) => ForgotPage());
-      case RoutName.main:
-        return MaterialPageRoute(builder: (_) => MainPage());
+      case RouteName.bottomNavigation:
+        return MaterialPageRoute(builder: (_) => BottomNavPage());
       // case RoutName.checkout:
       //   return MaterialPageRoute(builder: (_) => CheckoutPaage());
       // case RoutName.home:
