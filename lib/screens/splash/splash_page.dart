@@ -55,7 +55,7 @@ class _SplashPageState extends State<SplashPage> {
             SizedBox(
               child: Text(
                 'Ishonch 571',
-                style: fontHelveticaW700(appcolor: AppColors.black)
+                style: fontRobotoW700(appcolor: AppColors.black)
                     .copyWith(fontSize: 24.sp),
               ),
             ),

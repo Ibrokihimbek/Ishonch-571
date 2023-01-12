@@ -4,7 +4,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:ishonch/data/models/onbording_model/onbording_model.dart';
 import 'package:ishonch/screens/app_router.dart';
 import 'package:ishonch/utils/app_colors.dart';
-import 'package:ishonch/utils/app_image.dart';
 import 'package:ishonch/utils/text_style.dart';
 import 'package:lottie/lottie.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -40,7 +39,7 @@ class _OnboardinPageState extends State<OnboardinPage> {
                     },
                     child: Text(
                       'Oʻtkazib yuborish'.tr(),
-                      style: fontHelveticaW400(appcolor: AppColors.black)
+                      style: fontRobotoW400(appcolor: AppColors.black)
                           .copyWith(fontSize: 16.sp),
                     ),
                   ),
@@ -99,7 +98,7 @@ class _OnboardinPageState extends State<OnboardinPage> {
                       child: Center(
                         child: Text(
                           NextButton,
-                          style: fontHelveticaW500(appcolor: AppColors.white)
+                          style: fontRobotoW500(appcolor: AppColors.white)
                               .copyWith(fontSize: 15.sp),
                         ),
                       ),
@@ -127,7 +126,7 @@ class _OnboardinPageState extends State<OnboardinPage> {
             child: Center(
               child: Text(
                 onboard.title.tr(),
-                style: fontHelveticaW700(appcolor: AppColors.black)
+                style: fontRobotoW700(appcolor: AppColors.black)
                     .copyWith(fontSize: 32.sp),
               ),
             ),
