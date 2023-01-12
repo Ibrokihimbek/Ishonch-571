@@ -16,7 +16,6 @@ abstract class RouteName {
   // static const successPayment = 'successPayment';
   // static const profile = 'profile';
 }
-
 class AppRoutes {
   static Route generateRoute(RouteSettings settings) {
     switch (settings.name) {
