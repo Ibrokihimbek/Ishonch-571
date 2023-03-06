@@ -1,4 +1,4 @@
-class AppImage {
+class AppImages {
   // SVG
 
   static const iconMenu = 'assets/icons/icon_menu.svg';
@@ -10,6 +10,8 @@ class AppImage {
   // PNG
 
   static const imageLogo = 'assets/images/app_logo.png';
+  static const noInternet = 'assets/images/no_internet.png';
+
 
   // LOTTIE
 

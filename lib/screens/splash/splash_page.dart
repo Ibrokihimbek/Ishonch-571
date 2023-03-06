@@ -49,7 +49,7 @@ class _SplashPageState extends State<SplashPage> {
             SizedBox(
               width: 132.5.w,
               height: 68.64.h,
-              child: Image.asset(AppImage.imageLogo),
+              child: Image.asset(AppImages.imageLogo),
             ),
             SizedBox(height: 4.h),
             SizedBox(
