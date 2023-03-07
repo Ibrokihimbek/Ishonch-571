@@ -7,12 +7,24 @@ class AppImages {
   static const iconFavourite = 'assets/icons/icon_favourite.svg';
   static const iconStar = 'assets/icons/icon_star.svg';
 
+  static const homeIconMenu = 'assets/icons/icon_home_menu.svg';
+
+
+  static const inactiveHome = "assets/icons/inactive_home.svg";
+  static const inactiveCart = "assets/icons/inactive_cart.svg";
+  static const cart = "assets/icons/cart.svg";
+  static const home = "assets/icons/home.svg";
+  static const notification = "assets/icons/notification.svg";
+  static const inactiveNotification = "assets/icons/inactive_notification.svg";
+
 
   // PNG
 
   static const imageLogo = 'assets/images/app_logo.png';
   static const noInternet = 'assets/images/no_internet.png';
   static const iconShoppingBag = 'assets/images/shopping-bag.png';
+  static const iphone = 'assets/images/tel.png';
+  static const homeImage = 'assets/images/home_image.png';
 
 
   // LOTTIE
