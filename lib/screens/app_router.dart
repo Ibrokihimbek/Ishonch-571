@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:ishonch/screens/bottom_nav/bottom_nav_page.dart';
-import 'package:ishonch/screens/onbording/onbording_page.dart';
+import 'package:ishonch/screens/bottom_nav/home/product_by_category/product_by_category.dart';
+import 'package:ishonch/screens/on_bording/on_bording_page.dart';
 import 'package:ishonch/screens/splash/splash_page.dart';
 
 abstract class RouteName {
   static const bottomNavigation = 'bottomNavigation';
   static const splash = 'splash';
   static const onbording = 'onbording';
-  // static const register = 'register';
+  static const productByCategory = 'productByCategory';
   // static const forgot = 'forgot';
   // static const home = 'home';
   // static const productInfo = 'productInfo';
@@ -16,6 +17,7 @@ abstract class RouteName {
   // static const successPayment = 'successPayment';
   // static const profile = 'profile';
 }
+
 class AppRoutes {
   static Route generateRoute(RouteSettings settings) {
     switch (settings.name) {
@@ -23,8 +25,8 @@ class AppRoutes {
         return MaterialPageRoute(builder: (_) => SplashPage());
       case RouteName.onbording:
         return MaterialPageRoute(builder: (_) => OnboardinPage());
-      // case RoutName.register:
-      //   return MaterialPageRoute(builder: (_) => RegisterPage());
+      case RouteName.productByCategory:
+        return MaterialPageRoute(builder: (_) => ProductByCategory());
       // case RoutName.forgot:
       //   return MaterialPageRoute(builder: (_) => ForgotPage());
       case RouteName.bottomNavigation:
