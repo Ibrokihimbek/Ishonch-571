@@ -6,6 +6,13 @@ class AppImages {
   static const iconProfile = 'assets/icons/icon_profile.svg';
   static const iconFavourite = 'assets/icons/icon_favourite.svg';
 
+  static const inactiveHome = "assets/icons/inactive_home.svg";
+  static const inactiveCart = "assets/icons/inactive_cart.svg";
+  static const cart = "assets/icons/cart.svg";
+  static const home = "assets/icons/home.svg";
+  static const notification = "assets/icons/notification.svg";
+  static const inactiveNotification = "assets/icons/inactive_notification.svg";
+
 
   // PNG
 
