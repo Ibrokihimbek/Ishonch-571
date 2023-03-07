@@ -1,7 +1,9 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:ishonch/screens/app_router.dart';
+import 'package:ishonch/screens/bottom_nav/bloc/bottom_nav_cubit.dart';
 
 class App extends StatelessWidget {
   const App({super.key});
@@ -13,7 +15,11 @@ class App extends StatelessWidget {
       Locale('ru', 'RU'),
     ],
     path: 'assets/translation',
-    child: MyApp(),
+    child: MultiBlocProvider(
+      providers: [
+        BlocProvider(create: (context) => BottomNavCubit(),)
+      ],
+        child: MyApp()),
     );
   }
 }
