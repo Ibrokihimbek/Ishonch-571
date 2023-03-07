@@ -16,21 +16,19 @@ class ProductDetailScreen extends StatelessWidget {
           Container(
             width: double.infinity,
             height: 300.h,
-            decoration: const BoxDecoration(
-              color: Colors.transparent,
-            ),
+            color: Colors.transparent,
             child: Stack(
               children: [
                 SizedBox(height: 30.h),
                 Positioned(
-                  left: 10,
+                  left: 10.w,
                   child: IconButton(
                     onPressed: () {
                       Navigator.pop(context);
                     },
-                    icon: const Icon(
+                    icon: Icon(
                       Icons.arrow_back,
-                      size: 30,
+                      size: 30.sp,
                     ),
                   ),
                 ),
@@ -46,69 +44,69 @@ class ProductDetailScreen extends StatelessWidget {
           const Spacer(),
           Container(
             width: double.infinity,
-            padding: const EdgeInsets.only(left: 24, right: 24),
+            padding: EdgeInsets.only(left: 24.w, right: 24.w).w,
             height: 370.h,
-            decoration: const BoxDecoration(
+            decoration: BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(25),
-                topRight: Radius.circular(25),
+                topLeft: Radius.circular(25.w).w,
+                topRight: Radius.circular(25.w).w,
               ),
             ),
             child: ListView(
               physics: const BouncingScrollPhysics(),
               children: [
-                const TextWidget(
-                  fontSize: 18,
+                TextWidget(
+                  fontSize: 18.sp,
                   fontWeight: FontWeight.w700,
                   text: 'Smartfon Samsung A04S 3/32 GB Green',
                 ),
-                const SizedBox(height: 5),
-                const TextWidget(
-                  fontSize: 14,
+                SizedBox(height: 5.h),
+                TextWidget(
+                  fontSize: 14.sp,
                   fontWeight: FontWeight.normal,
                   text: "Clean 90 Triole Sneakers",
                 ),
                 SizedBox(height: 20.h),
                 Row(
-                  children: const [
+                  children: [
                     DrawStarWidget(itemCount: 5),
                     TextWidget(
-                      fontSize: 14,
+                      fontSize: 14.sp,
                       fontWeight: FontWeight.normal,
                       text: "(270 Review)",
                     ),
                     Spacer(),
                     TextWidget(
-                      fontSize: 14,
+                      fontSize: 14.sp,
                       fontWeight: FontWeight.w700,
                       text: "Avaliabel in stok",
                     ),
                   ],
                 ),
                 SizedBox(height: 20.h),
-                const TextWidget(
-                  fontSize: 14,
+                TextWidget(
+                  fontSize: 14.sp,
                   fontWeight: FontWeight.w400,
                   text: "Total Price",
                 ),
                 SizedBox(height: 5.h),
-                const TextWidget(
-                  fontSize: 18,
+                TextWidget(
+                  fontSize: 18.sp,
                   fontWeight: FontWeight.w700,
                   text: "1 655 000 so'm",
                 ),
                 SizedBox(height: 20.h),
-                const TextWidget(
-                  fontSize: 14,
+                TextWidget(
+                  fontSize: 14.sp,
                   fontWeight: FontWeight.w400,
                   text: "Description",
                 ),
                 SizedBox(height: 20.h),
-                const TextWidget(
+                TextWidget(
                   text:
                       "Powerful Octa-core processor for fast performance Galaxy A04s combines Octa-core processing power with up to 3GB of RAM for fast and efficient performance for the task at hand. Enjoy 32GB of internal storage and add up to 1TB more with microSD card. *RAM and internal memory capacity may vary by country.",
-                  fontSize: 14,
+                  fontSize: 14.sp,
                   fontWeight: FontWeight.w400,
                 ),
               ],
@@ -118,25 +116,24 @@ class ProductDetailScreen extends StatelessWidget {
       ),
       bottomNavigationBar: Container(
         color: Colors.white,
-        padding: const EdgeInsets.only(bottom: 30, left: 24, right: 24),
+        padding: EdgeInsets.only(bottom: 30.h, left: 24.w, right: 24.w).w,
         child: Container(
-          height: 50,
-          padding: const EdgeInsets.only(left: 24, right: 24),
+          height: 50.h,
+          padding: EdgeInsets.only(left: 24.w, right: 24.w).w,
           width: double.infinity,
           decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(30),
+            borderRadius: BorderRadius.circular(30).r,
             color: Colors.black87,
           ),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              const Icon(Icons.add_shopping_cart,
-                  color: Colors.white, size: 30),
+              Icon(Icons.add_shopping_cart, color: Colors.white, size: 30.sp),
               SizedBox(width: 20.w),
-              const Text(
+              Text(
                 "Add to card",
                 style: TextStyle(
-                  fontSize: 18,
+                  fontSize: 18.0.sp,
                   fontWeight: FontWeight.w400,
                   color: Colors.white,
                 ),
