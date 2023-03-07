@@ -2,28 +2,30 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:ishonch/data/models/onbording_model/onbording_model.dart';
+import 'package:ishonch/data/storage_repository/storage_repository.dart';
 import 'package:ishonch/screens/app_router.dart';
+import 'package:ishonch/screens/on_bording/widgets/on_boarding_item.dart';
 import 'package:ishonch/utils/app_colors.dart';
 import 'package:ishonch/utils/text_style.dart';
-import 'package:lottie/lottie.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-class OnboardinPage extends StatefulWidget {
-  const OnboardinPage({super.key});
+class OnBoardingPage extends StatefulWidget {
+  const OnBoardingPage({super.key});
 
   @override
-  State<OnboardinPage> createState() => _OnboardinPageState();
+  State<OnBoardingPage> createState() => _OnBoardingPageState();
 }
 
 int currentIndex = 0;
 PageController pageController = PageController();
-String NextButton = 'Keyingi'.tr();
+String nextButton = 'Keyingi'.tr();
 
-class _OnboardinPageState extends State<OnboardinPage> {
+class _OnBoardingPageState extends State<OnBoardingPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(
+      body: SingleChildScrollView(
+        physics: const BouncingScrollPhysics(),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -49,15 +51,15 @@ class _OnboardinPageState extends State<OnboardinPage> {
             SizedBox(height: 18.h),
             SizedBox(
               width: double.infinity,
-              height: 500.h,
+              height: 600.h,
               child: PageView.builder(
                 onPageChanged: (index) {
                   setState(() {
                     currentIndex = index;
                     if (currentIndex == 2) {
-                      NextButton = 'Boshlash'.tr();
+                      nextButton = 'Boshlash'.tr();
                     } else {
-                      NextButton = 'Keyingi'.tr();
+                      nextButton = 'Keyingi'.tr();
                     }
                   });
                 },
@@ -65,11 +67,12 @@ class _OnboardinPageState extends State<OnboardinPage> {
                 controller: pageController,
                 itemCount: OnboardingModel.onboard.length,
                 itemBuilder: (BuildContext context, int index) {
-                  return OnboardItem(OnboardingModel.onboard[index]);
+                  return OnBoardingItem(
+                      onboard: OnboardingModel.onboard[index]);
                 },
               ),
             ),
-            SizedBox(height: 69.h),
+            SizedBox(height: 10.h),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20).r,
               child: Row(
@@ -78,7 +81,7 @@ class _OnboardinPageState extends State<OnboardinPage> {
                   InkWell(
                     onTap: () {
                       if (currentIndex == 1) {
-                        NextButton = 'Boshlash'.tr();
+                        nextButton = 'Boshlash'.tr();
                       }
                       if (currentIndex == 2) {
                         saveLogin(context);
@@ -89,15 +92,16 @@ class _OnboardinPageState extends State<OnboardinPage> {
                             curve: Curves.ease);
                       });
                     },
-                    child: Container(
-                      width: NextButton == 'Keyingi'.tr() ? 150.w : 200.w,
+                    child: AnimatedContainer(
+                      duration: const Duration(milliseconds: 500),
+                      width: nextButton == 'Keyingi'.tr() ? 150.w : 200.w,
                       height: 44.h,
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(20.r),
                           color: AppColors.C_222222),
                       child: Center(
                         child: Text(
-                          NextButton,
+                          nextButton,
                           style: fontRobotoW500(appcolor: AppColors.white)
                               .copyWith(fontSize: 15.sp),
                         ),
@@ -113,33 +117,8 @@ class _OnboardinPageState extends State<OnboardinPage> {
     );
   }
 
-  Widget OnboardItem(OnboardingModel onboard) {
-    return Column(
-      children: [
-        SizedBox(height: 10.h),
-        Lottie.asset(onboard.lottieName, width: 287.w),
-        SizedBox(height: 40.h),
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 40).r,
-          child: SizedBox(
-            width: double.infinity,
-            child: Center(
-              child: Text(
-                onboard.title.tr(),
-                style: fontRobotoW700(appcolor: AppColors.black)
-                    .copyWith(fontSize: 32.sp),
-              ),
-            ),
-          ),
-        ),
-      ],
-    );
-  }
-
   void saveLogin(context) async {
-    SharedPreferences pref = await SharedPreferences.getInstance();
-    pref.setBool("isLoggedIn", true);
-
+    StorageRepository.putBool("first_time", true);
     Navigator.pushReplacementNamed(context, RouteName.bottomNavigation);
   }
 }

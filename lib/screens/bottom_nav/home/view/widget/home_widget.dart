@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:ishonch/data/models/model_category/categories/category_model.dart';
-import 'package:ishonch/screens/bottom_nav/home/ui/category/category_widget.dart';
-import 'package:ishonch/screens/bottom_nav/home/ui/category/widget/into_categories..dart';
-import 'package:ishonch/screens/bottom_nav/home/ui/product/arrivals_widget.dart';
-import 'package:ishonch/screens/bottom_nav/home/ui/product/widget/all_product.dart';
-import 'package:ishonch/screens/bottom_nav/home/ui/widget/discount_widget.dart';
+import 'package:ishonch/screens/bottom_nav/home/view/category/category_widget.dart';
+import 'package:ishonch/screens/bottom_nav/home/view/category/widget/into_categories..dart';
+import 'package:ishonch/screens/bottom_nav/home/view/product/arrivals_widget.dart';
+import 'package:ishonch/screens/bottom_nav/home/view/product/widget/all_product.dart';
+import 'package:ishonch/screens/bottom_nav/home/view/widget/discount_widget.dart';
 import 'package:ishonch/utils/my_utils.dart';
 
 class HomeWidget extends StatelessWidget {
@@ -44,7 +44,7 @@ class HomeWidget extends StatelessWidget {
           SizedBox(
             height: height(context) * 0.02,
           ),
-          titleWidget(context, 'Categories', IntoCateogires(data: data)),
+          titleWidget(context, 'Categories', IntoCategories(data: data)),
           CategoryWidget(data: data),
           titleWidget(context, 'New Arrivals',const AllProduct()),
           Padding(
