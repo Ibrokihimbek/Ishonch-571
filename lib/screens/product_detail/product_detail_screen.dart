@@ -15,7 +15,7 @@ class ProductDetailScreen extends StatelessWidget {
           SizedBox(height: 40.h),
           Container(
             width: double.infinity,
-            height: 300.h,
+            height: 300,
             color: Colors.transparent,
             child: Stack(
               children: [
@@ -41,75 +41,75 @@ class ProductDetailScreen extends StatelessWidget {
             ),
           ),
           SizedBox(height: 10.h),
-          const Spacer(),
-          Container(
-            width: double.infinity,
-            padding: EdgeInsets.only(left: 24.w, right: 24.w).w,
-            height: 370.h,
-            decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(25.w).w,
-                topRight: Radius.circular(25.w).w,
+          Expanded(
+            child: Container(
+              width: double.infinity,
+              padding: EdgeInsets.only(left: 24.w, right: 24.w).w,
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(25.w).w,
+                  topRight: Radius.circular(25.w).w,
+                ),
               ),
-            ),
-            child: ListView(
-              physics: const BouncingScrollPhysics(),
-              children: [
-                TextWidget(
-                  fontSize: 18.sp,
-                  fontWeight: FontWeight.w700,
-                  text: 'Smartfon Samsung A04S 3/32 GB Green',
-                ),
-                SizedBox(height: 5.h),
-                TextWidget(
-                  fontSize: 14.sp,
-                  fontWeight: FontWeight.normal,
-                  text: "Clean 90 Triole Sneakers",
-                ),
-                SizedBox(height: 20.h),
-                Row(
-                  children: [
-                    DrawStarWidget(itemCount: 5),
-                    TextWidget(
-                      fontSize: 14.sp,
-                      fontWeight: FontWeight.normal,
-                      text: "(270 Review)",
-                    ),
-                    Spacer(),
-                    TextWidget(
-                      fontSize: 14.sp,
-                      fontWeight: FontWeight.w700,
-                      text: "Avaliabel in stok",
-                    ),
-                  ],
-                ),
-                SizedBox(height: 20.h),
-                TextWidget(
-                  fontSize: 14.sp,
-                  fontWeight: FontWeight.w400,
-                  text: "Total Price",
-                ),
-                SizedBox(height: 5.h),
-                TextWidget(
-                  fontSize: 18.sp,
-                  fontWeight: FontWeight.w700,
-                  text: "1 655 000 so'm",
-                ),
-                SizedBox(height: 20.h),
-                TextWidget(
-                  fontSize: 14.sp,
-                  fontWeight: FontWeight.w400,
-                  text: "Description",
-                ),
-                SizedBox(height: 20.h),
-                TextWidget(
-                  text:
-                      "Powerful Octa-core processor for fast performance Galaxy A04s combines Octa-core processing power with up to 3GB of RAM for fast and efficient performance for the task at hand. Enjoy 32GB of internal storage and add up to 1TB more with microSD card. *RAM and internal memory capacity may vary by country.",
-                  fontSize: 14.sp,
-                  fontWeight: FontWeight.w400,
-                ),
-              ],
+              child: ListView(
+                physics: const BouncingScrollPhysics(),
+                children: [
+                  TextWidget(
+                    fontSize: 18.sp,
+                    fontWeight: FontWeight.w700,
+                    text: 'Smartfon Samsung A04S 3/32 GB Green',
+                  ),
+                  SizedBox(height: 5.h),
+                  TextWidget(
+                    fontSize: 14.sp,
+                    fontWeight: FontWeight.normal,
+                    text: "Clean 90 Triole Sneakers",
+                  ),
+                  SizedBox(height: 20.h),
+                  Row(
+                    children: [
+                      DrawStarWidget(itemCount: 5),
+                      TextWidget(
+                        fontSize: 14.sp,
+                        fontWeight: FontWeight.normal,
+                        text: "(270 Review)",
+                      ),
+                      Spacer(),
+                      TextWidget(
+                        fontSize: 14.sp,
+                        fontWeight: FontWeight.w700,
+                        text: "Avaliabel in stok",
+                      ),
+                    ],
+                  ),
+                  SizedBox(height: 20.h),
+                  TextWidget(
+                    fontSize: 14.sp,
+                    fontWeight: FontWeight.w400,
+                    text: "Total Price",
+                  ),
+                  SizedBox(height: 5.h),
+                  TextWidget(
+                    fontSize: 18.sp,
+                    fontWeight: FontWeight.w700,
+                    text: "1 655 000 so'm",
+                  ),
+                  SizedBox(height: 20.h),
+                  TextWidget(
+                    fontSize: 14.sp,
+                    fontWeight: FontWeight.w400,
+                    text: "Description",
+                  ),
+                  SizedBox(height: 20.h),
+                  TextWidget(
+                    text:
+                        "Powerful Octa-core processor for fast performance Galaxy A04s combines Octa-core processing power with up to 3GB of RAM for fast and efficient performance for the task at hand. Enjoy 32GB of internal storage and add up to 1TB more with microSD card. *RAM and internal memory capacity may vary by country.",
+                    fontSize: 14.sp,
+                    fontWeight: FontWeight.w400,
+                  ),
+                ],
+              ),
             ),
           ),
         ],
