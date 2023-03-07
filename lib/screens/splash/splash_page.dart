@@ -24,7 +24,7 @@ class _SplashPageState extends State<SplashPage> {
     Future.delayed(const Duration(seconds: 3), () async {
       bool firstTime = StorageRepository.getBool("first_time", defValue: false);
       if (firstTime == false) {
-        Navigator.pushReplacementNamed(context, RouteName.onbording);
+        Navigator.pushReplacementNamed(context, RouteName.onBoarding);
       } else {
         Navigator.pushReplacementNamed(context, RouteName.bottomNavigation);
       }

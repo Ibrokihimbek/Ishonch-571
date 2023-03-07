@@ -9,18 +9,18 @@ import 'package:ishonch/utils/app_colors.dart';
 import 'package:ishonch/utils/text_style.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-class OnboardinPage extends StatefulWidget {
-  const OnboardinPage({super.key});
+class OnBoardingPage extends StatefulWidget {
+  const OnBoardingPage({super.key});
 
   @override
-  State<OnboardinPage> createState() => _OnboardinPageState();
+  State<OnBoardingPage> createState() => _OnBoardingPageState();
 }
 
 int currentIndex = 0;
 PageController pageController = PageController();
 String nextButton = 'Keyingi'.tr();
 
-class _OnboardinPageState extends State<OnboardinPage> {
+class _OnBoardingPageState extends State<OnBoardingPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
