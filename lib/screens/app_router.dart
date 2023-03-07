@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:ishonch/screens/bottom_nav/bottom_nav_page.dart';
 import 'package:ishonch/screens/onbording/onbording_page.dart';
+import 'package:ishonch/screens/product_detail/product_detail_screen.dart';
 import 'package:ishonch/screens/splash/splash_page.dart';
 
 abstract class RouteName {
   static const bottomNavigation = 'bottomNavigation';
   static const splash = 'splash';
-  static const onbording = 'onbording';
+  static const onBoarding = 'onBoarding';
+  static const productDetail = '/productDetail';
   // static const register = 'register';
   // static const forgot = 'forgot';
   // static const home = 'home';
@@ -21,8 +23,10 @@ class AppRoutes {
     switch (settings.name) {
       case RouteName.splash:
         return MaterialPageRoute(builder: (_) => SplashPage());
-      case RouteName.onbording:
+      case RouteName.onBoarding:
         return MaterialPageRoute(builder: (_) => OnboardinPage());
+      case RouteName.productDetail:
+        return MaterialPageRoute(builder: (_) => ProductDetailScreen());
       // case RoutName.register:
       //   return MaterialPageRoute(builder: (_) => RegisterPage());
       // case RoutName.forgot:

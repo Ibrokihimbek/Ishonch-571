@@ -5,12 +5,14 @@ class AppImages {
   static const iconHome = 'assets/icons/icon_home.svg';
   static const iconProfile = 'assets/icons/icon_profile.svg';
   static const iconFavourite = 'assets/icons/icon_favourite.svg';
+  static const iconStar = 'assets/icons/icon_star.svg';
 
 
   // PNG
 
   static const imageLogo = 'assets/images/app_logo.png';
   static const noInternet = 'assets/images/no_internet.png';
+  static const iconShoppingBag = 'assets/images/shopping-bag.png';
 
 
   // LOTTIE
