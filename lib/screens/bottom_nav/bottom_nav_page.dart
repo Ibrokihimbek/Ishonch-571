@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_snake_navigationbar/flutter_snake_navigationbar.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:ishonch/screens/bottom_nav/bloc/bottom_nav_cubit.dart';
+import 'package:ishonch/screens/bottom_nav/widgets/bottom_nav_bar.dart';
 import 'package:ishonch/screens/bottom_nav/home/ui/home_page.dart';
 import 'package:ishonch/utils/app_colors.dart';
 import 'package:ishonch/utils/app_image.dart';
@@ -18,28 +20,34 @@ class BottomNavPage extends StatefulWidget {
 }
 
 class _BottomNavPageState extends State<BottomNavPage> {
-  List<Widget> screens = [];
+  List<Widget> screens = [
+    Center(
+      child: Text(
+        'Home',
+        style: TextStyle(fontSize: 32),
+      ),
+    ),
+    Center(
 
-  @override
-  void initState() {
-    screens.add(const HomePage());
-    screens.add(const Center(
       child: Text(
         'Favourite',
         style: TextStyle(fontSize: 32),
       ),
-    ));
-    screens.add(const Center(
-      child: Text(
-        'Profile',
-        style: TextStyle(fontSize: 32),
-      ),
-    ));
-    super.initState();
-  }
+    ),
+    Center(
+  child: Text(
+  'Profile',
+  style: TextStyle(fontSize: 32),
+  ),
+  )
+
+  ];
+
+
 
   @override
   Widget build(BuildContext context) {
+
     return BlocProvider(
       create: (context) => BottomNavCubit(),
       child: BlocBuilder<BottomNavCubit, int>(
