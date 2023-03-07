@@ -6,6 +6,9 @@ class AppImages {
   static const iconProfile = 'assets/icons/icon_profile.svg';
   static const iconFavourite = 'assets/icons/icon_favourite.svg';
 
+  static const homeIconMenu = 'assets/icons/icon_home_menu.svg';
+
+
   static const inactiveHome = "assets/icons/inactive_home.svg";
   static const inactiveCart = "assets/icons/inactive_cart.svg";
   static const cart = "assets/icons/cart.svg";
@@ -18,6 +21,9 @@ class AppImages {
 
   static const imageLogo = 'assets/images/app_logo.png';
   static const noInternet = 'assets/images/no_internet.png';
+  static const iphone = 'assets/images/tel.png';
+  static const homeImage = 'assets/images/home_image.png';
+
 
 
   // LOTTIE

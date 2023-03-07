@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:ishonch/screens/bottom_nav/bloc/bottom_nav_cubit.dart';
+import 'package:ishonch/screens/bottom_nav/home/ui/home_page.dart';
 import 'package:ishonch/utils/app_colors.dart';
 import 'package:ishonch/utils/app_image.dart';
 import 'package:ishonch/utils/text_style.dart';
@@ -21,12 +22,7 @@ class _BottomNavPageState extends State<BottomNavPage> {
 
   @override
   void initState() {
-    screens.add(const Center(
-      child: Text(
-        'Home',
-        style: TextStyle(fontSize: 32),
-      ),
-    ));
+    screens.add(const HomePage());
     screens.add(const Center(
       child: Text(
         'Favourite',
