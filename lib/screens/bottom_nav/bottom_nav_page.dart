@@ -5,7 +5,7 @@ import 'package:flutter_snake_navigationbar/flutter_snake_navigationbar.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:ishonch/screens/bottom_nav/bloc/bottom_nav_cubit.dart';
 import 'package:ishonch/screens/bottom_nav/widgets/bottom_nav_bar.dart';
-import 'package:ishonch/screens/bottom_nav/home/ui/home_page.dart';
+import 'package:ishonch/screens/bottom_nav/home/view/home_page.dart';
 import 'package:ishonch/utils/app_colors.dart';
 import 'package:ishonch/utils/app_image.dart';
 import 'package:ishonch/utils/text_style.dart';
@@ -21,16 +21,11 @@ class BottomNavPage extends StatefulWidget {
 
 class _BottomNavPageState extends State<BottomNavPage> {
   List<Widget> screens = [
-    Center(
-      child: Text(
-        'Home',
-        style: TextStyle(fontSize: 32),
-      ),
-    ),
+   HomePage(),
     Center(
 
       child: Text(
-        'Favourite',
+        '',
         style: TextStyle(fontSize: 32),
       ),
     ),

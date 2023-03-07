@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:ishonch/screens/app_router.dart';
 import 'package:ishonch/screens/bottom_nav/home/product_by_category/widgets/product_item.dart';
 import 'package:ishonch/utils/app_colors.dart';
 import 'package:ishonch/utils/text_style.dart';
@@ -37,7 +38,9 @@ class ProductByCategory extends StatelessWidget {
               productPrice: 'Price: 100\$',
               productImage:
                   'https://www.infinixmobility.com/fileadmin/assets/images/product/list/hot10.jpg',
-              onTap: () {},
+              onTap: () {
+                Navigator.pushNamed(context, RouteName.productDetail);
+              },
             ),
           ),
         ),

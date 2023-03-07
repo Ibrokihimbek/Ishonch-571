@@ -5,7 +5,7 @@ import 'package:ishonch/data/repositories/category_repo.dart';
 import 'package:ishonch/screens/bottom_nav/home/bloc/bloc_category/category_bloc.dart';
 import 'package:ishonch/screens/bottom_nav/home/bloc/bloc_category/category_event.dart';
 import 'package:ishonch/screens/bottom_nav/home/bloc/bloc_category/category_state.dart';
-import 'package:ishonch/screens/bottom_nav/home/ui/widget/home_widget.dart';
+import 'package:ishonch/screens/bottom_nav/home/view/widget/home_widget.dart';
 import 'package:ishonch/service/api_service/api_service.dart';
 import 'package:ishonch/utils/app_image.dart';
 import 'package:ishonch/utils/my_utils.dart';

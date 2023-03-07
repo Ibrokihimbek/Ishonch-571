@@ -3,16 +3,16 @@ import 'package:ishonch/data/models/model_category/categories/category_model.dar
 import 'package:ishonch/utils/app_image.dart';
 import 'package:ishonch/utils/my_utils.dart';
 
-class IntoCateogires extends StatefulWidget {
+class IntoCategories extends StatefulWidget {
   final List<CategoryModel> data;
 
-  const IntoCateogires({super.key, required this.data});
+  const IntoCategories({super.key, required this.data});
 
   @override
-  State<IntoCateogires> createState() => _IntoCateogiresState();
+  State<IntoCategories> createState() => _IntoCategoriesState();
 }
 
-class _IntoCateogiresState extends State<IntoCateogires> {
+class _IntoCategoriesState extends State<IntoCategories> {
    bool isTrue = false;
 
   @override

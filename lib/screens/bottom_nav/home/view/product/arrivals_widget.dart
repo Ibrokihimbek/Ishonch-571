@@ -4,7 +4,7 @@ import 'package:ishonch/data/repositories/category_repo.dart';
 import 'package:ishonch/screens/bottom_nav/home/bloc/bloc_product/producat_event.dart';
 import 'package:ishonch/screens/bottom_nav/home/bloc/bloc_product/product_bloc.dart';
 import 'package:ishonch/screens/bottom_nav/home/bloc/bloc_product/product_state.dart';
-import 'package:ishonch/screens/bottom_nav/home/ui/product/widget/product_widget.dart';
+import 'package:ishonch/screens/bottom_nav/home/view/product/widget/product_widget.dart';
 import 'package:ishonch/service/api_service/api_service.dart';
 
 class ArrivalWidget extends StatefulWidget {
