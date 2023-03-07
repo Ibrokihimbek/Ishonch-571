@@ -5,6 +5,7 @@ class AppImages {
   static const iconHome = 'assets/icons/icon_home.svg';
   static const iconProfile = 'assets/icons/icon_profile.svg';
   static const iconFavourite = 'assets/icons/icon_favourite.svg';
+  static const iconStar = 'assets/icons/icon_star.svg';
 
   static const homeIconMenu = 'assets/icons/icon_home_menu.svg';
 
@@ -21,9 +22,9 @@ class AppImages {
 
   static const imageLogo = 'assets/images/app_logo.png';
   static const noInternet = 'assets/images/no_internet.png';
+  static const iconShoppingBag = 'assets/images/shopping-bag.png';
   static const iphone = 'assets/images/tel.png';
   static const homeImage = 'assets/images/home_image.png';
-
 
 
   // LOTTIE
