@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_snake_navigationbar/flutter_snake_navigationbar.dart';
 import 'package:ishonch/screens/bottom_nav/bloc/bottom_nav_cubit.dart';
 
@@ -8,11 +9,11 @@ class BottomNavBar extends StatelessWidget {
    BottomNavBar({Key? key}) : super(key: key);
 
 
-  ShapeBorder? bottomBarShape = const RoundedRectangleBorder(
-    borderRadius: BorderRadius.all(Radius.circular(25)),
+  ShapeBorder? bottomBarShape =  RoundedRectangleBorder(
+    borderRadius: BorderRadius.all(Radius.circular(25.h)),
   );
   SnakeBarBehaviour snakeBarStyle = SnakeBarBehaviour.floating;
-  EdgeInsets padding = const EdgeInsets.all(12);
+  EdgeInsets padding =  EdgeInsets.all(12.h);
 
   SnakeShape snakeShape = SnakeShape.circle;
 
@@ -42,10 +43,6 @@ class BottomNavBar extends StatelessWidget {
           snakeViewColor: selectedColor,
           selectedItemColor: snakeShape == SnakeShape.indicator ? selectedColor : null,
           unselectedItemColor: Colors.blueGrey,
-
-          showUnselectedLabels: showUnselectedLabels,
-          showSelectedLabels: showSelectedLabels,
-
           currentIndex: state,
           onTap: (index) {
             context.read<BottomNavCubit>().changePageIndex(index);
