@@ -34,7 +34,7 @@ class _SplashPageState extends State<SplashPage> {
     Future.delayed(const Duration(seconds: 3)).then(
       (value) {
         Navigator.pushReplacementNamed(
-            context, isLog ? RouteName.bottomNavigation : RouteName.onbording);
+            context, isLog ? RouteName.bottomNavigation : RouteName.onBoarding);
       },
     );
   }
