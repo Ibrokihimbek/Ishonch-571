@@ -60,7 +60,7 @@ class _BottomNavPageState extends State<BottomNavPage> {
               items: [
                 BottomNavigationBarItem(
                   icon: SvgPicture.asset(
-                    AppImage.iconHome,
+                    AppImages.iconHome,
                     color: index == 0
                         ? AppColors.white
                         : AppColors.white.withOpacity(0.5),
@@ -69,7 +69,7 @@ class _BottomNavPageState extends State<BottomNavPage> {
                 ),
                 BottomNavigationBarItem(
                     icon: SvgPicture.asset(
-                      AppImage.iconFavourite,
+                      AppImages.iconFavourite,
                       color: index == 1
                           ? AppColors.white
                           : AppColors.white.withOpacity(0.5),
@@ -77,7 +77,7 @@ class _BottomNavPageState extends State<BottomNavPage> {
                     label: ""),
                 BottomNavigationBarItem(
                   icon: SvgPicture.asset(
-                    AppImage.iconProfile,
+                    AppImages.iconProfile,
                     color: index == 2
                         ? AppColors.white
                         : AppColors.white.withOpacity(0.5),
