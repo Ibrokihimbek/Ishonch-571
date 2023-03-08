@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:ishonch/service/api_service/custom_exaptions.dart';
+import 'package:ishonch/service/api_service/custom_exceptions.dart';
 const String baseUrl= "http://146.190.207.16:3000/api/v2";
 
 class ApiClient{
