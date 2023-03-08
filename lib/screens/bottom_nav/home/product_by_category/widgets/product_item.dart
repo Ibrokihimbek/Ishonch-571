@@ -23,18 +23,16 @@ class ProductByCategoryItem extends StatelessWidget {
       onTap: onTap,
       child: Container(
         decoration: BoxDecoration(
-            boxShadow: [
-              BoxShadow(
-                color: Colors.grey.shade400,
-                blurRadius: 4,
-                offset: const Offset(4, 2),
-              ),
-            ],
-            borderRadius: BorderRadius.only(
-              topLeft: Radius.circular(18.r),
-              topRight: Radius.circular(18.r),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.grey.shade400,
+              blurRadius: 4,
+              offset: const Offset(4, 2),
             ),
-            color: AppColors.white),
+          ],
+          borderRadius: BorderRadius.circular(18.r),
+          color: AppColors.white,
+        ),
         margin: const EdgeInsets.all(12).r,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.end,
@@ -42,37 +40,26 @@ class ProductByCategoryItem extends StatelessWidget {
             SizedBox(
               width: 100.w,
               height: 100.h,
-              child: Image.network(productImage),
+              child: Image.network('http://146.190.207.16:3000/$productImage'),
             ),
             SizedBox(height: 18.h),
-            Container(
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(18.r),
-                  topRight: Radius.circular(18.r),
+            Center(
+              child: ListTile(
+                title: Text(
+                  productName,
+                  textAlign: TextAlign.center,
+                  style: fontRobotoW600(
+                    appcolor: AppColors.black,
+                  ).copyWith(fontSize: 16.sp),
                 ),
-                color: AppColors.black,
-              ),
-              width: double.infinity,
-              height: 80.h,
-              child: Center(
-                child: ListTile(
-                  title: Text(
-                    productName,
-                    textAlign: TextAlign.center,
-                    style: fontRobotoW600(
-                      appcolor: AppColors.white,
-                    ),
-                  ),
-                  subtitle: Text(
-                    productPrice,
-                    textAlign: TextAlign.center,
-                    style: fontRobotoW300(appcolor: AppColors.white)
-                        .copyWith(fontSize: 16.sp),
-                  ),
+                subtitle: Text(
+                  'Price: $productPrice',
+                  textAlign: TextAlign.center,
+                  style: fontRobotoW300(appcolor: AppColors.black)
+                      .copyWith(fontSize: 14.sp),
                 ),
               ),
-            )
+            ),
           ],
         ),
       ),
