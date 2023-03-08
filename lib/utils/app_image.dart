@@ -9,6 +9,8 @@ class AppImages {
 
   static const homeIconMenu = 'assets/icons/icon_home_menu.svg';
 
+  static const iconBackArrow = 'assets/icons/back_arrow.svg';
+
 
   static const inactiveHome = "assets/icons/inactive_home.svg";
   static const inactiveCart = "assets/icons/inactive_cart.svg";
