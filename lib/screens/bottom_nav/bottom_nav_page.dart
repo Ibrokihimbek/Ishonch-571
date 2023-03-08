@@ -1,11 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_snake_navigationbar/flutter_snake_navigationbar.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:ishonch/screens/bottom_nav/bloc/bottom_nav_cubit.dart';
+import 'package:ishonch/screens/bottom_nav/widgets/bottom_nav_bar.dart';
+import 'package:ishonch/screens/bottom_nav/home/view/home_page.dart';
 import 'package:ishonch/utils/app_colors.dart';
 import 'package:ishonch/utils/app_image.dart';
 import 'package:ishonch/utils/text_style.dart';
+
+import 'bottom_navy_bar.dart';
 
 class BottomNavPage extends StatefulWidget {
   const BottomNavPage({super.key});
@@ -15,33 +20,29 @@ class BottomNavPage extends StatefulWidget {
 }
 
 class _BottomNavPageState extends State<BottomNavPage> {
-  List<Widget> screens = [];
+  List<Widget> screens = [
+   HomePage(),
+    Center(
 
-  @override
-  void initState() {
-    screens.add(const Center(
       child: Text(
-        'Home',
+        '',
         style: TextStyle(fontSize: 32),
       ),
-    ));
-    screens.add(const Center(
-      child: Text(
-        'Favourite',
-        style: TextStyle(fontSize: 32),
-      ),
-    ));
-    screens.add(const Center(
-      child: Text(
-        'Profile',
-        style: TextStyle(fontSize: 32),
-      ),
-    ));
-    super.initState();
-  }
+    ),
+    Center(
+  child: Text(
+  'Profile',
+  style: TextStyle(fontSize: 32),
+  ),
+  )
+
+  ];
+
+
 
   @override
   Widget build(BuildContext context) {
+
     return BlocProvider(
       create: (context) => BottomNavCubit(),
       child: BlocBuilder<BottomNavCubit, int>(
@@ -49,40 +50,43 @@ class _BottomNavPageState extends State<BottomNavPage> {
           var index = context.watch<BottomNavCubit>().activePageIndex;
           return Scaffold(
             body: screens[index],
-            bottomNavigationBar: BottomNavigationBar(
-              selectedLabelStyle: fontRobotoW400(appcolor: AppColors.white)
-                  .copyWith(fontSize: 13.sp),
-              unselectedLabelStyle: fontRobotoW400(appcolor: AppColors.white)
-                  .copyWith(fontSize: 13.sp),
-              backgroundColor: AppColors.C_1F1914,
-              onTap: (value) => BlocProvider.of<BottomNavCubit>(context)
-                  .changePageIndex(value),
+            bottomNavigationBar: BottomNavyBar(
+              iconSize: 30,
+              selectedIndex: state,
+              showElevation: true,
+              onItemSelected: (index) {
+                context.read<BottomNavCubit>().changePageIndex(index);
+              },
               items: [
-                BottomNavigationBarItem(
-                  icon: SvgPicture.asset(
-                    AppImage.iconHome,
-                    color: index == 0
-                        ? AppColors.white
-                        : AppColors.white.withOpacity(0.5),
+                BottomNavyBarItem(
+                  icon: (state == 0)
+                      ? SvgPicture.asset(AppImages.home)
+                      : SvgPicture.asset(AppImages.inactiveHome),
+                  title: Text(
+                    'Home',
+                    style: Theme.of(context).textTheme.bodyMedium,
                   ),
-                  label: "",
+                  activeColor: Colors.black,
                 ),
-                BottomNavigationBarItem(
-                    icon: SvgPicture.asset(
-                      AppImage.iconFavourite,
-                      color: index == 1
-                          ? AppColors.white
-                          : AppColors.white.withOpacity(0.5),
-                    ),
-                    label: ""),
-                BottomNavigationBarItem(
-                  icon: SvgPicture.asset(
-                    AppImage.iconProfile,
-                    color: index == 2
-                        ? AppColors.white
-                        : AppColors.white.withOpacity(0.5),
+                BottomNavyBarItem(
+                  icon: (state == 1)
+                      ? SvgPicture.asset(AppImages.notification)
+                      : SvgPicture.asset(AppImages.inactiveNotification),
+                  title: Text(
+                    "News",
+                    style: Theme.of(context).textTheme.bodyMedium,
                   ),
-                  label: "",
+                  activeColor: Colors.black,
+                ),
+                BottomNavyBarItem(
+                  icon: (state == 2)
+                      ? SvgPicture.asset(AppImages.cart)
+                      : SvgPicture.asset(AppImages.inactiveCart),
+                  title: Text(
+                    "Orders",
+                    style: Theme.of(context).textTheme.bodyMedium,
+                  ),
+                  activeColor: Colors.black,
                 ),
               ],
             ),

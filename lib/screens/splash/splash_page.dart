@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:ishonch/data/storage_repository/storage_repository.dart';
 import 'package:ishonch/screens/app_router.dart';
 import 'package:ishonch/utils/app_colors.dart';
 import 'package:ishonch/utils/app_image.dart';
 import 'package:ishonch/utils/text_style.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 class SplashPage extends StatefulWidget {
   const SplashPage({super.key});
@@ -14,29 +14,22 @@ class SplashPage extends StatefulWidget {
 }
 
 class _SplashPageState extends State<SplashPage> {
-  bool isLog = false;
-
-  Future<bool> isLoggedIn() async {
-    SharedPreferences pref = await SharedPreferences.getInstance();
-    isLog = pref.getBool("isLoggedIn") ?? false;
-    return pref.getBool("isLoggedIn") ?? false;
-  }
-
   @override
   void initState() {
     super.initState();
-
-    isLoggedIn();
     goNext();
   }
 
   void goNext() {
-    Future.delayed(const Duration(seconds: 3)).then(
-      (value) {
-        Navigator.pushReplacementNamed(
-            context, isLog ? RouteName.bottomNavigation : RouteName.onbording);
-      },
-    );
+    Future.delayed(const Duration(seconds: 3), () async {
+      bool firstTime = StorageRepository.getBool("first_time", defValue: false);
+      if (firstTime == false) {
+        Navigator.pushReplacementNamed(context, RouteName.onBoarding);
+      } else {
+        Navigator.pushReplacementNamed(context, RouteName.bottomNavigation);
+      }
+    });
+
   }
 
   @override
@@ -49,7 +42,7 @@ class _SplashPageState extends State<SplashPage> {
             SizedBox(
               width: 132.5.w,
               height: 68.64.h,
-              child: Image.asset(AppImage.imageLogo),
+              child: Image.asset(AppImages.imageLogo),
             ),
             SizedBox(height: 4.h),
             SizedBox(
