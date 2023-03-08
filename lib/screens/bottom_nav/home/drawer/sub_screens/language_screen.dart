@@ -21,6 +21,25 @@ class _LanguageScreenState extends State<LanguageScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        leading: Padding(
+          padding: const EdgeInsets.all(8).r,
+          child: InkWell(
+            borderRadius: BorderRadius.circular(20),
+            onTap: () => Navigator.pop(context),
+            child: Container(
+              padding: const EdgeInsets.all(10).r,
+              width: 10.w,
+              height: 10.h,
+              decoration: BoxDecoration(
+                  color: AppColors.black,
+                  borderRadius: BorderRadius.circular(100)),
+              child: SvgPicture.asset(
+                "assets/svg/arrow_back.svg",
+                width: 10.w,
+              ),
+            ),
+          ),
+        ),
         backgroundColor: Colors.white,
         elevation: 0,
         iconTheme: const IconThemeData(color: AppColors.black),
@@ -41,6 +60,7 @@ class _LanguageScreenState extends State<LanguageScreen> {
             ListView.separated(
               separatorBuilder: (context, index) => SizedBox(height: 20.h),
               shrinkWrap: true,
+              physics: const NeverScrollableScrollPhysics(),
               itemCount: LanguageModel.languages.length,
               itemBuilder: (context, index) {
                 return LanguageWidget(

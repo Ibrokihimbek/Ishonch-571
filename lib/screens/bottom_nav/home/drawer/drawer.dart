@@ -38,6 +38,7 @@ class MyDrawer extends StatelessWidget {
           Container(
             height: 300.h,
             child: ListView(
+              physics: const NeverScrollableScrollPhysics(),
               children: [
                 InkWell(
                   onTap: () {
