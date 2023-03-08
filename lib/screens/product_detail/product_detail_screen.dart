@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:ishonch/screens/app_router.dart';
 import 'package:ishonch/screens/product_detail/widgets/draw_stars_widget.dart';
 import 'package:ishonch/screens/product_detail/widgets/text_widget.dart';
+import 'package:zoom_tap_animation/zoom_tap_animation.dart';
 
 class ProductDetailScreen extends StatelessWidget {
   const ProductDetailScreen({Key? key}) : super(key: key);
@@ -44,7 +46,7 @@ class ProductDetailScreen extends StatelessWidget {
           Expanded(
             child: Container(
               width: double.infinity,
-              padding: EdgeInsets.only(left: 24.w, right: 24.w).w,
+              padding: EdgeInsets.only(left: 24.w, right: 24.w, top: 10).w,
               decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.only(
@@ -67,21 +69,19 @@ class ProductDetailScreen extends StatelessWidget {
                     text: "Clean 90 Triole Sneakers",
                   ),
                   SizedBox(height: 20.h),
-                  Row(
-                    children: [
-                      DrawStarWidget(itemCount: 5),
-                      TextWidget(
-                        fontSize: 14.sp,
-                        fontWeight: FontWeight.normal,
-                        text: "(270 Review)",
-                      ),
-                      Spacer(),
-                      TextWidget(
-                        fontSize: 14.sp,
-                        fontWeight: FontWeight.w700,
-                        text: "Avaliabel in stok",
-                      ),
-                    ],
+                  SizedBox(
+                    height: 20,
+                    width: 100,
+                    child: Row(
+                      children: [
+                        const DrawStarWidget(itemCount: 2),
+                        TextWidget(
+                          fontSize: 14.sp,
+                          fontWeight: FontWeight.normal,
+                          text: "(270 Review)",
+                        ),
+                      ],
+                    ),
                   ),
                   SizedBox(height: 20.h),
                   TextWidget(
@@ -116,29 +116,28 @@ class ProductDetailScreen extends StatelessWidget {
       ),
       bottomNavigationBar: Container(
         color: Colors.white,
-        padding: EdgeInsets.only(bottom: 30.h, left: 24.w, right: 24.w).w,
-        child: Container(
-          height: 50.h,
-          padding: EdgeInsets.only(left: 24.w, right: 24.w).w,
-          width: double.infinity,
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(30).r,
-            color: Colors.black87,
-          ),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Icon(Icons.add_shopping_cart, color: Colors.white, size: 30.sp),
-              SizedBox(width: 20.w),
-              Text(
-                "Add to card",
+        padding: EdgeInsets.only(bottom: 30.h, left: 24.w, right: 24.w, top: 15).w,
+        child: ZoomTapAnimation(
+          onTap: () {
+            Navigator.pushNamed(context, RouteName.checkOut);
+          },
+          child: Container(
+            height: 50.h,
+            width: double.infinity,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(30).r,
+              color: Colors.black87,
+            ),
+            child: Center(
+              child: Text(
+                "Go to checkout",
                 style: TextStyle(
                   fontSize: 18.0.sp,
                   fontWeight: FontWeight.w400,
                   color: Colors.white,
                 ),
               ),
-            ],
+            ),
           ),
         ),
       ),

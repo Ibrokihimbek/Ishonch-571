@@ -10,9 +10,7 @@ class DrawStarWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      width: 130.w,
-      height: 20.h,
+    return Expanded(
       child: ListView.separated(
         scrollDirection: Axis.horizontal,
         physics: const NeverScrollableScrollPhysics(),
