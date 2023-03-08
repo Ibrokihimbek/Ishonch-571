@@ -39,6 +39,22 @@ class ApiService extends ApiClient {
      return myResponse;
   }
 
+  Future<MyResponse> getAllOrders() async {
+
+    MyResponse myResponse = MyResponse(error: '');
+    try {
+      Response response = await dio.get('${dio.options.baseUrl}/order');
+      if(response.statusCode == 200) {
+        myResponse.data = (response.data as List)
+            .map((e) => ProductModel.fromJson(e))
+            .toList();
+      }
+    } catch (err) {
+      myResponse.error = err.toString();
+    }
+
+    return myResponse;
+  }
 
 
 
