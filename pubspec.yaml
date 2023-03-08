@@ -17,7 +17,6 @@ dependencies:
   dio: ^4.0.6
   shimmer: ^2.0.0
   cached_network_image: ^3.2.1
-  file_picker: ^5.0.1
   image_picker: ^0.8.5+3
   email_validator: '^2.1.16'
   fluttertoast: ^8.1.1
@@ -43,6 +42,7 @@ flutter:
     - assets/icons/
     - assets/images/
     - assets/loties/
+    - assets/svg/
     - assets/translation/
 
   fonts:
