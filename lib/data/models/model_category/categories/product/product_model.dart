@@ -1,3 +1,5 @@
+import 'package:ishonch/data/models/media/media_model.dart';
+
 class ProductModel {
   int id;
   String productName;
@@ -15,44 +17,49 @@ class ProductModel {
   // String status;
   // String createdAt;
   // String updatedAt;
+  Media media;
 
   ProductModel({
-      required this.id,
-      required this.productName,
-      required this.productPrice,
-      // required this.brandName,
-      // required this.appliancesCharacterics,
-      // required this.notebookCharacterics,
-      // required this.phoneCharacterics,
-      // required this.currencyId,
-      // required this.productYearPrice,
-      // required this.description,
-      // required this.categoryId,
-      // required this.mediaId,
-      // required this.isNew,
-      // required this.status,
-      // required this.createdAt,
-      // required this.updatedAt
-      });
+    required this.id,
+    required this.productName,
+    required this.productPrice,
+    required this.media,
+    // required this.brandName,
+    // required this.appliancesCharacterics,
+    // required this.notebookCharacterics,
+    // required this.phoneCharacterics,
+    // required this.currencyId,
+    // required this.productYearPrice,
+    // required this.description,
+    // required this.categoryId,
+    // required this.mediaId,
+    // required this.isNew,
+    // required this.status,
+    // required this.createdAt,
+    // required this.updatedAt
+  });
 
   factory ProductModel.fromJson(Map<String, dynamic> jsonData) {
     return ProductModel(
-        id: jsonData['id'] ?? 0,
-        productName: jsonData['product_name'] ?? '',
-        productPrice: jsonData['product_price'] ?? 0,
-        // brandName: jsonData['brand_name'] ?? '',
-        // appliancesCharacterics: jsonData['appliances_characterics'] ?? 0,
-        // notebookCharacterics: jsonData['notebook_characterics'] ?? '',
-        // phoneCharacterics: jsonData['phone_characterics'] ?? '',
-        // currencyId: jsonData['currency_id'] ?? 0,
-        // productYearPrice: jsonData['product_year_price'] ?? 0,
-        // description: jsonData['description'] ?? '',
-        // categoryId: jsonData['category_id'] ?? 0,
-        // mediaId: jsonData['media_id'] ?? 0,
-        // isNew: jsonData['isNew'] ?? false,
-        // status: jsonData['status'] ?? '',
-        // createdAt: jsonData['createdAt'] ?? '',
-        // updatedAt: jsonData['updatedAt'] ?? '',
-      );
+      media: Media.fromJson(
+        jsonData['media'] as Map<String, dynamic>? ?? {},
+      ),
+      id: jsonData['id'] ?? 0,
+      productName: jsonData['product_name'] ?? '',
+      productPrice: jsonData['product_price'] ?? 0,
+      // brandName: jsonData['brand_name'] ?? '',
+      // appliancesCharacterics: jsonData['appliances_characterics'] ?? 0,
+      // notebookCharacterics: jsonData['notebook_characterics'] ?? '',
+      // phoneCharacterics: jsonData['phone_characterics'] ?? '',
+      // currencyId: jsonData['currency_id'] ?? 0,
+      // productYearPrice: jsonData['product_year_price'] ?? 0,
+      // description: jsonData['description'] ?? '',
+      // categoryId: jsonData['category_id'] ?? 0,
+      // mediaId: jsonData['media_id'] ?? 0,
+      // isNew: jsonData['isNew'] ?? false,
+      // status: jsonData['status'] ?? '',
+      // createdAt: jsonData['createdAt'] ?? '',
+      // updatedAt: jsonData['updatedAt'] ?? '',
+    );
   }
 }

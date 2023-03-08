@@ -1,19 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:ishonch/data/models/model_category/categories/category_model.dart';
 import 'package:ishonch/screens/app_router.dart';
 import 'package:ishonch/screens/bottom_nav/home/product_by_category/widgets/product_item.dart';
 import 'package:ishonch/utils/app_colors.dart';
 import 'package:ishonch/utils/text_style.dart';
 
 class ProductByCategory extends StatelessWidget {
-  const ProductByCategory({super.key});
+  final CategoryModel data;
+  const ProductByCategory({super.key, required this.data});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          'Title',
+          data.categoryName,
           style: fontRobotoW500(
             appcolor: AppColors.black,
           ).copyWith(fontSize: 32.sp),
@@ -32,12 +34,13 @@ class ProductByCategory extends StatelessWidget {
             crossAxisSpacing: 12,
           ),
           children: List.generate(
-            10,
+            data.product.length,
             (index) => ProductByCategoryItem(
-              productName: 'Redmi Note 10',
-              productPrice: 'Price: 100\$',
+              productName: data.product[index].productName,
+              productPrice: data.product[index].productPrice.toString(),
               productImage:
                   'https://www.infinixmobility.com/fileadmin/assets/images/product/list/hot10.jpg',
+              // data.product[index].media.media,,
               onTap: () {
                 Navigator.pushNamed(context, RouteName.productDetail);
               },

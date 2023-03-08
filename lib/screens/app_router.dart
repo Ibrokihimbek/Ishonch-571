@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:ishonch/data/models/model_category/categories/category_model.dart';
 import 'package:ishonch/screens/bottom_nav/bottom_nav_page.dart';
 import 'package:ishonch/screens/bottom_nav/home/drawer/sub_screens/about_screen.dart';
 import 'package:ishonch/screens/bottom_nav/home/drawer/sub_screens/language_screen.dart';
 import 'package:ishonch/screens/bottom_nav/home/product_by_category/product_by_category.dart';
 import 'package:ishonch/screens/on_bording/on_bording_page.dart';
 import 'package:ishonch/screens/product_detail/product_detail_screen.dart';
+import 'package:ishonch/screens/product_detail/sub_screens/check_out/check_out_screen.dart';
 import 'package:ishonch/screens/splash/splash_page.dart';
 
 abstract class RouteName {
@@ -15,6 +17,7 @@ abstract class RouteName {
   static const productDetail = '/productDetail';
   static const languageChange = '/languageChange';
   static const about = '/about';
+  static const checkOut = '/checkOut';
   // static const register = 'register';
   // static const forgot = 'forgot';
   // static const home = 'home';
@@ -40,6 +43,15 @@ class AppRoutes {
         return MaterialPageRoute(builder: (_) => const LanguageScreen());
       case RouteName.about:
         return MaterialPageRoute(builder: (_) => const AboutScreen());
+        return MaterialPageRoute(
+          builder: (_) => ProductByCategory(
+            data: settings.arguments as CategoryModel,
+          ),
+        );
+      case RouteName.productDetail:
+        return MaterialPageRoute(builder: (_) => ProductDetailScreen());
+      case RouteName.checkOut:
+        return MaterialPageRoute(builder: (_) => CheckOutScreen());
       // case RoutName.register:
       //   return MaterialPageRoute(builder: (_) => RegisterPage());
       // case RoutName.forgot:

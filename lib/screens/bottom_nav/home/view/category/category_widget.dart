@@ -22,7 +22,7 @@ class CategoryWidget extends StatelessWidget {
           itemBuilder: ((context, index) {
             return GestureDetector(
               onTap: (){
-                Navigator.pushNamed(context, RouteName.productByCategory);
+                Navigator.pushNamed(context, RouteName.productByCategory, arguments: data[index]);
               },
               child: Column(
                 children: [
