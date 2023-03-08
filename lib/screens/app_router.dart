@@ -36,18 +36,18 @@ class AppRoutes {
       case RouteName.onBoarding:
         return MaterialPageRoute(builder: (_) => const OnBoardingPage());
       case RouteName.productByCategory:
-        return MaterialPageRoute(builder: (_) => const ProductByCategory());
+        return MaterialPageRoute(
+          builder: (_) => ProductByCategory(
+            data: settings.arguments as CategoryModel,
+          ),
+        );
       case RouteName.productDetail:
         return MaterialPageRoute(builder: (_) => const ProductDetailScreen());
       case RouteName.languageChange:
         return MaterialPageRoute(builder: (_) => const LanguageScreen());
       case RouteName.about:
         return MaterialPageRoute(builder: (_) => const AboutScreen());
-        return MaterialPageRoute(
-          builder: (_) => ProductByCategory(
-            data: settings.arguments as CategoryModel,
-          ),
-        );
+
       case RouteName.productDetail:
         return MaterialPageRoute(builder: (_) => ProductDetailScreen());
       case RouteName.checkOut:
