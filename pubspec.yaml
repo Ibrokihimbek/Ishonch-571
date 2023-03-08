@@ -29,6 +29,7 @@ dependencies:
   zoom_tap_animation: ^1.1.0
   flutter_snake_navigationbar: ^0.6.1
   get_it: ^7.2.0
+  mask_text_input_formatter: ^2.3.0
 
 dev_dependencies:
   flutter_test:
@@ -43,6 +44,7 @@ flutter:
     - assets/images/
     - assets/loties/
     - assets/translation/
+
   fonts:
     - family: Roboto
       fonts:
