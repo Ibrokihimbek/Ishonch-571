@@ -11,15 +11,15 @@ class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return EasyLocalization(
-    supportedLocales: const [
-      Locale('ru', 'RU'),
-    ],
-    path: 'assets/translation',
-    child: MultiBlocProvider(
-      providers: [
-        BlocProvider(create: (context) => BottomNavCubit(),)
+      supportedLocales: const [
+        Locale('ru', 'RU'),
       ],
-        child: MyApp()),
+      path: 'assets/translation',
+      child: MultiBlocProvider(providers: [
+        BlocProvider(
+          create: (context) => BottomNavCubit(),
+        )
+      ], child: MyApp()),
     );
   }
 }

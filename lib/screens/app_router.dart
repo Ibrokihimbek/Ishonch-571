@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:ishonch/screens/bottom_nav/bottom_nav_page.dart';
+import 'package:ishonch/screens/bottom_nav/home/drawer/sub_screens/about_screen.dart';
+import 'package:ishonch/screens/bottom_nav/home/drawer/sub_screens/language_screen.dart';
 import 'package:ishonch/screens/bottom_nav/home/product_by_category/product_by_category.dart';
 import 'package:ishonch/screens/on_bording/on_bording_page.dart';
 import 'package:ishonch/screens/product_detail/product_detail_screen.dart';
@@ -11,6 +13,8 @@ abstract class RouteName {
   static const productByCategory = 'productByCategory';
   static const onBoarding = 'onBoarding';
   static const productDetail = '/productDetail';
+  static const languageChange = '/languageChange';
+  static const about = '/about';
   // static const register = 'register';
   // static const forgot = 'forgot';
   // static const home = 'home';
@@ -25,19 +29,23 @@ class AppRoutes {
   static Route generateRoute(RouteSettings settings) {
     switch (settings.name) {
       case RouteName.splash:
-        return MaterialPageRoute(builder: (_) => SplashPage());
+        return MaterialPageRoute(builder: (_) => const SplashPage());
       case RouteName.onBoarding:
-        return MaterialPageRoute(builder: (_) => OnBoardingPage());
+        return MaterialPageRoute(builder: (_) => const OnBoardingPage());
       case RouteName.productByCategory:
-        return MaterialPageRoute(builder: (_) => ProductByCategory());
+        return MaterialPageRoute(builder: (_) => const ProductByCategory());
       case RouteName.productDetail:
-        return MaterialPageRoute(builder: (_) => ProductDetailScreen());
+        return MaterialPageRoute(builder: (_) => const ProductDetailScreen());
+      case RouteName.languageChange:
+        return MaterialPageRoute(builder: (_) => const LanguageScreen());
+      case RouteName.about:
+        return MaterialPageRoute(builder: (_) => const AboutScreen());
       // case RoutName.register:
       //   return MaterialPageRoute(builder: (_) => RegisterPage());
       // case RoutName.forgot:
       //   return MaterialPageRoute(builder: (_) => ForgotPage());
       case RouteName.bottomNavigation:
-        return MaterialPageRoute(builder: (_) => BottomNavPage());
+        return MaterialPageRoute(builder: (_) => const BottomNavPage());
       // case RoutName.checkout:
       //   return MaterialPageRoute(builder: (_) => CheckoutPaage());
       // case RoutName.home:
