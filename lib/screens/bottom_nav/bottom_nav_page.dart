@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_snake_navigationbar/flutter_snake_navigationbar.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:ishonch/screens/bottom_nav/bloc/bottom_nav_cubit.dart';
+import 'package:ishonch/screens/bottom_nav/home/drawer/drawer.dart';
 import 'package:ishonch/screens/bottom_nav/widgets/bottom_nav_bar.dart';
 import 'package:ishonch/screens/bottom_nav/home/view/home_page.dart';
 import 'package:ishonch/utils/app_colors.dart';
@@ -20,35 +21,51 @@ class BottomNavPage extends StatefulWidget {
 }
 
 class _BottomNavPageState extends State<BottomNavPage> {
-  List<Widget> screens = [
-   HomePage(),
-    Center(
+  final GlobalKey<ScaffoldState> _key = GlobalKey();
 
+  List<Widget> screens = [
+    Center(
       child: Text(
         '',
         style: TextStyle(fontSize: 32),
       ),
     ),
     Center(
-  child: Text(
-  'Profile',
-  style: TextStyle(fontSize: 32),
-  ),
-  )
-
+      child: Text(
+        'Profile',
+        style: TextStyle(fontSize: 32),
+      ),
+    )
   ];
 
-
+  bool IsNightMode = false;
+  @override
+  void initState() {
+    screens.insert(
+      0,
+      HomePage(
+        onTap: () => _key.currentState!.openDrawer(),
+      ),
+    );
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
-
     return BlocProvider(
       create: (context) => BottomNavCubit(),
       child: BlocBuilder<BottomNavCubit, int>(
         builder: (context, state) {
           var index = context.watch<BottomNavCubit>().activePageIndex;
           return Scaffold(
+            key: _key,
+            drawer: MyDrawer(
+              onChanged: (value) {
+                setState(() {});
+                IsNightMode = !IsNightMode;
+              },
+              IsNightMode: IsNightMode,
+            ),
             body: screens[index],
             bottomNavigationBar: BottomNavyBar(
               iconSize: 30,
