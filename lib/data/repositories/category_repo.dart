@@ -10,4 +10,6 @@ class CategoriesRepo {
 
   Future<MyResponse> getAllProduct() =>
       apiService.getAllProduct();
+
+  Future<MyResponse> getAllOrders()=>apiService.getAllOrders();
 }

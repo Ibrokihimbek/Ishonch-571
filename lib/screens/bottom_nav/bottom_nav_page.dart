@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_snake_navigationbar/flutter_snake_navigationbar.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:ishonch/screens/bottom_nav/bloc/bottom_nav_cubit.dart';
+import 'package:ishonch/screens/bottom_nav/order/order_page.dart';
 import 'package:ishonch/screens/bottom_nav/widgets/bottom_nav_bar.dart';
 import 'package:ishonch/screens/bottom_nav/home/view/home_page.dart';
 import 'package:ishonch/utils/app_colors.dart';
@@ -29,12 +30,7 @@ class _BottomNavPageState extends State<BottomNavPage> {
         style: TextStyle(fontSize: 32),
       ),
     ),
-    Center(
-  child: Text(
-  'Profile',
-  style: TextStyle(fontSize: 32),
-  ),
-  )
+    OrdersPage(),
 
   ];
 
