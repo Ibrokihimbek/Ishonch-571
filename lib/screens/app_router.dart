@@ -3,6 +3,7 @@ import 'package:ishonch/screens/bottom_nav/bottom_nav_page.dart';
 import 'package:ishonch/screens/bottom_nav/home/product_by_category/product_by_category.dart';
 import 'package:ishonch/screens/on_bording/on_bording_page.dart';
 import 'package:ishonch/screens/product_detail/product_detail_screen.dart';
+import 'package:ishonch/screens/product_detail/sub_screens/check_out/check_out_screen.dart';
 import 'package:ishonch/screens/splash/splash_page.dart';
 
 abstract class RouteName {
@@ -11,6 +12,7 @@ abstract class RouteName {
   static const productByCategory = 'productByCategory';
   static const onBoarding = 'onBoarding';
   static const productDetail = '/productDetail';
+  static const checkOut = '/checkOut';
   // static const register = 'register';
   // static const forgot = 'forgot';
   // static const home = 'home';
@@ -32,6 +34,8 @@ class AppRoutes {
         return MaterialPageRoute(builder: (_) => ProductByCategory());
       case RouteName.productDetail:
         return MaterialPageRoute(builder: (_) => ProductDetailScreen());
+      case RouteName.checkOut:
+        return MaterialPageRoute(builder: (_) => CheckOutScreen());
       // case RoutName.register:
       //   return MaterialPageRoute(builder: (_) => RegisterPage());
       // case RoutName.forgot:
