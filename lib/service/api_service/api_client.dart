@@ -56,6 +56,8 @@ class ApiClient{
       onRequest: (RequestOptions requestOptions,RequestInterceptorHandler handler){
         print("SO'ROV YUBORILDI");
         String currentLocale = "uz";
+        // requestOptions.headers["Authorization"];
+        // "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjQsImlzX2FjdGl2ZSI6dHJ1ZSwiaXNfYWRtaW4iOnRydWUsImlzX2NyZWF0b3IiOmZhbHNlLCJpYXQiOjE2NzgyODAwNjcsImV4cCI6MTY3ODI4Mjc2N30.GAZp87aVO4e6i_TMO4Mwftim07vxZBqPk66VdqvRE7A";
         requestOptions.headers["Accept"] = "application/json";
         requestOptions.headers["Accept-Language"] =
         currentLocale.isEmpty ? "ru" : currentLocale;

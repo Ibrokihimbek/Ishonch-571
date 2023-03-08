@@ -19,15 +19,18 @@ class OrdersPage extends StatelessWidget {
         ),
         body: BlocBuilder<OrdersBloc, OrdersState>(
           builder: (context, state) {
-            if (state is InitialOrdersState) {
-              return const Center(
-                child: Text('hali data yoq'),
-              );
-            } else if (state is LoadOrdersInProgress) {
+            // if (state is InitialOrdersState) {
+            //   return const Center(
+            //     child: Text('hali data yoq'),
+            //   );
+            // } else
+              if (state is LoadOrdersInProgress) {
+                print("Progresda AAAAAAAAAAAAAAAAAA");
               return const Center(
                 child: CircularProgressIndicator(),
               );
             } else if (state is LoadOrdersInSuccess) {
+                print("Progresda SSSSSSSSSSSSSSSSSSSS");
               return ListView.builder(
                 itemCount: state.orders.length,
                 itemBuilder: (context, i) {
@@ -37,6 +40,7 @@ class OrdersPage extends StatelessWidget {
                 },
               );
             } else if (state is LoadOrdersInFairlure) {
+                print("Progresda LLLLLLLLLLLLLLLLLLL");
               return Center(child: Text(state.errorText));
             }
             return const SizedBox();
