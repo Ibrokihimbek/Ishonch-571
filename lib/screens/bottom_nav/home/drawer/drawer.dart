@@ -1,14 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:ishonch/utils/app_colors.dart';
 import 'package:ishonch/utils/app_image.dart';
-import 'package:ishonch/utils/text_style.dart';
 
 class MyDrawer extends StatelessWidget {
   bool IsNightMode;
   ValueChanged onChanged;
+
   MyDrawer({super.key, required this.IsNightMode, required this.onChanged});
 
   @override
@@ -23,19 +21,20 @@ class MyDrawer extends StatelessWidget {
                 SizedBox(
                   width: 132.5.w,
                   height: 68.64.h,
-                  child: Image.asset(AppImages.imageLogo),
+                  child: Image.asset(
+                    AppImages.imageLogo,
+                    color: Theme.of(context).textTheme.bodyMedium!.color,
+
+                  ),
                 ),
                 SizedBox(
-                  child: Text(
-                    'Ishonch 571',
-                    style: fontRobotoW700(appcolor: AppColors.black)
-                        .copyWith(fontSize: 24.sp),
-                  ),
+                  child: Text('Ishonch 571',
+                      style: Theme.of(context).textTheme.bodyLarge),
                 ),
               ],
             ),
           ),
-          Container(
+          SizedBox(
             height: 300.h,
             child: ListView(
               physics: const NeverScrollableScrollPhysics(),
@@ -48,8 +47,7 @@ class MyDrawer extends StatelessWidget {
                     leading: const Icon(Icons.language),
                     title: Text(
                       "Language",
-                      style: fontRobotoW500(appcolor: AppColors.black)
-                          .copyWith(fontSize: 16.sp),
+                      style: Theme.of(context).textTheme.titleLarge,
                     ),
                   ),
                 ),
@@ -57,8 +55,7 @@ class MyDrawer extends StatelessWidget {
                   leading: const Icon(Icons.nights_stay_outlined),
                   title: Text(
                     "Night Mode",
-                    style: fontRobotoW500(appcolor: AppColors.black)
-                        .copyWith(fontSize: 16.sp),
+                    style: Theme.of(context).textTheme.titleLarge,
                   ),
                   trailing: Switch(
                       activeColor: AppColors.black,

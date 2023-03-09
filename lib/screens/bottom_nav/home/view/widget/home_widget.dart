@@ -34,9 +34,9 @@ class HomeWidget extends StatelessWidget {
               child: const Text(
                 'Our Fashions App',
                 style: TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.w500,
-                    color: Colors.black54),
+                  fontSize: 20,
+                  fontWeight: FontWeight.w500,
+                ),
               )),
           SizedBox(
             height: height(context) * 0.03,
@@ -76,7 +76,7 @@ class HomeWidget extends StatelessWidget {
               },
               child: const Text(
                 'View All',
-                style: TextStyle(color: Colors.black54,fontWeight: FontWeight.w500),
+                style: TextStyle(fontWeight: FontWeight.w500),
               )),
         ],
       ),

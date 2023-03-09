@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:ishonch/data/models/model_category/categories/category_model.dart';
-import 'package:ishonch/data/models/model_category/categories/product/product_model.dart';
 import 'package:ishonch/screens/bottom_nav/bottom_nav_page.dart';
 import 'package:ishonch/screens/bottom_nav/home/drawer/sub_screens/about_screen.dart';
 import 'package:ishonch/screens/bottom_nav/home/drawer/sub_screens/language_screen.dart';
@@ -30,7 +29,12 @@ class AppRoutes {
         return MaterialPageRoute(builder: (_) => const SplashPage());
       case RouteName.onBoarding:
         return MaterialPageRoute(builder: (_) => const OnBoardingPage());
-
+      case RouteName.productByCategory:
+        return MaterialPageRoute(
+          builder: (_) => ProductByCategory(
+            data: settings.arguments as CategoryModel,
+          ),
+        );
       case RouteName.productDetail:
         return MaterialPageRoute(
           builder: (_) => ProductDetailScreen(
@@ -45,12 +49,7 @@ class AppRoutes {
                 voidCallback: settings.arguments as VoidCallback));
       case RouteName.about:
         return MaterialPageRoute(builder: (_) => const AboutScreen());
-      case RouteName.productByCategory:
-        return MaterialPageRoute(
-          builder: (_) => ProductByCategory(
-            data: settings.arguments as CategoryModel,
-          ),
-        );
+
       case RouteName.checkOut:
         return MaterialPageRoute(builder: (_) => CheckOutScreen());
       case RouteName.bottomNavigation:
