@@ -1,5 +1,4 @@
 import 'dart:io';
-
 import 'package:dio/dio.dart';
 import 'package:ishonch/data/geocoding/geocoding.dart';
 import 'package:ishonch/data/models/model_category/categories/category_model.dart';
@@ -44,15 +43,12 @@ class ApiService extends ApiClient {
 
   Future<MyResponse> getAllOrders() async {
     MyResponse myResponse = MyResponse(error: '');
-    Dio dio = Dio();
     try {
-      Response response = await dio.get('${dio.options.baseUrl}/order',
-          options: Options(headers: {
-            "Authorization":
-                "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjQsImlzX2FjdGl2ZSI6dHJ1ZSwiaXNfYWRtaW4iOnRydWUsImlzX2NyZWF0b3IiOmZhbHNlLCJpYXQiOjE2NzgyODAwNjcsImV4cCI6MTY3ODI4Mjc2N30.GAZp87aVO4e6i_TMO4Mwftim07vxZBqPk66VdqvRE7A"
-          }));
-      if (response.statusCode == 200) {
-        myResponse.data = response.data.map((e) => Order.fromJson(e)).toList();
+      Response response = await dio.get('${dio.options.baseUrl}/order');
+      if (response.statusCode! >= 200 && response.statusCode! < 300) {
+        myResponse.data =
+            (response.data as List?)?.map((e) => Order.fromJson(e)).toList() ??
+                [];
       }
     } catch (err) {
       myResponse.error = err.toString();
@@ -61,10 +57,10 @@ class ApiService extends ApiClient {
     return myResponse;
   }
 
-
-
   Dio dio = Dio();
-  Future<String> getLocationName({required String geoCodeText, required String kind}) async {
+
+  Future<String> getLocationName(
+      {required String geoCodeText, required String kind}) async {
     String text = '';
     try {
       late Response response;
@@ -102,22 +98,18 @@ class ApiService extends ApiClient {
   }
 }
 
+//!------------------ Get Product By ID -----------------------------------
 
-  //!------------------ Get Product By ID -----------------------------------
-
-   Future<MyResponse> getProductById({required int id}) async {
-    MyResponse myResponse = MyResponse(error: '');
-    try{
-      Response response = await dio.get("${dio.options.baseUrl}/product/$id");
-      if(response.statusCode! >= 200 && response.statusCode! < 300){
-        myResponse.data = ProductModel.fromJson(response.data);
-      }
-    }catch (err) {
-      myResponse.error = err.toString();
-    }
-    return myResponse;
-  }
-}
-
-
-
+//  Future<MyResponse> getProductById({required int id}) async {
+//   MyResponse myResponse = MyResponse(error: '');
+//   try{
+//     Response response = await dio.get("${dio.options.baseUrl}/product/$id");
+//     if(response.statusCode! >= 200 && response.statusCode! < 300){
+//       myResponse.data = ProductModel.fromJson(response.data);
+//     }
+//   }catch (err) {
+//     myResponse.error = err.toString();
+//   }
+//   return myResponse;
+// }
+// }
