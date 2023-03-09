@@ -10,12 +10,12 @@ class ProductCubitById extends Cubit<ProductStateById> {
   }
 
   getProductById(int id) async {
-    emit(GettingProductInProgress());
-    MyResponse myResponse = await getIt<ApiService>().getProductById(id: id);
-    if (myResponse.error.isEmpty) {
-      emit(GettingProductInSuccess(product: myResponse.data));
-    } else {
-      emit(GettingProductInFailury(status: myResponse.error));
-    }
+    // emit(GettingProductInProgress());
+    // // MyResponse myResponse = await getIt<ApiService>().getProductById(id: id);
+    // if (myResponse.error.isEmpty) {
+    //   // emit(GettingProductInSuccess(product: myResponse.data));
+    // } else {
+    //   emit(GettingProductInFailury(status: myResponse.error));
+    // }
   }
 }
