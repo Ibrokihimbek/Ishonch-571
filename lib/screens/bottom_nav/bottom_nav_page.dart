@@ -7,6 +7,7 @@ import 'package:ishonch/screens/bottom_nav/bloc/bottom_nav_cubit.dart';
 import 'package:ishonch/screens/bottom_nav/home/drawer/drawer.dart';
 import 'package:ishonch/screens/bottom_nav/home/view/home_page.dart';
 import 'package:ishonch/screens/bottom_nav/notification/notification_page.dart';
+
 import 'package:ishonch/utils/app_image.dart';
 
 import '../../cubit/connectivity/connectivity_cubit.dart';
@@ -43,6 +44,7 @@ class _BottomNavPageState extends State<BottomNavPage> {
   _init() async {
     print("INTERNET TURNED ON CALL ANY API");
   }
+
 
   @override
   Widget build(BuildContext context) {

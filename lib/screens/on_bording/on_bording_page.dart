@@ -98,7 +98,7 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
                       height: 44.h,
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(20.r),
-                          color: AppColors.C_222222),
+                          color: AppColors.c_222222),
                       child: Center(
                         child: Text(
                           nextButton,

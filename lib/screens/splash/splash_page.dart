@@ -29,7 +29,6 @@ class _SplashPageState extends State<SplashPage> {
         Navigator.pushReplacementNamed(context, RouteName.bottomNavigation);
       }
     });
-
   }
 
   @override
@@ -44,12 +43,11 @@ class _SplashPageState extends State<SplashPage> {
               height: 68.64.h,
               child: Image.asset(AppImages.imageLogo),
             ),
-            SizedBox(height: 4.h),
+            SizedBox(height: 20.h),
             SizedBox(
               child: Text(
                 'Ishonch 571',
-                style: fontRobotoW700(appcolor: AppColors.black)
-                    .copyWith(fontSize: 24.sp),
+                style: Theme.of(context).textTheme.headlineMedium,
               ),
             ),
           ],
