@@ -46,9 +46,10 @@ class ApiService extends ApiClient {
     try {
       Response response = await dio.get('${dio.options.baseUrl}/order');
       if (response.statusCode! >= 200 && response.statusCode! < 300) {
-        myResponse.data =
-            (response.data as List?)?.map((e) => OrderModel.fromJson(e)).toList() ??
-                [];
+        myResponse.data = (response.data as List?)
+                ?.map((e) => OrderModel.fromJson(e))
+                .toList() ??
+            [];
       }
     } catch (err) {
       myResponse.error = err.toString();
@@ -57,9 +58,8 @@ class ApiService extends ApiClient {
     return myResponse;
   }
 
-
-
-  Future<String> getLocationName({required String geoCodeText, required String kind}) async {
+  Future<String> getLocationName(
+      {required String geoCodeText, required String kind}) async {
     Dio dio = Dio();
     String text = '';
     try {
@@ -97,19 +97,18 @@ class ApiService extends ApiClient {
     }
   }
 
-
 //!------------------ Get Product By ID -----------------------------------
 
-//  Future<MyResponse> getProductById({required int id}) async {
-//   MyResponse myResponse = MyResponse(error: '');
-//   try{
-//     Response response = await dio.get("${dio.options.baseUrl}/product/$id");
-//     if(response.statusCode! >= 200 && response.statusCode! < 300){
-//       myResponse.data = ProductModel.fromJson(response.data);
-//     }
-//   }catch (err) {
-//     myResponse.error = err.toString();
-//   }
-//   return myResponse;
-// }
-// }
+  Future<MyResponse> getProductById({required int id}) async {
+    MyResponse myResponse = MyResponse(error: '');
+    try {
+      Response response = await dio.get("${dio.options.baseUrl}/product/$id");
+      if (response.statusCode! >= 200 && response.statusCode! < 300) {
+        myResponse.data = ProductModel.fromJson(response.data);
+      }
+    } catch (err) {
+      myResponse.error = err.toString();
+    }
+    return myResponse;
+  }
+}

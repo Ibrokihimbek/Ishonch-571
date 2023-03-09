@@ -5,7 +5,7 @@ import 'package:ishonch/service/get_it/get_it.dart';
 class ProductRepo {
   Future<MyResponse> getCourseById({required int id}) async {
     MyResponse myResponse = MyResponse(error: '');
-    // myResponse = await getIt<ApiService>().getProductById(id: id);
+     myResponse = await getIt<ApiService>().getProductById(id: id);
     return myResponse;
   }
 }
