@@ -13,7 +13,7 @@ class ProductsBloc extends Bloc<ProductsEvent, ProductsState> {
 
  _fetchAllProducts(FetchAllProducts event, Emitter<ProductsState> emit) async {
   emit(LoadProductsInProgress());
-
+  
   MyResponse myResponse = await productsRepo.getAllProduct();
   if(myResponse.error.isEmpty){
     emit(LoadProductsInSuccess(products: myResponse.data));
