@@ -7,7 +7,7 @@ class InitialOrdersState extends OrdersState {}
 class LoadOrdersInProgress extends OrdersState {}
 
 class LoadOrdersInSuccess extends OrdersState {
-  final List<Order> orders;
+  final List<OrderModel> orders;
  
   LoadOrdersInSuccess({required this.orders});
 }

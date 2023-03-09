@@ -15,7 +15,7 @@ class OrdersPage extends StatelessWidget {
       create: (context) => OrdersBloc(CategoriesRepo(apiService: ApiService()))
         ..add(FetchAllOrders()),
       child: Scaffold(
-        backgroundColor: const Color(0xFFFFFFFF),
+        backgroundColor: const Color(0XFFFCFCFC),
         appBar: AppBar(
           title: const Text('Orders Page'),
         ),
@@ -31,35 +31,31 @@ class OrdersPage extends StatelessWidget {
               return ListView.builder(
                 itemCount: state.orders.length,
                 itemBuilder: (context, index) {
+                  var order=state.orders[index];
                   return Container(
                     margin: const EdgeInsets.all(20),
                     decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(20),
-                        color: Colors.grey),
-                    height: 160,
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Text(
-                            state.orders[index].clientPhone,
-                            style: const TextStyle(
-                                fontSize: 30, color: Colors.white),
+                      borderRadius: BorderRadius.circular(20),
+                      color: Colors.white,
+                    ),
+                    height: 100,
+                    child: Padding(
+                      padding: const EdgeInsets.all(8),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                            Text(
+                              "Order Name : ${order.clientName}",
+                              style: const TextStyle(fontSize: 20),
                           ),
-                        ),
-                        Container(
-                          margin: const EdgeInsets.only(left: 18, top: 15),
-                          child: Text(
-                            state.orders[index].clientPhone,
-                            style: const TextStyle(
-                                fontSize: 14,
-                                color: Colors.white,
-                                fontWeight: FontWeight.w400),
+                          Text(
+                              "Client number: ${order.clientPhone}",
+                              style: const TextStyle(
+                                  fontSize: 14, fontWeight: FontWeight.w400),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                   );
                 },

@@ -47,7 +47,7 @@ class ApiService extends ApiClient {
       Response response = await dio.get('${dio.options.baseUrl}/order');
       if (response.statusCode! >= 200 && response.statusCode! < 300) {
         myResponse.data =
-            (response.data as List?)?.map((e) => Order.fromJson(e)).toList() ??
+            (response.data as List?)?.map((e) => OrderModel.fromJson(e)).toList() ??
                 [];
       }
     } catch (err) {
