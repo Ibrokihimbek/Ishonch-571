@@ -57,10 +57,10 @@ class ApiService extends ApiClient {
     return myResponse;
   }
 
-  Dio dio = Dio();
 
-  Future<String> getLocationName(
-      {required String geoCodeText, required String kind}) async {
+
+  Future<String> getLocationName({required String geoCodeText, required String kind}) async {
+    Dio dio = Dio();
     String text = '';
     try {
       late Response response;
@@ -96,7 +96,7 @@ class ApiService extends ApiClient {
       throw Exception(e);
     }
   }
-}
+
 
 //!------------------ Get Product By ID -----------------------------------
 

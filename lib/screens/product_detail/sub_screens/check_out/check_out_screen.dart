@@ -136,26 +136,26 @@ class _CheckOutScreenState extends State<CheckOutScreen> {
             Center(
               child: ElevatedButton(
                   onPressed: () async {
-                    // getLocationPermission();
+                     getLocationPermission();
 
 
-                    if(await Location().serviceEnabled()){
-                      // ignore: use_build_context_synchronously
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => MapScreen(
-                            latLong: LatLongModel(
-                              lat: 41.2858473,
-                              long: 69.2030878,
-                            ),
-                          ),
-                        ),
-                      );
-
-                    }else{
-                      Location().getLocation();
-                    }
+                    // if(await Location().serviceEnabled()){
+                    //   // ignore: use_build_context_synchronously
+                    //   Navigator.push(
+                    //     context,
+                    //     MaterialPageRoute(
+                    //       builder: (context) => MapScreen(
+                    //         latLong: LatLongModel(
+                    //           lat: 41.2858473,
+                    //           long: 69.2030878,
+                    //         ),
+                    //       ),
+                    //     ),
+                    //   );
+                    //
+                    // }else{
+                    //   Location().getLocation();
+                    // }
 
 
                   },
