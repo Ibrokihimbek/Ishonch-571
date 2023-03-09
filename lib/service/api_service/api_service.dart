@@ -1,7 +1,11 @@
+import 'dart:io';
+
 import 'package:dio/dio.dart';
+import 'package:ishonch/data/geocoding/geocoding.dart';
 import 'package:ishonch/data/models/model_category/categories/category_model.dart';
 import 'package:ishonch/data/models/model_category/categories/product/product_model.dart';
 import 'package:ishonch/service/api_service/api_client.dart';
+import 'package:ishonch/utils/constans.dart';
 import '../../data/models/order/order_model.dart';
 
 class ApiService extends ApiClient {
@@ -54,6 +58,45 @@ class ApiService extends ApiClient {
     }
 
     return myResponse;
+  }
+
+
+  Dio dio = Dio();
+  Future<String> getLocationName({required String geoCodeText, required String kind}) async {
+    String text = '';
+    try {
+      late Response response;
+      Map<String, String> queryParams = {
+        'apikey': mapApiKey,
+        'geocode': geoCodeText,
+        'lang': 'uz_UZ',
+        'format': 'json',
+        'kind': kind,
+        'rspn': '1',
+        'results': '1',
+      };
+      print("QueryParams>>>>>>>>>>$queryParams");
+      response = await dio.get(
+        "https://geocode-maps.yandex.ru/1.x/",
+        queryParameters: queryParams,
+      );
+
+      if (response.statusCode! == HttpStatus.ok) {
+        Geocoding geocoding = Geocoding.fromJson(response.data);
+        if (geocoding.response.geoObjectCollection.featureMember.isNotEmpty) {
+          text = geocoding.response.geoObjectCollection.featureMember[0]
+              .geoObject.metaDataProperty.geocoderMetaData.text;
+          print("text>>>>>>>>>>>> $text");
+        } else {
+          text = 'Aniqlanmagan hudud';
+        }
+        return text;
+      } else {
+        throw Exception();
+      }
+    } catch (e) {
+      throw Exception(e);
+    }
   }
 }
 
