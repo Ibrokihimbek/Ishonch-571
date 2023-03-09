@@ -121,48 +121,37 @@ class AppTheme {
     textSelectionTheme:
         const TextSelectionThemeData(cursorColor: AppColors.white),
     textTheme: TextTheme(
-      displayLarge: GoogleFonts.roboto(
-        textStyle: TextStyle(
+      displayLarge: TextStyle(
             color: AppColors.white,
             fontSize: 57.sp,
             fontWeight: FontWeight.w800),
-      ),
-      displayMedium: GoogleFonts.roboto(
-        textStyle: TextStyle(
-            color: AppColors.white,
-            fontSize: 45.sp,
-            fontWeight: FontWeight.w700),
-      ),
-      displaySmall: GoogleFonts.roboto(
-        textStyle: TextStyle(
+      displayMedium: TextStyle(
+          color: AppColors.white,
+          fontSize: 45.sp,
+          fontWeight: FontWeight.w700),
+      displaySmall: TextStyle(
             color: AppColors.white,
             fontSize: 36.sp,
             fontWeight: FontWeight.w600),
-      ),
-      headlineMedium: GoogleFonts.roboto(
-        textStyle: TextStyle(
+      headlineMedium: TextStyle(
             color: AppColors.white,
             fontSize: 28.sp,
             fontWeight: FontWeight.w500),
-      ),
-      headlineSmall: GoogleFonts.roboto(
-        textStyle: TextStyle(
+
+      headlineSmall: TextStyle(
             color: AppColors.white,
             fontSize: 24.sp,
             fontWeight: FontWeight.w400),
-      ),
-      titleLarge: GoogleFonts.roboto(
-        textStyle: TextStyle(
+
+      titleLarge:TextStyle(
             color: AppColors.white,
             fontSize: 22.sp,
             fontWeight: FontWeight.w300),
-      ),
-      labelMedium: GoogleFonts.roboto(
-        textStyle: TextStyle(
+
+      labelMedium: TextStyle(
             color: AppColors.white,
             fontSize: 16.sp,
             fontWeight: FontWeight.w200),
-      ),
     ),
   );
 }
