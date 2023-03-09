@@ -37,9 +37,17 @@ class ProductDetailScreen extends StatelessWidget {
                             child: Stack(
                               children: [
                                 SizedBox(height: 30.h),
-                                Center(
-                                  child: Image.network(
-                                    'http://146.190.207.16:3000/${state.product.media.media}',
+                                GestureDetector(
+                                  onTap: () {
+                                    Navigator.pushNamed(
+                                        context, RouteName.imageView,
+                                        arguments:
+                                            'http://146.190.207.16:3000/${state.product.media.media}');
+                                  },
+                                  child: Center(
+                                    child: Image.network(
+                                      'http://146.190.207.16:3000/${state.product.media.media}',
+                                    ),
                                   ),
                                 ),
                                 Positioned(
@@ -79,7 +87,6 @@ class ProductDetailScreen extends StatelessWidget {
                       ),
           );
         },
-
       ),
     );
   }
