@@ -1,8 +1,8 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ishonch/bloc/orders_bloc/orders_event.dart';
 import 'package:ishonch/bloc/orders_bloc/orders_state.dart';
+import 'package:ishonch/data/models/my_responce/my_responce.dart';
 import 'package:ishonch/data/repositories/category_repo.dart';
-import 'package:ishonch/service/api_service/api_service.dart';
 
 class OrdersBloc extends Bloc<OrdersEvent, OrdersState> {
   final CategoriesRepo categoriesRepo;
