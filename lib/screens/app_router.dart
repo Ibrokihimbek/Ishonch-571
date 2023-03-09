@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ishonch/data/models/model_category/categories/category_model.dart';
+import 'package:ishonch/data/models/model_category/categories/product/product_model.dart';
 import 'package:ishonch/screens/bottom_nav/bottom_nav_page.dart';
 import 'package:ishonch/screens/bottom_nav/home/drawer/sub_screens/about_screen.dart';
 import 'package:ishonch/screens/bottom_nav/home/drawer/sub_screens/language_screen.dart';
@@ -28,7 +29,11 @@ class AppRoutes {
       case RouteName.onBoarding:
         return MaterialPageRoute(builder: (_) => const OnBoardingPage());
       case RouteName.productDetail:
-        return MaterialPageRoute(builder: (_) => const ProductDetailScreen());
+        return MaterialPageRoute(
+          builder: (_) => ProductDetailScreen(
+            product: settings.arguments as int,
+          ),
+        );
       case RouteName.languageChange:
         return MaterialPageRoute(builder: (_) => const LanguageScreen());
       case RouteName.about:
