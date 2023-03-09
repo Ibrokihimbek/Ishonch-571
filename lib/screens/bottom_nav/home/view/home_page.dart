@@ -44,16 +44,6 @@ class _HomePageState extends State<HomePage> {
             ),
           ),
           actions: [
-            IconButton(
-              icon: Icon(
-                  Theme.of(context).scaffoldBackgroundColor == Colors.white
-                      ? Icons.dark_mode_outlined
-                      : Icons.light_mode_outlined,
-                  color: Theme.of(context).cardColor),
-              onPressed: () async {
-                await _switchTheme();
-              },
-            ),
             Padding(
               padding: EdgeInsets.only(
                   right: width(context) * 0.014, top: height(context) * 0.014),
