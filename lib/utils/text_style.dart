@@ -45,3 +45,4 @@ TextStyle fontRobotoW100({required Color appcolor}) {
   return TextStyle(
       fontSize: 18.sp, color: appcolor, fontWeight: FontWeight.w100);
 }
+
