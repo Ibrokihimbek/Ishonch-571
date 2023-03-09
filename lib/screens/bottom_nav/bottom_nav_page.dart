@@ -1,3 +1,4 @@
+import 'package:adaptive_theme/adaptive_theme.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -22,6 +23,24 @@ class BottomNavPage extends StatefulWidget {
 }
 
 class _BottomNavPageState extends State<BottomNavPage> {
+
+
+
+  AdaptiveThemeMode? themeMode;
+  Future<void> _getMode() async {
+    themeMode = await AdaptiveTheme.getThemeMode();
+    setState(() {});
+  }
+
+  Future<void> _switchTheme() async {
+    if (themeMode!.isDark) {
+      AdaptiveTheme.of(context).setLight();
+    } else {
+      AdaptiveTheme.of(context).setDark();
+    }
+    await _getMode();
+  }
+
   final GlobalKey<ScaffoldState> _key = GlobalKey();
 
   List<Widget> screens = [];
@@ -30,6 +49,7 @@ class _BottomNavPageState extends State<BottomNavPage> {
 
   @override
   void initState() {
+    _getMode();
     screens.insert(
       0,
       HomePage(
@@ -71,6 +91,7 @@ class _BottomNavPageState extends State<BottomNavPage> {
               onChanged: (value) {
                 setState(() {});
                 IsNightMode = !IsNightMode;
+                _switchTheme();
               },
               IsNightMode: IsNightMode,
             ),

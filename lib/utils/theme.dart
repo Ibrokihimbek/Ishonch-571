@@ -34,7 +34,7 @@ class AppTheme {
     colorScheme: const ColorScheme.light(),
     primaryColorDark: AppColors.white,
     primaryColor: AppColors.white,
-    useMaterial3: true,
+   // useMaterial3: true,
     cardColor: AppColors.black,
     shadowColor: AppColors.grey.withOpacity(0.5),
     textSelectionTheme:
@@ -109,7 +109,7 @@ class AppTheme {
       backgroundColor: AppColors.grey.withOpacity(0.85),
       elevation: 8,
     ),
-    useMaterial3: true,
+  //  useMaterial3: true,
     splashColor: AppColors.black,
     hintColor: AppColors.grey,
     cardColor: AppColors.white,

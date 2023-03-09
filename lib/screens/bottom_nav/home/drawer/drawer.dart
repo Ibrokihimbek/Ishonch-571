@@ -6,6 +6,7 @@ import 'package:ishonch/utils/app_image.dart';
 class MyDrawer extends StatelessWidget {
   bool IsNightMode;
   ValueChanged onChanged;
+
   MyDrawer({super.key, required this.IsNightMode, required this.onChanged});
 
   @override
@@ -20,7 +21,11 @@ class MyDrawer extends StatelessWidget {
                 SizedBox(
                   width: 132.5.w,
                   height: 68.64.h,
-                  child: Image.asset(AppImages.imageLogo),
+                  child: Image.asset(
+                    AppImages.imageLogo,
+                    color: Theme.of(context).textTheme.bodyMedium!.color,
+
+                  ),
                 ),
                 SizedBox(
                   child: Text('Ishonch 571',
