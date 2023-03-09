@@ -6,6 +6,7 @@ import 'package:ishonch/screens/app_router.dart';
 import 'package:ishonch/screens/bottom_nav/bloc/bottom_nav_cubit.dart';
 import 'package:ishonch/screens/bottom_nav/home/drawer/drawer.dart';
 import 'package:ishonch/screens/bottom_nav/home/view/home_page.dart';
+import 'package:ishonch/screens/bottom_nav/notification/notification_page.dart';
 import 'package:ishonch/utils/app_image.dart';
 
 import '../../cubit/connectivity/connectivity_cubit.dart';
@@ -34,7 +35,7 @@ class _BottomNavPageState extends State<BottomNavPage> {
         onTap: () => _key.currentState!.openDrawer(),
       ),
     );
-    screens.insert(1, Text("Notifi"));
+    screens.insert(1, NotificationPage());
     screens.insert(2, OrdersPage());
     super.initState();
   }
