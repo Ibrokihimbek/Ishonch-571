@@ -136,6 +136,9 @@ class _CheckOutScreenState extends State<CheckOutScreen> {
             Center(
               child: ElevatedButton(
                   onPressed: () async {
+                    // getLocationPermission();
+
+
                     if(await Location().serviceEnabled()){
                       // ignore: use_build_context_synchronously
                       Navigator.push(
