@@ -3,8 +3,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:ishonch/data/models/model_category/categories/category_model.dart';
 import 'package:ishonch/screens/app_router.dart';
 import 'package:ishonch/screens/bottom_nav/home/product_by_category/widgets/product_item.dart';
-import 'package:ishonch/utils/app_colors.dart';
-import 'package:ishonch/utils/text_style.dart';
+import 'package:ishonch/screens/widgets/custom_appbar.dart';
+import 'package:ishonch/screens/widgets/global_appbar.dart';
 
 class ProductByCategory extends StatelessWidget {
   final CategoryModel data;
@@ -13,16 +13,7 @@ class ProductByCategory extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          data.categoryName,
-          style: fontRobotoW500(
-            appcolor: AppColors.black,
-          ).copyWith(fontSize: 32.sp),
-        ),
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-      ),
+      appBar: GlobalAppBar(title: data.categoryName),
       body: SizedBox(
         height: 800.h,
         child: GridView(
@@ -36,13 +27,13 @@ class ProductByCategory extends StatelessWidget {
           children: List.generate(
             data.product.length,
             (index) => ProductByCategoryItem(
-              productName: data.product[index].productName,
-              productPrice: data.product[index].productPrice.toString(),
-              productImage:
-                  'https://www.infinixmobility.com/fileadmin/assets/images/product/list/hot10.jpg',
-              // data.product[index].media.media,,
+              productId: data.product[index].id,
               onTap: () {
-                Navigator.pushNamed(context, RouteName.productDetail);
+                Navigator.pushNamed(
+                  context,
+                  RouteName.productDetail,
+                  arguments: data.product[index].id,
+                );
               },
             ),
           ),
