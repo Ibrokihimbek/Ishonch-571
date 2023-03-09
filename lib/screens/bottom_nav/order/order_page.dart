@@ -11,36 +11,65 @@ class OrdersPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(create: (context) => OrdersBloc(CategoriesRepo(apiService: ApiService()))..add(FetchAllOrders()),
+    return BlocProvider(
+      create: (context) => OrdersBloc(CategoriesRepo(apiService: ApiService()))
+        ..add(FetchAllOrders()),
       child: Scaffold(
-        backgroundColor: const Color(0xFFFFFFFF),
-        appBar:AppBar(
+        backgroundColor: const Color(0XFFFCFCFC),
+        appBar: AppBar(
           title: const Text('Orders Page'),
         ),
         body: BlocBuilder<OrdersBloc, OrdersState>(
           builder: (context, state) {
-            // if (state is InitialOrdersState) {
-            //   return const Center(
-            //     child: Text('hali data yoq'),
-            //   );
-            // } else
-              if (state is LoadOrdersInProgress) {
-                print("Progresda AAAAAAAAAAAAAAAAAA");
+            if (state is LoadOrdersInProgress) {
+              print("Progresda AAAAAAAAAAAAAAAAAA");
               return const Center(
                 child: CircularProgressIndicator(),
               );
             } else if (state is LoadOrdersInSuccess) {
-                print("Progresda SSSSSSSSSSSSSSSSSSSS");
+              print("Progresda SSSSSSSSSSSSSSSSSSSS");
               return ListView.builder(
                 itemCount: state.orders.length,
-                itemBuilder: (context, i) {
-                  return ListTile(
-                    title: Text(state.orders[i].id.toString()),
+                itemBuilder: (context, index) {
+                  var order = state.orders[index];
+                  return Container(
+                    margin: const EdgeInsets.all(30),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(20),
+                      color: Colors.white,
+                    ),
+                    height: 100,
+                    child: Padding(
+                      padding: const EdgeInsets.all(8),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            "Order Name : ${order.clientName}",
+                            style: const TextStyle(fontSize: 20),
+                          ),
+                          const SizedBox(
+                            height: 10,
+                          ),
+                          Text(
+                            "Client number: ${order.clientPhone}",
+                            style: const TextStyle(
+                                fontSize: 14, fontWeight: FontWeight.w400),
+                          ),
+                          Text(
+                            "CreatedAt: ${order.createdAt}",
+                            style: const TextStyle(
+                                fontSize: 14, fontWeight: FontWeight.w400),
+                          ),
+                        ],
+                      ),
+                    ),
                   );
                 },
               );
             } else if (state is LoadOrdersInFairlure) {
-                print("Progresda LLLLLLLLLLLLLLLLLLL");
+              print("Progresda LLLLLLLLLLLLLLLLLLL");
               return Center(child: Text(state.errorText));
             }
             return const SizedBox();

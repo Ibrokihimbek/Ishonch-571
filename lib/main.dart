@@ -10,6 +10,7 @@ import 'package:ishonch/service/get_it/get_it.dart';
 // ignore: depend_on_referenced_packages
 import 'package:firebase_core/firebase_core.dart';
 import 'package:ishonch/service/notification_service/notification_service.dart';
+import 'package:firebase_core/firebase_core.dart';
 
 void main() async {
   SystemChrome.setSystemUIOverlayStyle(
