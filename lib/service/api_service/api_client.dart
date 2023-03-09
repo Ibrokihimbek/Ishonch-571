@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:ishonch/service/api_service/custom_exaptions.dart';
+import 'package:ishonch/service/api_service/custom_exceptions.dart';
 const String baseUrl= "http://146.190.207.16:3000/api/v2";
 
 class ApiClient{
@@ -48,7 +48,7 @@ class ApiClient{
           case DioErrorType.cancel:
             break;
           case DioErrorType.other:
-            throw NoInternetConnectionException(error.requestOptions);
+            throw OtherError(error.requestOptions);
         }
         debugPrint('Error Status Code:${error.response?.statusCode}');
       return handler.next(error);

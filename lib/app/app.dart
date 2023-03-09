@@ -3,11 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:ishonch/bloc/orders_bloc/orders_bloc.dart';
+import 'package:ishonch/cubit/connectivity/connectivity_cubit.dart';
 import 'package:ishonch/data/repositories/category_repo.dart';
 import 'package:ishonch/screens/app_router.dart';
 import 'package:ishonch/screens/bottom_nav/bloc/bottom_nav_cubit.dart';
+import 'package:ishonch/service/api_service/api_service.dart';
 
-import '../service/api_service/open_api_service.dart';
 
 class App extends StatelessWidget {
   const App({super.key});
@@ -17,11 +18,21 @@ class App extends StatelessWidget {
     return EasyLocalization(
       supportedLocales: const [
         Locale('ru', 'RU'),
+        Locale('uz', 'UZ'),
+        Locale('en', 'EN'),
       ],
       path: 'assets/translation',
       child: MultiBlocProvider(providers: [
         BlocProvider(
           create: (context) => BottomNavCubit(),
+        ),
+        BlocProvider(
+          create: (context) => ConnectivityCubit(),
+
+        ),
+        BlocProvider(
+          create: (context) => OrdersBloc(CategoriesRepo(apiService: ApiService())),
+
         )
       ], child: MyApp()),
     );

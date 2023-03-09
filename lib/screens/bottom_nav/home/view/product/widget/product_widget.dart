@@ -14,15 +14,25 @@ class ProductWidget extends StatefulWidget {
 class _ProductWidgetState extends State<ProductWidget> {
   bool favoriteTrue = true;
   int box = -1;
-
+  double productSize = 0.27;
+  int number = 1;
+ 
   @override
   Widget build(BuildContext context) {
+    if(widget.data.length % 2 == 0){
+      number = (((widget.data.length)~/2)).toInt();
+    } else if(widget.data.length % 2 != 0) {
+      number = (((widget.data.length)~/2)+1).toInt();
+    }
     return SizedBox(
-        height: height(context) * 0.24,
+        height: height(context) * productSize*number,
         width: width(context),
-        child: ListView.separated(
-          physics: const BouncingScrollPhysics(),
-          scrollDirection: Axis.horizontal,
+        child: GridView.builder(
+          gridDelegate:  SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 2,
+            mainAxisExtent: height(context)*0.27
+            ),
+          physics: const NeverScrollableScrollPhysics(),
           itemCount: widget.data.length,
           itemBuilder: ((context, index) {
             return Column(
@@ -30,17 +40,17 @@ class _ProductWidgetState extends State<ProductWidget> {
                 Stack(
                   children: [
                     Container(
-                      height: height(context) * 0.18,
+                      height: height(context) * 0.2,
                       width: width(context) * 0.42,
                       decoration: BoxDecoration(
                           image: const DecorationImage(
                               image: AssetImage('assets/images/iphone.png')),
                           color: const Color(0xFFDEE6E3).withOpacity(0.5),
-                          borderRadius: BorderRadius.circular(20)),
+                          borderRadius: BorderRadius.circular(height(context)*0.026)),
                     ),
                     Positioned(
                         left: width(context) * 0.31,
-                        top: height(context) * 0.13,
+                        top: height(context) * 0.14,
                         child: InkWell(
                           onTap: () {
                             setState(() {
@@ -62,9 +72,6 @@ class _ProductWidgetState extends State<ProductWidget> {
               ],
             );
           }),
-          separatorBuilder: (context, index) {
-            return SizedBox(width: width(context) * 0.05);
-          },
         ));
   }
 }

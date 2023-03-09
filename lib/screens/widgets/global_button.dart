@@ -19,7 +19,7 @@ class GlobalButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: double.infinity,
+      width: 325.w,
       height: 50.h,
       decoration: BoxDecoration(
         color: Colors.black87,

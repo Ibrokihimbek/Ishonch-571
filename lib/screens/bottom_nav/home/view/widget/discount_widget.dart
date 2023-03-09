@@ -28,7 +28,7 @@ class DiscountWidget extends StatelessWidget {
                 alignment: Alignment.centerRight,
                 image: NetworkImage('https://pngimg.com/uploads/iphone_12/iphone_12_PNG25.png')),
               borderRadius: BorderRadius.circular(height(context)*0.025),
-              color: const Color(0XFFDDDDDD)
+              color: const Color(0xFFDEE6E3).withOpacity(0.7)
             ),
             child: Column(crossAxisAlignment: CrossAxisAlignment.start,
               children: [

@@ -29,6 +29,10 @@ dependencies:
   flutter_snake_navigationbar: ^0.6.1
   get_it: ^7.2.0
   mask_text_input_formatter: ^2.3.0
+  google_maps_flutter: ^2.2.2
+  location: ^4.4.0
+  json_serializable: ^6.5.4
+  bloc: ^8.1.1
 
 dev_dependencies:
   flutter_test:

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:ishonch/data/repositories/category_repo.dart';
 import 'package:ishonch/screens/bottom_nav/home/bloc/bloc_category/category_bloc.dart';
@@ -9,11 +8,9 @@ import 'package:ishonch/screens/bottom_nav/home/bloc/bloc_category/category_stat
 import 'package:ishonch/screens/bottom_nav/home/drawer/drawer.dart';
 import 'package:ishonch/screens/bottom_nav/home/view/widget/home_widget.dart';
 import 'package:ishonch/service/api_service/api_service.dart';
-import 'package:ishonch/utils/app_colors.dart';
 import 'package:ishonch/utils/app_image.dart';
 import 'package:ishonch/utils/my_utils.dart';
 
-import '../../../../utils/text_style.dart';
 
 class HomePage extends StatefulWidget {
   VoidCallback onTap;
