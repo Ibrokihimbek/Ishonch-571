@@ -33,9 +33,9 @@ class HomeWidget extends StatelessWidget {
               child: const Text(
                 'Our Fashions App',
                 style: TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.w500,
-                    color: Colors.black54),
+                  fontSize: 20,
+                  fontWeight: FontWeight.w500,
+                ),
               )),
           SizedBox(
             height: height(context) * 0.03,
@@ -46,7 +46,7 @@ class HomeWidget extends StatelessWidget {
           ),
           titleWidget(context, 'Categories', IntoCategories(data: data)),
           CategoryWidget(data: data),
-          titleWidget(context, 'New Arrivals',const AllProduct()),
+          titleWidget(context, 'New Arrivals', const AllProduct()),
           Padding(
             padding: EdgeInsets.only(
                 left: width(context) * 0.055, top: height(context) * 0.019),
@@ -74,7 +74,7 @@ class HomeWidget extends StatelessWidget {
               },
               child: const Text(
                 'View All',
-                style: TextStyle(color: Colors.black54,fontWeight: FontWeight.w500),
+                style: TextStyle(fontWeight: FontWeight.w500),
               )),
         ],
       ),

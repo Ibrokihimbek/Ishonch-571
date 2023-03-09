@@ -11,10 +11,11 @@ class OrdersPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(create: (context) => OrdersBloc(CategoriesRepo(apiService: ApiService()))..add(FetchAllOrders()),
+    return BlocProvider(
+      create: (context) => OrdersBloc(CategoriesRepo(apiService: ApiService()))
+        ..add(FetchAllOrders()),
       child: Scaffold(
-        backgroundColor: const Color(0xFFFFFFFF),
-        appBar:AppBar(
+        appBar: AppBar(
           title: const Text('Orders Page'),
         ),
         body: BlocBuilder<OrdersBloc, OrdersState>(
@@ -24,13 +25,13 @@ class OrdersPage extends StatelessWidget {
             //     child: Text('hali data yoq'),
             //   );
             // } else
-              if (state is LoadOrdersInProgress) {
-                print("Progresda AAAAAAAAAAAAAAAAAA");
+            if (state is LoadOrdersInProgress) {
+              print("Progresda AAAAAAAAAAAAAAAAAA");
               return const Center(
                 child: CircularProgressIndicator(),
               );
             } else if (state is LoadOrdersInSuccess) {
-                print("Progresda SSSSSSSSSSSSSSSSSSSS");
+              print("Progresda SSSSSSSSSSSSSSSSSSSS");
               return ListView.builder(
                 itemCount: state.orders.length,
                 itemBuilder: (context, i) {
@@ -40,7 +41,7 @@ class OrdersPage extends StatelessWidget {
                 },
               );
             } else if (state is LoadOrdersInFairlure) {
-                print("Progresda LLLLLLLLLLLLLLLLLLL");
+              print("Progresda LLLLLLLLLLLLLLLLLLL");
               return Center(child: Text(state.errorText));
             }
             return const SizedBox();

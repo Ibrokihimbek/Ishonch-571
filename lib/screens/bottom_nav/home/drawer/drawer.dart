@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:ishonch/utils/app_colors.dart';
 import 'package:ishonch/utils/app_image.dart';
-import 'package:ishonch/utils/text_style.dart';
 
 class MyDrawer extends StatelessWidget {
   bool IsNightMode;
@@ -26,16 +23,13 @@ class MyDrawer extends StatelessWidget {
                   child: Image.asset(AppImages.imageLogo),
                 ),
                 SizedBox(
-                  child: Text(
-                    'Ishonch 571',
-                    style: fontRobotoW700(appcolor: AppColors.black)
-                        .copyWith(fontSize: 24.sp),
-                  ),
+                  child: Text('Ishonch 571',
+                      style: Theme.of(context).textTheme.bodyLarge),
                 ),
               ],
             ),
           ),
-          Container(
+          SizedBox(
             height: 300.h,
             child: ListView(
               physics: const NeverScrollableScrollPhysics(),
@@ -48,8 +42,7 @@ class MyDrawer extends StatelessWidget {
                     leading: const Icon(Icons.language),
                     title: Text(
                       "Language",
-                      style: fontRobotoW500(appcolor: AppColors.black)
-                          .copyWith(fontSize: 16.sp),
+                      style: Theme.of(context).textTheme.titleLarge,
                     ),
                   ),
                 ),
@@ -57,8 +50,7 @@ class MyDrawer extends StatelessWidget {
                   leading: const Icon(Icons.nights_stay_outlined),
                   title: Text(
                     "Night Mode",
-                    style: fontRobotoW500(appcolor: AppColors.black)
-                        .copyWith(fontSize: 16.sp),
+                    style: Theme.of(context).textTheme.titleLarge,
                   ),
                   trailing: Switch(
                       activeColor: AppColors.black,

@@ -11,7 +11,6 @@ class ProductDetailScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xffF3F3F3),
       body: Column(
         children: [
           SizedBox(height: 40.h),
@@ -48,7 +47,6 @@ class ProductDetailScreen extends StatelessWidget {
               width: double.infinity,
               padding: EdgeInsets.only(left: 24.w, right: 24.w, top: 10).w,
               decoration: BoxDecoration(
-                color: Colors.white,
                 borderRadius: BorderRadius.only(
                   topLeft: Radius.circular(25.w).w,
                   topRight: Radius.circular(25.w).w,
@@ -115,8 +113,8 @@ class ProductDetailScreen extends StatelessWidget {
         ],
       ),
       bottomNavigationBar: Container(
-        color: Colors.white,
-        padding: EdgeInsets.only(bottom: 30.h, left: 24.w, right: 24.w, top: 15).w,
+        padding:
+            EdgeInsets.only(bottom: 30.h, left: 24.w, right: 24.w, top: 15).w,
         child: ZoomTapAnimation(
           onTap: () {
             Navigator.pushNamed(context, RouteName.checkOut);
@@ -126,7 +124,7 @@ class ProductDetailScreen extends StatelessWidget {
             width: double.infinity,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(30).r,
-              color: Colors.black87,
+              color: Theme.of(context).buttonTheme.colorScheme!.background
             ),
             child: Center(
               child: Text(
@@ -134,7 +132,6 @@ class ProductDetailScreen extends StatelessWidget {
                 style: TextStyle(
                   fontSize: 18.0.sp,
                   fontWeight: FontWeight.w400,
-                  color: Colors.white,
                 ),
               ),
             ),
