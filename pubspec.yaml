@@ -31,7 +31,12 @@ dependencies:
   mask_text_input_formatter: ^2.3.0
   google_fonts: ^4.0.3
   adaptive_theme: ^3.1.1
-
+  google_maps_flutter: ^2.2.2
+  location: ^4.4.0
+  json_serializable: ^6.5.4
+  bloc: ^8.1.1
+  flutter_local_notifications: ^12.0.2
+  firebase_messaging: ^14.2.5
 
 
 dev_dependencies:

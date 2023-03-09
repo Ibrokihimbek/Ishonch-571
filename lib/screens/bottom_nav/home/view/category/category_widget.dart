@@ -30,12 +30,13 @@ class CategoryWidget extends StatelessWidget {
                     height: height(context) * 0.09,
                     width: width(context) * 0.2,
                     decoration: BoxDecoration(
+                        image: DecorationImage(
+                          scale: 4,
+                        colorFilter: ColorFilter.mode(Color(0xFFDEE6E3).withOpacity(0.5), BlendMode.darken),
+                          image: NetworkImage( "http://146.190.207.16:3000/${data[index].categoryImage}")),
                         border: Border.all(color: Colors.black26),
-                        color: Colors.white,
+                        color: const Color(0xFFDEE6E3).withOpacity(0.5),
                         borderRadius: BorderRadius.circular(20)),
-                    child: Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Image.network("http://146.190.207.16:3000/${data[index].categoryImage}")),
                   ),
                   SizedBox(height: height(context) * 0.005),
                   Text(data[index].categoryName)

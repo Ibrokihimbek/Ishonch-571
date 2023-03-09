@@ -24,13 +24,12 @@ class DiscountWidget extends StatelessWidget {
             height: height(context) * 0.18,
             width: width(context) * 0.74,
             decoration: BoxDecoration(
-              image: const DecorationImage(
-                  fit: BoxFit.fitHeight,
-                  alignment: Alignment.centerRight,
-                  image: NetworkImage(
-                      'https://pngimg.com/uploads/iphone_12/iphone_12_PNG25.png')),
-              borderRadius: BorderRadius.circular(height(context) * 0.025),
-              color: AppColors.grey.withOpacity(0.4),
+              image:const DecorationImage(
+                fit: BoxFit.fitHeight,
+                alignment: Alignment.centerRight,
+                image: NetworkImage('https://pngimg.com/uploads/iphone_12/iphone_12_PNG25.png')),
+              borderRadius: BorderRadius.circular(height(context)*0.025),
+              color: const Color(0xFFDEE6E3).withOpacity(0.7)
             ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,

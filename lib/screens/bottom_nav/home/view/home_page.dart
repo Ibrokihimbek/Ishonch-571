@@ -1,7 +1,6 @@
 import 'package:adaptive_theme/adaptive_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:ishonch/data/repositories/category_repo.dart';
 import 'package:ishonch/screens/bottom_nav/home/bloc/bloc_category/category_bloc.dart';
@@ -10,44 +9,19 @@ import 'package:ishonch/screens/bottom_nav/home/bloc/bloc_category/category_stat
 import 'package:ishonch/screens/bottom_nav/home/drawer/drawer.dart';
 import 'package:ishonch/screens/bottom_nav/home/view/widget/home_widget.dart';
 import 'package:ishonch/service/api_service/api_service.dart';
-import 'package:ishonch/utils/app_colors.dart';
 import 'package:ishonch/utils/app_image.dart';
 import 'package:ishonch/utils/my_utils.dart';
 
-import '../../../../utils/text_style.dart';
 
 class HomePage extends StatefulWidget {
-  HomePage({super.key});
+  VoidCallback onTap;
+  HomePage({super.key, required this.onTap});
 
   @override
   State<HomePage> createState() => _HomePageState();
 }
 
 class _HomePageState extends State<HomePage> {
-  final GlobalKey<ScaffoldState> _key = GlobalKey();
-  AdaptiveThemeMode? themeMode;
-  Future<void> _getMode() async {
-    themeMode = await AdaptiveTheme.getThemeMode();
-    setState(() {});
-  }
-
-  Future<void> _switchTheme() async {
-    if (themeMode!.isDark) {
-      AdaptiveTheme.of(context).setLight();
-    } else {
-      AdaptiveTheme.of(context).setDark();
-    }
-    await _getMode();
-  }
-
-  @override
-  void initState() {
-    _getMode();
-    super.initState();
-  }
-
-  bool IsNightMode = false;
-
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
@@ -55,14 +29,7 @@ class _HomePageState extends State<HomePage> {
           CategoriesBloc(CategoriesRepo(apiService: ApiService()))
             ..add(FetchAllCategories()),
       child: Scaffold(
-        drawer: MyDrawer(
-          onChanged: (value) {
-            setState(() {});
-            IsNightMode = !IsNightMode;
-          },
-          IsNightMode: IsNightMode,
-        ),
-        key: _key,
+        backgroundColor: const Color(0xFFFFFFFF),
         appBar: AppBar(
           elevation: 0,
           leading: Padding(
@@ -70,7 +37,7 @@ class _HomePageState extends State<HomePage> {
                 left: width(context) * 0.055, top: height(context) * 0.024),
             child: InkWell(
               borderRadius: BorderRadius.circular(25),
-              onTap: () => _key.currentState!.openDrawer(),
+              onTap: widget.onTap,
               child: SvgPicture.asset(
                 AppImages.iconMenu,
               ),
