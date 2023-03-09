@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:ishonch/data/models/model_category/categories/category_model.dart';
+import 'package:ishonch/data/models/model_category/categories/product/product_model.dart';
 import 'package:ishonch/screens/bottom_nav/bottom_nav_page.dart';
 import 'package:ishonch/screens/bottom_nav/home/drawer/sub_screens/about_screen.dart';
 import 'package:ishonch/screens/bottom_nav/home/drawer/sub_screens/language_screen.dart';
 import 'package:ishonch/screens/bottom_nav/home/product_by_category/product_by_category.dart';
+import 'package:ishonch/screens/no_internet/no_internet_screen.dart';
 import 'package:ishonch/screens/on_bording/on_bording_page.dart';
 import 'package:ishonch/screens/product_detail/product_detail_screen.dart';
 import 'package:ishonch/screens/product_detail/sub_screens/check_out/check_out_screen.dart';
@@ -18,6 +20,7 @@ abstract class RouteName {
   static const languageChange = '/languageChange';
   static const about = '/about';
   static const checkOut = '/checkOut';
+  static const noInternet = '/noInternet';
 }
 
 class AppRoutes {
@@ -27,10 +30,19 @@ class AppRoutes {
         return MaterialPageRoute(builder: (_) => const SplashPage());
       case RouteName.onBoarding:
         return MaterialPageRoute(builder: (_) => const OnBoardingPage());
+
       case RouteName.productDetail:
-        return MaterialPageRoute(builder: (_) => const ProductDetailScreen());
+        return MaterialPageRoute(
+          builder: (_) => ProductDetailScreen(
+            product: settings.arguments as int,
+          ),
+        );
       case RouteName.languageChange:
         return MaterialPageRoute(builder: (_) => const LanguageScreen());
+      case RouteName.noInternet:
+        return MaterialPageRoute(
+            builder: (_) => NoInternetScreen(
+                voidCallback: settings.arguments as VoidCallback));
       case RouteName.about:
         return MaterialPageRoute(builder: (_) => const AboutScreen());
       case RouteName.productByCategory:

@@ -2,7 +2,10 @@ import 'dart:ffi';
 
 import 'package:flutter/material.dart';
 import 'package:ishonch/data/models/model_category/categories/category_model.dart';
+import 'package:ishonch/screens/app_router.dart';
+import 'package:ishonch/utils/app_image.dart';
 import 'package:ishonch/utils/my_utils.dart';
+import 'package:zoom_tap_animation/zoom_tap_animation.dart';
 
 class IntoCategories extends StatefulWidget {
   final List<CategoryModel> data;
@@ -14,20 +17,29 @@ class IntoCategories extends StatefulWidget {
 }
 
 class _IntoCategoriesState extends State<IntoCategories> {
-   bool isTrue = false;
+  bool isTrue = false;
 
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor:const Color(0xFFFFFFFF),
+      backgroundColor: const Color(0xFFFFFFFF),
       appBar: AppBar(
-      leading: IconButton(onPressed: (){
-         Navigator.pop(context);
-      }, icon: const Icon(Icons.arrow_back,color: Colors.black,)),
-      elevation: 0,
-      backgroundColor:const Color(0xFFFFFFFF),
-        title:const Text('Categories',style: TextStyle(color: Colors.black),),),
+        leading: IconButton(
+            onPressed: () {
+              Navigator.pop(context);
+            },
+            icon: const Icon(
+              Icons.arrow_back,
+              color: Colors.black,
+            )),
+        elevation: 0,
+        backgroundColor: const Color(0xFFFFFFFF),
+        title: const Text(
+          'Categories',
+          style: TextStyle(color: Colors.black),
+        ),
+      ),
       body: ListView.builder(
         physics: const BouncingScrollPhysics(),
         itemCount: widget.data.length,

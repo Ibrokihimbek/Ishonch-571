@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:ishonch/data/models/helper/lat_long_model.dart';
 import 'package:ishonch/screens/app_router.dart';
 import 'package:ishonch/screens/product_detail/sub_screens/check_out/widgets/my_text_field.dart';
 import 'package:ishonch/screens/product_detail/sub_screens/check_out/widgets/phone_input_component.dart';
+import 'package:ishonch/screens/product_detail/sub_screens/map/map_screen.dart';
 import 'package:ishonch/utils/app_colors.dart';
 import 'package:ishonch/utils/text_style.dart';
+import 'package:location/location.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:zoom_tap_animation/zoom_tap_animation.dart';
 
@@ -26,17 +29,60 @@ final FocusNode cardFocusNode = FocusNode();
 String dropdownValue = 'Gender';
 String phoneNumber = '';
 
-void initState() {
-  phoneMaskInputFormatter = MaskTextInputFormatter(
-    mask: '### ## ### ## ##',
-    filter: {
-      '#': RegExp(r'[0-9]'),
-    },
-  );
-  _phoneController.text = phoneMaskInputFormatter.maskText('');
-}
-
 class _CheckOutScreenState extends State<CheckOutScreen> {
+  getLocationPermission() async {
+    Location location = Location();
+
+    bool serviceEnabled;
+    PermissionStatus permissionGranted;
+    LocationData locationData;
+
+    serviceEnabled = await location.serviceEnabled();
+    if (!serviceEnabled) {
+      serviceEnabled = await location.requestService();
+      if (!serviceEnabled) {
+        return;
+      }
+    }
+
+    permissionGranted = await location.hasPermission();
+    if (permissionGranted == PermissionStatus.denied) {
+      permissionGranted = await location.requestPermission();
+      if (permissionGranted != PermissionStatus.granted) {
+        return;
+      }
+    }
+
+    locationData = await location.getLocation();
+    if (locationData.latitude != null) {
+      if (!mounted) return;
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => MapScreen(
+            latLong: LatLongModel(
+              lat: locationData.latitude ?? 0.0,
+              long: locationData.longitude ?? 0.0,
+            ),
+          ),
+        ),
+      );
+    }
+    print("LONGITUDE:${locationData.longitude} AND ${locationData.latitude}");
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    phoneMaskInputFormatter = MaskTextInputFormatter(
+      mask: '### ## ### ## ##',
+      filter: {
+        '#': RegExp(r'[0-9]'),
+      },
+    );
+    _phoneController.text = phoneMaskInputFormatter.maskText('');
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -87,12 +133,41 @@ class _CheckOutScreenState extends State<CheckOutScreen> {
             SizedBox(
               height: 30.h,
             ),
+            Center(
+              child: ElevatedButton(
+                  onPressed: () async {
+                     getLocationPermission();
+
+
+                    // if(await Location().serviceEnabled()){
+                    //   // ignore: use_build_context_synchronously
+                    //   Navigator.push(
+                    //     context,
+                    //     MaterialPageRoute(
+                    //       builder: (context) => MapScreen(
+                    //         latLong: LatLongModel(
+                    //           lat: 41.2858473,
+                    //           long: 69.2030878,
+                    //         ),
+                    //       ),
+                    //     ),
+                    //   );
+                    //
+                    // }else{
+                    //   Location().getLocation();
+                    // }
+
+
+                  },
+                  child: Text("Map")),
+            ),
           ],
         ),
       ),
       bottomNavigationBar: Container(
         color: Colors.white,
-        padding: EdgeInsets.only(bottom: 30.h, left: 24.w, right: 24.w, top: 15).w,
+        padding:
+            EdgeInsets.only(bottom: 30.h, left: 24.w, right: 24.w, top: 15).w,
         child: ZoomTapAnimation(
           onTap: () {
             // Navigator.pushNamed(context, RouteName.);
