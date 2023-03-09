@@ -14,6 +14,8 @@ import 'package:ishonch/utils/app_image.dart';
 import 'package:ishonch/utils/text_style.dart';
 
 import '../../cubit/connectivity/connectivity_cubit.dart';
+import '../../service/get_it/get_it.dart';
+import '../../service/notification_service/notification_service.dart';
 import 'bottom_navy_bar.dart';
 
 class BottomNavPage extends StatefulWidget {
@@ -38,7 +40,12 @@ class _BottomNavPageState extends State<BottomNavPage> {
   _init() async {
     print("INTERNET TURNED ON CALL ANY API");
   }
-
+ @override
+  void initState() {
+   getIt<NotificationService>().handleFirebaseNotificationMessages();
+   getIt<NotificationService>().setupInteractedMessage();
+    super.initState();
+  }
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
