@@ -12,11 +12,10 @@ import 'package:ishonch/service/api_service/api_service.dart';
 import 'package:ishonch/utils/app_colors.dart';
 import 'package:ishonch/utils/app_image.dart';
 import 'package:ishonch/utils/my_utils.dart';
-
 import '../../../../utils/text_style.dart';
 
 class HomePage extends StatefulWidget {
-  HomePage({super.key});
+ const  HomePage({super.key});
 
   @override
   State<HomePage> createState() => _HomePageState();
