@@ -13,17 +13,14 @@ import 'package:ishonch/utils/my_utils.dart';
 
 
 class HomePage extends StatefulWidget {
-  HomePage({super.key});
+  VoidCallback onTap;
+  HomePage({super.key, required this.onTap});
 
   @override
   State<HomePage> createState() => _HomePageState();
 }
 
 class _HomePageState extends State<HomePage> {
-  final GlobalKey<ScaffoldState> _key = GlobalKey();
-
-  bool IsNightMode = false;
-
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
@@ -31,14 +28,6 @@ class _HomePageState extends State<HomePage> {
           CategoriesBloc(CategoriesRepo(apiService: ApiService()))
             ..add(FetchAllCategories()),
       child: Scaffold(
-        drawer: MyDrawer(
-          onChanged: (value) {
-            setState(() {});
-            IsNightMode = !IsNightMode;
-          },
-          IsNightMode: IsNightMode,
-        ),
-        key: _key,
         backgroundColor: const Color(0xFFFFFFFF),
         appBar: AppBar(
           elevation: 0,
@@ -48,7 +37,7 @@ class _HomePageState extends State<HomePage> {
                 left: width(context) * 0.055, top: height(context) * 0.024),
             child: InkWell(
               borderRadius: BorderRadius.circular(25),
-              onTap: () => _key.currentState!.openDrawer(),
+              onTap: widget.onTap,
               child: SvgPicture.asset(
                 AppImages.iconMenu,
               ),
