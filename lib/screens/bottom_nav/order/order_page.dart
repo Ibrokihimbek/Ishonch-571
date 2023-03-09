@@ -106,7 +106,7 @@ class OrdersPage extends StatelessWidget {
                   child: Column(
                     children: const [
                        Text(
-                        "My Order",
+                        "My Orders",
                          style: TextStyle(
                             fontWeight: FontWeight.w600, fontSize: 24),
                       )
