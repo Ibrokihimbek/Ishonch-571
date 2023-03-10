@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:ishonch/data/models/model_category/categories/category_model.dart';
 import 'package:ishonch/screens/bottom_nav/home/view/category/category_widget.dart';
@@ -19,39 +20,22 @@ class HomeWidget extends StatelessWidget {
       physics: const BouncingScrollPhysics(),
       child: Column(
         children: [
-          SizedBox(
-            height: height(context) * 0.04,
-          ),
-          Container(
-              padding: EdgeInsets.only(left: width(context) * 0.055),
-              alignment: Alignment.topLeft,
-              child: const Text('Welcome,',
-                  style: TextStyle(fontSize: 26, fontWeight: FontWeight.w800))),
-          Container(
-              padding: EdgeInsets.only(
-                  left: width(context) * 0.055, top: height(context) * 0.005),
-              alignment: Alignment.topLeft,
-              child: const Text(
-                'Our Fashions App',
-                style: TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.w500,
-                ),
-              )),
-          SizedBox(
-            height: height(context) * 0.03,
-          ),
-          DiscountWidget(data: data),
+          const SizedBox(height: 12),
+          DiscountWidget(),
           SizedBox(
             height: height(context) * 0.02,
           ),
-          titleWidget(context, 'Categories', IntoCategories(data: data)),
+          titleWidget(
+              context, 'Kategoriyalar'.tr(), IntoCategories(data: data)),
           CategoryWidget(data: data),
-          titleWidget(context, 'All Products',const AllProduct()),
-          SizedBox(height: height(context)*0.019,),
+          titleWidget(context, 'All Products', const AllProduct()),
+          SizedBox(
+            height: height(context) * 0.019,
+          ),
           Padding(
             padding: EdgeInsets.symmetric(
-                horizontal: width(context) * 0.03,),
+              horizontal: width(context) * 0.03,
+            ),
             child: const ArrivalWidget(),
           )
         ],
@@ -74,9 +58,10 @@ class HomeWidget extends StatelessWidget {
                 Navigator.push(
                     context, MaterialPageRoute(builder: (_) => page));
               },
-              child: const Text(
-                'View All',
-                style: TextStyle(fontWeight: FontWeight.w500),
+              child: Text(
+                'Davomi'.tr(),
+                style: const TextStyle(
+                    color: Colors.black54, fontWeight: FontWeight.w500),
               )),
         ],
       ),

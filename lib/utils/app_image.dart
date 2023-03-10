@@ -11,14 +11,12 @@ class AppImages {
 
   static const iconBackArrow = 'assets/icons/back_arrow.svg';
 
-
   static const inactiveHome = "assets/icons/inactive_home.svg";
   static const inactiveCart = "assets/icons/inactive_cart.svg";
   static const cart = "assets/icons/cart.svg";
   static const home = "assets/icons/home.svg";
   static const notification = "assets/icons/notification.svg";
   static const inactiveNotification = "assets/icons/inactive_notification.svg";
-
 
   // PNG
 
@@ -28,10 +26,10 @@ class AppImages {
   static const iphone = 'assets/images/tel.png';
   static const homeImage = 'assets/images/home_image.png';
 
-
   // LOTTIE
 
   static const lottieDelivery = 'assets/loties/lottie_delivery.json';
   static const lottiePayment = 'assets/loties/lottie_payment.json';
   static const lottieItem = 'assets/loties/lottie_item.json';
+  static const lotieDeliveryInTime = 'assets/loties/delivery_in_time.json';
 }

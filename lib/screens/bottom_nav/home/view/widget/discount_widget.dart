@@ -1,77 +1,181 @@
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
-import 'package:ishonch/data/models/model_category/categories/category_model.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:ishonch/cubit/discount/discount_cubit.dart';
+import 'package:ishonch/cubit/discount/discount_state.dart';
+import 'package:ishonch/screens/app_router.dart';
+import 'package:ishonch/screens/bottom_nav/home/view/widget/discount_shimmer.dart';
 import 'package:ishonch/utils/app_colors.dart';
+import 'package:ishonch/utils/app_image.dart';
 import 'package:ishonch/utils/my_utils.dart';
+import 'package:ishonch/utils/text_style.dart';
+import 'package:lottie/lottie.dart';
+import 'package:zoom_tap_animation/zoom_tap_animation.dart';
 
-class DiscountWidget extends StatelessWidget {
-  final List<CategoryModel> data;
+class DiscountWidget extends StatefulWidget {
+  const DiscountWidget({
+    super.key,
+  });
 
-  const DiscountWidget({super.key, required this.data});
+  @override
+  State<DiscountWidget> createState() => _DiscountWidgetState();
+}
+
+class _DiscountWidgetState extends State<DiscountWidget> {
+  CarouselController buttonCarouselController = CarouselController();
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: EdgeInsets.only(left: width(context) * 0.055),
-      height: height(context) * 0.19,
-      width: width(context),
-      child: ListView.separated(
-        physics: const BouncingScrollPhysics(),
-        scrollDirection: Axis.horizontal,
-        itemCount: 3,
-        itemBuilder: (context, index) {
-          return Container(
-            padding: EdgeInsets.only(left: width(context) * 0.05),
-            height: height(context) * 0.18,
-            width: width(context) * 0.74,
-            decoration: BoxDecoration(
-              image:const DecorationImage(
-                fit: BoxFit.fitHeight,
-                alignment: Alignment.centerRight,
-                image: NetworkImage('https://pngimg.com/uploads/iphone_12/iphone_12_PNG25.png')),
-              borderRadius: BorderRadius.circular(height(context)*0.025),
-              color: const Color(0xFFDEE6E3).withOpacity(0.7)
-            ),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                SizedBox(
-                  height: height(context) * 0.02,
-                ),
-                Text('50% Off',
-                    style: Theme.of(context).textTheme.headlineMedium),
-                const Text(
-                  'On everything',
-                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.w400),
-                ),
-                SizedBox(
-                  height: height(context) * 0.01,
-                ),
-                const Text('Code:FSCREATION'),
-                SizedBox(
-                  height: height(context) * 0.016,
-                ),
-                Container(
-                  height: height(context) * 0.034,
-                  width: width(context) * 0.22,
-                  decoration: BoxDecoration(
-                      color: Colors.black,
-                      borderRadius: BorderRadius.circular(25)),
-                  child: const Center(
-                      child: Text(
-                    'Get now',
-                    style: TextStyle(color: Colors.white, fontSize: 12),
-                  )),
-                ),
-              ],
-            ),
-          );
-        },
-        separatorBuilder: (context, index) {
-          return SizedBox(
-            width: width(context) * 0.05,
-          );
-        },
-      ),
+    return BlocBuilder<DiscountCubit, DiscountState>(
+      builder: (context, state) {
+        return state is GettingDiscountInProgress
+            ? const Center(
+                child: ShimmerWidgetByDiscount(),
+              )
+            : state is GettingDiscountInSuccess
+                ? SizedBox(
+                    height: height(context) * 0.19,
+                    width: width(context),
+                    child: CarouselSlider(
+                      items: List.generate(
+                        state.discount.length,
+                        (index) => Container(
+                          padding: EdgeInsets.only(left: width(context) * 0.05),
+                          height: height(context) * 0.18,
+                          width: double.infinity,
+                          decoration: BoxDecoration(
+                            borderRadius:
+                                BorderRadius.circular(height(context) * 0.025),
+                            color: const Color(0xFFDEE6E3).withOpacity(0.7),
+                          ),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  SizedBox(
+                                    height: height(context) * 0.02,
+                                  ),
+                                  Text(
+                                    '${state.discount[index].discount}% Off',
+                                    style: fontRobotoW500(
+                                            appcolor: AppColors.black)
+                                        .copyWith(
+                                      fontSize: 28.sp,
+                                    ),
+                                  ),
+                                  RichText(
+                                    text: TextSpan(
+                                      children: [
+                                        TextSpan(
+                                          text: state
+                                              .discount[index].productName
+                                              .substring(
+                                            0,
+                                            state.discount[index].productName
+                                                        .length >
+                                                    18
+                                                ? 18
+                                                : state.discount[index]
+                                                    .productName.length,
+                                          ),
+                                          style: const TextStyle(
+                                            color: AppColors.black,
+                                            fontWeight: FontWeight.w500,
+                                            fontSize: 18,
+                                          ),
+                                        ),
+                                        TextSpan(
+                                          text: state.discount[index]
+                                                      .productName.length >
+                                                  18
+                                              ? "..."
+                                              : "",
+                                          style: const TextStyle(
+                                              color: Colors.grey),
+                                        )
+                                      ],
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    height: height(context) * 0.01,
+                                  ),
+                                  Text(
+                                    'Price: ${state.discount[index].productPrice} ${state.discount[index].currency.currencyName}',
+                                    style: const TextStyle(
+                                      color: AppColors.black,
+                                      fontWeight: FontWeight.w400,
+                                      fontSize: 14,
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    height: height(context) * 0.016,
+                                  ),
+                                  ZoomTapAnimation(
+                                    onTap: () {
+                                      Navigator.pushNamed(
+                                        context,
+                                        RouteName.discountProductDetail,
+                                        arguments: state.discount[index],
+                                      );
+                                    },
+                                    child: Container(
+                                      height: height(context) * 0.034,
+                                      width: width(context) * 0.22,
+                                      decoration: BoxDecoration(
+                                        color: Colors.black,
+                                        borderRadius: BorderRadius.circular(25),
+                                      ),
+                                      child: const Center(
+                                          child: Text(
+                                        'Get now',
+                                        style: TextStyle(
+                                          color: Colors.white,
+                                          fontSize: 12,
+                                        ),
+                                      )),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              Container(
+                                margin: REdgeInsets.only(
+                                  right: 12.w,
+                                  top: 12.h,
+                                  bottom: 12.h,
+                                ).r,
+                                width: 120.w,
+                                height: 150.h,
+                                child: Image.network(
+                                  'http://146.190.207.16:3000/${state.discount[index].media.media}',
+                                  fit: BoxFit.contain,
+                                ),
+                              )
+                            ],
+                          ),
+                        ),
+                      ),
+                      carouselController: buttonCarouselController,
+                      options: CarouselOptions(
+                        autoPlay: true,
+                        enlargeCenterPage: true,
+                        viewportFraction: 0.9,
+                        aspectRatio: 2.0,
+                        initialPage: 0,
+                      ),
+                    ),
+                  )
+                : state is GettingDiscountInFailury
+                    ? Center(
+                        child: Lottie.asset(
+                          AppImages.lottieItem,
+                          width: 200.w,
+                        ),
+                      )
+                    : const SizedBox();
+      },
     );
   }
 }

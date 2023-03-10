@@ -21,14 +21,18 @@ class _SplashPageState extends State<SplashPage> {
   }
 
   void goNext() {
-    Future.delayed(const Duration(seconds: 3), () async {
-      bool firstTime = StorageRepository.getBool("first_time", defValue: false);
-      if (firstTime == false) {
-        Navigator.pushReplacementNamed(context, RouteName.onBoarding);
-      } else {
-        Navigator.pushReplacementNamed(context, RouteName.bottomNavigation);
-      }
-    });
+    Future.delayed(
+      const Duration(seconds: 3),
+      () async {
+        bool firstTime =
+            StorageRepository.getBool("first_time", defValue: false);
+        if (firstTime == false) {
+          Navigator.pushReplacementNamed(context, RouteName.onBoarding);
+        } else {
+          Navigator.pushReplacementNamed(context, RouteName.bottomNavigation);
+        }
+      },
+    );
   }
 
   @override

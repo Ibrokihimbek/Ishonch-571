@@ -1,11 +1,12 @@
 // import 'package:adaptive_theme/adaptive_theme.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:ishonch/screens/app_router.dart';
 import 'package:ishonch/screens/bottom_nav/bloc/bottom_nav_cubit.dart';
-import 'package:ishonch/screens/bottom_nav/home/drawer/drawer.dart';
+import 'package:ishonch/screens/drawer/drawer.dart';
 import 'package:ishonch/screens/bottom_nav/home/view/home_page.dart';
 import 'package:ishonch/screens/bottom_nav/notification/notification_page.dart';
 import 'package:ishonch/utils/app_image.dart';
@@ -112,7 +113,7 @@ class _BottomNavPageState extends State<BottomNavPage> {
                       ? SvgPicture.asset(AppImages.home)
                       : SvgPicture.asset(AppImages.inactiveHome),
                   title: Text(
-                    'Home',
+                    'Uy'.tr(),
                     style: Theme.of(context).textTheme.bodyMedium,
                   ),
                   activeColor: Colors.black,
@@ -122,7 +123,7 @@ class _BottomNavPageState extends State<BottomNavPage> {
                       ? SvgPicture.asset(AppImages.notification)
                       : SvgPicture.asset(AppImages.inactiveNotification),
                   title: Text(
-                    "News",
+                    "Yangiliklar".tr(),
                     style: Theme.of(context).textTheme.bodyMedium,
                   ),
                   activeColor: Colors.black,
@@ -132,7 +133,7 @@ class _BottomNavPageState extends State<BottomNavPage> {
                       ? SvgPicture.asset(AppImages.cart)
                       : SvgPicture.asset(AppImages.inactiveCart),
                   title: Text(
-                    "Orders",
+                    "Buyurtma".tr(),
                     style: Theme.of(context).textTheme.bodyMedium,
                   ),
                   activeColor: Colors.black,

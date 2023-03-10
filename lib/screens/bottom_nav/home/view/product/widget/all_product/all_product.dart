@@ -12,7 +12,7 @@ class AllProduct extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider( create: (context) => ProductsBloc(CategoriesRepo(apiService: ApiService()))..add(FetchAllProducts()), 
+    return BlocProvider( create: (context) => ProductsBloc(CategoriesRepo())..add(FetchAllProducts()),
       child: Scaffold(
         backgroundColor: const Color(0xFFFFFFFF),
         appBar: AppBar(

@@ -19,7 +19,7 @@ bool favoriteTrue = false;
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider( create: (context) => ProductsBloc(CategoriesRepo(apiService: ApiService()))..add(FetchAllProducts()), 
+    return BlocProvider( create: (context) => ProductsBloc(CategoriesRepo())..add(FetchAllProducts()),
       child: BlocBuilder<ProductsBloc, ProductsState>(
           builder: (context, state) {
             if (state is InitialProductsState) {

@@ -1,12 +1,15 @@
 import 'dart:io';
 import 'package:dio/dio.dart';
 import 'package:ishonch/data/geocoding/geocoding.dart';
+import 'package:ishonch/data/models/create_order_dto/create_order_dto.dart';
+import 'package:ishonch/data/models/discount/discount_model.dart';
 import 'package:ishonch/data/models/model_category/categories/category_model.dart';
 import 'package:ishonch/data/models/model_category/categories/product/product_model.dart';
 import 'package:ishonch/data/models/my_responce/my_responce.dart';
 import 'package:ishonch/service/api_service/api_client.dart';
 import 'package:ishonch/utils/constans.dart';
 import '../../data/models/order/order_model.dart';
+import 'package:device_info_plus/device_info_plus.dart';
 
 class ApiService extends ApiClient {
   Future<MyResponse> getAllCategories() async {
@@ -33,23 +36,6 @@ class ApiService extends ApiClient {
         myResponse.data = (response.data as List)
             .map((e) => ProductModel.fromJson(e))
             .toList();
-      }
-    } catch (err) {
-      myResponse.error = err.toString();
-    }
-
-    return myResponse;
-  }
-
-  Future<MyResponse> getAllOrders() async {
-    MyResponse myResponse = MyResponse(error: '');
-    try {
-      Response response = await dio.get('${dio.options.baseUrl}/order');
-      if (response.statusCode! >= 200 && response.statusCode! < 300) {
-        myResponse.data = (response.data as List?)
-                ?.map((e) => OrderModel.fromJson(e))
-                .toList() ??
-            [];
       }
     } catch (err) {
       myResponse.error = err.toString();
@@ -109,6 +95,65 @@ class ApiService extends ApiClient {
     } catch (err) {
       myResponse.error = err.toString();
     }
+    return myResponse;
+  }
+
+//!------------------------- Get Discount Product -----------------------------
+
+  Future<MyResponse> getAllDiscountProduct() async {
+    MyResponse myResponse = MyResponse(error: '');
+    try {
+      Response response = await dio.get('${dio.options.baseUrl}/discount');
+      if (response.statusCode! >= 200 && response.statusCode! < 300) {
+        myResponse.data = (response.data as List?)
+                ?.map((e) => Discount.fromJson(e))
+                .toList() ??
+            [];
+      }
+    } catch (err) {
+      myResponse.error = err.toString();
+    }
+
+    return myResponse;
+  }
+
+// ------------------- ORDERS -------------
+  Future<MyResponse> createOrder(CreateOrderDto createOrderDto) async {
+    MyResponse myResponse = MyResponse(error: '');
+    try {
+      Response response = await dio.post(
+        '${dio.options.baseUrl}/order',
+        data: createOrderDto.toJson(),
+      );
+      if (response.statusCode! >= 200 && response.statusCode! < 300) {
+        myResponse.data = response.data["id"];
+      }
+    } catch (err) {
+      myResponse.error = err.toString();
+    }
+
+    return myResponse;
+  }
+
+  Future<MyResponse> getAllOrders() async {
+    DeviceInfoPlugin deviceInfo = DeviceInfoPlugin();
+    AndroidDeviceInfo androidInfo = await deviceInfo.androidInfo;
+    print('DEVICE MODEL ${androidInfo.model}');
+
+    MyResponse myResponse = MyResponse(error: '');
+    try {
+      Response response = await dio.post('${dio.options.baseUrl}/order/device',
+          data: {"deviceId": androidInfo.model});
+      if (response.statusCode! >= 200 && response.statusCode! < 300) {
+        myResponse.data = (response.data as List?)
+                ?.map((e) => OrderModel.fromJson(e))
+                .toList() ??
+            [];
+      }
+    } catch (err) {
+      myResponse.error = err.toString();
+    }
+
     return myResponse;
   }
 }

@@ -4,6 +4,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:ishonch/utils/app_colors.dart';
 import 'package:ishonch/utils/app_image.dart';
 import 'package:ishonch/utils/text_style.dart';
+import 'package:zoom_tap_animation/zoom_tap_animation.dart';
 
 class GlobalAppBar extends StatelessWidget implements PreferredSize {
   final String title;
@@ -12,25 +13,23 @@ class GlobalAppBar extends StatelessWidget implements PreferredSize {
   @override
   Widget build(BuildContext context) {
     return AppBar(
+      centerTitle: title == "Checkout" ? true : false,
       title: Text(
         title,
-        style: fontRobotoW600(appcolor: AppColors.black).copyWith(
-          fontSize: 22.sp,
-        ),
+        style: Theme.of(context).textTheme.headlineMedium,
       ),
-      backgroundColor: AppColors.white,
       elevation: 0,
       leading: Padding(
         padding: const EdgeInsets.all(8),
-        child: GestureDetector(
-          onTap: () {
+        child: ZoomTapAnimation(
+          onTap: (){
             Navigator.pop(context);
-          },
-          child: SvgPicture.asset(
-            AppImages.iconBackArrow,
-          ),
+          },child: SvgPicture.asset(
+          AppImages.iconBackArrow,
+
         ),
-      ),
+        ),
+      )
     );
   }
 

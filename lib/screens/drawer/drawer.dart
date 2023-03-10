@@ -1,7 +1,10 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:ishonch/utils/app_colors.dart';
 import 'package:ishonch/utils/app_image.dart';
+
+import '../../utils/text_style.dart';
 
 class MyDrawer extends StatelessWidget {
   bool IsNightMode;
@@ -46,16 +49,18 @@ class MyDrawer extends StatelessWidget {
                   child: ListTile(
                     leading: const Icon(Icons.language),
                     title: Text(
-                      "Language",
-                      style: Theme.of(context).textTheme.titleLarge,
+                      "Til".tr(),
+                      style: fontRobotoW500(appcolor: AppColors.black)
+                          .copyWith(fontSize: 16.sp),
                     ),
                   ),
                 ),
                 ListTile(
                   leading: const Icon(Icons.nights_stay_outlined),
                   title: Text(
-                    "Night Mode",
-                    style: Theme.of(context).textTheme.titleLarge,
+                    "Tungi Rejim".tr(),
+                    style: fontRobotoW500(appcolor: AppColors.black)
+                        .copyWith(fontSize: 16.sp),
                   ),
                   trailing: Switch(
                       activeColor: AppColors.black,
@@ -64,9 +69,9 @@ class MyDrawer extends StatelessWidget {
                 ),
                 InkWell(
                   onTap: () => Navigator.pushNamed(context, "/about"),
-                  child: const ListTile(
-                    leading: Icon(Icons.info_outline),
-                    title: Text("About"),
+                  child: ListTile(
+                    leading: const Icon(Icons.info_outline),
+                    title: Text("Haqimizda".tr()),
                   ),
                 )
               ],
