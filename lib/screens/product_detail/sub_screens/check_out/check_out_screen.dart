@@ -1,17 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:ishonch/cubit/mapping/map_cubit.dart';
 import 'package:ishonch/data/models/helper/lat_long_model.dart';
+import 'package:ishonch/screens/app_router.dart';
 import 'package:ishonch/screens/product_detail/sub_screens/check_out/widgets/my_text_field.dart';
 import 'package:ishonch/screens/product_detail/sub_screens/check_out/widgets/phone_input_component.dart';
-import 'package:ishonch/screens/product_detail/sub_screens/map/map_screen.dart';
+import 'package:ishonch/screens/widgets/global_appbar.dart';
+import 'package:ishonch/screens/widgets/global_button.dart';
 import 'package:ishonch/utils/app_colors.dart';
-import 'package:ishonch/utils/text_style.dart';
-import 'package:location/location.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
-import 'package:zoom_tap_animation/zoom_tap_animation.dart';
 
 class CheckOutScreen extends StatefulWidget {
-  const CheckOutScreen({Key? key}) : super(key: key);
+  const CheckOutScreen({Key? key, required this.latLong}) : super(key: key);
+
+  final LatLongModel latLong;
 
   @override
   State<CheckOutScreen> createState() => _CheckOutScreenState();
@@ -29,50 +32,8 @@ String dropdownValue = 'Gender';
 String phoneNumber = '';
 
 class _CheckOutScreenState extends State<CheckOutScreen> {
-  getLocationPermission() async {
-    Location location = Location();
-
-    bool serviceEnabled;
-    PermissionStatus permissionGranted;
-    LocationData locationData;
-
-    serviceEnabled = await location.serviceEnabled();
-    if (!serviceEnabled) {
-      serviceEnabled = await location.requestService();
-      if (!serviceEnabled) {
-        return;
-      }
-    }
-
-    permissionGranted = await location.hasPermission();
-    if (permissionGranted == PermissionStatus.denied) {
-      permissionGranted = await location.requestPermission();
-      if (permissionGranted != PermissionStatus.granted) {
-        return;
-      }
-    }
-
-    locationData = await location.getLocation();
-    if (locationData.latitude != null) {
-      if (!mounted) return;
-      Navigator.push(
-        context,
-        MaterialPageRoute(
-          builder: (context) => MapScreen(
-            latLong: LatLongModel(
-              lat: locationData.latitude ?? 0.0,
-              long: locationData.longitude ?? 0.0,
-            ),
-          ),
-        ),
-      );
-    }
-    print("LONGITUDE:${locationData.longitude} AND ${locationData.latitude}");
-  }
-
   @override
   void initState() {
-    super.initState();
     phoneMaskInputFormatter = MaskTextInputFormatter(
       mask: '### ## ### ## ##',
       filter: {
@@ -80,98 +41,75 @@ class _CheckOutScreenState extends State<CheckOutScreen> {
       },
     );
     _phoneController.text = phoneMaskInputFormatter.maskText('');
+    super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: AppColors.white,
-      appBar: AppBar(
-        elevation: 0,
-        backgroundColor: AppColors.white,
-        leading: IconButton(
-            onPressed: () {
-              Navigator.pop(context);
-            },
-            icon: const Icon(
-              Icons.arrow_back,
-              size: 30,
-              color: AppColors.black,
-            )),
-        centerTitle: true,
-        title: Text("Checkout",
-            style: fontRobotoW700(appcolor: AppColors.black)
-                .copyWith(fontSize: 18.sp)),
-      ),
-      body: Form(
-        key: _formKey,
-        child: Column(
-          children: [
-            MyTextField(
-              title: "Name",
-              maxLines: 1,
-              controller: _fullNameController,
-              hintText: "Enter your name",
-            ),
-            SizedBox(
-              height: 30.h,
-            ),
-            MyTextField(
-              maxLines: 3,
-              title: "Address",
-              controller: _addressController,
-              hintText: "Enter your address",
-            ),
-            SizedBox(
-              height: 30.h,
-            ),
-            PhoneInputComponent(
-              onChanged: (String v) {
-                phoneNumber = "+998${v.removeWhitespace().removeTire()}";
-              },
-              initialValue: '',
-            ),
-            SizedBox(
-              height: 30.h,
-            ),
-            Center(
-              child: ElevatedButton(
-                  onPressed: () async {
-                    getLocationPermission();
-                  },
-                  child: Text("Map")),
-            ),
-          ],
-        ),
-      ),
-      bottomNavigationBar: Container(
-        color: Colors.white,
-        padding:
-            EdgeInsets.only(bottom: 30.h, left: 24.w, right: 24.w, top: 15).w,
-        child: ZoomTapAnimation(
-          onTap: () {
-            // Navigator.pushNamed(context, RouteName.);
-          },
-          child: Container(
-            height: 50.h,
-            width: double.infinity,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(30).r,
-              color: Colors.black87,
-            ),
-            child: Center(
-              child: Text(
-                "Purchase",
-                style: TextStyle(
-                  fontSize: 18.0.sp,
-                  fontWeight: FontWeight.w400,
-                  color: Colors.white,
-                ),
+    return BlocBuilder<MapCubit, MapState>(
+      builder: (context, state) {
+        _addressController.text = state.currentAddress;
+        return Scaffold(
+          backgroundColor: AppColors.white,
+          appBar: const GlobalAppBar(title: "Checkout"),
+          body: SingleChildScrollView(
+            child: Form(
+              key: _formKey,
+              child: Column(
+                children: [
+                  SizedBox(height: 10.h),
+                  MyTextField(
+                    title: "Name",
+                    maxLines: 1,
+                    controller: _fullNameController,
+                    hintText: "Enter your name",
+                  ),
+                  SizedBox(height: 30.h),
+                  MyTextField(
+                    maxLines: 4,
+                    title: "Address",
+                    controller: _addressController,
+                    hintText: "Enter your address",
+                  ),
+                  SizedBox(height: 20.h),
+                  GlobalButton(
+                    isActive: true,
+                    buttonText: "Select on Map  🗺",
+                    onTap: () {
+                      Navigator.pushNamed(
+                        context,
+                        RouteName.map,
+                        arguments: LatLongModel(
+                          lat: widget.latLong.lat,
+                          long: widget.latLong.long,
+                        ),
+                      );
+                    },
+                  ),
+                  SizedBox(height: 30.h),
+                  PhoneInputComponent(
+                    onChanged: (String v) {
+                      phoneNumber = "+998${v.removeWhitespace().removeTire()}";
+                    },
+                    initialValue: '',
+                  ),
+                  SizedBox(
+                    height: 30.h,
+                  ),
+                ],
               ),
             ),
           ),
-        ),
-      ),
+          bottomNavigationBar: Padding(
+            padding: const EdgeInsets.only(left: 16, right: 16, bottom: 20, top: 20),
+            child: GlobalButton(
+              isActive: true,
+              buttonText: "Purchase",
+              onTap: () {},
+            ),
+          ),
+        );
+      },
     );
   }
 }

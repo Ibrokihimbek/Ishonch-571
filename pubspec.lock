@@ -445,6 +445,22 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "8.2.1"
+  geocoding:
+    dependency: "direct main"
+    description:
+      name: geocoding
+      sha256: "26218460a902d4249b81e6baf9d55ce400fd1ebe6fc0a7e92b2c12b0b8e1e14e"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.0.5"
+  geocoding_platform_interface:
+    dependency: transitive
+    description:
+      name: geocoding_platform_interface
+      sha256: "8848605d307d844d89937cdb4b8ad7dfa880552078f310fa24d8a460f6dddab4"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.0.1"
   get_it:
     dependency: "direct main"
     description:
@@ -637,6 +653,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.4.3"
+  map_picker:
+    dependency: "direct main"
+    description:
+      name: map_picker
+      sha256: "83cf464dad01e666fd0487c2f7c1602204ad4b4ea8d7a19c8f86cab87d0185e5"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.0.3"
   mask_text_input_formatter:
     dependency: "direct main"
     description:

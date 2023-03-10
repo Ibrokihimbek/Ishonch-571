@@ -5,7 +5,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:ishonch/bloc/orders_bloc/orders_bloc.dart';
 import 'package:ishonch/cubit/connectivity/connectivity_cubit.dart';
+import 'package:ishonch/cubit/mapping/map_cubit.dart';
+import 'package:ishonch/data/models/helper/lat_long_model.dart';
 import 'package:ishonch/data/repositories/category_repo.dart';
+import 'package:ishonch/data/repositories/geocoding_repository.dart';
 import 'package:ishonch/screens/app_router.dart';
 import 'package:ishonch/screens/bottom_nav/bloc/bottom_nav_cubit.dart';
 import 'package:ishonch/service/api_service/api_service.dart';
@@ -30,12 +33,18 @@ class App extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) => ConnectivityCubit(),
-
         ),
         BlocProvider(
-          create: (context) => OrdersBloc(CategoriesRepo(apiService: ApiService())),
-
-        )
+          create: (context) =>
+              OrdersBloc(CategoriesRepo(apiService: ApiService())),
+        ),
+        BlocProvider(
+          create: (context) => MapCubit(
+            geocodingRepo: GeocodingRepo(
+              apiService: ApiService(),
+            ),
+          ),
+        ),
       ], child: MyApp()),
     );
   }
