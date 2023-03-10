@@ -7,6 +7,7 @@ import 'package:ishonch/bloc/orders_bloc/orders_bloc.dart';
 import 'package:ishonch/cubit/connectivity/connectivity_cubit.dart';
 import 'package:ishonch/cubit/mapping/map_cubit.dart';
 import 'package:ishonch/data/models/helper/lat_long_model.dart';
+import 'package:ishonch/cubit/discount/discount_cubit.dart';
 import 'package:ishonch/data/repositories/category_repo.dart';
 import 'package:ishonch/data/repositories/geocoding_repository.dart';
 import 'package:ishonch/screens/app_router.dart';
@@ -45,6 +46,12 @@ class App extends StatelessWidget {
             ),
           ),
         ),
+          create: (context) => OrdersBloc(CategoriesRepo(apiService: ApiService())),
+
+        ),
+        BlocProvider(
+          create: (context) => DiscountCubit(),
+        )
       ], child: MyApp()),
     );
   }
