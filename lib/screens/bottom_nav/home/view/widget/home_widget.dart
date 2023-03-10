@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:ishonch/data/models/model_category/categories/category_model.dart';
 import 'package:ishonch/screens/bottom_nav/home/view/category/category_widget.dart';
@@ -24,15 +25,16 @@ class HomeWidget extends StatelessWidget {
           Container(
               padding: EdgeInsets.only(left: width(context) * 0.055),
               alignment: Alignment.topLeft,
-              child: const Text('Welcome,',
-                  style: TextStyle(fontSize: 26, fontWeight: FontWeight.w800))),
+              child: Text('Xush Kelibsiz'.tr(),
+                  style: const TextStyle(
+                      fontSize: 26, fontWeight: FontWeight.w800))),
           Container(
               padding: EdgeInsets.only(
                   left: width(context) * 0.055, top: height(context) * 0.005),
               alignment: Alignment.topLeft,
-              child: const Text(
-                'Our Fashions App',
-                style: TextStyle(
+              child: Text(
+                'Bizning moda Ilovamiz'.tr(),
+                style: const TextStyle(
                     fontSize: 20,
                     fontWeight: FontWeight.w500,
                     color: Colors.black54),
@@ -44,9 +46,10 @@ class HomeWidget extends StatelessWidget {
           SizedBox(
             height: height(context) * 0.02,
           ),
-          titleWidget(context, 'Categories', IntoCategories(data: data)),
+          titleWidget(
+              context, 'Kategoriyalar'.tr(), IntoCategories(data: data)),
           CategoryWidget(data: data),
-          titleWidget(context, 'New Arrivals',const AllProduct()),
+          titleWidget(context, 'Yangi kelganlar'.tr(), const AllProduct()),
           Padding(
             padding: EdgeInsets.only(
                 left: width(context) * 0.055, top: height(context) * 0.019),
@@ -72,9 +75,10 @@ class HomeWidget extends StatelessWidget {
                 Navigator.push(
                     context, MaterialPageRoute(builder: (_) => page));
               },
-              child: const Text(
-                'View All',
-                style: TextStyle(color: Colors.black54,fontWeight: FontWeight.w500),
+              child: Text(
+                'Davomi'.tr(),
+                style: const TextStyle(
+                    color: Colors.black54, fontWeight: FontWeight.w500),
               )),
         ],
       ),

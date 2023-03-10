@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:ishonch/data/models/model_category/categories/category_model.dart';
 import 'package:ishonch/screens/bottom_nav/bottom_nav_page.dart';
-import 'package:ishonch/screens/bottom_nav/home/drawer/sub_screens/about_screen.dart';
-import 'package:ishonch/screens/bottom_nav/home/drawer/sub_screens/language_screen.dart';
+import 'package:ishonch/screens/drawer/sub_screens/about_screen.dart';
+import 'package:ishonch/screens/drawer/sub_screens/language_screen.dart';
 import 'package:ishonch/screens/bottom_nav/home/product_by_category/product_by_category.dart';
 import 'package:ishonch/screens/on_bording/on_bording_page.dart';
 import 'package:ishonch/screens/product_detail/product_detail_screen.dart';

@@ -1,6 +1,5 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:ishonch/utils/app_colors.dart';
 import 'package:ishonch/utils/app_image.dart';
@@ -47,7 +46,7 @@ class MyDrawer extends StatelessWidget {
                   child: ListTile(
                     leading: const Icon(Icons.language),
                     title: Text(
-                      "Language",
+                      "Til".tr(),
                       style: fontRobotoW500(appcolor: AppColors.black)
                           .copyWith(fontSize: 16.sp),
                     ),
@@ -56,7 +55,7 @@ class MyDrawer extends StatelessWidget {
                 ListTile(
                   leading: const Icon(Icons.nights_stay_outlined),
                   title: Text(
-                    "Night Mode",
+                    "Tungi Rejim".tr(),
                     style: fontRobotoW500(appcolor: AppColors.black)
                         .copyWith(fontSize: 16.sp),
                   ),
@@ -67,9 +66,9 @@ class MyDrawer extends StatelessWidget {
                 ),
                 InkWell(
                   onTap: () => Navigator.pushNamed(context, "/about"),
-                  child: const ListTile(
-                    leading: Icon(Icons.info_outline),
-                    title: Text("About"),
+                  child: ListTile(
+                    leading: const Icon(Icons.info_outline),
+                    title: Text("About".tr()),
                   ),
                 )
               ],

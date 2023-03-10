@@ -17,13 +17,16 @@ class App extends StatelessWidget {
     return EasyLocalization(
       supportedLocales: const [
         Locale('ru', 'RU'),
+        Locale('en', 'EN'),
+        Locale('uz', 'UZ')
       ],
+      startLocale: const Locale('en', 'EN'),
       path: 'assets/translation',
       child: MultiBlocProvider(providers: [
         BlocProvider(
           create: (context) => BottomNavCubit(),
         )
-      ], child: MyApp()),
+      ], child: const MyApp()),
     );
   }
 }
@@ -39,6 +42,8 @@ class MyApp extends StatelessWidget {
       splitScreenMode: true,
       builder: (BuildContext context, Widget? child) {
         return MaterialApp(
+          supportedLocales: context.supportedLocales,
+          localizationsDelegates: context.localizationDelegates,
           initialRoute: RouteName.splash,
           onGenerateRoute: AppRoutes.generateRoute,
           debugShowCheckedModeBanner: false,
