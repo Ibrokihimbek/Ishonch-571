@@ -8,11 +8,12 @@ class MyTextField extends StatelessWidget {
     Key? key,
     required this.title,
     required this.controller,
-    required this.hintText,
+    required this.hintText, required this.maxLines,
   }) : super(key: key);
 
   final String title;
   final String hintText;
+  final int maxLines;
   final TextEditingController controller;
 
   @override
@@ -31,7 +32,7 @@ class MyTextField extends StatelessWidget {
             Text(
               '*',
               style:
-                  fontRobotoW400(appcolor: Colors.red).copyWith(fontSize: 16),
+              fontRobotoW400(appcolor: Colors.red).copyWith(fontSize: 16),
             ),
           ],
         ),
@@ -39,6 +40,7 @@ class MyTextField extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.only(left: 16, right: 16),
           child: TextField(
+            maxLines: maxLines,
             style: TextStyle(color: Colors.black, fontSize: 20.sp),
             cursorColor: AppColors.black,
             controller: controller,

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:ishonch/data/models/helper/lat_long_model.dart';
-import 'package:ishonch/screens/app_router.dart';
 import 'package:ishonch/screens/product_detail/sub_screens/check_out/widgets/my_text_field.dart';
 import 'package:ishonch/screens/product_detail/sub_screens/check_out/widgets/phone_input_component.dart';
 import 'package:ishonch/screens/product_detail/sub_screens/map/map_screen.dart';
@@ -110,6 +109,7 @@ class _CheckOutScreenState extends State<CheckOutScreen> {
           children: [
             MyTextField(
               title: "Name",
+              maxLines: 1,
               controller: _fullNameController,
               hintText: "Enter your name",
             ),
@@ -117,6 +117,7 @@ class _CheckOutScreenState extends State<CheckOutScreen> {
               height: 30.h,
             ),
             MyTextField(
+              maxLines: 3,
               title: "Address",
               controller: _addressController,
               hintText: "Enter your address",
@@ -136,28 +137,7 @@ class _CheckOutScreenState extends State<CheckOutScreen> {
             Center(
               child: ElevatedButton(
                   onPressed: () async {
-                     getLocationPermission();
-
-
-                    // if(await Location().serviceEnabled()){
-                    //   // ignore: use_build_context_synchronously
-                    //   Navigator.push(
-                    //     context,
-                    //     MaterialPageRoute(
-                    //       builder: (context) => MapScreen(
-                    //         latLong: LatLongModel(
-                    //           lat: 41.2858473,
-                    //           long: 69.2030878,
-                    //         ),
-                    //       ),
-                    //     ),
-                    //   );
-                    //
-                    // }else{
-                    //   Location().getLocation();
-                    // }
-
-
+                    getLocationPermission();
                   },
                   child: Text("Map")),
             ),
