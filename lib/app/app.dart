@@ -45,6 +45,9 @@ class App extends StatelessWidget {
           create: (context) => ConnectivityCubit(),
         ),
         BlocProvider(
+          create: (context) => NotificationReaderBloc(),
+        ),
+        BlocProvider(
           create: (context) =>
               OrdersBloc(CategoriesRepo()),
         ),
