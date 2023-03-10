@@ -6,13 +6,15 @@ import 'package:ishonch/data/repositories/geocoding_repository.dart';
 part 'map_state.dart';
 
 class MapCubit extends Cubit<MapState> {
-  MapCubit({required this.geocodingRepo}) : super(MapState(currentAddress: ""));
+  MapCubit({required this.geocodingRepo})
+      : super(const MapState(currentAddress: ""));
 
   final GeocodingRepo geocodingRepo;
 
   String addressText = "";
 
-  void fetchAddress({required LatLongModel latLongModel, required String kind})async{
+  void fetchAddress(
+      {required LatLongModel latLongModel, required String kind}) async {
     addressText = await geocodingRepo.getAddress(latLongModel, kind);
     emit(state.copyWith(currentAddress: addressText));
   }
