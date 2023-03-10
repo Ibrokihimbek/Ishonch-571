@@ -48,23 +48,23 @@ class MyTextField extends StatelessWidget {
             decoration: InputDecoration(
               hintStyle: TextStyle(color: Colors.grey, fontSize: 20.sp),
               filled: true,
-              contentPadding: const EdgeInsets.only(left: 20),
+              contentPadding: const EdgeInsets.all(12),
               fillColor: Colors.white,
               border: const OutlineInputBorder(),
               enabledBorder: const OutlineInputBorder(
-                borderRadius: BorderRadius.all(Radius.circular(30)),
+                borderRadius: BorderRadius.all(Radius.circular(16)),
                 borderSide: BorderSide(width: 2),
               ),
               focusedBorder: const OutlineInputBorder(
-                borderRadius: BorderRadius.all(Radius.circular(30)),
+                borderRadius: BorderRadius.all(Radius.circular(16)),
                 borderSide: BorderSide(width: 2),
               ),
               focusedErrorBorder: const OutlineInputBorder(
-                borderRadius: BorderRadius.all(Radius.circular(100)),
+                borderRadius: BorderRadius.all(Radius.circular(16)),
                 borderSide: BorderSide(),
               ),
               errorBorder: const OutlineInputBorder(
-                borderRadius: BorderRadius.all(Radius.circular(100)),
+                borderRadius: BorderRadius.all(Radius.circular(16)),
                 borderSide: BorderSide(),
               ),
             ),
@@ -81,19 +81,19 @@ class MyTextField extends StatelessWidget {
               fillColor: Colors.white,
               border: const OutlineInputBorder(),
               enabledBorder: const OutlineInputBorder(
-                borderRadius: BorderRadius.all(Radius.circular(30)),
+                borderRadius: BorderRadius.all(Radius.circular(16)),
                 borderSide: BorderSide(width: 2),
               ),
               focusedBorder: const OutlineInputBorder(
-                borderRadius: BorderRadius.all(Radius.circular(30)),
+                borderRadius: BorderRadius.all(Radius.circular(16)),
                 borderSide: BorderSide(width: 2),
               ),
               focusedErrorBorder: const OutlineInputBorder(
-                borderRadius: BorderRadius.all(Radius.circular(100)),
+                borderRadius: BorderRadius.all(Radius.circular(16)),
                 borderSide: BorderSide(),
               ),
               errorBorder: const OutlineInputBorder(
-                borderRadius: BorderRadius.all(Radius.circular(100)),
+                borderRadius: BorderRadius.all(Radius.circular(16)),
                 borderSide: BorderSide(),
               ),
             ),

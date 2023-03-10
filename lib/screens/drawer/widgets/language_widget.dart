@@ -6,7 +6,7 @@ import 'package:ishonch/data/models/language/language_model.dart';
 import 'package:ishonch/utils/text_style.dart';
 import 'package:zoom_tap_animation/zoom_tap_animation.dart';
 
-import '../../../../../utils/app_colors.dart';
+import '../../../utils/app_colors.dart';
 
 class LanguageWidget extends StatelessWidget {
   LanguageModel languageModel;
