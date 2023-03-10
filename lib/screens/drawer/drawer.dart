@@ -68,7 +68,7 @@ class MyDrawer extends StatelessWidget {
                   onTap: () => Navigator.pushNamed(context, "/about"),
                   child: ListTile(
                     leading: const Icon(Icons.info_outline),
-                    title: Text("About".tr()),
+                    title: Text("Haqimizda".tr()),
                   ),
                 )
               ],

@@ -22,6 +22,7 @@ class App extends StatelessWidget {
       ],
       startLocale: const Locale('en', 'EN'),
       path: 'assets/translation',
+      fallbackLocale: const Locale("uz", "UZ"),
       child: MultiBlocProvider(providers: [
         BlocProvider(
           create: (context) => BottomNavCubit(),
@@ -51,6 +52,7 @@ class MyApp extends StatelessWidget {
         return MaterialApp(
           supportedLocales: context.supportedLocales,
           localizationsDelegates: context.localizationDelegates,
+          locale: context.locale,
           initialRoute: RouteName.splash,
           onGenerateRoute: AppRoutes.generateRoute,
           debugShowCheckedModeBanner: false,
