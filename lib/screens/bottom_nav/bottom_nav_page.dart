@@ -1,3 +1,4 @@
+import 'package:adaptive_theme/adaptive_theme.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
@@ -7,6 +8,8 @@ import 'package:ishonch/screens/app_router.dart';
 import 'package:ishonch/screens/bottom_nav/bloc/bottom_nav_cubit.dart';
 import 'package:ishonch/screens/drawer/drawer.dart';
 import 'package:ishonch/screens/bottom_nav/home/view/home_page.dart';
+import 'package:ishonch/screens/bottom_nav/notification/notification_page.dart';
+
 import 'package:ishonch/utils/app_image.dart';
 
 import '../../cubit/connectivity/connectivity_cubit.dart';
@@ -21,6 +24,24 @@ class BottomNavPage extends StatefulWidget {
 }
 
 class _BottomNavPageState extends State<BottomNavPage> {
+
+
+
+  AdaptiveThemeMode? themeMode;
+  Future<void> _getMode() async {
+    themeMode = await AdaptiveTheme.getThemeMode();
+    setState(() {});
+  }
+
+  Future<void> _switchTheme() async {
+    if (themeMode!.isDark) {
+      AdaptiveTheme.of(context).setLight();
+    } else {
+      AdaptiveTheme.of(context).setDark();
+    }
+    await _getMode();
+  }
+
   final GlobalKey<ScaffoldState> _key = GlobalKey();
 
   List<Widget> screens = [];
@@ -29,13 +50,14 @@ class _BottomNavPageState extends State<BottomNavPage> {
 
   @override
   void initState() {
+    _getMode();
     screens.insert(
       0,
       HomePage(
         onTap: () => _key.currentState!.openDrawer(),
       ),
     );
-    screens.insert(1, Text("Notifi"));
+    screens.insert(1, NotificationPage());
     screens.insert(2, OrdersPage());
     super.initState();
   }
@@ -43,6 +65,7 @@ class _BottomNavPageState extends State<BottomNavPage> {
   _init() async {
     print("INTERNET TURNED ON CALL ANY API");
   }
+
 
   @override
   Widget build(BuildContext context) {
@@ -69,6 +92,7 @@ class _BottomNavPageState extends State<BottomNavPage> {
               onChanged: (value) {
                 setState(() {});
                 IsNightMode = !IsNightMode;
+                _switchTheme();
               },
               IsNightMode: IsNightMode,
             ),

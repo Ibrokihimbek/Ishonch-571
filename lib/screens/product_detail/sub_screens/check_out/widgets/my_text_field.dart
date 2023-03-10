@@ -9,10 +9,12 @@ class MyTextField extends StatelessWidget {
     required this.title,
     required this.controller,
     required this.hintText,
+    required this.maxLines,
   }) : super(key: key);
 
   final String title;
   final String hintText;
+  final int maxLines;
   final TextEditingController controller;
 
   @override
@@ -38,7 +40,8 @@ class MyTextField extends StatelessWidget {
         SizedBox(height: 5.h),
         Padding(
           padding: const EdgeInsets.only(left: 16, right: 16),
-          child: TextField(
+          child: title == "Address" ? TextField(
+            maxLines: maxLines,
             style: TextStyle(color: Colors.black, fontSize: 20.sp),
             cursorColor: AppColors.black,
             controller: controller,
@@ -46,7 +49,35 @@ class MyTextField extends StatelessWidget {
               hintStyle: TextStyle(color: Colors.grey, fontSize: 20.sp),
               filled: true,
               contentPadding: const EdgeInsets.only(left: 20),
+              fillColor: Colors.white,
+              border: const OutlineInputBorder(),
+              enabledBorder: const OutlineInputBorder(
+                borderRadius: BorderRadius.all(Radius.circular(30)),
+                borderSide: BorderSide(width: 2),
+              ),
+              focusedBorder: const OutlineInputBorder(
+                borderRadius: BorderRadius.all(Radius.circular(30)),
+                borderSide: BorderSide(width: 2),
+              ),
+              focusedErrorBorder: const OutlineInputBorder(
+                borderRadius: BorderRadius.all(Radius.circular(100)),
+                borderSide: BorderSide(),
+              ),
+              errorBorder: const OutlineInputBorder(
+                borderRadius: BorderRadius.all(Radius.circular(100)),
+                borderSide: BorderSide(),
+              ),
+            ),
+          ) : TextField(
+            maxLines: maxLines,
+            style: TextStyle(color: Colors.black, fontSize: 20.sp),
+            cursorColor: AppColors.black,
+            controller: controller,
+            decoration: InputDecoration(
+              hintStyle: TextStyle(color: Colors.grey, fontSize: 20.sp),
+              filled: true,
               hintText: hintText,
+              contentPadding: const EdgeInsets.only(left: 20),
               fillColor: Colors.white,
               border: const OutlineInputBorder(),
               enabledBorder: const OutlineInputBorder(
