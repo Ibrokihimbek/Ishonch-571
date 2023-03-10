@@ -53,6 +53,16 @@ class NoInternetConnectionException extends DioError {
   }
 }
 
+
+class OtherError extends DioError {
+  OtherError(RequestOptions r) : super(requestOptions: r);
+
+  @override
+  String toString() {
+    return "Noma'lum xatolik";
+  }
+}
+
 class DeadlineExceededException extends DioError {
   DeadlineExceededException(RequestOptions r) : super(requestOptions: r);
   @override

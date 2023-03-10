@@ -4,7 +4,7 @@ import 'package:ishonch/data/models/model_category/categories/category_model.dar
 import 'package:ishonch/screens/bottom_nav/home/view/category/category_widget.dart';
 import 'package:ishonch/screens/bottom_nav/home/view/category/widget/into_categories..dart';
 import 'package:ishonch/screens/bottom_nav/home/view/product/arrivals_widget.dart';
-import 'package:ishonch/screens/bottom_nav/home/view/product/widget/all_product.dart';
+import 'package:ishonch/screens/bottom_nav/home/view/product/widget/all_product/all_product.dart';
 import 'package:ishonch/screens/bottom_nav/home/view/widget/discount_widget.dart';
 import 'package:ishonch/utils/my_utils.dart';
 
@@ -16,6 +16,7 @@ class HomeWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
+      primary: true,
       physics: const BouncingScrollPhysics(),
       child: Column(
         children: [
@@ -49,10 +50,14 @@ class HomeWidget extends StatelessWidget {
           titleWidget(
               context, 'Kategoriyalar'.tr(), IntoCategories(data: data)),
           CategoryWidget(data: data),
-          titleWidget(context, 'Yangi kelganlar'.tr(), const AllProduct()),
+          titleWidget(context, 'All Products', const AllProduct()),
+          SizedBox(
+            height: height(context) * 0.019,
+          ),
           Padding(
-            padding: EdgeInsets.only(
-                left: width(context) * 0.055, top: height(context) * 0.019),
+            padding: EdgeInsets.symmetric(
+              horizontal: width(context) * 0.03,
+            ),
             child: const ArrivalWidget(),
           )
         ],

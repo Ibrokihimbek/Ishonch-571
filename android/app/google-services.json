@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "302809044007",
+    "project_id": "ishonch-424ae",
+    "storage_bucket": "ishonch-424ae.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:302809044007:android:8077b5025dc40d8756aa02",
+        "android_client_info": {
+          "package_name": "ishonch.com.ishonch"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "302809044007-ter1t40501bcm4g7c2uh2adkdna90qou.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBBg9ZGzJa-qO6cLboDouMGT-4-k55TKuU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "302809044007-ter1t40501bcm4g7c2uh2adkdna90qou.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
