@@ -24,10 +24,8 @@ class BottomNavPage extends StatefulWidget {
 }
 
 class _BottomNavPageState extends State<BottomNavPage> {
-
-
-
   AdaptiveThemeMode? themeMode;
+
   Future<void> _getMode() async {
     themeMode = await AdaptiveTheme.getThemeMode();
     setState(() {});
@@ -66,79 +64,77 @@ class _BottomNavPageState extends State<BottomNavPage> {
     print("INTERNET TURNED ON CALL ANY API");
   }
 
-
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => BottomNavCubit(),
-      child: BlocBuilder<BottomNavCubit, int>(
-        builder: (context, state) {
-          BlocListener<ConnectivityCubit, ConnectivityState>(
-            listener: (context, state) {
-              if (state.connectivityResult == ConnectivityResult.none) {
-                Navigator.pushNamed(
-                  context,
-                  RouteName.noInternet,
-                  arguments: _init,
-                );
-              }
-            },
-            child: const SizedBox(),
+    return BlocListener<ConnectivityCubit, ConnectivityState>(
+      listener: (context, state) {
+        if (state.connectivityResult == ConnectivityResult.none) {
+          Navigator.pushNamed(
+            context,
+            RouteName.noInternet,
+            arguments: _init,
           );
-          var index = context.watch<BottomNavCubit>().activePageIndex;
-          return Scaffold(
-            key: _key,
-            drawer: MyDrawer(
-              onChanged: (value) {
-                setState(() {});
-                IsNightMode = !IsNightMode;
-                _switchTheme();
-              },
-              IsNightMode: IsNightMode,
-            ),
-            body: screens[index],
-            bottomNavigationBar: BottomNavyBar(
-              iconSize: 30,
-              selectedIndex: state,
-              showElevation: true,
-              onItemSelected: (index) {
-                context.read<BottomNavCubit>().changePageIndex(index);
-              },
-              items: [
-                BottomNavyBarItem(
-                  icon: (state == 0)
-                      ? SvgPicture.asset(AppImages.home)
-                      : SvgPicture.asset(AppImages.inactiveHome),
-                  title: Text(
-                    'Uy'.tr(),
-                    style: Theme.of(context).textTheme.bodyMedium,
+        }
+      },
+      child: BlocProvider(
+        create: (context) => BottomNavCubit(),
+        child: BlocBuilder<BottomNavCubit, int>(
+          builder: (context, state) {
+            var index = context.watch<BottomNavCubit>().activePageIndex;
+            return Scaffold(
+              key: _key,
+              drawer: MyDrawer(
+                onChanged: (value) {
+                  setState(() {});
+                  IsNightMode = !IsNightMode;
+                  _switchTheme();
+                },
+                IsNightMode: IsNightMode,
+              ),
+              body: IndexedStack(index: index, children: screens),
+              bottomNavigationBar: BottomNavyBar(
+                iconSize: 30,
+                selectedIndex: state,
+                showElevation: true,
+                onItemSelected: (index) {
+                  context.read<BottomNavCubit>().changePageIndex(index);
+                },
+                items: [
+                  BottomNavyBarItem(
+                    icon: (state == 0)
+                        ? SvgPicture.asset(AppImages.home)
+                        : SvgPicture.asset(AppImages.inactiveHome),
+                    title: Text(
+                      'Uy'.tr(),
+                      style: Theme.of(context).textTheme.bodyMedium,
+                    ),
+                    activeColor: Colors.black,
                   ),
-                  activeColor: Colors.black,
-                ),
-                BottomNavyBarItem(
-                  icon: (state == 1)
-                      ? SvgPicture.asset(AppImages.notification)
-                      : SvgPicture.asset(AppImages.inactiveNotification),
-                  title: Text(
-                    "Yangiliklar".tr(),
-                    style: Theme.of(context).textTheme.bodyMedium,
+                  BottomNavyBarItem(
+                    icon: (state == 1)
+                        ? SvgPicture.asset(AppImages.notification)
+                        : SvgPicture.asset(AppImages.inactiveNotification),
+                    title: Text(
+                      "Yangiliklar".tr(),
+                      style: Theme.of(context).textTheme.bodyMedium,
+                    ),
+                    activeColor: Colors.black,
                   ),
-                  activeColor: Colors.black,
-                ),
-                BottomNavyBarItem(
-                  icon: (state == 2)
-                      ? SvgPicture.asset(AppImages.cart)
-                      : SvgPicture.asset(AppImages.inactiveCart),
-                  title: Text(
-                    "Buyurtma".tr(),
-                    style: Theme.of(context).textTheme.bodyMedium,
+                  BottomNavyBarItem(
+                    icon: (state == 2)
+                        ? SvgPicture.asset(AppImages.cart)
+                        : SvgPicture.asset(AppImages.inactiveCart),
+                    title: Text(
+                      "Buyurtma".tr(),
+                      style: Theme.of(context).textTheme.bodyMedium,
+                    ),
+                    activeColor: Colors.black,
                   ),
-                  activeColor: Colors.black,
-                ),
-              ],
-            ),
-          );
-        },
+                ],
+              ),
+            );
+          },
+        ),
       ),
     );
   }

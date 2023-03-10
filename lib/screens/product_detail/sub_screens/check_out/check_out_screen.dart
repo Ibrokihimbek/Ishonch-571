@@ -2,6 +2,7 @@ import 'package:device_info_plus/device_info_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:ishonch/bloc/orders_bloc/orders_bloc.dart';
 import 'package:ishonch/cubit/mapping/map_cubit.dart';
 import 'package:ishonch/cubit/order_create/order_create_cubit.dart';
 import 'package:ishonch/data/models/create_order_dto/create_order_dto.dart';
@@ -14,6 +15,8 @@ import 'package:ishonch/screens/widgets/global_button.dart';
 import 'package:ishonch/utils/app_colors.dart';
 import 'package:ishonch/utils/my_utils.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
+
+import '../../../../bloc/orders_bloc/orders_event.dart';
 
 class CheckOutScreen extends StatefulWidget {
   const CheckOutScreen({
@@ -115,6 +118,7 @@ class _CheckOutScreenState extends State<CheckOutScreen> {
               if (state is OrderCreateSuccess) {
                 Navigator.pop(context);
                 showInfoSnackBar(context, "Order Added");
+                BlocProvider.of<OrdersBloc>(context).add(FetchAllOrders());
               }
             },
             child: Padding(
