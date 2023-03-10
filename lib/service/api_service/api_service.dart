@@ -4,6 +4,7 @@ import 'package:dio/dio.dart';
 import 'package:ishonch/data/geocoding/geocoding.dart';
 import 'package:ishonch/data/models/model_category/categories/category_model.dart';
 import 'package:ishonch/data/models/model_category/categories/product/product_model.dart';
+import 'package:ishonch/data/models/my_responce/my_responce.dart';
 import 'package:ishonch/service/api_service/api_client.dart';
 import 'package:ishonch/utils/constans.dart';
 import '../../data/models/order/order_model.dart';
@@ -61,6 +62,7 @@ class ApiService extends ApiClient {
   }
 
 
+
   Dio dio = Dio();
   Future<String> getLocationName({required String geoCodeText, required String kind}) async {
     String text = '';
@@ -100,9 +102,22 @@ class ApiService extends ApiClient {
   }
 }
 
-class MyResponse {
-  dynamic data;
-  String error = '';
 
-  MyResponse({required this.error, this.data});
+  //!------------------ Get Product By ID -----------------------------------
+
+   Future<MyResponse> getProductById({required int id}) async {
+    MyResponse myResponse = MyResponse(error: '');
+    try{
+      Response response = await dio.get("${dio.options.baseUrl}/product/$id");
+      if(response.statusCode! >= 200 && response.statusCode! < 300){
+        myResponse.data = ProductModel.fromJson(response.data);
+      }
+    }catch (err) {
+      myResponse.error = err.toString();
+    }
+    return myResponse;
+  }
 }
+
+
+
