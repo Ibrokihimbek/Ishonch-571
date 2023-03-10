@@ -8,6 +8,7 @@ import 'package:ishonch/screens/no_internet/no_internet_screen.dart';
 import 'package:ishonch/screens/on_bording/on_bording_page.dart';
 import 'package:ishonch/screens/product_detail/product_detail_screen.dart';
 import 'package:ishonch/screens/product_detail/sub_screens/check_out/check_out_screen.dart';
+import 'package:ishonch/screens/product_detail/sub_screens/image_view/image_view_page.dart';
 import 'package:ishonch/screens/splash/splash_page.dart';
 
 abstract class RouteName {
@@ -20,6 +21,8 @@ abstract class RouteName {
   static const about = '/about';
   static const checkOut = '/checkOut';
   static const noInternet = '/noInternet';
+  static const imageView = '/imageView';
+
 }
 
 class AppRoutes {
@@ -39,6 +42,12 @@ class AppRoutes {
         return MaterialPageRoute(
           builder: (_) => ProductDetailScreen(
             product: settings.arguments as int,
+          ),
+        );
+        case RouteName.imageView:
+        return MaterialPageRoute(
+          builder: (_) => ImageView(
+            imageUrl: settings.arguments as String,
           ),
         );
       case RouteName.languageChange:

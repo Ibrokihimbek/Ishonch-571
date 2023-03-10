@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'package:dio/dio.dart';
 import 'package:ishonch/data/geocoding/geocoding.dart';
+import 'package:ishonch/data/models/discount/discount_model.dart';
 import 'package:ishonch/data/models/model_category/categories/category_model.dart';
 import 'package:ishonch/data/models/model_category/categories/product/product_model.dart';
 import 'package:ishonch/data/models/my_responce/my_responce.dart';
@@ -111,4 +112,24 @@ class ApiService extends ApiClient {
     }
     return myResponse;
   }
+
+//!------------------------- Get Discount Product -----------------------------
+
+Future<MyResponse> getAllDiscountProduct() async {
+    MyResponse myResponse = MyResponse(error: '');
+    try {
+      Response response = await dio.get('${dio.options.baseUrl}/discount');
+      if (response.statusCode! >= 200 && response.statusCode! < 300) {
+        myResponse.data = (response.data as List?)
+                ?.map((e) => Discount.fromJson(e))
+                .toList() ??
+            [];
+      }
+    } catch (err) {
+      myResponse.error = err.toString();
+    }
+
+    return myResponse;
+  }
+
 }
