@@ -38,7 +38,7 @@ class AppRoutes {
       case RouteName.productDetail:
         return MaterialPageRoute(
           builder: (_) => ProductDetailScreen(
-            product: settings.arguments as int,
+            product: settings.arguments as String,
           ),
         );
       case RouteName.languageChange:

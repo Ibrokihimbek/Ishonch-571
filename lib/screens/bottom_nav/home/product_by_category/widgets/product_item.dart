@@ -19,7 +19,7 @@ class ProductByCategoryItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => ProductCubitById(productId),
+      create: (context) => ProductCubitById(productId.toString()),
       child: BlocBuilder<ProductCubitById, ProductStateById>(
         builder: (context, state) {
           return Scaffold(

@@ -11,7 +11,7 @@ import 'package:ishonch/utils/app_image.dart';
 import 'package:lottie/lottie.dart';
 
 class ProductDetailScreen extends StatelessWidget {
-  final int product;
+  final String product;
   const ProductDetailScreen({
     Key? key,
     required this.product,
@@ -20,7 +20,7 @@ class ProductDetailScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => ProductCubitById(product),
+      create: (context) => ProductCubitById(product.toString()),
       child: BlocBuilder<ProductCubitById, ProductStateById>(
         builder: (context, state) {
           return Scaffold(

@@ -99,7 +99,7 @@ class ApiService extends ApiClient {
 
 //!------------------ Get Product By ID -----------------------------------
 
-  Future<MyResponse> getProductById({required int id}) async {
+  Future<MyResponse> getProductById({required String id}) async {
     MyResponse myResponse = MyResponse(error: '');
     try {
       Response response = await dio.get("${dio.options.baseUrl}/product/$id");

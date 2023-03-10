@@ -5,11 +5,11 @@ import 'package:ishonch/service/api_service/api_service.dart';
 import 'package:ishonch/service/get_it/get_it.dart';
 
 class ProductCubitById extends Cubit<ProductStateById> {
-  ProductCubitById(int id) : super(ProductInitial()) {
+  ProductCubitById(String id) : super(ProductInitial()) {
     getProductById(id);
   }
 
-  getProductById(int id) async {
+  getProductById(String id) async {
     emit(GettingProductInProgress());
      MyResponse myResponse = await getIt<ApiService>().getProductById(id: id);
     if (myResponse.error.isEmpty) {

@@ -51,25 +51,25 @@ class NotificationPage extends StatelessWidget {
             return const Center(child:  CircularProgressIndicator());
           }
           else if(state is ReadNotificationInFailury){
-            return Text(state.status);
+            return Center(child: Text(state.status));
           }else if(state is ReadNotificationInSuccess){
-            return ListView.builder(
-                shrinkWrap: true,
-                itemCount: state.notifications.length,
-                itemBuilder: (context, index) {
-                  if(state.notifications[index].id !=''){
-                    return Padding(
-                        padding: const  EdgeInsets.symmetric(horizontal: 24),
-                        child: NotificationCourseItem(id: state.notifications[index].id,)
-                        //Center(child: Text("${state.notifications[index].id}")));
+            return SizedBox(
+              height: MediaQuery.of(context).size.height,
+              width: MediaQuery.of(context).size.width,
+              child: ListView.builder(
+                  itemCount: state.notifications.length,
+                  itemBuilder: (context, index) {
+
+                      return Padding(
+                          padding: const  EdgeInsets.symmetric(horizontal: 24),
+                          child: NotificationCourseItem(id: state.notifications[index].id,)
+                          //Center(child: Text("${state.notifications[index].id}")));
 
 
-                        );
-                  }
-                  else{
-                    return MessageItem(notification: state.notifications[index],);
-                  }
-                });
+                          );
+
+                  }),
+            );
           }else{
             context.read<NotificationReaderBloc>().add(ReadNotificationEvent());
             return Container();
