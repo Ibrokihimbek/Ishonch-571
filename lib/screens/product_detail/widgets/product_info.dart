@@ -24,8 +24,9 @@ class ProductInfo extends StatelessWidget {
           padding: EdgeInsets.only(
             left: 24.w,
             right: 24.w,
-            top: 10,
-          ).w,
+            top: 10.h,
+            bottom: 80.h
+          ).r,
           decoration: BoxDecoration(
             color: AppColors.white,
             borderRadius: BorderRadius.only(

@@ -48,7 +48,7 @@ class ApiClient{
           case DioErrorType.cancel:
             break;
           case DioErrorType.other:
-            throw NoInternetConnectionException(error.requestOptions);
+            throw OtherError(error.requestOptions);
         }
         debugPrint('Error Status Code:${error.response?.statusCode}');
       return handler.next(error);
