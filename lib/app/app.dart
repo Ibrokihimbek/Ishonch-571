@@ -14,6 +14,7 @@ import 'package:ishonch/screens/app_router.dart';
 import 'package:ishonch/screens/bottom_nav/bloc/bottom_nav_cubit.dart';
 import 'package:ishonch/service/api_service/api_service.dart';
 
+
 import '../utils/theme.dart';
 
 class App extends StatelessWidget {
@@ -24,10 +25,12 @@ class App extends StatelessWidget {
     return EasyLocalization(
       supportedLocales: const [
         Locale('ru', 'RU'),
-        Locale('uz', 'UZ'),
         Locale('en', 'EN'),
+        Locale('uz', 'UZ')
       ],
+      startLocale: const Locale('en', 'EN'),
       path: 'assets/translation',
+      fallbackLocale: const Locale("uz", "UZ"),
       child: MultiBlocProvider(providers: [
         BlocProvider(
           create: (context) => BottomNavCubit(),
@@ -40,16 +43,17 @@ class App extends StatelessWidget {
               OrdersBloc(CategoriesRepo(apiService: ApiService())),
         ),
         BlocProvider(
-          create: (context) => MapCubit(
-            geocodingRepo: GeocodingRepo(
-              apiService: ApiService(),
-            ),
-          ),
+          create: (context) =>
+              MapCubit(
+                geocodingRepo: GeocodingRepo(
+                  apiService: ApiService(),
+                ),
+              ),
         ),
         BlocProvider(
           create: (context) => DiscountCubit(),
         )
-      ], child: MyApp()),
+      ], child: const MyApp()),
     );
   }
 }
@@ -60,22 +64,30 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(
-      designSize: const Size(360, 800),
-      minTextAdapt: true,
-      splitScreenMode: true,
-      builder: (BuildContext context, Widget? child) => AdaptiveTheme(
-        light: AppTheme.lightTheme,
-        dark: AppTheme.darkTheme,
-        initial: AdaptiveThemeMode.light,
-        builder: (light, dark) => MaterialApp(
-          initialRoute: RouteName.splash,
-          onGenerateRoute: AppRoutes.generateRoute,
-          debugShowCheckedModeBanner: false,
-          title: 'Ishonch 571',
-          theme: light,
-          darkTheme: dark,
-        ),
-      ),
-    );
+        designSize: const Size(360, 800),
+        minTextAdapt: true,
+        splitScreenMode: true,
+        builder: (BuildContext context, Widget? child) {
+          return MaterialApp(
+            supportedLocales: context.supportedLocales,
+            localizationsDelegates: context.localizationDelegates,
+            locale: context.locale,
+            builder: (BuildContext context, Widget? child) =>
+                AdaptiveTheme(
+                  light: AppTheme.lightTheme,
+                  dark: AppTheme.darkTheme,
+                  initial: AdaptiveThemeMode.light,
+                  builder: (light, dark) =>
+                      MaterialApp(
+                        initialRoute: RouteName.splash,
+                        onGenerateRoute: AppRoutes.generateRoute,
+                        debugShowCheckedModeBanner: false,
+                        title: 'Ishonch 571',
+                        theme: light,
+                        darkTheme: dark,
+                      ),
+                ),
+          );
+        });
   }
 }
