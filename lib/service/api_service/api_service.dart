@@ -115,7 +115,7 @@ class ApiService extends ApiClient {
 
 //!------------------------- Get Discount Product -----------------------------
 
-Future<MyResponse> getAllDiscountProduct() async {
+  Future<MyResponse> getAllDiscountProduct() async {
     MyResponse myResponse = MyResponse(error: '');
     try {
       Response response = await dio.get('${dio.options.baseUrl}/discount');
@@ -131,5 +131,4 @@ Future<MyResponse> getAllDiscountProduct() async {
 
     return myResponse;
   }
-
 }

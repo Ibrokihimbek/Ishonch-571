@@ -6,6 +6,7 @@ import 'package:ishonch/cubit/mapping/map_cubit.dart';
 import 'package:ishonch/cubit/product_detail/product_detail_cubit.dart';
 import 'package:ishonch/cubit/product_detail/product_detail_state.dart';
 import 'package:ishonch/data/models/helper/lat_long_model.dart';
+import 'package:ishonch/screens/app_router.dart';
 import 'package:ishonch/screens/product_detail/sub_screens/check_out/check_out_screen.dart';
 import 'package:ishonch/screens/product_detail/widgets/product_info.dart';
 import 'package:ishonch/screens/product_detail/widgets/product_info_shimmer.dart';
