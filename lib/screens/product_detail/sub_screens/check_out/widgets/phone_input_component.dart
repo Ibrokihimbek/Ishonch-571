@@ -56,24 +56,24 @@ class _PhoneInputComponentState extends State<PhoneInputComponent> {
         Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const SizedBox(width: 20),
+            SizedBox(width: 20.w),
             Text(
               'Phone Number',
               style: fontRobotoW400(appcolor: AppColors.black)
-                  .copyWith(fontSize: 16),
+                  .copyWith(fontSize: 16.sp),
             ),
             Text(
               '*',
-              style:
-                  fontRobotoW400(appcolor: Colors.red).copyWith(fontSize: 16),
+              style: fontRobotoW400(appcolor: Colors.red)
+                  .copyWith(fontSize: 16.sp),
             ),
           ],
         ),
         SizedBox(height: 5.h),
         Padding(
-          padding: const EdgeInsets.only(left: 16, right: 16),
+          padding: EdgeInsets.only(left: 16.w, right: 16.w).w,
           child: Material(
-            borderRadius: BorderRadius.circular(30),
+            borderRadius: BorderRadius.circular(30.r).r,
             shadowColor: Colors.blue.withOpacity(0.12),
             elevation: 25,
             child: TextField(
@@ -95,32 +95,36 @@ class _PhoneInputComponentState extends State<PhoneInputComponent> {
               style: TextStyle(color: Colors.black, fontSize: 20.sp),
               decoration: InputDecoration(
                 prefixIcon: Padding(
-                  padding: const EdgeInsets.only(top: 9, left: 15).r,
-                  child: Text("+998  ",
-                      style: TextStyle(
-                          fontSize: 20.sp, fontWeight: FontWeight.w700)),
+                  padding: EdgeInsets.only(top: 9.h, left: 15.w).r,
+                  child: Text(
+                    "+998  ",
+                    style: TextStyle(
+                      fontSize: 20.sp,
+                      fontWeight: FontWeight.w700,
+                    ),
+                  ),
                 ),
                 hintText: "90 123-45-67",
-                contentPadding: const EdgeInsets.only(left: 20),
+                contentPadding: EdgeInsets.only(left: 20.w).w,
                 hintStyle: TextStyle(color: Colors.grey, fontSize: 20.sp),
                 filled: true,
                 fillColor: Colors.white,
                 border: const OutlineInputBorder(),
-                enabledBorder: const OutlineInputBorder(
-                  borderRadius: BorderRadius.all(Radius.circular(30)),
-                  borderSide: BorderSide(width: 2),
+                enabledBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.all(Radius.circular(30.r).r),
+                  borderSide: BorderSide(width: 2.w),
                 ),
-                focusedBorder: const OutlineInputBorder(
-                  borderRadius: BorderRadius.all(Radius.circular(30)),
-                  borderSide: BorderSide(width: 2),
+                focusedBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.all(Radius.circular(30.r).r),
+                  borderSide: BorderSide(width: 2.w),
                 ),
-                focusedErrorBorder: const OutlineInputBorder(
-                  borderRadius: BorderRadius.all(Radius.circular(100)),
-                  borderSide: BorderSide(),
+                focusedErrorBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.all(Radius.circular(100.r).r),
+                  borderSide: BorderSide(width: 2.w),
                 ),
-                errorBorder: const OutlineInputBorder(
-                  borderRadius: BorderRadius.all(Radius.circular(100)),
-                  borderSide: BorderSide(),
+                errorBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.all(Radius.circular(100.r).r),
+                  borderSide: BorderSide(width: 2.w),
                 ),
               ),
             ),

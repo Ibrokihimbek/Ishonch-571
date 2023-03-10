@@ -96,7 +96,7 @@ class _MapScreenState extends State<MapScreen> {
                     // liteModeEnabled: true,
                     // zoomControlsEnabled: false,
                     // zoomGesturesEnabled: true,
-                    mapType: MapType.hybrid,
+                    mapType: MapType.normal,
                     onMapCreated: (GoogleMapController controller) {
                       _controller.complete(controller);
                     },
@@ -111,14 +111,15 @@ class _MapScreenState extends State<MapScreen> {
                     onCameraIdle: () {
                       print("CAMERA POSITION STOPPED");
                       print(
-                          "CAMERA POSITION STOPPED:${cameraPosition.target.toString()}");
-                      context.read()<MapCubit>().fetchAddress(
-                            latLong: LatLongModel(
-                              lat: cameraPosition.target.latitude,
-                              long: cameraPosition.target.longitude,
-                            ),
-                            kind: kind,
-                          );
+                        "CAMERA POSITION STOPPED:${cameraPosition.target.toString()}",
+                      );
+                      BlocProvider.of<MapCubit>(context).fetchAddress(
+                        latLongModel: LatLongModel(
+                          lat: cameraPosition.target.latitude,
+                          long: cameraPosition.target.longitude,
+                        ),
+                        kind: kind,
+                      );
                     },
                   ),
                   Positioned(
