@@ -43,7 +43,7 @@ class HomeWidget extends StatelessWidget {
           SizedBox(
             height: height(context) * 0.03,
           ),
-          DiscountWidget(data: data),
+          DiscountWidget(),
           SizedBox(
             height: height(context) * 0.02,
           ),

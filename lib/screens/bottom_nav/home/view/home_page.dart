@@ -1,3 +1,4 @@
+import 'package:adaptive_theme/adaptive_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
@@ -31,7 +32,6 @@ class _HomePageState extends State<HomePage> {
         backgroundColor: const Color(0xFFFFFFFF),
         appBar: AppBar(
           elevation: 0,
-          backgroundColor: const Color(0xFFFFFFFF),
           leading: Padding(
             padding: EdgeInsets.only(
                 left: width(context) * 0.055, top: height(context) * 0.024),
@@ -54,7 +54,7 @@ class _HomePageState extends State<HomePage> {
                     color: Color(0xFFDDDDDD), shape: BoxShape.circle),
                 child: Image.asset(AppImages.homeImage),
               ),
-            )
+            ),
           ],
         ),
         body: BlocBuilder<CategoriesBloc, CategoriesState>(
