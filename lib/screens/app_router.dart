@@ -47,7 +47,7 @@ class AppRoutes {
       case RouteName.productDetail:
         return MaterialPageRoute(
           builder: (_) => ProductDetailScreen(
-            product: settings.arguments as int,
+            productId: settings.arguments as int,
           ),
         );
         case RouteName.imageView:

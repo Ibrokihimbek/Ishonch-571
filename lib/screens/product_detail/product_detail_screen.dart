@@ -17,17 +17,17 @@ import 'package:lottie/lottie.dart';
 import '../widgets/global_functsions.dart';
 
 class ProductDetailScreen extends StatelessWidget {
-  final int product;
+  final int productId;
 
   const ProductDetailScreen({
     Key? key,
-    required this.product,
+    required this.productId,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => ProductCubitById(product),
+      create: (context) => ProductCubitById(productId),
       child: BlocBuilder<ProductCubitById, ProductStateById>(
         builder: (context, state) {
           return Scaffold(
@@ -79,7 +79,7 @@ class ProductDetailScreen extends StatelessWidget {
                             child: ProductInfo(
                               product: state.product,
                               onTap: () {
-                                getLocationPermission(context);
+                                getLocationPermission(context,productId);
                               },
                             ),
                           ),

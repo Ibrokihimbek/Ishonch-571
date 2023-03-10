@@ -20,67 +20,67 @@ import '../widgets/global_functsions.dart';
 
 class DiscountProductDetailScreen extends StatelessWidget {
   final Discount discountProduct;
+
   const DiscountProductDetailScreen({
     Key? key,
     required this.discountProduct,
   }) : super(key: key);
 
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        children: [
-          SizedBox(height: 40.h),
-          Container(
-            width: double.infinity,
-            height: 300,
-            color: Colors.transparent,
-            child: Stack(
-              children: [
-                SizedBox(height: 30.h),
-                GestureDetector(
-                  onTap: () {
-                    Navigator.pushNamed(
-                        context, RouteName.imageView,
-                        arguments:
-                        'http://146.190.207.16:3000/${discountProduct.media.media}');
-                  },
-                  child: Center(
-                    child: Image.network(
-                      'http://146.190.207.16:3000/${discountProduct.media.media}',
+        body: Column(
+      children: [
+        SizedBox(height: 40.h),
+        Container(
+          width: double.infinity,
+          height: 300,
+          color: Colors.transparent,
+          child: Stack(
+            children: [
+              SizedBox(height: 30.h),
+              GestureDetector(
+                onTap: () {
+                  Navigator.pushNamed(context, RouteName.imageView,
+                      arguments:
+                          'http://146.190.207.16:3000/${discountProduct.media.media}');
+                },
+                child: Center(
+                  child: Image.network(
+                    'http://146.190.207.16:3000/${discountProduct.media.media}',
+                  ),
+                ),
+              ),
+              Positioned(
+                left: 10.w,
+                child: Padding(
+                  padding: const EdgeInsets.all(8),
+                  child: GestureDetector(
+                    onTap: () {
+                      Navigator.pop(context);
+                    },
+                    child: SvgPicture.asset(
+                      AppImages.iconBackArrow,
                     ),
                   ),
                 ),
-                Positioned(
-                  left: 10.w,
-                  child: Padding(
-                    padding: const EdgeInsets.all(8),
-                    child: GestureDetector(
-                      onTap: () {
-                        Navigator.pop(context);
-                      },
-                      child: SvgPicture.asset(
-                        AppImages.iconBackArrow,
-                      ),
-                    ),
-                  ),
-                ),
-              ],
-            ),
+              ),
+            ],
           ),
-          SizedBox(height: 10.h),
-          Expanded(
-            child: DiscountProductInfo(
-              product:  discountProduct,
-              onTap: () {
-                getLocationPermission(context);
-
-              },
-            ),
+        ),
+        SizedBox(height: 10.h),
+        Expanded(
+          child: DiscountProductInfo(
+            product: discountProduct,
+            onTap: () {
+              getLocationPermission(
+                context,
+                discountProduct.id,
+              );
+            },
           ),
-        ],
-      )
-    );
+        ),
+      ],
+    ));
   }
 }

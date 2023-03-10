@@ -62,17 +62,9 @@ class _MapScreenState extends State<MapScreen> {
               ),
             ),
           ),
+          centerTitle: true,
           title: Column(
             children: [
-              SizedBox(height: 20.h),
-              Text(
-                "Your location",
-                style: TextStyle(
-                  color: Colors.black,
-                  fontWeight: FontWeight.normal,
-                  fontSize: 12.sp,
-                ),
-              ),
               TextFormField(
                 maxLines: 3,
                 textAlign: TextAlign.center,

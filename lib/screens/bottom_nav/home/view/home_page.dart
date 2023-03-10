@@ -28,7 +28,7 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) =>
-          CategoriesBloc(CategoriesRepo(apiService: ApiService()))
+          CategoriesBloc(CategoriesRepo())
             ..add(FetchAllCategories()),
       child: Scaffold(
         backgroundColor: const Color(0xFFFFFFFF),

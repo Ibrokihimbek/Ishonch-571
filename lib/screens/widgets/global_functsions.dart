@@ -6,7 +6,7 @@ import '../../cubit/mapping/map_cubit.dart';
 import '../../data/models/helper/lat_long_model.dart';
 import '../product_detail/sub_screens/check_out/check_out_screen.dart';
 
-getLocationPermission(BuildContext context) async {
+getLocationPermission(BuildContext context, int productId) async {
   Location location = Location();
   bool serviceEnabled;
   PermissionStatus permissionGranted;
@@ -44,6 +44,7 @@ getLocationPermission(BuildContext context) async {
           latLong: LatLongModel(
             lat: locationData.latitude ?? 0.0,
             long: locationData.longitude ?? 0.0,
+            productId: productId,
           ),
         ),
       ),
