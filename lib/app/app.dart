@@ -46,9 +46,6 @@ class App extends StatelessWidget {
             ),
           ),
         ),
-          create: (context) => OrdersBloc(CategoriesRepo(apiService: ApiService())),
-
-        ),
         BlocProvider(
           create: (context) => DiscountCubit(),
         )
