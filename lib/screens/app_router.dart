@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:ishonch/data/models/discount/discount_model.dart';
 import 'package:ishonch/data/models/helper/lat_long_model.dart';
 import 'package:ishonch/data/models/model_category/categories/category_model.dart';
 import 'package:ishonch/screens/bottom_nav/bottom_nav_page.dart';
+import 'package:ishonch/screens/discount_product/discount_product_screen.dart';
 import 'package:ishonch/screens/drawer/sub_screens/about_screen.dart';
 import 'package:ishonch/screens/drawer/sub_screens/language_screen.dart';
 import 'package:ishonch/screens/bottom_nav/home/product_by_category/product_by_category.dart';
@@ -25,6 +27,7 @@ abstract class RouteName {
   static const map = '/map';
   static const noInternet = '/noInternet';
   static const imageView = '/imageView';
+  static const discountProductDetail = '/discountProductDetail';
 
 }
 
@@ -75,6 +78,8 @@ class AppRoutes {
             latLongModel: settings.arguments as LatLongModel,
           ),
         );
+      case RouteName.discountProductDetail:
+        return MaterialPageRoute(builder: (_) =>  DiscountProductDetailScreen(discountProduct: settings.arguments as Discount));
       case RouteName.bottomNavigation:
         return MaterialPageRoute(builder: (_) => const BottomNavPage());
       default:

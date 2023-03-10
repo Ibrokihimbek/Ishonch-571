@@ -20,29 +20,7 @@ class HomeWidget extends StatelessWidget {
       physics: const BouncingScrollPhysics(),
       child: Column(
         children: [
-          SizedBox(
-            height: height(context) * 0.04,
-          ),
-          Container(
-              padding: EdgeInsets.only(left: width(context) * 0.055),
-              alignment: Alignment.topLeft,
-              child: Text('Xush Kelibsiz'.tr(),
-                  style: const TextStyle(
-                      fontSize: 26, fontWeight: FontWeight.w800))),
-          Container(
-              padding: EdgeInsets.only(
-                  left: width(context) * 0.055, top: height(context) * 0.005),
-              alignment: Alignment.topLeft,
-              child: Text(
-                'Bizning moda Ilovamiz'.tr(),
-                style: const TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.w500,
-                    color: Colors.black54),
-              )),
-          SizedBox(
-            height: height(context) * 0.03,
-          ),
+          const SizedBox(height: 12),
           DiscountWidget(),
           SizedBox(
             height: height(context) * 0.02,

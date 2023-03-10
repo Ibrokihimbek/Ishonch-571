@@ -14,67 +14,20 @@ import 'package:ishonch/utils/app_image.dart';
 import 'package:location/location.dart';
 import 'package:lottie/lottie.dart';
 
-class ProductDetailScreen extends StatefulWidget {
+import '../widgets/global_functsions.dart';
+
+class ProductDetailScreen extends StatelessWidget {
   final int product;
+
   const ProductDetailScreen({
     Key? key,
     required this.product,
   }) : super(key: key);
 
   @override
-  State<ProductDetailScreen> createState() => _ProductDetailScreenState();
-}
-
-class _ProductDetailScreenState extends State<ProductDetailScreen> {
-  getLocationPermission() async {
-    Location location = Location();
-    bool serviceEnabled;
-    PermissionStatus permissionGranted;
-    LocationData locationData;
-    serviceEnabled = await location.serviceEnabled();
-    if (!serviceEnabled) {
-      serviceEnabled = await location.requestService();
-      if (!serviceEnabled) {
-        return;
-      }
-    }
-
-    permissionGranted = await location.hasPermission();
-    if (permissionGranted == PermissionStatus.denied) {
-      permissionGranted = await location.requestPermission();
-      if (permissionGranted != PermissionStatus.granted) {
-        return;
-      }
-    }
-
-    locationData = await location.getLocation();
-    if (locationData.latitude != null) {
-      if (!mounted) return;
-      BlocProvider.of<MapCubit>(context).fetchAddress(
-        latLongModel: LatLongModel(
-          lat: locationData.latitude ?? 0.0,
-          long: locationData.longitude ?? 0.0,
-        ),
-        kind: "house",
-      );
-      Navigator.push(
-        context,
-        MaterialPageRoute(
-          builder: (context) => CheckOutScreen(
-            latLong: LatLongModel(
-              lat: locationData.latitude ?? 0.0,
-              long: locationData.longitude ?? 0.0,
-            ),
-          ),
-        ),
-      );
-    }
-    print("LONGITUDE:${locationData.longitude} AND ${locationData.latitude}");
-  }
-  @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => ProductCubitById(widget.product),
+      create: (context) => ProductCubitById(product),
       child: BlocBuilder<ProductCubitById, ProductStateById>(
         builder: (context, state) {
           return Scaffold(
@@ -126,7 +79,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                             child: ProductInfo(
                               product: state.product,
                               onTap: () {
-                                getLocationPermission();
+                                getLocationPermission(context);
                               },
                             ),
                           ),

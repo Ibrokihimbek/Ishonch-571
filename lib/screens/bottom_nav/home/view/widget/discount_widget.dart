@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:ishonch/cubit/discount/discount_cubit.dart';
 import 'package:ishonch/cubit/discount/discount_state.dart';
+import 'package:ishonch/screens/app_router.dart';
 import 'package:ishonch/screens/bottom_nav/home/view/widget/discount_shimmer.dart';
 import 'package:ishonch/utils/app_colors.dart';
 import 'package:ishonch/utils/app_image.dart';
@@ -23,6 +24,7 @@ class DiscountWidget extends StatefulWidget {
 
 class _DiscountWidgetState extends State<DiscountWidget> {
   CarouselController buttonCarouselController = CarouselController();
+
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<DiscountCubit, DiscountState>(
@@ -112,7 +114,13 @@ class _DiscountWidgetState extends State<DiscountWidget> {
                                     height: height(context) * 0.016,
                                   ),
                                   ZoomTapAnimation(
-                                    onTap: () {},
+                                    onTap: () {
+                                      Navigator.pushNamed(
+                                        context,
+                                        RouteName.discountProductDetail,
+                                        arguments: state.discount[index],
+                                      );
+                                    },
                                     child: Container(
                                       height: height(context) * 0.034,
                                       width: width(context) * 0.22,

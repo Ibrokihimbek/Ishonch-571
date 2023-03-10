@@ -69,6 +69,7 @@ class MyApp extends StatelessWidget {
         splitScreenMode: true,
         builder: (BuildContext context, Widget? child) {
           return MaterialApp(
+            debugShowCheckedModeBanner: false,
             supportedLocales: context.supportedLocales,
             localizationsDelegates: context.localizationDelegates,
             locale: context.locale,
