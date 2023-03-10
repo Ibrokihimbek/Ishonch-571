@@ -1,4 +1,4 @@
-import 'package:adaptive_theme/adaptive_theme.dart';
+// import 'package:adaptive_theme/adaptive_theme.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -8,7 +8,6 @@ import 'package:ishonch/screens/bottom_nav/bloc/bottom_nav_cubit.dart';
 import 'package:ishonch/screens/bottom_nav/home/drawer/drawer.dart';
 import 'package:ishonch/screens/bottom_nav/home/view/home_page.dart';
 import 'package:ishonch/screens/bottom_nav/notification/notification_page.dart';
-
 import 'package:ishonch/utils/app_image.dart';
 
 import '../../cubit/connectivity/connectivity_cubit.dart';
@@ -28,20 +27,20 @@ class _BottomNavPageState extends State<BottomNavPage> {
 
 
 
-  AdaptiveThemeMode? themeMode;
+  // AdaptiveThemeMode? themeMode;
   Future<void> _getMode() async {
-    themeMode = await AdaptiveTheme.getThemeMode();
+    // themeMode = await AdaptiveTheme.getThemeMode();
     setState(() {});
   }
 
-  Future<void> _switchTheme() async {
-    if (themeMode!.isDark) {
-      AdaptiveTheme.of(context).setLight();
-    } else {
-      AdaptiveTheme.of(context).setDark();
-    }
-    await _getMode();
-  }
+  // Future<void> _switchTheme() async {
+  //   if (themeMode!.isDark) {
+  //     AdaptiveTheme.of(context).setLight();
+  //   } else {
+  //     AdaptiveTheme.of(context).setDark();
+  //   }
+  //   await _getMode();
+  // }
 
   final GlobalKey<ScaffoldState> _key = GlobalKey();
 
@@ -51,6 +50,8 @@ class _BottomNavPageState extends State<BottomNavPage> {
 
   @override
   void initState() {
+    getIt<NotificationService>().handleFirebaseNotificationMessages();
+    getIt<NotificationService>().setupInteractedMessage();
     _getMode();
     screens.insert(
       0,
@@ -65,12 +66,6 @@ class _BottomNavPageState extends State<BottomNavPage> {
 
   _init() async {
     print("INTERNET TURNED ON CALL ANY API");
-  }
- @override
-  void initState() {
-   getIt<NotificationService>().handleFirebaseNotificationMessages();
-   getIt<NotificationService>().setupInteractedMessage();
-    super.initState();
   }
 
 
@@ -99,7 +94,7 @@ class _BottomNavPageState extends State<BottomNavPage> {
               onChanged: (value) {
                 setState(() {});
                 IsNightMode = !IsNightMode;
-                _switchTheme();
+                // _switchTheme();
               },
               IsNightMode: IsNightMode,
             ),

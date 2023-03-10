@@ -30,7 +30,7 @@ class NotificationsRepository{
 
   void populateDb(Database database, int version) async {
     await database.execute("CREATE TABLE $tableName ("
-        "title TEXT,"
+        "id TEXT,"
         "description TEXT,"
         "courseId INTEGER,"
         "dateTime TEXT,"
@@ -48,7 +48,7 @@ class NotificationsRepository{
   Future<List> getNotifications() async {
     Database db = await getDb();
 
-    var result = await db.query(tableName, columns: ["title", "description", "dateTime", "image","courseId"]);
+    var result = await db.query(tableName, columns: ["id", "description", "dateTime", "image","courseId"]);
 
     return result.toList();
   }

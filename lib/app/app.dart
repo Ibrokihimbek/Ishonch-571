@@ -10,6 +10,7 @@ import 'package:ishonch/screens/app_router.dart';
 import 'package:ishonch/screens/bottom_nav/bloc/bottom_nav_cubit.dart';
 import 'package:ishonch/service/api_service/api_service.dart';
 
+import '../bloc/notifications_bloc/notification_reader_bloc/notification_reader_bloc.dart';
 import '../utils/theme.dart';
 
 class App extends StatelessWidget {
@@ -34,6 +35,10 @@ class App extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) => OrdersBloc(CategoriesRepo(apiService: ApiService())),
+
+        ),
+        BlocProvider(
+          create: (context) => NotificationReaderBloc(),
 
         )
       ], child: MyApp()),
