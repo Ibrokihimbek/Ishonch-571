@@ -1,6 +1,8 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:ishonch/data/models/model_category/categories/category_model.dart';
+import 'package:ishonch/screens/bottom_nav/home/widgets/widget/all_categories_title.dart';
+import 'package:ishonch/screens/bottom_nav/home/widgets/widget/categories_list.dart';
 import 'package:ishonch/screens/categories/into_categories..dart';
 import 'package:ishonch/utils/my_utils.dart';
 
@@ -16,56 +18,49 @@ class HomeWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
+    return CustomScrollView(
       primary: true,
       physics: const BouncingScrollPhysics(),
-      child: Column(
-        children: [
-          const SizedBox(height: 12),
-          DiscountWidget(),
-          SizedBox(
-            height: height(context) * 0.02,
+      slivers: [
+        const SliverToBoxAdapter(child: SizedBox(height: 12)),
+        SliverPersistentHeader(
+            delegate: DiscountWidget(screenHeight: height(context))),
+        SliverToBoxAdapter(child: SizedBox(height: height(context) * 0.02)),
+        SliverPersistentHeader(
+          delegate: AllCategoriesTitle(
+            screenHeight: height(context),
+            screenWidth: width(context),
+            title: 'Kategoriyalar'.tr(),
+            page: IntoCategories(data: data),
           ),
-          titleWidget(
-              context, 'Kategoriyalar'.tr(), IntoCategories(data: data)),
-          CategoryWidget(data: data),
-          titleWidget(context, 'All Products', const AllProduct()),
-          SizedBox(
-            height: height(context) * 0.019,
-          ),
-          Padding(
-            padding: EdgeInsets.symmetric(
-              horizontal: width(context) * 0.03,
-            ),
-            child: const ArrivalWidget(),
-          )
-        ],
-      ),
-    );
-  }
+        ),
 
-  titleWidget(context, title, page) {
-    return Padding(
-      padding: EdgeInsets.symmetric(horizontal: width(context) * 0.055),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Text(
-            title,
-            style: const TextStyle(fontWeight: FontWeight.w700, fontSize: 20),
+        SliverPersistentHeader(
+          delegate: CategoriesList(
+            screenHeight: height(context),
+            screenWidth: width(context),
+            data: data,
           ),
-          InkWell(
-              onTap: () {
-                Navigator.push(
-                    context, MaterialPageRoute(builder: (_) => page));
-              },
-              child: Text(
-                'Davomi'.tr(),
-                style: const TextStyle(
-                    color: Colors.black54, fontWeight: FontWeight.w500),
-              )),
-        ],
-      ),
+        ),
+
+        SliverPersistentHeader(
+          delegate: AllCategoriesTitle(
+            screenHeight: height(context),
+            screenWidth: width(context),
+            title: 'All Products',
+            page: AllProduct(),
+          ),
+        ),
+
+        SliverToBoxAdapter(child: SizedBox(height: height(context) * 0.019)),
+
+        Padding(
+          padding: EdgeInsets.symmetric(
+            horizontal: width(context) * 0.03,
+          ),
+          child: const ArrivalWidget(),
+        )
+      ],
     );
   }
 }
