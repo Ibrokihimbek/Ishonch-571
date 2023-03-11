@@ -5,13 +5,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:ishonch/screens/app_router.dart';
-import 'package:ishonch/screens/bottom_nav/bloc/bottom_nav_cubit.dart';
 import 'package:ishonch/screens/drawer/drawer.dart';
-import 'package:ishonch/screens/bottom_nav/home/view/home_page.dart';
+import 'package:ishonch/screens/bottom_nav/home/home_page.dart';
 import 'package:ishonch/screens/bottom_nav/notification/notification_page.dart';
 
 import 'package:ishonch/utils/app_image.dart';
 
+import '../../cubit/bottom_nav/bottom_nav_cubit.dart';
 import '../../cubit/connectivity/connectivity_cubit.dart';
 import 'bottom_navy_bar.dart';
 import 'order/order_page.dart';

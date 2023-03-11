@@ -12,10 +12,10 @@ import 'package:ishonch/cubit/discount/discount_cubit.dart';
 import 'package:ishonch/data/repositories/category_repo.dart';
 import 'package:ishonch/data/repositories/geocoding_repository.dart';
 import 'package:ishonch/screens/app_router.dart';
-import 'package:ishonch/screens/bottom_nav/bloc/bottom_nav_cubit.dart';
 import 'package:ishonch/service/api_service/api_service.dart';
 
 
+import '../cubit/bottom_nav/bottom_nav_cubit.dart';
 import '../utils/theme.dart';
 
 class App extends StatelessWidget {
