@@ -43,7 +43,7 @@ class CategoriesList extends SliverPersistentHeaderDelegate {
                             image: NetworkImage( "http://146.190.207.16:3000/${data[index].categoryImage}")),
                         border: Border.all(color: Colors.black26),
                         color: const Color(0xFFDEE6E3).withOpacity(0.5),
-                        borderRadius: BorderRadius.circular(20)),
+                        borderRadius: BorderRadius.circular(12)),
                   ),
                   SizedBox(height: screenHeight * 0.005),
                   Text(data[index].categoryName)

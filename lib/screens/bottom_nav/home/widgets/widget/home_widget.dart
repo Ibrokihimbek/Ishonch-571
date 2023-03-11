@@ -7,8 +7,8 @@ import 'package:ishonch/screens/categories/into_categories..dart';
 import 'package:ishonch/utils/my_utils.dart';
 
 import '../../../../all_products/all_product.dart';
-import '../category/category_widget.dart';
-import '../product/arrivals_widget.dart';
+
+import 'products_grid_home.dart';
 import 'discount_widget.dart';
 
 class HomeWidget extends StatelessWidget {
@@ -34,7 +34,6 @@ class HomeWidget extends StatelessWidget {
             page: IntoCategories(data: data),
           ),
         ),
-
         SliverPersistentHeader(
           delegate: CategoriesList(
             screenHeight: height(context),
@@ -42,7 +41,6 @@ class HomeWidget extends StatelessWidget {
             data: data,
           ),
         ),
-
         SliverPersistentHeader(
           delegate: AllCategoriesTitle(
             screenHeight: height(context),
@@ -51,15 +49,7 @@ class HomeWidget extends StatelessWidget {
             page: AllProduct(),
           ),
         ),
-
-        SliverToBoxAdapter(child: SizedBox(height: height(context) * 0.019)),
-
-        Padding(
-          padding: EdgeInsets.symmetric(
-            horizontal: width(context) * 0.03,
-          ),
-          child: const ArrivalWidget(),
-        )
+        ProductsGridWidget(),
       ],
     );
   }

@@ -7,6 +7,8 @@ import 'package:ishonch/screens/bottom_nav/home/bloc/bloc_product/product_bloc.d
 import 'package:ishonch/screens/bottom_nav/home/bloc/bloc_product/product_state.dart';
 import 'package:ishonch/service/api_service/api_service.dart';
 
+import '../widgets/global_appbar.dart';
+
 class AllProduct extends StatelessWidget {
   const AllProduct({super.key});
 
@@ -15,13 +17,7 @@ class AllProduct extends StatelessWidget {
     return BlocProvider( create: (context) => ProductsBloc(CategoriesRepo())..add(FetchAllProducts()),
       child: Scaffold(
         backgroundColor: const Color(0xFFFFFFFF),
-        appBar: AppBar(
-          leading: IconButton(onPressed: () {
-           Navigator.pop(context);
-          }, icon: const Icon(Icons.arrow_back,color: Colors.black,)),
-         elevation: 0,
-        backgroundColor: const Color(0xFFFFFFFF),
-          title: const Text('All Product',style: TextStyle(color: Colors.black),),),
+        appBar: const GlobalAppBar(title: "All Products"),
         body: BlocBuilder<ProductsBloc, ProductsState>(
             builder: (context, state) {
               if (state is InitialProductsState) {
@@ -33,7 +29,7 @@ class AllProduct extends StatelessWidget {
                   child: CircularProgressIndicator(),
                 );
               } else if (state is LoadProductsInSuccess) {
-                return AllProductwidget(data: state.products);
+                return AllProductsScreen(data: state.products);
               } else if (state is LoadProductsInFairlure) {
                 return Text(state.errorText);
               }
