@@ -12,7 +12,7 @@ class OrdersPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => OrdersBloc(CategoriesRepo(apiService: ApiService()))
+      create: (context) => OrdersBloc(CategoriesRepo())
         ..add(FetchAllOrders()),
       child: Scaffold(
         backgroundColor: const Color(0XFFFCFCFC),
