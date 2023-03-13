@@ -22,13 +22,13 @@ class GlobalButton extends StatelessWidget {
       width: 325.w,
       height: 50.h,
       decoration: BoxDecoration(
-        color: Colors.black87,
+        color: Theme.of(context).cardColor,
         borderRadius: BorderRadius.circular(10.r),
       ),
       child: ElevatedButton(
         onPressed: isActive ? onTap : null,
         style: ElevatedButton.styleFrom(
-          backgroundColor: Colors.black87,
+          backgroundColor: Theme.of(context).cardColor,
           // shadowColor: Colors.transparent,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(10.r),
@@ -36,10 +36,7 @@ class GlobalButton extends StatelessWidget {
         ),
         child: Text(
           buttonText,
-          style: fontRobotoW600(appcolor: AppColors.white).copyWith(
-            fontSize: 18.sp,
-            color: Colors.white,
-          ),
+          style: TextStyle(fontWeight: FontWeight.w600,fontSize: 17.sp),
         ),
       ),
     );

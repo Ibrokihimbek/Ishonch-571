@@ -10,6 +10,7 @@ class GlobalAppBar extends StatelessWidget implements PreferredSize {
   @override
   Widget build(BuildContext context) {
     return AppBar(
+
       centerTitle: title == "Checkout" ? true : false,
       title: Text(
         title,

@@ -2,6 +2,7 @@ class AppImages {
   // SVG
 
   static const iconMenu = 'assets/icons/icon_menu.svg';
+  static const iconMenuLight = 'assets/icons/icon_menu_light.svg';
   static const iconHome = 'assets/icons/icon_home.svg';
   static const iconProfile = 'assets/icons/icon_profile.svg';
   static const iconFavourite = 'assets/icons/icon_favourite.svg';
