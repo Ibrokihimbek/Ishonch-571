@@ -29,7 +29,7 @@ getLocationPermission(BuildContext context, int productId) async {
 
   locationData = await location.getLocation();
   if (locationData.latitude != null) {
-    if (!context.mounted) return;
+    if (context.mounted) return;
     BlocProvider.of<MapCubit>(context).fetchAddress(
       latLongModel: LatLongModel(
         lat: locationData.latitude ?? 0.0,
@@ -52,15 +52,3 @@ getLocationPermission(BuildContext context, int productId) async {
   }
   print("LONGITUDE:${locationData.longitude} AND ${locationData.latitude}");
 }
-
-
-extension StringExtensions on String {
-  String removeWhitespace() {
-    return replaceAll(' ', '');
-  }
-
-  String removeTire() {
-    return replaceAll('-', '');
-  }
-}
-
