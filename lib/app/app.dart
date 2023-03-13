@@ -5,6 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:ishonch/bloc/orders_bloc/orders_bloc.dart';
 import 'package:ishonch/cubit/connectivity/connectivity_cubit.dart';
+import 'package:ishonch/cubit/location_permission/location_permission_cubit.dart';
 import 'package:ishonch/cubit/mapping/map_cubit.dart';
 import 'package:ishonch/cubit/order_create/order_create_cubit.dart';
 import 'package:ishonch/data/models/helper/lat_long_model.dart';
@@ -51,6 +52,10 @@ class App extends StatelessWidget {
           create: (context) => ConnectivityCubit(),
         ),
         BlocProvider(
+          create: (context) => OrdersBloc(CategoriesRepo()),
+        ),
+        BlocProvider(
+
           create: (context) => NotificationReaderBloc(),
         ),
         BlocProvider(
@@ -68,6 +73,9 @@ class App extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) => DiscountCubit(),
+        ),
+        BlocProvider(
+          create: (context) => LocationPermissionCubit(),
         )
       ], child: const MyApp()),
     );

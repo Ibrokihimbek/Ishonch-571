@@ -1,6 +1,5 @@
 class AppImages {
   // SVG
-
   static const iconMenu = 'assets/icons/icon_menu.svg';
   static const iconHome = 'assets/icons/icon_home.svg';
   static const iconProfile = 'assets/icons/icon_profile.svg';
@@ -32,4 +31,5 @@ class AppImages {
   static const lottiePayment = 'assets/loties/lottie_payment.json';
   static const lottieItem = 'assets/loties/lottie_item.json';
   static const lotieDeliveryInTime = 'assets/loties/delivery_in_time.json';
+  static const locationLoading = 'assets/loties/location_loading.json';
 }
