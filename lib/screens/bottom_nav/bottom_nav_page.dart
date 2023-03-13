@@ -44,8 +44,6 @@ class _BottomNavPageState extends State<BottomNavPage> {
 
   List<Widget> screens = [];
 
-  bool IsNightMode = false;
-
   @override
   void initState() {
     _getMode();
@@ -84,10 +82,9 @@ class _BottomNavPageState extends State<BottomNavPage> {
               drawer: MyDrawer(
                 onChanged: (value) {
                   setState(() {});
-                  IsNightMode = !IsNightMode;
                   _switchTheme();
                 },
-                IsNightMode: IsNightMode,
+                IsNightMode: themeMode!.isDark,
               ),
               body: IndexedStack(index: index, children: screens),
               bottomNavigationBar: BottomNavyBar(

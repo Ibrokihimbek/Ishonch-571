@@ -13,24 +13,23 @@ class GlobalAppBar extends StatelessWidget implements PreferredSize {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      centerTitle: title == "Checkout" ? true : false,
-      title: Text(
-        title,
-        style: Theme.of(context).textTheme.headlineMedium,
-      ),
-      elevation: 0,
-      leading: Padding(
-        padding: const EdgeInsets.all(8),
-        child: ZoomTapAnimation(
-          onTap: (){
-            Navigator.pop(context);
-          },child: SvgPicture.asset(
-          AppImages.iconBackArrow,
-
+        centerTitle: title == "Checkout" ? true : false,
+        title: Text(
+          title,
+          style: Theme.of(context).textTheme.headlineMedium,
         ),
-        ),
-      )
-    );
+        elevation: 0,
+        leading: Padding(
+          padding: const EdgeInsets.all(8),
+          child: ZoomTapAnimation(
+            onTap: () {
+              Navigator.pop(context);
+            },
+            child: SvgPicture.asset(
+              AppImages.iconBackArrow,
+            ),
+          ),
+        ));
   }
 
   @override
