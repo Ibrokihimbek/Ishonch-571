@@ -6,14 +6,15 @@ import 'package:ishonch/screens/bottom_nav/bottom_nav_page.dart';
 import 'package:ishonch/screens/discount_product/discount_product_screen.dart';
 import 'package:ishonch/screens/drawer/sub_screens/about_screen.dart';
 import 'package:ishonch/screens/drawer/sub_screens/language_screen.dart';
-import 'package:ishonch/screens/bottom_nav/home/product_by_category/product_by_category.dart';
 import 'package:ishonch/screens/no_internet/no_internet_screen.dart';
 import 'package:ishonch/screens/on_bording/on_bording_page.dart';
+import 'package:ishonch/screens/product_by_category/product_by_category.dart';
 import 'package:ishonch/screens/product_detail/product_detail_screen.dart';
 import 'package:ishonch/screens/product_detail/sub_screens/check_out/check_out_screen.dart';
 import 'package:ishonch/screens/product_detail/sub_screens/map/map_screen.dart';
 import 'package:ishonch/screens/product_detail/sub_screens/image_view/image_view_page.dart';
 import 'package:ishonch/screens/splash/splash_page.dart';
+
 
 abstract class RouteName {
   static const bottomNavigation = 'bottomNavigation';
