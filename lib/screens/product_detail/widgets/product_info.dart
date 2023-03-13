@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:ishonch/data/models/model_category/categories/product/product_model.dart';
-import 'package:ishonch/screens/product_detail/widgets/text_widget.dart';
+import 'package:ishonch/screens/product_detail/widgets/appliances_charakter.dart';
+import 'package:ishonch/screens/product_detail/widgets/notebook_charakter.dart';
+import 'package:ishonch/screens/product_detail/widgets/phone_charakter.dart';
 import 'package:ishonch/screens/widgets/global_button.dart';
-import 'package:ishonch/utils/app_colors.dart';
-import 'package:ishonch/utils/text_style.dart';
 
 class ProductInfo extends StatelessWidget {
   final ProductModel product;
@@ -25,89 +25,78 @@ class ProductInfo extends StatelessWidget {
             left: 24.w,
             right: 24.w,
             top: 10.h,
-            bottom: 80.h
+            bottom: 80.h,
           ).r,
           decoration: BoxDecoration(
-            color: AppColors.white,
+            color: Theme.of(context).primaryColor,
             borderRadius: BorderRadius.only(
               topLeft: Radius.circular(25.w).w,
               topRight: Radius.circular(25.w).w,
             ),
           ),
-          child: ListView(
+          child: SingleChildScrollView(
             physics: const BouncingScrollPhysics(),
-            children: [
-              TextWidget(
-                textStyle: fontRobotoW700(appcolor: AppColors.black),
-                text: product.productName,
-              ),
-              SizedBox(height: 20.h),
-              TextWidget(
-                textStyle: fontRobotoW400(appcolor: AppColors.black),
-                text: "Total Price",
-              ),
-              SizedBox(height: 5.h),
-              TextWidget(
-                textStyle: fontRobotoW700(appcolor: AppColors.black),
-                text:
-                    '${product.productPrice} ${product.currency.currencyName}'
-                        .toString(),
-              ),
-              SizedBox(height: 20.h),
-              TextWidget(
-                textStyle: fontRobotoW600(appcolor: AppColors.black)
-                    .copyWith(fontSize: 14.sp),
-                text: "Description",
-              ),
-              SizedBox(height: 5.h),
-              TextWidget(
-                text: product.description,
-                textStyle: fontRobotoW400(appcolor: AppColors.black)
-                    .copyWith(fontSize: 15.sp),
-              ),
-              SizedBox(height: 20.h),
-              TextWidget(
-                textStyle: fontRobotoW600(appcolor: AppColors.black)
-                    .copyWith(fontSize: 16.sp),
-                text: "Ma'lumotlar",
-              ),
-              SizedBox(height: 5.h),
-              TextWidget(
-                text: product.phone.color,
-                textStyle: fontRobotoW400(appcolor: AppColors.black)
-                    .copyWith(fontSize: 15.sp),
-              ),
-              SizedBox(height: 5.h),
-              TextWidget(
-                text: product.phone.display,
-                textStyle: fontRobotoW400(appcolor: AppColors.black)
-                    .copyWith(fontSize: 15.sp),
-              ),
-              SizedBox(height: 5.h),
-              TextWidget(
-                text: product.phone.memoryRam,
-                textStyle: fontRobotoW400(appcolor: AppColors.black)
-                    .copyWith(fontSize: 15.sp),
-              ),
-              SizedBox(height: 5.h),
-              TextWidget(
-                text: product.phone.memoryRom,
-                textStyle: fontRobotoW400(appcolor: AppColors.black)
-                    .copyWith(fontSize: 15.sp),
-              ),
-              SizedBox(height: 5.h),
-              TextWidget(
-                text: product.phone.videoCard,
-                textStyle: fontRobotoW400(appcolor: AppColors.black)
-                    .copyWith(fontSize: 15.sp),
-              ),
-              SizedBox(height: 5.h),
-              TextWidget(
-                text: product.phone.warranty,
-                textStyle: fontRobotoW400(appcolor: AppColors.black)
-                    .copyWith(fontSize: 15.sp),
-              ),
-            ],
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  style: Theme.of(context)
+                      .textTheme
+                      .displayMedium!
+                      .copyWith(fontSize: 20.sp),
+                  product.productName,
+                ),
+                SizedBox(height: 20.h),
+                Text(
+                  style: Theme.of(context)
+                      .textTheme
+                      .headlineSmall!
+                      .copyWith(fontSize: 18.sp),
+                  "Price",
+                ),
+                SizedBox(height: 5.h),
+                Text(
+                  style: Theme.of(context)
+                      .textTheme
+                      .displayMedium!
+                      .copyWith(fontSize: 18.sp),
+                  '${product.productPrice} ${product.currency.currencyName}'
+                      .toString(),
+                ),
+                SizedBox(height: 20.h),
+                Text(
+                  style: Theme.of(context)
+                      .textTheme
+                      .displaySmall!
+                      .copyWith(fontSize: 16.sp),
+                  "Description",
+                ),
+                SizedBox(height: 5.h),
+                Text(
+                  product.description,
+                  style: Theme.of(context)
+                      .textTheme
+                      .headlineSmall!
+                      .copyWith(fontSize: 15.sp),
+                ),
+                SizedBox(height: 20.h),
+                Text(
+                  style: Theme.of(context)
+                      .textTheme
+                      .displaySmall!
+                      .copyWith(fontSize: 16.sp),
+                  "Ma'lumotlar",
+                ),
+                SizedBox(height: 5.h),
+                product.phoneCharacterics != 0
+                    ? PhoneCharacter(product: product)
+                    : product.notebookCharacterics != 0
+                        ? NotebookCharacter(product: product)
+                        : product.appliancesCharacterics != 0
+                            ? AppliancesCharacter(product: product)
+                            : const SizedBox(),
+              ],
+            ),
           ),
         ),
         Positioned(
@@ -117,7 +106,7 @@ class ProductInfo extends StatelessWidget {
           child: GlobalButton(
             isActive: true,
             buttonText: "Buyurtma berish",
-            onTap:  onTap,
+            onTap: onTap,
           ),
         ),
       ],

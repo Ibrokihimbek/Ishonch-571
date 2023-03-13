@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:ishonch/data/models/discount/discount_model.dart';
-import 'package:ishonch/data/models/model_category/categories/product/product_model.dart';
 import 'package:ishonch/screens/product_detail/widgets/text_widget.dart';
 import 'package:ishonch/screens/widgets/global_button.dart';
 import 'package:ishonch/utils/app_colors.dart';
