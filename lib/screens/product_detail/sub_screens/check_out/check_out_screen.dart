@@ -160,6 +160,7 @@ class _CheckOutScreenState extends State<CheckOutScreen> {
                             );
                         // ignore: use_build_context_synchronously
                         showDialog(
+                            barrierDismissible: false,
                             builder: (context) => LoadingDialog(
                                   widget: Lottie.asset(AppImages.lottiePayment),
                                 ),

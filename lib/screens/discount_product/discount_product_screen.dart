@@ -93,6 +93,7 @@ class DiscountProductDetailScreen extends StatelessWidget {
                   BlocProvider.of<LocationPermissionCubit>(context)
                       .fetchCurrentLocation();
                   showDialog(
+                    barrierDismissible: false,
                     builder: (context) => LoadingDialog(
                       widget: Lottie.asset(AppImages.locationLoading),
                     ),
