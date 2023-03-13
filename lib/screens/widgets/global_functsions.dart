@@ -52,3 +52,15 @@ getLocationPermission(BuildContext context, int productId) async {
   }
   print("LONGITUDE:${locationData.longitude} AND ${locationData.latitude}");
 }
+
+
+extension StringExtensions on String {
+  String removeWhitespace() {
+    return replaceAll(' ', '');
+  }
+
+  String removeTire() {
+    return replaceAll('-', '');
+  }
+}
+

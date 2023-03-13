@@ -33,7 +33,7 @@ class _PhoneInputComponentState extends State<PhoneInputComponent> {
   @override
   void initState() {
     phoneMaskFormatter = MaskTextInputFormatter(
-      mask: '## ###-##-##',
+      mask: '+998 ## ###-##-##',
       filter: {
         "#": RegExp(r'[0-9]'),
       },
@@ -94,16 +94,16 @@ class _PhoneInputComponentState extends State<PhoneInputComponent> {
               },
               style: TextStyle(color: Colors.black, fontSize: 20.sp),
               decoration: InputDecoration(
-                prefixIcon: Padding(
-                  padding: EdgeInsets.only(top: 9.h, left: 15.w).r,
-                  child: Text(
-                    "+998  ",
-                    style: TextStyle(
-                      fontSize: 20.sp,
-                      fontWeight: FontWeight.w700,
-                    ),
-                  ),
-                ),
+                // prefixIcon: Padding(
+                //   padding: EdgeInsets.only(top: 9.h, left: 15.w).r,
+                //   child: Text(
+                //     "+998  ",
+                //     style: TextStyle(
+                //       fontSize: 20.sp,
+                //       fontWeight: FontWeight.w700,
+                //     ),
+                //   ),
+                // ),
                 hintText: "90 123-45-67",
                 contentPadding: EdgeInsets.only(left: 20.w).w,
                 hintStyle: TextStyle(color: Colors.grey, fontSize: 20.sp),

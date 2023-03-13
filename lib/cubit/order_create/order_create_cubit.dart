@@ -15,7 +15,7 @@ class OrderCreateCubit extends Cubit<OrderCreateState> {
     emit(OrderCreateLoading());
     MyResponse myResponse =
         await getIt.get<OrderRepository>().createOrder(createOrderDto);
-
+    await Future.delayed( const Duration(seconds: 2));
     if (myResponse.error.isEmpty) {
       emit(OrderCreateSuccess());
     } else {
