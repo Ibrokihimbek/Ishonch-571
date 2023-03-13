@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class LoadingDialog extends StatelessWidget {
   final Widget widget;
@@ -8,9 +9,11 @@ class LoadingDialog extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-      backgroundColor: Colors.white,
-      shape: const RoundedRectangleBorder(
-          borderRadius: BorderRadius.all(Radius.circular(20))),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.all(
+          Radius.circular(20.r).r,
+        ),
+      ),
       content: Builder(
         builder: (context) {
           return Column(
@@ -19,13 +22,11 @@ class LoadingDialog extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               SizedBox(
-                width: 200,
-                height: 200,
+                width: 200.w,
+                height: 200.h,
                 child: widget,
               ),
-              const CircularProgressIndicator(
-                color: Colors.black,
-              ),
+              const CircularProgressIndicator(color: Colors.black),
             ],
           );
         },

@@ -130,8 +130,12 @@ class _CheckOutScreenState extends State<CheckOutScreen> {
               }
             },
             child: Padding(
-              padding: const EdgeInsets.only(
-                  left: 16, right: 16, bottom: 20, top: 20),
+              padding: EdgeInsets.only(
+                left: 16.w,
+                right: 16.w,
+                bottom: 20.h,
+                top: 20.h,
+              ).w,
               child: GlobalButton(
                 isActive: true,
                 buttonText: "Purchase",
