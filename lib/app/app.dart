@@ -15,8 +15,11 @@ import 'package:ishonch/screens/app_router.dart';
 import 'package:ishonch/screens/bottom_nav/home/bloc/bloc_product/product_bloc.dart';
 import 'package:ishonch/service/api_service/api_service.dart';
 
+import '../bloc/notifications_bloc/notification_reader_bloc/notification_reader_bloc.dart';
+
 import '../cubit/bottom_nav/bottom_nav_cubit.dart';
 import '../screens/bottom_nav/home/bloc/bloc_product/product_event.dart';
+
 import '../utils/theme.dart';
 
 class App extends StatelessWidget {
@@ -46,6 +49,12 @@ class App extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) => ConnectivityCubit(),
+        ),
+        BlocProvider(
+          create: (context) => NotificationReaderBloc(),
+        ),
+        BlocProvider(
+          create: (context) => OrdersBloc(CategoriesRepo()),
         ),
         BlocProvider(
           create: (context) => OrdersBloc(CategoriesRepo()),

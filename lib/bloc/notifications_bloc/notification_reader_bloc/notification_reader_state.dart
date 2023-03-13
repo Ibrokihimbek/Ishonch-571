@@ -4,11 +4,13 @@ part of 'notification_reader_bloc.dart';
 abstract class NotificationReaderState {}
 
 class NotificationReaderInitial extends NotificationReaderState {}
+// ignore: must_be_immutable
 class ReadNotificationInSuccess extends NotificationReaderState {
   List<NotificationModel> notifications;
 
   ReadNotificationInSuccess({required this.notifications});
 }
+// ignore: must_be_immutable
 class ReadNotificationInFailury extends NotificationReaderState {
   String status;
 
