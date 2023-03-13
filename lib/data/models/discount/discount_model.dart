@@ -7,6 +7,9 @@ import 'package:ishonch/data/models/phone/phone_model.dart';
 class Discount {
   final int id;
   final int discount;
+  final int appliancesCharacterics;
+  final int notebookCharacterics;
+  final int phoneCharacterics;
   final String productName;
   final String productPrice;
   final String description;
@@ -19,6 +22,9 @@ class Discount {
   final Appliances appliances;
 
   Discount({
+    required this.appliancesCharacterics,
+    required this.notebookCharacterics,
+    required this.phoneCharacterics,
     required this.media,
     required this.currency,
     required this.notebook,
@@ -34,6 +40,9 @@ class Discount {
   });
 
   factory Discount.fromJson(Map<String, dynamic> json) => Discount(
+        appliancesCharacterics: json['appliances_characterics'] ?? 0,
+        notebookCharacterics: json['notebook_characterics'] ?? 0,
+        phoneCharacterics: json['phone_characterics'] ?? 0,
         phone: Phone.fromJson(json['phone'] as Map<String, dynamic>? ?? {}),
         notebook:
             Notebook.fromJson(json['notebook'] as Map<String, dynamic>? ?? {}),

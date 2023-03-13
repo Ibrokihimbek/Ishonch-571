@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:ishonch/data/models/model_category/categories/product/product_model.dart';
-import 'package:ishonch/screens/product_detail/widgets/appliances_charakter.dart';
-import 'package:ishonch/screens/product_detail/widgets/notebook_charakter.dart';
-import 'package:ishonch/screens/product_detail/widgets/phone_charakter.dart';
+import 'package:ishonch/screens/product_detail/widgets/appliances_character.dart';
+import 'package:ishonch/screens/product_detail/widgets/notebook_character.dart';
+import 'package:ishonch/screens/product_detail/widgets/phone_character.dart';
 import 'package:ishonch/screens/widgets/global_button.dart';
 
 class ProductInfo extends StatelessWidget {
