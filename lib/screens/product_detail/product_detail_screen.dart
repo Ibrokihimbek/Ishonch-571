@@ -77,14 +77,22 @@ class ProductDetailScreen extends StatelessWidget {
                           BlocListener<LocationPermissionCubit,
                               LocationPermissionState>(
                             listener: (context, state) {
-                              if (state.myPermissionStatus ==
-                                  MyPermissionStatus.Loading) {}
-                              if (state.myPermissionStatus ==
-                                  MyPermissionStatus.Success) {
+                              if (state.myPermissionStatus == MyPermissionStatus.Loading) {
+                                showDialog(
+                                  barrierDismissible: false,
+                                  builder: (context) => LoadingDialog(
+                                    widget: Lottie.asset(
+                                        AppImages.locationLoading),
+                                  ),
+                                  context: context,
+                                );
+                              }
+                              if (state.myPermissionStatus == MyPermissionStatus.Success) {
                                 BlocProvider.of<MapCubit>(context).fetchAddress(
                                   latLongModel: state.latLongModel!,
                                   kind: "house",
                                 );
+                                Navigator.pop(context);
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(
@@ -108,14 +116,6 @@ class ProductDetailScreen extends StatelessWidget {
                                   BlocProvider.of<LocationPermissionCubit>(
                                           context)
                                       .fetchCurrentLocation();
-                                  showDialog(
-                                    barrierDismissible: false,
-                                    builder: (context) => LoadingDialog(
-                                      widget: Lottie.asset(
-                                          AppImages.locationLoading),
-                                    ),
-                                    context: context,
-                                  );
                                 },
                               ),
                             ),

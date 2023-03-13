@@ -36,9 +36,8 @@ class LocationPermissionCubit extends Cubit<LocationPermissionState> {
         return;
       }
     }
-
-    LocationData locationData = await location.getLocation();
     emit(state.copyWith(myPermissionStatus: MyPermissionStatus.Loading));
+    LocationData locationData = await location.getLocation();
     // await Future.delayed(const Duration(seconds: 3));
     latLongModel = LatLongModel(
       lat: locationData.latitude!,
