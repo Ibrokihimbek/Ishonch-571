@@ -71,29 +71,6 @@ class _LanguageScreenState extends State<LanguageScreen> {
                   .copyWith(fontSize: 22.sp),
             ),
             SizedBox(height: 24.h),
-            // ListView.separated(
-            //   separatorBuilder: (context, index) => SizedBox(height: 20.h),
-            //   shrinkWrap: true,
-            //   physics: const NeverScrollableScrollPhysics(),
-            //   itemCount: LanguageModel.languages.length,
-            //   itemBuilder: (context, index) {
-            //     return LanguageWidget(
-            //       selectedLang: selectedLang,
-            //       i: index,
-            //       languageModel: LanguageModel.languages[index],
-            //       onTap: () {
-            //         selectedLang = index;
-            //         if (index == 0) {
-            //         } else if (index == 1) {
-            //           context.setLocale(const Locale("ru", "RU"));
-            //         } else {
-            //           context.setLocale(const Locale("uz", "UZ"));
-            //         }
-            //         setState(() {});
-            //       },
-            //     );
-            //   },
-            // )
             ListView(
               shrinkWrap: true,
               children: [
