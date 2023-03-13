@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:ishonch/utils/app_colors.dart';
 import 'package:ishonch/utils/app_image.dart';
-import 'package:ishonch/utils/text_style.dart';
 import 'package:zoom_tap_animation/zoom_tap_animation.dart';
 
 class GlobalAppBar extends StatelessWidget implements PreferredSize {
@@ -18,18 +15,19 @@ class GlobalAppBar extends StatelessWidget implements PreferredSize {
         title,
         style: Theme.of(context).textTheme.headlineMedium,
       ),
-      elevation: 0,
       leading: Padding(
         padding: const EdgeInsets.all(8),
         child: ZoomTapAnimation(
-          onTap: (){
+          onTap: () {
             Navigator.pop(context);
-          },child: SvgPicture.asset(
-          AppImages.iconBackArrow,
-
+          },
+          child: SvgPicture.asset(
+            Theme.of(context).appBarTheme.backgroundColor == Colors.white
+                ? AppImages.iconBackArrow
+                : AppImages.iconBackArrowLight,
+          ),
         ),
-        ),
-      )
+      ),
     );
   }
 
