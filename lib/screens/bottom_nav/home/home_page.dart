@@ -26,7 +26,6 @@ class _HomePageState extends State<HomePage> {
           CategoriesBloc(CategoriesRepo())
             ..add(FetchAllCategories()),
       child: Scaffold(
-        backgroundColor: const Color(0xFFFFFFFF),
         appBar: HomeScreenAppBar(
           title: 'Xush Kelibsiz'.tr(),
           onTap: widget.onTap,

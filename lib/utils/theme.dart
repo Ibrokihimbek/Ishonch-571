@@ -93,7 +93,7 @@ class AppTheme {
       iconTheme: IconThemeData(
         color: AppColors.white,
       ),
-      backgroundColor: AppColors.white,
+      backgroundColor: AppColors.black,
       systemOverlayStyle: SystemUiOverlayStyle(
         statusBarBrightness: Brightness.dark,
         statusBarIconBrightness: Brightness.light,
