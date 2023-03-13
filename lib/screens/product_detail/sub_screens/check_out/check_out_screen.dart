@@ -21,9 +21,14 @@ import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import '../../../../bloc/orders_bloc/orders_event.dart';
 
 class CheckOutScreen extends StatefulWidget {
-  const CheckOutScreen({Key? key, required this.latLong}) : super(key: key);
+  const CheckOutScreen({
+    Key? key,
+    required this.latLong,
+    required this.productId,
+  }) : super(key: key);
 
   final LatLongModel latLong;
+  final int productId;
 
   @override
   State<CheckOutScreen> createState() => _CheckOutScreenState();
@@ -141,7 +146,7 @@ class _CheckOutScreenState extends State<CheckOutScreen> {
                         // ignore: use_build_context_synchronously
                         context.read<OrderCreateCubit>().createOrder(
                               CreateOrderDto(
-                                productId: widget.latLong.productId!,
+                                productId: widget.productId,
                                 clientName: _fullNameController.text,
                                 clientAddress:
                                     "${state.latLongModel.lat}/${state.latLongModel.long}",
@@ -152,8 +157,7 @@ class _CheckOutScreenState extends State<CheckOutScreen> {
                         // ignore: use_build_context_synchronously
                         showDialog(
                             builder: (context) => LoadingDialog(
-                                  widget:
-                                      Lottie.asset(AppImages.lottiePayment),
+                                  widget: Lottie.asset(AppImages.lottiePayment),
                                 ),
                             context: context);
                       } else {

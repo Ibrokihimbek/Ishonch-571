@@ -6,19 +6,14 @@ import 'package:ishonch/cubit/location_permission/location_permission_cubit.dart
 import 'package:ishonch/cubit/mapping/map_cubit.dart';
 import 'package:ishonch/cubit/product_detail/product_detail_cubit.dart';
 import 'package:ishonch/cubit/product_detail/product_detail_state.dart';
-import 'package:ishonch/data/models/helper/lat_long_model.dart';
 import 'package:ishonch/screens/app_router.dart';
 import 'package:ishonch/screens/product_detail/sub_screens/check_out/check_out_screen.dart';
 import 'package:ishonch/screens/widgets/dialog_widget.dart';
 import 'package:ishonch/screens/product_detail/widgets/product_info.dart';
 import 'package:ishonch/screens/product_detail/widgets/product_info_shimmer.dart';
-import 'package:ishonch/screens/widgets/animated_snackbar.dart';
 import 'package:ishonch/utils/app_image.dart';
 import 'package:ishonch/utils/my_utils.dart';
-import 'package:location/location.dart';
 import 'package:lottie/lottie.dart';
-
-import '../widgets/global_functsions.dart';
 
 class ProductDetailScreen extends StatelessWidget {
   final int productId;
@@ -83,15 +78,22 @@ class ProductDetailScreen extends StatelessWidget {
                               LocationPermissionState>(
                             listener: (context, state) {
                               if (state.myPermissionStatus ==
-                                  MyPermissionStatus.Loading) {
-                              }
+                                  MyPermissionStatus.Loading) {}
                               if (state.myPermissionStatus ==
                                   MyPermissionStatus.Success) {
                                 BlocProvider.of<MapCubit>(context).fetchAddress(
                                   latLongModel: state.latLongModel!,
                                   kind: "house",
                                 );
-                                Navigator.push(context, MaterialPageRoute(builder: (_)=>CheckOutScreen(latLong: state.latLongModel!)));
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (_) => CheckOutScreen(
+                                      latLong: state.latLongModel!,
+                                      productId: productId,
+                                    ),
+                                  ),
+                                );
                               }
                               if (state.myPermissionStatus ==
                                   MyPermissionStatus.Fail) {
@@ -107,10 +109,12 @@ class ProductDetailScreen extends StatelessWidget {
                                           context)
                                       .fetchCurrentLocation();
                                   showDialog(
-                                      builder: (context) => LoadingDialog(
-                                        widget: Lottie.asset(AppImages.locationLoading),
-                                      ),
-                                      context: context);
+                                    builder: (context) => LoadingDialog(
+                                      widget: Lottie.asset(
+                                          AppImages.locationLoading),
+                                    ),
+                                    context: context,
+                                  );
                                 },
                               ),
                             ),

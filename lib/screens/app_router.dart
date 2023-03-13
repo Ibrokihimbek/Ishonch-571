@@ -28,7 +28,6 @@ abstract class RouteName {
   static const noInternet = '/noInternet';
   static const imageView = '/imageView';
   static const discountProductDetail = '/discountProductDetail';
-
 }
 
 class AppRoutes {
@@ -50,7 +49,7 @@ class AppRoutes {
             productId: settings.arguments as int,
           ),
         );
-        case RouteName.imageView:
+      case RouteName.imageView:
         return MaterialPageRoute(
           builder: (_) => ImageView(
             imageUrl: settings.arguments as String,
@@ -70,6 +69,7 @@ class AppRoutes {
         return MaterialPageRoute(
           builder: (_) => CheckOutScreen(
             latLong: settings.arguments as LatLongModel,
+            productId: settings.arguments as int,
           ),
         );
       case RouteName.map:
@@ -79,7 +79,9 @@ class AppRoutes {
           ),
         );
       case RouteName.discountProductDetail:
-        return MaterialPageRoute(builder: (_) =>  DiscountProductDetailScreen(discountProduct: settings.arguments as Discount));
+        return MaterialPageRoute(
+            builder: (_) => DiscountProductDetailScreen(
+                discountProduct: settings.arguments as Discount));
       case RouteName.bottomNavigation:
         return MaterialPageRoute(builder: (_) => const BottomNavPage());
       default:
