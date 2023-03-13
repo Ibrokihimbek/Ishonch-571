@@ -10,20 +10,25 @@ import 'package:ishonch/data/models/helper/lat_long_model.dart';
 import 'package:ishonch/screens/app_router.dart';
 import 'package:ishonch/screens/product_detail/sub_screens/check_out/widgets/my_text_field.dart';
 import 'package:ishonch/screens/product_detail/sub_screens/check_out/widgets/phone_input_component.dart';
-import 'package:ishonch/screens/product_detail/sub_screens/check_out/widgets/succes_dialog_widget.dart';
 import 'package:ishonch/screens/widgets/animated_snackbar.dart';
+import 'package:ishonch/screens/widgets/dialog_widget.dart';
 import 'package:ishonch/screens/widgets/global_appbar.dart';
 import 'package:ishonch/screens/widgets/global_button.dart';
 import 'package:ishonch/utils/app_colors.dart';
 import 'package:ishonch/utils/app_image.dart';
-import 'package:ishonch/utils/my_utils.dart';
+import 'package:lottie/lottie.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import '../../../../bloc/orders_bloc/orders_event.dart';
 
 class CheckOutScreen extends StatefulWidget {
-  const CheckOutScreen({Key? key, required this.latLong}) : super(key: key);
+  const CheckOutScreen({
+    Key? key,
+    required this.latLong,
+    required this.productId,
+  }) : super(key: key);
 
   final LatLongModel latLong;
+  final int productId;
 
   @override
   State<CheckOutScreen> createState() => _CheckOutScreenState();
@@ -118,17 +123,19 @@ class _CheckOutScreenState extends State<CheckOutScreen> {
           ),
           bottomNavigationBar: BlocListener<OrderCreateCubit, OrderCreateState>(
             listener: (context, state) {
-              if (state is OrderCreateLoading) {
-                showInfoSnackBar(context, "Loading...");
-              }
+              if (state is OrderCreateLoading) {}
               if (state is OrderCreateSuccess) {
-                showInfoSnackBar(context, "Order Added");
+                Navigator.pushNamed(context, RouteName.bottomNavigation);
                 BlocProvider.of<OrdersBloc>(context).add(FetchAllOrders());
               }
             },
             child: Padding(
-              padding: const EdgeInsets.only(
-                  left: 16, right: 16, bottom: 20, top: 20),
+              padding: EdgeInsets.only(
+                left: 16.w,
+                right: 16.w,
+                bottom: 20.h,
+                top: 20.h,
+              ).w,
               child: GlobalButton(
                 isActive: true,
                 buttonText: "Purchase",
@@ -140,9 +147,10 @@ class _CheckOutScreenState extends State<CheckOutScreen> {
                   if (_fullNameController.text.length >= 3) {
                     if (_addressController.text.length >= 5) {
                       if (phoneNumber.length == 17) {
-                        return context.read<OrderCreateCubit>().createOrder(
+                        // ignore: use_build_context_synchronously
+                        context.read<OrderCreateCubit>().createOrder(
                               CreateOrderDto(
-                                productId: widget.latLong.productId!,
+                                productId: widget.productId,
                                 clientName: _fullNameController.text,
                                 clientAddress:
                                     "${state.latLongModel.lat}/${state.latLongModel.long}",
@@ -150,11 +158,18 @@ class _CheckOutScreenState extends State<CheckOutScreen> {
                                 deviceId: androidInfo.model,
                               ),
                             );
-                      }
-                      else {
-                         return MySnackBar(
+                        // ignore: use_build_context_synchronously
+                        showDialog(
+                            barrierDismissible: false,
+                            builder: (context) => LoadingDialog(
+                                  widget: Lottie.asset(AppImages.lottiePayment),
+                                ),
+                            context: context);
+                      } else {
+                        // ignore: use_build_context_synchronously
+                        return MySnackBar(
                           context,
-                          notification: "Telefon raqamingizni kiriting kiriting.",
+                          notification: "Enter your phone number.",
                           color: Colors.red,
                           icon: const Icon(
                             Icons.error,
@@ -162,11 +177,11 @@ class _CheckOutScreenState extends State<CheckOutScreen> {
                           ),
                         );
                       }
-                    }
-                    else {
+                    } else {
+                      // ignore: use_build_context_synchronously
                       return MySnackBar(
                         context,
-                        notification: "Adresingizni kiriting.",
+                        notification: "Enter your address",
                         color: Colors.red,
                         icon: const Icon(
                           Icons.error,
@@ -174,11 +189,11 @@ class _CheckOutScreenState extends State<CheckOutScreen> {
                         ),
                       );
                     }
-                  }
-                  else {
+                  } else {
+                    // ignore: use_build_context_synchronously
                     return MySnackBar(
                       context,
-                      notification: "Ismingizni kiriting.",
+                      notification: "Enter your name.",
                       color: Colors.red,
                       icon: const Icon(
                         Icons.error,
