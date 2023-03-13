@@ -9,8 +9,10 @@ class NotificationAppBar extends StatelessWidget implements PreferredSize {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      title: Text("Notification",
-          style: TextStyle(fontSize: 24.sp, color: Colors.black)),
+      title: Text(
+        "Notification",
+        style: Theme.of(context).textTheme.headlineMedium,
+      ),
       actions: [
         PopupMenuButton<String>(
           onSelected: (value) {},
