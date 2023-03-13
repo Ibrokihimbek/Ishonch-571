@@ -17,6 +17,7 @@ class AppImages {
   static const home = "assets/icons/home.svg";
   static const notification = "assets/icons/notification.svg";
   static const inactiveNotification = "assets/icons/inactive_notification.svg";
+  static const iconBackArrowLight = 'assets/icons/back_arrow_light.svg';
 
   // PNG
 
@@ -25,6 +26,7 @@ class AppImages {
   static const iconShoppingBag = 'assets/images/shopping-bag.png';
   static const iphone = 'assets/images/tel.png';
   static const homeImage = 'assets/images/home_image.png';
+  static const imageLogoLight = 'assets/images/app_logo_light.png';
 
   // LOTTIE
 

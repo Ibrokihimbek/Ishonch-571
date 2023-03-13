@@ -34,7 +34,7 @@ class AppTheme {
     colorScheme: const ColorScheme.light(),
     primaryColorDark: AppColors.white,
     primaryColor: AppColors.white,
-   // useMaterial3: true,
+    // useMaterial3: true,
     cardColor: AppColors.black,
     shadowColor: AppColors.grey.withOpacity(0.5),
     textSelectionTheme:
@@ -93,7 +93,7 @@ class AppTheme {
       iconTheme: IconThemeData(
         color: AppColors.white,
       ),
-      backgroundColor: AppColors.white,
+      backgroundColor: AppColors.black,
       systemOverlayStyle: SystemUiOverlayStyle(
         statusBarBrightness: Brightness.dark,
         statusBarIconBrightness: Brightness.light,
@@ -109,49 +109,32 @@ class AppTheme {
       backgroundColor: AppColors.grey.withOpacity(0.85),
       elevation: 8,
     ),
-  //  useMaterial3: true,
+    //  useMaterial3: true,
     splashColor: AppColors.black,
     hintColor: AppColors.grey,
     cardColor: AppColors.white,
     scaffoldBackgroundColor: AppColors.black,
-    primaryColor: AppColors.black,
+    primaryColor: AppColors.c_222222,
     colorScheme: const ColorScheme.dark(),
     primaryColorDark: AppColors.black,
-    shadowColor: AppColors.grey.withOpacity(0.5),
+    shadowColor: AppColors.c_222222,
     textSelectionTheme:
         const TextSelectionThemeData(cursorColor: AppColors.white),
     textTheme: TextTheme(
       displayLarge: TextStyle(
-            color: AppColors.white,
-            fontSize: 57.sp,
-            fontWeight: FontWeight.w800),
+          color: AppColors.white, fontSize: 57.sp, fontWeight: FontWeight.w800),
       displayMedium: TextStyle(
-          color: AppColors.white,
-          fontSize: 45.sp,
-          fontWeight: FontWeight.w700),
+          color: AppColors.white, fontSize: 45.sp, fontWeight: FontWeight.w700),
       displaySmall: TextStyle(
-            color: AppColors.white,
-            fontSize: 36.sp,
-            fontWeight: FontWeight.w600),
+          color: AppColors.white, fontSize: 36.sp, fontWeight: FontWeight.w600),
       headlineMedium: TextStyle(
-            color: AppColors.white,
-            fontSize: 28.sp,
-            fontWeight: FontWeight.w500),
-
+          color: AppColors.white, fontSize: 28.sp, fontWeight: FontWeight.w500),
       headlineSmall: TextStyle(
-            color: AppColors.white,
-            fontSize: 24.sp,
-            fontWeight: FontWeight.w400),
-
-      titleLarge:TextStyle(
-            color: AppColors.white,
-            fontSize: 22.sp,
-            fontWeight: FontWeight.w300),
-
+          color: AppColors.white, fontSize: 24.sp, fontWeight: FontWeight.w400),
+      titleLarge: TextStyle(
+          color: AppColors.white, fontSize: 22.sp, fontWeight: FontWeight.w300),
       labelMedium: TextStyle(
-            color: AppColors.white,
-            fontSize: 16.sp,
-            fontWeight: FontWeight.w200),
+          color: AppColors.white, fontSize: 16.sp, fontWeight: FontWeight.w200),
     ),
   );
 }

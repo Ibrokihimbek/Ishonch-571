@@ -56,7 +56,11 @@ class AboutScreen extends StatelessWidget {
             SizedBox(
               width: 132.5.w,
               height: 68.64.h,
-              child: Image.asset(AppImages.imageLogo),
+              child: Image.asset(
+                Theme.of(context).dialogBackgroundColor == Colors.white
+                    ? AppImages.imageLogo
+                    : AppImages.imageLogoLight,
+              ),
             ),
             SizedBox(
               child: Text(
