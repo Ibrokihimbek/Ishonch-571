@@ -14,6 +14,7 @@ import 'package:ishonch/data/repositories/geocoding_repository.dart';
 import 'package:ishonch/screens/app_router.dart';
 import 'package:ishonch/screens/bottom_nav/home/bloc/bloc_product/product_bloc.dart';
 import 'package:ishonch/service/api_service/api_service.dart';
+import 'package:ishonch/service/get_it/get_it.dart';
 
 import '../bloc/notifications_bloc/notification_reader_bloc/notification_reader_bloc.dart';
 
@@ -51,8 +52,8 @@ class App extends StatelessWidget {
           create: (context) => ConnectivityCubit(),
         ),
         BlocProvider(
-          create: (context) => NotificationReaderBloc(),
-        ),
+            create: (context) =>
+                getIt<NotificationReaderBloc>()..add(ReadNotificationEvent())),
         BlocProvider(
           create: (context) => OrdersBloc(CategoriesRepo()),
         ),

@@ -32,4 +32,5 @@ class AppImages {
   static const lottiePayment = 'assets/loties/lottie_payment.json';
   static const lottieItem = 'assets/loties/lottie_item.json';
   static const lotieDeliveryInTime = 'assets/loties/delivery_in_time.json';
+  static const noNotification = 'assets/loties/notifications.json';
 }

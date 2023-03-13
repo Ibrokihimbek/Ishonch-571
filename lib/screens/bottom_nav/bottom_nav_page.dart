@@ -26,12 +26,10 @@ class BottomNavPage extends StatefulWidget {
 }
 
 class _BottomNavPageState extends State<BottomNavPage> {
-
   AdaptiveThemeMode? themeMode;
 
-
   Future<void> _getMode() async {
-    // themeMode = await AdaptiveTheme.getThemeMode();
+     themeMode = await AdaptiveTheme.getThemeMode();
     setState(() {});
   }
 
@@ -55,10 +53,7 @@ class _BottomNavPageState extends State<BottomNavPage> {
     getIt<NotificationService>().handleFirebaseNotificationMessages();
     getIt<NotificationService>().setupInteractedMessage();
     _getMode();
-    screens.insert(
-      0,
-      HomePage(onTap: () => _key.currentState!.openDrawer()),
-    );
+    screens.insert(0, HomePage(onTap: () => _key.currentState!.openDrawer()));
     screens.insert(1, NotificationPage());
     screens.insert(2, OrdersPage());
     super.initState();
