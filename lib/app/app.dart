@@ -18,8 +18,10 @@ import 'package:ishonch/service/api_service/api_service.dart';
 import '../bloc/notifications_bloc/notification_reader_bloc/notification_reader_bloc.dart';
 
 import '../cubit/bottom_nav/bottom_nav_cubit.dart';
+import '../cubit/location_permission/location_permission_cubit.dart';
 import '../screens/bottom_nav/home/bloc/bloc_product/product_event.dart';
 
+import '../service/get_it/get_it.dart';
 import '../utils/theme.dart';
 
 class App extends StatelessWidget {
@@ -53,11 +55,8 @@ class App extends StatelessWidget {
         BlocProvider(
             create: (context) =>
                 getIt<NotificationReaderBloc>()..add(ReadNotificationEvent())),
-          create: (context) => OrdersBloc(CategoriesRepo()),
-        ),
         BlocProvider(
-
-          create: (context) => NotificationReaderBloc(),
+          create: (context) => OrdersBloc(CategoriesRepo()),
         ),
         BlocProvider(
           create: (context) => OrdersBloc(CategoriesRepo()),
