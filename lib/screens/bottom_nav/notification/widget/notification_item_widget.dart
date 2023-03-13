@@ -34,7 +34,7 @@ class NotificationCourseItem extends StatelessWidget {
                   Navigator.pushNamed(
                     context,
                     RouteName.productDetail,
-                    arguments: id,
+                    arguments: int.parse(id),
                   );
                 }),
                 child: Container(
