@@ -31,7 +31,7 @@ class ProductsGridWidget extends StatelessWidget {
                     Navigator.pushNamed(
                       context,
                       RouteName.productDetail,
-                      arguments: state.products[index],
+                      arguments: state.products[index].id,
                     );
                   },
                 );
