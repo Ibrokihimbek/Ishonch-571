@@ -16,7 +16,7 @@ class AllCategoriesTitle extends SliverPersistentHeaderDelegate {
 
   @override
   Widget build(
-      BuildContext context, double shrinkOffset, bool overlapsContent) {
+      BuildContext context, double shzzrinkOffset, bool overlapsContent) {
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: screenWidth * 0.055),
       child: Row(
@@ -24,7 +24,7 @@ class AllCategoriesTitle extends SliverPersistentHeaderDelegate {
         children: [
           Text(
             title,
-            style: const TextStyle(fontWeight: FontWeight.w700, fontSize: 20),
+            style: Theme.of(context).textTheme.bodyMedium,
           ),
           InkWell(
             onTap: () {
@@ -32,8 +32,7 @@ class AllCategoriesTitle extends SliverPersistentHeaderDelegate {
             },
             child: Text(
               'Davomi'.tr(),
-              style: const TextStyle(
-                  color: Colors.black54, fontWeight: FontWeight.w500),
+              style: Theme.of(context).textTheme.bodyMedium,
             ),
           ),
         ],
