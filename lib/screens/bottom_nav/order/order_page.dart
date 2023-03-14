@@ -19,8 +19,11 @@ class OrdersPage extends StatelessWidget {
       create: (context) => OrdersBloc(CategoriesRepo())..add(FetchAllOrders()),
       child: Scaffold(
         appBar: AppBar(
+          title: Text(
+            "Buyurtmalar_bolimi".tr(),
+            style: Theme.of(context).textTheme.headlineMedium,
+          ),
 
-          title: Text("Buyurtmalar_bolimi".tr()),
         ),
         body: BlocBuilder<OrdersBloc, OrdersState>(
           builder: (context, state) {
