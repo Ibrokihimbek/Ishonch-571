@@ -15,7 +15,7 @@ class AboutScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const GlobalAppBar(title: "About"),
+      appBar: GlobalAppBar(title: "Haqimizda".tr()),
       body: Container(
         margin: const EdgeInsets.all(10).r,
         width: double.infinity,

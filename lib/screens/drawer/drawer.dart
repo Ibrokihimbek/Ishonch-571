@@ -87,7 +87,7 @@ class _MyDrawerState extends State<MyDrawer> {
                 ListTile(
                   leading: const Icon(Icons.nights_stay_outlined),
                   title: Text(
-                    "Tungi Rejim".tr(),
+                    "Tungi_Rejim".tr(),
                     style: Theme.of(context)
                         .textTheme
                         .titleLarge!

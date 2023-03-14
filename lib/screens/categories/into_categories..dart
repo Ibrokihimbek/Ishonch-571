@@ -1,5 +1,6 @@
 import 'dart:ffi';
 
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:ishonch/data/models/model_category/categories/category_model.dart';
 import 'package:ishonch/screens/app_router.dart';
@@ -34,8 +35,8 @@ class _IntoCategoriesState extends State<IntoCategories> {
               )),
           elevation: 0,
           backgroundColor: const Color(0xFFFFFFFF),
-          title: const Text(
-            'Categories',
+          title: Text(
+            'Kategoriyalar'.tr(),
             style: TextStyle(color: Colors.black),
           ),
         ),
@@ -118,7 +119,7 @@ class _IntoCategoriesState extends State<IntoCategories> {
               height: height(context) * 0.003,
             ),
             Text(
-              '${widget.data[index].product.length} Product',
+              '${widget.data[index].product.length} Produkt'.tr(),
               style: TextStyle(fontWeight: FontWeight.w600),
             )
           ],
