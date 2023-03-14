@@ -1,16 +1,13 @@
 import 'package:ishonch/data/models/my_responce/my_responce.dart';
 import 'package:ishonch/service/api_service/api_service.dart';
+import 'package:ishonch/service/get_it/get_it.dart';
 
 class CategoriesRepo {
-  CategoriesRepo({required this.apiService});
-
-  final ApiService apiService;
+  CategoriesRepo();
 
   Future<MyResponse> getAllCategories() =>
-      apiService.getAllCategories();
+      getIt.get<ApiService>().getAllCategories();
 
   Future<MyResponse> getAllProduct() =>
-      apiService.getAllProduct();
-
-  Future<MyResponse> getAllOrders()=>apiService.getAllOrders();
+      getIt.get<ApiService>().getAllProduct();
 }

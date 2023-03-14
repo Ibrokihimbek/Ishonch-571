@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_snake_navigationbar/flutter_snake_navigationbar.dart';
-import 'package:ishonch/screens/bottom_nav/bloc/bottom_nav_cubit.dart';
+import 'package:ishonch/cubit/bottom_nav/bottom_nav_cubit.dart';
 
 // ignore: must_be_immutable
 class BottomNavBar extends StatelessWidget {

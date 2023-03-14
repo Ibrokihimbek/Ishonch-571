@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
 class BottomNavyBar extends StatelessWidget {
-  BottomNavyBar({
+  const BottomNavyBar({
     Key? key,
     this.selectedIndex = 0,
     this.showElevation = true,
