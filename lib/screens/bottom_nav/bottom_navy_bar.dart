@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class BottomNavyBar extends StatelessWidget {
   const BottomNavyBar({
@@ -105,7 +106,7 @@ class _ItemWidget extends StatelessWidget {
       container: true,
       selected: isSelected,
       child: AnimatedContainer(
-        width: isSelected ? 100 : 50,
+        width: isSelected ? 100.w : 50.w,
         height: double.maxFinite,
         duration: animationDuration,
         curve: curve,
@@ -118,7 +119,7 @@ class _ItemWidget extends StatelessWidget {
           scrollDirection: Axis.horizontal,
           physics: NeverScrollableScrollPhysics(),
           child: Container(
-            width: isSelected ? 100 : 50,
+            width: isSelected ? 100.w : 50.w,
             child: Row(
               //mainAxisSize: MainAxisSize.max,
               mainAxisAlignment: MainAxisAlignment.start,

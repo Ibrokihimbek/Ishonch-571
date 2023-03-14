@@ -12,7 +12,7 @@ import 'package:ishonch/screens/bottom_nav/home/widgets/home_screen_shimmer_load
 class HomePage extends StatefulWidget {
   final VoidCallback onTap;
 
-  const HomePage({super.key, required this.onTap});
+   HomePage({super.key, required this.onTap});
 
   @override
   State<HomePage> createState() => _HomePageState();

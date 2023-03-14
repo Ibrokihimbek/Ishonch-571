@@ -76,13 +76,13 @@ class App extends StatelessWidget {
         BlocProvider(
           create: (context) => LocationPermissionCubit(),
         )
-      ], child: const MyApp()),
+      ], child:  MyApp()),
     );
   }
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+   MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
