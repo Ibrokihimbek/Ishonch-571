@@ -59,8 +59,9 @@ class _PhoneInputComponentState extends State<PhoneInputComponent> {
             SizedBox(width: 20.w),
             Text(
               'Phone Number',
-              style: fontRobotoW400(appcolor: AppColors.black)
-                  .copyWith(fontSize: 16.sp),
+              style: Theme.of(context).textTheme.headlineMedium!.copyWith(
+                fontSize: 16.sp,
+              ),
             ),
             Text(
               '*',

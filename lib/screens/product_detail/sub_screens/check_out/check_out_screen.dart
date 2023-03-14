@@ -73,7 +73,6 @@ class _CheckOutScreenState extends State<CheckOutScreen> {
       builder: (context, state) {
         _addressController.text = state.currentAddress;
         return Scaffold(
-          backgroundColor: AppColors.white,
           appBar: const GlobalAppBar(title: "Checkout"),
           body: SingleChildScrollView(
             child: Form(
@@ -97,7 +96,7 @@ class _CheckOutScreenState extends State<CheckOutScreen> {
                   SizedBox(height: 20.h),
                   GlobalButton(
                     isActive: true,
-                    buttonText: "Select on Map  🗺",
+                    buttonText: "Select on Map ",
                     onTap: () {
                       Navigator.pushNamed(
                         context,

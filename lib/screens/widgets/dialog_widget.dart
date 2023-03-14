@@ -9,6 +9,7 @@ class LoadingDialog extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
+      backgroundColor: Theme.of(context).cardColor,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.all(
           Radius.circular(20.r).r,
@@ -26,7 +27,7 @@ class LoadingDialog extends StatelessWidget {
                 height: 200.h,
                 child: widget,
               ),
-              const CircularProgressIndicator(color: Colors.black),
+               CircularProgressIndicator(color: Theme.of(context).scaffoldBackgroundColor,),
             ],
           );
         },

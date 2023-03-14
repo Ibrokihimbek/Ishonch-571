@@ -27,8 +27,9 @@ class MyTextField extends StatelessWidget {
             const SizedBox(width: 20),
             Text(
               title,
-              style: fontRobotoW400(appcolor: AppColors.black)
-                  .copyWith(fontSize: 16),
+              style: Theme.of(context).textTheme.headlineMedium!.copyWith(
+                    fontSize: 16.sp,
+                  ),
             ),
             Text(
               '*',
