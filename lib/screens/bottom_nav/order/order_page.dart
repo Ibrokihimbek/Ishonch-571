@@ -7,6 +7,7 @@ import 'package:ishonch/bloc/orders_bloc/orders_state.dart';
 import 'package:ishonch/data/repositories/category_repo.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ishonch/screens/bottom_nav/order/widget/order_item.dart';
+import 'package:ishonch/screens/bottom_nav/order/widget/order_shimmer.dart';
 import 'package:ishonch/utils/app_colors.dart';
 import 'package:ishonch/utils/app_image.dart';
 import 'package:lottie/lottie.dart';
@@ -48,7 +49,7 @@ class OrdersPage extends StatelessWidget {
           builder: (context, state) {
             if (state is LoadOrdersInProgress) {
               return const Center(
-                child: CircularProgressIndicator(),
+                child: OrderShimmer(),
               );
             } else if (state is LoadOrdersInFairlure) {
               return Center(child: Text(state.errorText));
