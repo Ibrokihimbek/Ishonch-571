@@ -67,13 +67,9 @@ class ProductDetailScreen extends StatelessWidget {
                                         arguments:
                                             'http://146.190.207.16:3000/${state.product.media.media}');
                                   },
-                                  child: SizedBox(
-                                    width: 150.w,
-                                    height: 150.h,
-                                    child: Image.network(
-                                      "http://146.190.207.16:3000/${state.product.media.media}",
-                                      fit: BoxFit.cover,
-                                    ),
+                                  child: Image.network(
+                                    "http://146.190.207.16:3000/${state.product.media.media}",
+                                   
                                   ),
                                 ),
                               ),
