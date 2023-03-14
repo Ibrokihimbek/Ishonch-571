@@ -50,7 +50,9 @@ class ProductByCategoryItem extends StatelessWidget {
                               borderRadius: BorderRadius.circular(10),
                               child: CachedNetworkImage(
                                 imageUrl:
-                                    'http://146.190.207.16:3000/${state.product.media.media}',width: 120.w,
+                                    'http://146.190.207.16:3000/${state.product.media.media}',
+                                width: 120.w,
+                                height: 100.h,
                                 fit: BoxFit.cover,
                                 placeholder: (context, url) {
                                   return Shimmer.fromColors(

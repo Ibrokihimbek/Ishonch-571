@@ -5,14 +5,12 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:ishonch/cubit/discount/discount_cubit.dart';
 import 'package:ishonch/cubit/discount/discount_state.dart';
 import 'package:ishonch/screens/app_router.dart';
-import 'package:ishonch/utils/app_colors.dart';
 import 'package:ishonch/utils/app_image.dart';
 import 'package:ishonch/utils/my_utils.dart';
-import 'package:ishonch/utils/text_style.dart';
 import 'package:lottie/lottie.dart';
 import 'package:zoom_tap_animation/zoom_tap_animation.dart';
 
-import 'discount_shimmer.dart';
+import '../discount_shimmer.dart';
 
 class DiscountWidget extends   SliverPersistentHeaderDelegate {
   final double screenHeight;

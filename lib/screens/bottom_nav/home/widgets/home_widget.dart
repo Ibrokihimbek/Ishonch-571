@@ -1,13 +1,11 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:ishonch/data/models/model_category/categories/category_model.dart';
-import 'package:ishonch/screens/bottom_nav/home/widgets/widget/all_categories_title.dart';
-import 'package:ishonch/screens/bottom_nav/home/widgets/widget/categories_list.dart';
+import 'package:ishonch/screens/all_products/all_product.dart';
+import 'package:ishonch/screens/bottom_nav/home/widgets/all_categories_title.dart';
+import 'package:ishonch/screens/bottom_nav/home/widgets/categories_list.dart';
 import 'package:ishonch/screens/categories/into_categories..dart';
 import 'package:ishonch/utils/my_utils.dart';
-
-import '../../../../all_products/all_product.dart';
-
 import 'products_grid_home.dart';
 import 'discount_widget.dart';
 
@@ -45,7 +43,7 @@ class HomeWidget extends StatelessWidget {
           delegate: AllCategoriesTitle(
             screenHeight: height(context),
             screenWidth: width(context),
-            title: 'All Products',
+            title: 'Barcha_produktlar'.tr(),
             page: AllProduct(),
           ),
         ),

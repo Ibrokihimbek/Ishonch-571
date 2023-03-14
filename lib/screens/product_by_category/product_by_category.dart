@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:ishonch/data/models/model_category/categories/category_model.dart';
@@ -19,19 +20,19 @@ class ProductByCategory extends StatelessWidget {
         height: 800.h,
         child: data.product.isEmpty
             ? Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Lottie.asset(
-                  AppImages.lotieDeliveryInTime,
-                  width: 200.w,
-                ),
-                Text(
-                  'Hozircha Mahsulotlar mavjud emas',
-                  textAlign: TextAlign.center,
-                  style: Theme.of(context).textTheme.headlineMedium,
-                ),
-              ],
-            )
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Lottie.asset(
+                    AppImages.lotieDeliveryInTime,
+                    width: 200.w,
+                  ),
+                  Text(
+                    'Hozircha_Mahsulotlar_mavjud_emas'.tr(),
+                    textAlign: TextAlign.center,
+                    style: Theme.of(context).textTheme.headlineMedium,
+                  ),
+                ],
+              )
             : GridView(
                 physics: const BouncingScrollPhysics(),
                 gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(

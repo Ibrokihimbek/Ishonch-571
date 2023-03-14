@@ -4,14 +4,16 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:ishonch/cubit/location_permission/location_permission_cubit.dart';
 import 'package:ishonch/cubit/mapping/map_cubit.dart';
+
 import 'package:ishonch/data/models/discount/discount_model.dart';
 import 'package:ishonch/screens/app_router.dart';
 import 'package:ishonch/screens/discount_product/widgets/discount_product_info.dart';
-import 'package:ishonch/screens/product_detail/sub_screens/check_out/check_out_screen.dart';
 import 'package:ishonch/screens/widgets/dialog_widget.dart';
 import 'package:ishonch/utils/app_image.dart';
-import 'package:ishonch/utils/my_utils.dart';
 import 'package:lottie/lottie.dart';
+
+import '../../utils/my_utils.dart';
+import '../product_detail/sub_screens/check_out/check_out_screen.dart';
 
 class DiscountProductDetailScreen extends StatelessWidget {
   final Discount discountProduct;
