@@ -44,7 +44,7 @@ class NotificationCourseItem extends StatelessWidget {
                   height: 70.h,
                   width: 400.w,
                   decoration: BoxDecoration(
-                      color: Colors.white,
+                      color: Theme.of(context).cardColor,
                       borderRadius: BorderRadius.circular(10),
                       boxShadow: const [
                         BoxShadow(
@@ -73,12 +73,16 @@ class NotificationCourseItem extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           SizedBox(height: 5.h,),
-                          Text(productModel.brandName, style: TextStyle(fontSize: 18.sp, fontWeight: FontWeight.w500),),
+                          Text(productModel.brandName,
+                              style: Theme.of(context).textTheme.headlineMedium?.copyWith(fontSize: 16.sp,fontWeight: FontWeight.w600,color: Theme.of(context).cardColor)),
                           Container(
                             height: 40.h ,
                             width: 180.w,
                             padding: EdgeInsets.only(top: 5.h),
-                            child: Text(productModel.description),
+                            child: Text(productModel.description,
+                              style: Theme.of(context).textTheme.headlineMedium?.copyWith(fontSize: 16.sp,fontWeight: FontWeight.w600,color: Theme.of(context).cardColor),
+
+                            ),
                           )
 
                         ],

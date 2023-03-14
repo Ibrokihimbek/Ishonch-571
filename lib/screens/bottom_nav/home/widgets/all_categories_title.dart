@@ -25,7 +25,7 @@ class AllCategoriesTitle extends SliverPersistentHeaderDelegate {
         children: [
           Text(
             title,
-            style: const TextStyle(fontWeight: FontWeight.w700, fontSize: 20),
+            style: Theme.of(context).textTheme.bodyMedium?.copyWith(fontWeight: FontWeight.w800,fontSize: 18.sp),
           ),
           InkWell(
             onTap: () {
