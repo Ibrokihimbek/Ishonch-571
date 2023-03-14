@@ -25,15 +25,6 @@ class _MyDrawerState extends State<MyDrawer> {
     setState(() {});
   }
 
-  Future<void> _switchTheme() async {
-    if (themeMode!.isDark) {
-      AdaptiveTheme.of(context).setLight();
-    } else {
-      AdaptiveTheme.of(context).setDark();
-    }
-    await _getMode();
-  }
-
   @override
   void initState() {
     _getMode();
@@ -94,7 +85,9 @@ class _MyDrawerState extends State<MyDrawer> {
                         .copyWith(fontSize: 16.sp, fontWeight: FontWeight.w500),
                   ),
                   trailing: Switch(
-                      activeColor: AppColors.black,
+                      activeColor: Theme.of(context).cardColor,
+                      inactiveThumbColor: Theme.of(context).cardColor,
+
                       value: widget.IsNightMode,
                       onChanged: widget.onChanged),
                 ),

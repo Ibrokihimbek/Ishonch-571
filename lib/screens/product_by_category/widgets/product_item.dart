@@ -30,14 +30,7 @@ class ProductByCategoryItem extends StatelessWidget {
                       onTap: onTap,
                       child: Container(
                         decoration: BoxDecoration(
-                          boxShadow: [
-                            BoxShadow(
-                              color: Theme.of(context).shadowColor,
-                              blurRadius: 4,
-                              spreadRadius: 3,
-                              offset: const Offset(2, 2),
-                            ),
-                          ],
+                          border: Border.all(width: 1, color: Theme.of(context).hintColor),
                           borderRadius: BorderRadius.circular(14.r),
                           color: Theme.of(context).primaryColor,
                         ),

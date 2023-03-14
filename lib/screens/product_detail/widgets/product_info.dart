@@ -24,15 +24,11 @@ class ProductInfo extends StatelessWidget {
           padding: EdgeInsets.only(
             left: 24.w,
             right: 24.w,
-            top: 10.h,
-            bottom: 80.h,
+            top: 24.h,
+            bottom: 100.h,
           ).r,
           decoration: BoxDecoration(
             color: Theme.of(context).primaryColor,
-            borderRadius: BorderRadius.only(
-              topLeft: Radius.circular(25.w).w,
-              topRight: Radius.circular(25.w).w,
-            ),
           ),
           child: SingleChildScrollView(
             physics: const BouncingScrollPhysics(),
@@ -87,7 +83,7 @@ class ProductInfo extends StatelessWidget {
                       .copyWith(fontSize: 16.sp),
                   "Ma'lumotlar",
                 ),
-                SizedBox(height: 5.h),
+                SizedBox(height: 10.h),
                 product.phoneCharacterics != 0
                     ? PhoneCharacter(product: product)
                     : product.notebookCharacterics != 0
@@ -102,7 +98,7 @@ class ProductInfo extends StatelessWidget {
         Positioned(
           left: 12.w,
           right: 12.w,
-          bottom: 16.h,
+          bottom: 24.h,
           child: GlobalButton(
             isActive: true,
             buttonText: "Buyurtma berish",
