@@ -14,6 +14,7 @@ import 'package:ishonch/screens/widgets/dialog_widget.dart';
 import 'package:ishonch/utils/app_image.dart';
 import 'package:ishonch/utils/my_utils.dart';
 import 'package:lottie/lottie.dart';
+import 'package:zoom_tap_animation/zoom_tap_animation.dart';
 
 import 'sub_screens/check_out/check_out_screen.dart';
 
@@ -35,96 +36,103 @@ class ProductDetailScreen extends StatelessWidget {
             body: state is GettingProductInProgress
                 ? const Center(child: ProductInfoShimmer())
                 : state is GettingProductInSuccess
-                    ? Column(
-                        children: [
-                          SizedBox(height: 40.h),
-                          Container(
-                            width: double.infinity,
-                            height: 300,
-                            color: Colors.transparent,
-                            child: Stack(
-                              children: [
-                                SizedBox(height: 30.h),
-                                GestureDetector(
+                    ? SafeArea(
+                        child: CustomScrollView(
+                          slivers: [
+                            SliverAppBar(
+                              expandedHeight: 350.h,
+                              stretch: true,
+                              leading: Padding(
+                                padding: const EdgeInsets.all(8),
+                                child: ZoomTapAnimation(
+                                  onTap: () {
+                                    Navigator.pop(context);
+                                  },
+                                  child: SvgPicture.asset(
+                                    Theme.of(context)
+                                                .appBarTheme
+                                                .backgroundColor ==
+                                            Colors.white
+                                        ? AppImages.iconBackArrow
+                                        : AppImages.iconBackArrowLight,
+                                  ),
+                                ),
+                              ),
+                              pinned: true,
+                              flexibleSpace: FlexibleSpaceBar(
+                                background: GestureDetector(
                                   onTap: () {
                                     Navigator.pushNamed(
                                         context, RouteName.imageView,
                                         arguments:
                                             'http://146.190.207.16:3000/${state.product.media.media}');
                                   },
-                                  child: Center(
-                                    child: Image.network(
-                                      'http://146.190.207.16:3000/${state.product.media.media}',
-                                    ),
+                                  child: Image.network(
+                                    "http://146.190.207.16:3000/${state.product.media.media}",
+                                   
                                   ),
                                 ),
-                                Positioned(
-                                  left: 10.w,
-                                  child: Padding(
-                                    padding: const EdgeInsets.all(8),
-                                    child: GestureDetector(
-                                      onTap: () {
+                              ),
+                            ),
+                            SliverList(
+                              delegate: SliverChildBuilderDelegate(
+                                childCount: 1,
+                                (BuildContext context, int index) {
+                                  return BlocListener<LocationPermissionCubit,
+                                      LocationPermissionState>(
+                                    listener: (context, state) {
+                                      if (state.myPermissionStatus ==
+                                          MyPermissionStatus.Loading) {
+                                        showDialog(
+                                          barrierDismissible: false,
+                                          builder: (context) => LoadingDialog(
+                                            widget: Lottie.asset(
+                                                AppImages.locationLoading),
+                                          ),
+                                          context: context,
+                                        );
+                                      }
+                                      if (state.myPermissionStatus ==
+                                          MyPermissionStatus.Success) {
+                                        BlocProvider.of<MapCubit>(context)
+                                            .fetchAddress(
+                                          latLongModel: state.latLongModel!,
+                                          kind: "house",
+                                        );
                                         Navigator.pop(context);
-                                      },
-                                      child: SvgPicture.asset(
-                                        AppImages.iconBackArrow,
+                                        Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                            builder: (_) => CheckOutScreen(
+                                              latLong: state.latLongModel!,
+                                              productId: productId,
+                                            ),
+                                          ),
+                                        );
+                                      }
+                                      if (state.myPermissionStatus ==
+                                          MyPermissionStatus.Fail) {
+                                        showInfoSnackBar(
+                                            context, "Permission not found");
+                                      }
+                                    },
+                                    child: Expanded(
+                                      child: ProductInfo(
+                                        product: state.product,
+                                        onTap: () {
+                                          BlocProvider.of<
+                                                      LocationPermissionCubit>(
+                                                  context)
+                                              .fetchCurrentLocation();
+                                        },
                                       ),
                                     ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                          SizedBox(height: 10.h),
-                          BlocListener<LocationPermissionCubit,
-                              LocationPermissionState>(
-                            listener: (context, state) {
-                              if (state.myPermissionStatus ==
-                                  MyPermissionStatus.Loading) {
-                                showDialog(
-                                  barrierDismissible: false,
-                                  builder: (context) => LoadingDialog(
-                                    widget:
-                                        Lottie.asset(AppImages.locationLoading),
-                                  ),
-                                  context: context,
-                                );
-                              }
-                              if (state.myPermissionStatus ==
-                                  MyPermissionStatus.Success) {
-                                BlocProvider.of<MapCubit>(context).fetchAddress(
-                                  latLongModel: state.latLongModel!,
-                                  kind: "house",
-                                );
-                                Navigator.pop(context);
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (_) => CheckOutScreen(
-                                      latLong: state.latLongModel!,
-                                      productId: productId,
-                                    ),
-                                  ),
-                                );
-                              }
-                              if (state.myPermissionStatus ==
-                                  MyPermissionStatus.Fail) {
-                                showInfoSnackBar(
-                                    context, "Permission not found");
-                              }
-                            },
-                            child: Expanded(
-                              child: ProductInfo(
-                                product: state.product,
-                                onTap: () {
-                                  BlocProvider.of<LocationPermissionCubit>(
-                                          context)
-                                      .fetchCurrentLocation();
+                                  );
                                 },
                               ),
                             ),
-                          )
-                        ],
+                          ],
+                        ),
                       )
                     : Center(
                         child: Lottie.asset(
