@@ -17,7 +17,10 @@ class OrdersPage extends StatelessWidget {
       child: Scaffold(
         backgroundColor: const Color(0XFFFCFCFC),
         appBar: AppBar(
-          title: Text("Buyurtmalar_bolimi".tr()),
+          title: Text(
+            "Buyurtmalar_bolimi".tr(),
+            style: Theme.of(context).textTheme.headlineMedium,
+          ),
         ),
         body: BlocBuilder<OrdersBloc, OrdersState>(
           builder: (context, state) {
