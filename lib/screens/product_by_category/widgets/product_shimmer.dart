@@ -8,12 +8,11 @@ class ShimmerWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
-      physics: const NeverScrollableScrollPhysics(),
-      child: Padding(
-        padding: const EdgeInsets.all(12).r,
-        child: shimmerMethod(width: double.infinity, height: 400),
-      )
-    );
+        physics: const NeverScrollableScrollPhysics(),
+        child: Padding(
+          padding: const EdgeInsets.all(12).r,
+          child: shimmerMethod(width: double.infinity, height: 210.h),
+        ));
   }
 
   Shimmer shimmerMethod({required num width, required num height}) {

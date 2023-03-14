@@ -8,7 +8,6 @@ import 'package:ishonch/screens/bottom_nav/home/bloc/bloc_category/category_stat
 import 'package:ishonch/screens/bottom_nav/home/widgets/widget/home_screen_appbar.dart';
 import 'package:ishonch/screens/bottom_nav/home/widgets/widget/home_widget.dart';
 
-
 class HomePage extends StatefulWidget {
   VoidCallback onTap;
 
@@ -23,12 +22,10 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) =>
-          CategoriesBloc(CategoriesRepo())
-            ..add(FetchAllCategories()),
+          CategoriesBloc(CategoriesRepo())..add(FetchAllCategories()),
       child: Scaffold(
-        backgroundColor: const Color(0xFFFFFFFF),
         appBar: HomeScreenAppBar(
-          title: 'Xush Kelibsiz'.tr(),
+          title: 'Xush_Kelibsiz'.tr(),
           onTap: widget.onTap,
         ),
         body: BlocBuilder<CategoriesBloc, CategoriesState>(

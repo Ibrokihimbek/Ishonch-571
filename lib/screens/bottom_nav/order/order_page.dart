@@ -11,6 +11,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ishonch/utils/app_colors.dart';
 import 'package:ishonch/utils/app_image.dart';
 import 'package:lottie/lottie.dart';
+import 'package:lottie/lottie.dart';
+
+import '../../../utils/app_image.dart';
 
 class OrdersPage extends StatelessWidget {
   const OrdersPage({Key? key}) : super(key: key);
@@ -18,10 +21,8 @@ class OrdersPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => OrdersBloc(CategoriesRepo())
-        ..add(FetchAllOrders()),
+      create: (context) => OrdersBloc(CategoriesRepo())..add(FetchAllOrders()),
       child: Scaffold(
-        backgroundColor: const Color(0XFFFCFCFC),
         appBar: AppBar(
           leading: Padding(
             padding: const EdgeInsets.all(8).r,
@@ -45,6 +46,10 @@ class OrdersPage extends StatelessWidget {
           backgroundColor: Colors.white,
           elevation: 0,
           iconTheme: const IconThemeData(color: AppColors.black),
+          title: Text(
+            "Buyurtmalar_bolimi".tr(),
+            style: Theme.of(context).textTheme.headlineMedium,
+          ),
         ),
         body: BlocBuilder<OrdersBloc, OrdersState>(
           builder: (context, state) {
@@ -75,14 +80,14 @@ class OrdersPage extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            " Name : ${order.clientName}",
+                            "Buyurtma_nomi : ${order.clientName}".tr(),
                             style: const TextStyle(fontSize: 20),
                           ),
                           const SizedBox(
                             height: 10,
                           ),
                           Text(
-                            " number: ${order.clientPhone.toString()}",
+                            "klient_raqami: ${order.clientPhone}".tr(),
                             style: const TextStyle(
                                 fontSize: 14, fontWeight: FontWeight.w400),
                           ),

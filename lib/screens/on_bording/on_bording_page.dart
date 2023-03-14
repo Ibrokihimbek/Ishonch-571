@@ -40,7 +40,7 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
                       saveLogin(context);
                     },
                     child: Text(
-                      'Oʻtkazib yuborish'.tr(),
+                      "O'tkazib_yuborish".tr(),
                       style: fontRobotoW400(appcolor: AppColors.black)
                           .copyWith(fontSize: 16.sp),
                     ),
