@@ -12,13 +12,7 @@ class ProductsGridWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<ProductsBloc, ProductsState>(
       builder: (context, state) {
-        if (state is LoadProductsInProgress) {
-          return const SliverToBoxAdapter(
-            child: Center(
-              child: CircularProgressIndicator(),
-            ),
-          );
-        } else if (state is LoadProductsInSuccess) {
+       if (state is LoadProductsInSuccess) {
           return SliverGrid(
             delegate: SliverChildBuilderDelegate(
               (context, index) {

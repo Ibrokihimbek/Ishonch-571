@@ -26,10 +26,6 @@ class AllProduct extends StatelessWidget {
               return const Center(
                 child: Text('hali data yoq'),
               );
-            } else if (state is LoadProductsInProgress) {
-              return const Center(
-                child: CircularProgressIndicator(),
-              );
             } else if (state is LoadProductsInSuccess) {
               return AllProductsScreen(data: state.products);
             } else if (state is LoadProductsInFairlure) {
