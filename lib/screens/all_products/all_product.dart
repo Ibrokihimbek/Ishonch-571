@@ -16,7 +16,6 @@ class AllProduct extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider( create: (context) => ProductsBloc(CategoriesRepo())..add(FetchAllProducts()),
       child: Scaffold(
-        backgroundColor: const Color(0xFFFFFFFF),
         appBar: const GlobalAppBar(title: "All Products"),
         body: BlocBuilder<ProductsBloc, ProductsState>(
             builder: (context, state) {
