@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:zoom_tap_animation/zoom_tap_animation.dart';
 import '../../../../cubit/product_detail/product_detail_cubit.dart';
 import '../../../../cubit/product_detail/product_detail_state.dart';
 import '../../../../data/models/model_category/categories/product/product_model.dart';
@@ -30,7 +31,7 @@ class NotificationCourseItem extends StatelessWidget {
                 ? "http://146.190.207.16:3000/${state.product.media.media.toString()}"
                 : "https://avatars.mds.yandex.net/i?id=6d2220ecdde320c636abeab21474d37c10c9a110-6335046-images-thumbs&n=13";
             return Column(children: [
-              InkWell(
+              ZoomTapAnimation(
                 onTap: (() {
                   Navigator.pushNamed(
                     context,
