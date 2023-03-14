@@ -35,9 +35,9 @@ class AppRoutes {
   static Route generateRoute(RouteSettings settings) {
     switch (settings.name) {
       case RouteName.splash:
-        return MaterialPageRoute(builder: (_) => const SplashPage());
+        return MaterialPageRoute(builder: (_) =>  SplashPage());
       case RouteName.onBoarding:
-        return MaterialPageRoute(builder: (_) => const OnBoardingPage());
+        return MaterialPageRoute(builder: (_) =>  OnBoardingPage());
       case RouteName.productByCategory:
         return MaterialPageRoute(
           builder: (_) => ProductByCategory(
@@ -57,7 +57,7 @@ class AppRoutes {
           ),
         );
       case RouteName.languageChange:
-        return MaterialPageRoute(builder: (_) => const LanguageScreen());
+        return MaterialPageRoute(builder: (_) =>  LanguageScreen());
       case RouteName.noInternet:
         return MaterialPageRoute(
           builder: (_) => NoInternetScreen(
@@ -65,7 +65,7 @@ class AppRoutes {
           ),
         );
       case RouteName.about:
-        return MaterialPageRoute(builder: (_) => const AboutScreen());
+        return MaterialPageRoute(builder: (_) =>  AboutScreen());
       case RouteName.checkOut:
         return MaterialPageRoute(
           builder: (_) => CheckOutScreen(
@@ -84,9 +84,9 @@ class AppRoutes {
             builder: (_) => DiscountProductDetailScreen(
                 discountProduct: settings.arguments as Discount));
       case RouteName.bottomNavigation:
-        return MaterialPageRoute(builder: (_) => const BottomNavPage());
+        return MaterialPageRoute(builder: (_) =>  BottomNavPage());
       default:
-        return MaterialPageRoute(builder: (_) => const Scaffold());
+        return MaterialPageRoute(builder: (_) =>  Scaffold());
     }
   }
 }

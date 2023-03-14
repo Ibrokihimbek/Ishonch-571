@@ -25,25 +25,30 @@ class AllCategoriesTitle extends SliverPersistentHeaderDelegate {
         children: [
           Text(
             title,
-            style: Theme.of(context).textTheme.bodyMedium?.copyWith(fontWeight: FontWeight.w800,fontSize: 18.sp),
+            style: Theme.of(context)
+                .textTheme
+                .bodyMedium
+                ?.copyWith(fontWeight: FontWeight.w800, fontSize: 18.sp),
           ),
           InkWell(
-            onTap: () {
-              Navigator.push(context, MaterialPageRoute(builder: (_) => page));
-            },
-            child: Container(
-              width: 60.w,
-              height: 25.h,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10)
-              ),
-              child: Center(child: Text(
-                'Davomi'.tr(),
-                style: const TextStyle(
-                    color: Colors.black54, fontWeight: FontWeight.w500),
-              ),),
-            )
-          ),
+              onTap: () {
+                Navigator.push(
+                    context, MaterialPageRoute(builder: (_) => page));
+              },
+              child: Container(
+                width: 60.w,
+                height: 25.h,
+                decoration:
+                    BoxDecoration(borderRadius: BorderRadius.circular(10)),
+                child: Center(
+                  child: Text(
+                    'Davomi'.tr(),
+                    maxLines: 1,
+                    style: const TextStyle(
+                        color: Colors.black54, fontWeight: FontWeight.w500),
+                  ),
+                ),
+              )),
         ],
       ),
     );
