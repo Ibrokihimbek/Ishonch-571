@@ -9,7 +9,6 @@ class MessageItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-   // String image = Uri.parse(notification.image).isAbsolute?notification.image:"https://avatars.mds.yandex.net/i?id=6d2220ecdde320c636abeab21474d37c10c9a110-6335046-images-thumbs&n=13";
     return Column(
       children: [
         const SizedBox(

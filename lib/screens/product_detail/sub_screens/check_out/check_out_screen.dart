@@ -14,7 +14,6 @@ import 'package:ishonch/screens/widgets/animated_snackbar.dart';
 import 'package:ishonch/screens/widgets/dialog_widget.dart';
 import 'package:ishonch/screens/widgets/global_appbar.dart';
 import 'package:ishonch/screens/widgets/global_button.dart';
-import 'package:ishonch/utils/app_colors.dart';
 import 'package:ishonch/utils/app_image.dart';
 import 'package:lottie/lottie.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';

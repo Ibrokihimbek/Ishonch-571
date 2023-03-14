@@ -37,7 +37,7 @@ class _HomePageState extends State<HomePage> {
               return HomeScreenShimmerLoader();
             } else if (state is LoadCategoriesInSuccess) {
               return HomeWidget(data: state.categories);
-            } else if (state is LoadCategoriesInFairlure) {
+            } else if (state is LoadCategoriesInFailure) {
               return Text(state.errorText);
             }
             return const SizedBox();
