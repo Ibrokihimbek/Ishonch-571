@@ -10,6 +10,7 @@ import 'notification_shimmer.dart';
 // ignore: must_be_immutable
 class NotificationCourseItem extends StatelessWidget {
   final String id;
+
   const NotificationCourseItem({Key? key, required this.id}) : super(key: key);
 
   @override
@@ -41,8 +42,21 @@ class NotificationCourseItem extends StatelessWidget {
                   margin: const EdgeInsets.only(top: 10, bottom: 10),
                   height: 70.h,
                   width: 400.w,
+                  decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(10),
+                      boxShadow: const [
+                        BoxShadow(
+                          color: Colors.black12,
+                          offset: Offset(2, 3), // horizontal, vertical
+                          blurRadius: 1,
+                        ),
+                      ]),
                   child: Row(
                     children: [
+                      SizedBox(
+                        width: 10.w,
+                      ),
                       Container(
                         height: 60.h,
                         width: 100.h,
@@ -57,24 +71,20 @@ class NotificationCourseItem extends StatelessWidget {
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text(productModel.brandName),
+                          SizedBox(height: 5.h,),
+                          Text(productModel.brandName, style: TextStyle(fontSize: 18.sp, fontWeight: FontWeight.w500),),
                           Container(
-                            padding: const EdgeInsets.all(2),
-                            margin: EdgeInsets.only(top: 4.h),
-                            height: 20.h,
-                            alignment: Alignment.center,
-                            decoration: BoxDecoration(
-                                color: Colors.white.withOpacity(0.6),
-                                borderRadius: BorderRadius.circular(8.r)),
+                            height: 40.h ,
+                            width: 180.w,
+                            padding: EdgeInsets.only(top: 5.h),
+                            child: Text(productModel.description),
                           )
+
                         ],
                       )
                     ],
                   ),
                 ),
-              ),
-              const Divider(
-                thickness: 0.2,
               ),
             ]);
           }
