@@ -52,11 +52,7 @@ class DiscountWidget extends   SliverPersistentHeaderDelegate {
                         ),
                         Text(
                           '${state.discount[index].discount}% Off',
-                          style: fontRobotoW500(
-                              appcolor: AppColors.black)
-                              .copyWith(
-                            fontSize: 28.sp,
-                          ),
+                          style:Theme.of(context).textTheme.displayLarge?.copyWith(fontSize: 25.sp)
                         ),
                         RichText(
                           text: TextSpan(
@@ -73,11 +69,7 @@ class DiscountWidget extends   SliverPersistentHeaderDelegate {
                                       : state.discount[index]
                                       .productName.length,
                                 ),
-                                style: const TextStyle(
-                                  color: AppColors.black,
-                                  fontWeight: FontWeight.w500,
-                                  fontSize: 18,
-                                ),
+                                style: Theme.of(context).textTheme.headlineMedium?.copyWith(fontSize: 16.sp,fontWeight: FontWeight.w600)
                               ),
                               TextSpan(
                                 text: state.discount[index]
@@ -85,8 +77,7 @@ class DiscountWidget extends   SliverPersistentHeaderDelegate {
                                     18
                                     ? "..."
                                     : "",
-                                style: const TextStyle(
-                                    color: Colors.grey),
+                                style:Theme.of(context).textTheme.headlineMedium?.copyWith(fontSize: 12.sp,fontWeight: FontWeight.w600)
                               )
                             ],
                           ),
@@ -96,11 +87,7 @@ class DiscountWidget extends   SliverPersistentHeaderDelegate {
                         ),
                         Text(
                           'Price: ${state.discount[index].productPrice} ${state.discount[index].currency.currencyName}',
-                          style: const TextStyle(
-                            color: AppColors.black,
-                            fontWeight: FontWeight.w400,
-                            fontSize: 14,
-                          ),
+                          style: Theme.of(context).textTheme.headlineMedium?.copyWith(fontSize: 12.sp,fontWeight: FontWeight.w600)
                         ),
                         SizedBox(
                           height: screenHeight * 0.016
@@ -120,13 +107,10 @@ class DiscountWidget extends   SliverPersistentHeaderDelegate {
                               color: Colors.black,
                               borderRadius: BorderRadius.circular(25),
                             ),
-                            child: const Center(
+                            child:  Center(
                                 child: Text(
                                   'Get now',
-                                  style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 12,
-                                  ),
+                                  style: Theme.of(context).textTheme.headlineMedium?.copyWith(fontSize: 10.sp,fontWeight: FontWeight.w800,color: Colors.white),
                                 )),
                           ),
                         ),

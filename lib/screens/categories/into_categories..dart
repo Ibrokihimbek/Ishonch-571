@@ -1,8 +1,10 @@
 import 'dart:ffi';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:ishonch/data/models/model_category/categories/category_model.dart';
 import 'package:ishonch/screens/app_router.dart';
+import 'package:ishonch/screens/widgets/global_appbar.dart';
 import 'package:ishonch/utils/app_image.dart';
 import 'package:ishonch/utils/my_utils.dart';
 import 'package:zoom_tap_animation/zoom_tap_animation.dart';
@@ -22,23 +24,7 @@ class _IntoCategoriesState extends State<IntoCategories> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: const Color(0xFFFFFFFF),
-        appBar: AppBar(
-          leading: IconButton(
-              onPressed: () {
-                Navigator.pop(context);
-              },
-              icon: const Icon(
-                Icons.arrow_back,
-                color: Colors.black,
-              )),
-          elevation: 0,
-          backgroundColor: const Color(0xFFFFFFFF),
-          title: const Text(
-            'Categories',
-            style: TextStyle(color: Colors.black),
-          ),
-        ),
+        appBar: GlobalAppBar(title: 'Categories'),
         body: ListView.builder(
           physics: const BouncingScrollPhysics(),
           itemCount: widget.data.length,
@@ -53,32 +39,14 @@ class _IntoCategoriesState extends State<IntoCategories> {
                         arguments: widget.data[index]);
                   },
                   child: Container(
-                      padding: EdgeInsets.symmetric(
-                          horizontal: width(context) * 0.04),
                       height: height(context) * 0.15,
                       width: width(context),
                       decoration: BoxDecoration(
-                        color: const Color(0XFFF2F2F2),
-                        boxShadow: const [
+                        color: Colors.white,
+                        boxShadow: [
                           BoxShadow(
-                            offset: Offset(-1, -1),
-                            color: Colors.grey,
-                            blurRadius: 2,
-                          ),
-                          BoxShadow(
-                            offset: Offset(1, 1),
-                            color: Colors.grey,
-                            blurRadius: 2,
-                          ),
-                          BoxShadow(
-                            offset: Offset(1, -1),
-                            color: Colors.grey,
-                            blurRadius: 2,
-                          ),
-                          BoxShadow(
-                            offset: Offset(-1, 1),
-                            color: Colors.grey,
-                            blurRadius: 2,
+                            color: Colors.grey.withOpacity(0.6),
+                            blurRadius: 6,
                           ),
                         ],
                         borderRadius:
@@ -94,34 +62,50 @@ class _IntoCategoriesState extends State<IntoCategories> {
     index % 2 == 0 ? isTrue = false : isTrue = true;
     return Container(
         height: height(context) * 0.15,
-        width: width(context) * 0.54,
+        width: width(context) * 0.64,
         decoration: BoxDecoration(
-            image: DecorationImage(
-                colorFilter:
-                    ColorFilter.mode(Color(0XFFF2F2F2), BlendMode.darken),
-                alignment:
-                    isTrue ? Alignment.centerLeft : Alignment.centerRight,
-                image: NetworkImage(
-                    'http://146.190.207.16:3000/${widget.data[index].categoryImage}'))),
-        child: Column(
-          crossAxisAlignment:
-              isTrue ? CrossAxisAlignment.end : CrossAxisAlignment.start,
-          children: [
-            SizedBox(
-              height: height(context) * 0.038,
-            ),
-            Text(
-              widget.data[index].categoryName,
-              style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
-            ),
-            SizedBox(
-              height: height(context) * 0.003,
-            ),
-            Text(
-              '${widget.data[index].product.length} Product',
-              style: TextStyle(fontWeight: FontWeight.w600),
-            )
-          ],
+          borderRadius: BorderRadius.only(
+            topLeft: Radius.circular(width(context) * 0.04),
+            topRight: Radius.circular(width(context) * 0.04),
+            bottomLeft: Radius.circular(width(context) * 0.04),
+            bottomRight: Radius.circular(width(context) * 0.04),
+          ),
+          image: DecorationImage(
+            colorFilter: const ColorFilter.mode(Color(0XFFF2F2F2), BlendMode.darken),
+            alignment: isTrue ? Alignment.centerLeft : Alignment.centerRight,
+            image: NetworkImage(
+                'http://146.190.207.16:3000/${widget.data[index].categoryImage}'),
+          ),
+        ),
+        child: Padding(
+          padding: EdgeInsets.only(left: 24.0.r,right: 24.0.r),
+          child: Column(
+            crossAxisAlignment:
+                isTrue ? CrossAxisAlignment.end : CrossAxisAlignment.start,
+            children: [
+              SizedBox(
+                height: height(context) * 0.038,
+              ),
+              Text(
+                widget.data[index].categoryName,
+                style: Theme.of(context)
+                    .textTheme
+                    .headlineMedium
+                    ?.copyWith(fontWeight: FontWeight.w800, fontSize: 16.sp,color: Colors.black),
+              ),
+              SizedBox(
+                height: height(context) * 0.003,
+              ),
+              Text(
+                '${widget.data[index].product.length} Product',
+                style: Theme.of(context)
+                    .textTheme
+                    .headlineMedium
+                    ?.copyWith(fontWeight: FontWeight.w600, fontSize: 12.sp,
+                color: Colors.black),
+              )
+            ],
+          ),
         ));
   }
 }

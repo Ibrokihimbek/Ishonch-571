@@ -1,5 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../../data/models/model_category/categories/category_model.dart';
 import '../../../../app_router.dart';
@@ -46,7 +47,8 @@ class CategoriesList extends SliverPersistentHeaderDelegate {
                         borderRadius: BorderRadius.circular(12)),
                   ),
                   SizedBox(height: screenHeight * 0.005),
-                  Text(data[index].categoryName)
+                  Text(data[index].categoryName,
+                  style: Theme.of(context).textTheme.headlineMedium?.copyWith(fontSize: 14.sp,fontWeight: FontWeight.w600,color: Theme.of(context).cardColor),)
                 ],
               ),
             );
