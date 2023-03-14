@@ -1,5 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class AllCategoriesTitle extends SliverPersistentHeaderDelegate {
   final double screenHeight;
@@ -24,7 +25,7 @@ class AllCategoriesTitle extends SliverPersistentHeaderDelegate {
         children: [
           Text(
             title,
-            style: Theme.of(context).textTheme.bodyMedium,
+            style: Theme.of(context).textTheme.bodyMedium?.copyWith(fontWeight: FontWeight.w800,fontSize: 18.sp),
           ),
           InkWell(
             onTap: () {
@@ -32,7 +33,7 @@ class AllCategoriesTitle extends SliverPersistentHeaderDelegate {
             },
             child: Text(
               'Davomi'.tr(),
-              style: Theme.of(context).textTheme.bodyMedium,
+              style: Theme.of(context).textTheme.bodyMedium?.copyWith(fontSize: 12.sp,fontWeight: FontWeight.w500,),
             ),
           ),
         ],

@@ -79,7 +79,7 @@ class ProductByCategoryItem extends StatelessWidget {
                                   style: Theme.of(context)
                                       .textTheme
                                       .displayMedium!
-                                      .copyWith(fontSize: 16.sp),
+                                      .copyWith(fontSize: 16.sp,fontWeight: FontWeight.w600),
                                 ),
                                 subtitle: Text(
                                   'Price: ${state.product.productPrice}',
@@ -87,7 +87,7 @@ class ProductByCategoryItem extends StatelessWidget {
                                   style: Theme.of(context)
                                       .textTheme
                                       .titleLarge!
-                                      .copyWith(fontSize: 14.sp),
+                                      .copyWith(fontSize: 14.sp,fontWeight: FontWeight.w600),
                                 ),
                               ),
                             ),

@@ -1,4 +1,3 @@
-// import 'package:adaptive_theme/adaptive_theme.dart';
 import 'package:adaptive_theme/adaptive_theme.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:easy_localization/easy_localization.dart';
