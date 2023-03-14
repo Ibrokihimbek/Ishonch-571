@@ -4,6 +4,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:ishonch/cubit/product_detail/product_detail_cubit.dart';
 import 'package:ishonch/cubit/product_detail/product_detail_state.dart';
+import 'package:ishonch/screens/bottom_nav/home/bloc/bloc_product/product_bloc.dart';
+import 'package:ishonch/screens/bottom_nav/home/bloc/bloc_product/product_event.dart';
 import 'package:ishonch/screens/product_by_category/widgets/product_shimmer.dart';
 import 'package:ishonch/utils/app_image.dart';
 import 'package:lottie/lottie.dart';
@@ -88,12 +90,11 @@ class ProductByCategoryItem extends StatelessWidget {
                         ),
                       ),
                     )
-                  : Center(
-                      child: Lottie.asset(
-                        AppImages.lottieItem,
-                        width: 200.w,
-                      ),
-                    );
+                  : Center(child: GestureDetector(
+              onTap: (){
+                BlocProvider.of<ProductsBloc>(context).add(FetchAllProducts());
+              },
+              child: const Text("REFRESH")));
         },
       ),
     );
