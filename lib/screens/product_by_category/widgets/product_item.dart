@@ -1,13 +1,13 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:ishonch/cubit/product_detail/product_detail_cubit.dart';
 import 'package:ishonch/cubit/product_detail/product_detail_state.dart';
 import 'package:ishonch/screens/product_by_category/widgets/product_shimmer.dart';
-import 'package:ishonch/utils/app_colors.dart';
 import 'package:ishonch/utils/app_image.dart';
-import 'package:ishonch/utils/text_style.dart';
 import 'package:lottie/lottie.dart';
+import 'package:shimmer/shimmer.dart';
 import 'package:zoom_tap_animation/zoom_tap_animation.dart';
 
 class ProductByCategoryItem extends StatelessWidget {
@@ -32,14 +32,14 @@ class ProductByCategoryItem extends StatelessWidget {
                         decoration: BoxDecoration(
                           boxShadow: [
                             BoxShadow(
-                              color: Colors.grey.shade300,
+                              color: Theme.of(context).shadowColor,
                               blurRadius: 4,
                               spreadRadius: 3,
                               offset: const Offset(2, 2),
                             ),
                           ],
                           borderRadius: BorderRadius.circular(14.r),
-                          color: AppColors.white,
+                          color: Theme.of(context).primaryColor,
                         ),
                         margin: const EdgeInsets.all(10).r,
                         padding: const EdgeInsets.symmetric(vertical: 10).r,
@@ -48,10 +48,26 @@ class ProductByCategoryItem extends StatelessWidget {
                           children: [
                             ClipRRect(
                               borderRadius: BorderRadius.circular(10),
-                              child: Image.network(
-                                'http://146.190.207.16:3000/${state.product.media.media}',
-                                width: 115,
-                                height: 115,
+                              child: CachedNetworkImage(
+                                imageUrl:
+                                    'http://146.190.207.16:3000/${state.product.media.media}',
+                                width: 120.w,
+                                height: 100.h,
+                                fit: BoxFit.cover,
+                                placeholder: (context, url) {
+                                  return Shimmer.fromColors(
+                                    period: const Duration(seconds: 2),
+                                    baseColor: Colors.grey.shade300,
+                                    highlightColor: Colors.grey.shade100,
+                                    child: Container(
+                                      width: 120,
+                                      height: 100,
+                                      color: Colors.white,
+                                    ),
+                                  );
+                                },
+                                errorWidget: (context, url, error) =>
+                                    const Icon(Icons.error),
                               ),
                             ),
                             SizedBox(height: 10.h),
@@ -60,16 +76,18 @@ class ProductByCategoryItem extends StatelessWidget {
                                 title: Text(
                                   state.product.productName,
                                   textAlign: TextAlign.center,
-                                  style: fontRobotoW600(
-                                    appcolor: AppColors.black,
-                                  ).copyWith(fontSize: 16.sp),
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .displayMedium!
+                                      .copyWith(fontSize: 16.sp),
                                 ),
                                 subtitle: Text(
                                   'Price: ${state.product.productPrice}',
                                   textAlign: TextAlign.center,
-                                  style:
-                                      fontRobotoW300(appcolor: AppColors.black)
-                                          .copyWith(fontSize: 14.sp),
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .titleLarge!
+                                      .copyWith(fontSize: 14.sp),
                                 ),
                               ),
                             ),

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:zoom_tap_animation/zoom_tap_animation.dart';
 import '../../../../cubit/product_detail/product_detail_cubit.dart';
 import '../../../../cubit/product_detail/product_detail_state.dart';
 import '../../../../data/models/model_category/categories/product/product_model.dart';
@@ -10,6 +11,7 @@ import 'notification_shimmer.dart';
 // ignore: must_be_immutable
 class NotificationCourseItem extends StatelessWidget {
   final String id;
+
   const NotificationCourseItem({Key? key, required this.id}) : super(key: key);
 
   @override
@@ -29,7 +31,7 @@ class NotificationCourseItem extends StatelessWidget {
                 ? "http://146.190.207.16:3000/${state.product.media.media.toString()}"
                 : "https://avatars.mds.yandex.net/i?id=6d2220ecdde320c636abeab21474d37c10c9a110-6335046-images-thumbs&n=13";
             return Column(children: [
-              InkWell(
+              ZoomTapAnimation(
                 onTap: (() {
                   Navigator.pushNamed(
                     context,
@@ -41,8 +43,21 @@ class NotificationCourseItem extends StatelessWidget {
                   margin: const EdgeInsets.only(top: 10, bottom: 10),
                   height: 70.h,
                   width: 400.w,
+                  decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(10),
+                      boxShadow: const [
+                        BoxShadow(
+                          color: Colors.black12,
+                          offset: Offset(2, 3), // horizontal, vertical
+                          blurRadius: 1,
+                        ),
+                      ]),
                   child: Row(
                     children: [
+                      SizedBox(
+                        width: 10.w,
+                      ),
                       Container(
                         height: 60.h,
                         width: 100.h,
@@ -57,24 +72,20 @@ class NotificationCourseItem extends StatelessWidget {
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text(productModel.brandName),
+                          SizedBox(height: 5.h,),
+                          Text(productModel.brandName, style: TextStyle(fontSize: 18.sp, fontWeight: FontWeight.w500),),
                           Container(
-                            padding: const EdgeInsets.all(2),
-                            margin: EdgeInsets.only(top: 4.h),
-                            height: 20.h,
-                            alignment: Alignment.center,
-                            decoration: BoxDecoration(
-                                color: Colors.white.withOpacity(0.6),
-                                borderRadius: BorderRadius.circular(8.r)),
+                            height: 40.h ,
+                            width: 180.w,
+                            padding: EdgeInsets.only(top: 5.h),
+                            child: Text(productModel.description),
                           )
+
                         ],
                       )
                     ],
                   ),
                 ),
-              ),
-              const Divider(
-                thickness: 0.2,
               ),
             ]);
           }

@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -12,6 +13,7 @@ import 'package:ishonch/utils/app_colors.dart';
 import 'package:ishonch/utils/app_image.dart';
 import 'package:lottie/lottie.dart';
 
+
 class OrdersPage extends StatelessWidget {
   const OrdersPage({Key? key}) : super(key: key);
 
@@ -20,7 +22,6 @@ class OrdersPage extends StatelessWidget {
     return BlocProvider(
       create: (context) => OrdersBloc(CategoriesRepo())..add(FetchAllOrders()),
       child: Scaffold(
-        backgroundColor: const Color(0XFFFCFCFC),
         appBar: AppBar(
           leading: Padding(
             padding: const EdgeInsets.all(8).r,
@@ -44,6 +45,10 @@ class OrdersPage extends StatelessWidget {
           backgroundColor: Colors.white,
           elevation: 0,
           iconTheme: const IconThemeData(color: AppColors.black),
+          title: Text(
+            "Buyurtmalar_bolimi".tr(),
+            style: Theme.of(context).textTheme.headlineMedium,
+          ),
         ),
         body: BlocBuilder<OrdersBloc, OrdersState>(
           builder: (context, state) {

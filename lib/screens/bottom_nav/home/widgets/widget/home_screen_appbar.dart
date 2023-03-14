@@ -13,11 +13,10 @@ class HomeScreenAppBar extends StatelessWidget implements PreferredSize {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      elevation: 0,
       leading: IconButton(
         onPressed: onTap,
         icon: SvgPicture.asset(
-          AppImages.iconMenu,
+          Theme.of(context).appBarTheme.backgroundColor==Colors.white?AppImages.iconMenu:AppImages.iconMenuLight,
         ),
       ),
       title: Text(title, style: Theme.of(context).textTheme.headlineMedium),
