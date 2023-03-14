@@ -11,10 +11,6 @@ class NotificationAppBar extends StatelessWidget implements PreferredSize {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-
-     leading: Padding(
-         padding: const EdgeInsets.all(10),
-         child: SvgPicture.asset(AppImages.iconBackArrow)),
       title: Text(
         "Notification",
         style: Theme.of(context).textTheme.headlineMedium,

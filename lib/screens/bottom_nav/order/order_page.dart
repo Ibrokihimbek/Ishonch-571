@@ -23,26 +23,6 @@ class OrdersPage extends StatelessWidget {
       create: (context) => OrdersBloc(CategoriesRepo())..add(FetchAllOrders()),
       child: Scaffold(
         appBar: AppBar(
-          leading: Padding(
-            padding: const EdgeInsets.all(8).r,
-            child: InkWell(
-              borderRadius: BorderRadius.circular(20),
-              onTap: () {},
-              child: Container(
-                padding: const EdgeInsets.all(10).r,
-                width: 10.w,
-                height: 10.h,
-                decoration: BoxDecoration(
-                    color: AppColors.black,
-                    borderRadius: BorderRadius.circular(100)),
-                child: SvgPicture.asset(
-                  AppImages.iconBackArrow,
-                  width: 10.w,
-                ),
-              ),
-            ),
-          ),
-          backgroundColor: Colors.white,
           elevation: 0,
           iconTheme: const IconThemeData(color: AppColors.black),
           title: Text(
