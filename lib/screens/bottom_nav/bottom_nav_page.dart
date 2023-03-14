@@ -5,13 +5,12 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:ishonch/cubit/bottom_nav/bottom_nav_cubit.dart';
 import 'package:ishonch/screens/app_router.dart';
 import 'package:ishonch/screens/drawer/drawer.dart';
 import 'package:ishonch/screens/bottom_nav/home/home_page.dart';
 import 'package:ishonch/screens/bottom_nav/notification/notification_page.dart';
 import 'package:ishonch/utils/app_image.dart';
-
-import '../../cubit/bottom_nav/bottom_nav_cubit.dart';
 import '../../cubit/connectivity/connectivity_cubit.dart';
 import '../../service/get_it/get_it.dart';
 import '../../service/notification_service/notification_service.dart';

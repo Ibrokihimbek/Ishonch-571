@@ -12,7 +12,6 @@ import 'package:ishonch/utils/my_utils.dart';
 import 'package:ishonch/utils/text_style.dart';
 import 'package:lottie/lottie.dart';
 import 'package:zoom_tap_animation/zoom_tap_animation.dart';
-
 import 'discount_shimmer.dart';
 
 class DiscountWidget extends SliverPersistentHeaderDelegate {

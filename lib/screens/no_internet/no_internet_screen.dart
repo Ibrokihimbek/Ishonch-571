@@ -5,9 +5,9 @@ import 'package:ishonch/cubit/connectivity/connectivity_cubit.dart';
 import 'package:ishonch/utils/app_image.dart';
 
 class NoInternetScreen extends StatelessWidget {
-  VoidCallback voidCallback;
+  final VoidCallback voidCallback;
 
-  NoInternetScreen({required this.voidCallback, Key? key}) : super(key: key);
+  const NoInternetScreen({required this.voidCallback, Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

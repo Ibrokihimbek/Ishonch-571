@@ -1,8 +1,6 @@
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-
+import 'package:ishonch/screens/app_router.dart';
 import '../../../../../data/models/model_category/categories/category_model.dart';
-import '../../../../app_router.dart';
 
 class CategoriesList extends SliverPersistentHeaderDelegate {
   final double screenHeight;
