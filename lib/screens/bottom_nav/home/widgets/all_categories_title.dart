@@ -17,7 +17,7 @@ class AllCategoriesTitle extends SliverPersistentHeaderDelegate {
 
   @override
   Widget build(
-      BuildContext context, double shzzrinkOffset, bool overlapsContent) {
+      BuildContext context, double shrinkOffset, bool overlapsContent) {
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: screenWidth * 0.055),
       child: Row(
@@ -31,10 +31,18 @@ class AllCategoriesTitle extends SliverPersistentHeaderDelegate {
             onTap: () {
               Navigator.push(context, MaterialPageRoute(builder: (_) => page));
             },
-            child: Text(
-              'Davomi'.tr(),
-              style: Theme.of(context).textTheme.bodyMedium?.copyWith(fontSize: 12.sp,fontWeight: FontWeight.w500,),
-            ),
+            child: Container(
+              width: 60.w,
+              height: 25.h,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(10)
+              ),
+              child: Center(child: Text(
+                'Davomi'.tr(),
+                style: const TextStyle(
+                    color: Colors.black54, fontWeight: FontWeight.w500),
+              ),),
+            )
           ),
         ],
       ),
