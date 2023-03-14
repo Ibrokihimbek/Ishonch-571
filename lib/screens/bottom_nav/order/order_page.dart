@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:ishonch/bloc/orders_bloc/orders_bloc.dart';
 import 'package:ishonch/bloc/orders_bloc/orders_event.dart';
@@ -15,11 +16,11 @@ class OrdersPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => OrdersBloc(CategoriesRepo())
-        ..add(FetchAllOrders()),
+      create: (context) => OrdersBloc(CategoriesRepo())..add(FetchAllOrders()),
       child: Scaffold(
         appBar: AppBar(
-          title:  Text('Orders Page',style: Theme.of(context).textTheme.headlineMedium,),
+
+          title: Text("Buyurtmalar_bolimi".tr()),
         ),
         body: BlocBuilder<OrdersBloc, OrdersState>(
           builder: (context, state) {
@@ -49,19 +50,19 @@ class OrdersPage extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            "Order Name : ${order.clientName}",
+                            "Buyurtma_nomi : ${order.clientName}".tr(),
                             style: const TextStyle(fontSize: 20),
                           ),
                           const SizedBox(
                             height: 10,
                           ),
                           Text(
-                            "Client number: ${order.clientPhone}",
+                            "klient_raqami: ${order.clientPhone}".tr(),
                             style: const TextStyle(
                                 fontSize: 14, fontWeight: FontWeight.w400),
                           ),
                           Text(
-                            "CreatedAt: ${order.createdAt}",
+                            "yaratilgan_sana: ${order.createdAt}".tr(),
                             style: const TextStyle(
                                 fontSize: 14, fontWeight: FontWeight.w400),
                           ),

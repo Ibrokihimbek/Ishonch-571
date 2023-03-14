@@ -43,8 +43,9 @@ class _LanguageScreenState extends State<LanguageScreen> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              "Tilni Tanlash".tr(),
-              style: fontRobotoW700(appcolor: Theme.of(context).cardColor)
+
+              "Tilni_Tanlash".tr(),
+              style: fontRobotoW700(appcolor: AppColors.black)
                   .copyWith(fontSize: 22.sp),
             ),
             SizedBox(height: 24.h),

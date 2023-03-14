@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:ishonch/utils/app_image.dart';
 
 class OnboardingModel {
@@ -12,15 +13,15 @@ class OnboardingModel {
   static List<OnboardingModel> onboard = [
     OnboardingModel(
       lottieName: AppImages.lottieItem,
-      title: 'Sevimli texnikalaringizni toping',
+      title: 'Sevimli_texnikalaringizni_toping'.tr(),
     ),
     OnboardingModel(
       lottieName: AppImages.lottiePayment,
-      title: "Oson va xavfsiz to'lov",
+      title: "Oson_va_xavfsiz_to'lov".tr(),
     ),
     OnboardingModel(
       lottieName: AppImages.lottieDelivery,
-      title: 'Yetkazib berish xizmatini taqdim etishga tayyormiz',
+      title: 'Yetkazib_berish_xizmatini_taqdim_etishga_tayyormiz'.tr(),
     ),
   ];
 }
