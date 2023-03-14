@@ -3,8 +3,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:ishonch/data/models/model_category/categories/category_model.dart';
 import 'package:ishonch/screens/app_router.dart';
 import 'package:ishonch/screens/bottom_nav/home/product_by_category/widgets/product_item.dart';
-import 'package:ishonch/utils/app_colors.dart';
-import 'package:ishonch/utils/text_style.dart';
+import 'package:ishonch/screens/widgets/global_appbar.dart';
+import 'package:ishonch/utils/app_image.dart';
+import 'package:lottie/lottie.dart';
 
 class ProductByCategory extends StatelessWidget {
   final CategoryModel data;
@@ -13,40 +14,46 @@ class ProductByCategory extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          data.categoryName,
-          style: fontRobotoW500(
-            appcolor: AppColors.black,
-          ).copyWith(fontSize: 32.sp),
-        ),
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-      ),
+      appBar: GlobalAppBar(title: data.categoryName),
       body: SizedBox(
         height: 800.h,
-        child: GridView(
-          physics: const BouncingScrollPhysics(),
-          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 2,
-            childAspectRatio: 0.75,
-            mainAxisSpacing: 12,
-            crossAxisSpacing: 12,
-          ),
-          children: List.generate(
-            data.product.length,
-            (index) => ProductByCategoryItem(
-              productName: data.product[index].productName,
-              productPrice: data.product[index].productPrice.toString(),
-              productImage:
-                  'https://www.infinixmobility.com/fileadmin/assets/images/product/list/hot10.jpg',
-              // data.product[index].media.media,,
-              onTap: () {
-                Navigator.pushNamed(context, RouteName.productDetail);
-              },
-            ),
-          ),
-        ),
+        child: data.product.isEmpty
+            ? Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Lottie.asset(
+                  AppImages.lotieDeliveryInTime,
+                  width: 200.w,
+                ),
+                Text(
+                  'Hozircha Mahsulotlar mavjud emas',
+                  textAlign: TextAlign.center,
+                  style: Theme.of(context).textTheme.headlineMedium,
+                ),
+              ],
+            )
+            : GridView(
+                physics: const BouncingScrollPhysics(),
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 2,
+                  childAspectRatio: 0.75,
+                  mainAxisSpacing: 12,
+                  crossAxisSpacing: 12,
+                ),
+                children: List.generate(
+                  data.product.length,
+                  (index) => ProductByCategoryItem(
+                    productId: data.product[index].id,
+                    onTap: () {
+                      Navigator.pushNamed(
+                        context,
+                        RouteName.productDetail,
+                        arguments: data.product[index].id,
+                      );
+                    },
+                  ),
+                ),
+              ),
       ),
     );
   }

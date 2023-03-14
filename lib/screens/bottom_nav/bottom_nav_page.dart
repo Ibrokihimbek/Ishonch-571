@@ -1,17 +1,17 @@
+import 'package:adaptive_theme/adaptive_theme.dart';
+import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_snake_navigationbar/flutter_snake_navigationbar.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:ishonch/screens/app_router.dart';
 import 'package:ishonch/screens/bottom_nav/bloc/bottom_nav_cubit.dart';
-import 'package:ishonch/screens/bottom_nav/order/order_page.dart';
-import 'package:ishonch/screens/bottom_nav/widgets/bottom_nav_bar.dart';
+import 'package:ishonch/screens/bottom_nav/home/drawer/drawer.dart';
 import 'package:ishonch/screens/bottom_nav/home/view/home_page.dart';
-import 'package:ishonch/utils/app_colors.dart';
+import 'package:ishonch/screens/bottom_nav/notification/notification_page.dart';
 import 'package:ishonch/utils/app_image.dart';
-import 'package:ishonch/utils/text_style.dart';
-
+import '../../cubit/connectivity/connectivity_cubit.dart';
 import 'bottom_navy_bar.dart';
+import 'order/order_page.dart';
 
 class BottomNavPage extends StatefulWidget {
   const BottomNavPage({super.key});
@@ -21,30 +21,78 @@ class BottomNavPage extends StatefulWidget {
 }
 
 class _BottomNavPageState extends State<BottomNavPage> {
-  List<Widget> screens = [
-   HomePage(),
-    Center(
 
-      child: Text(
-        '',
-        style: TextStyle(fontSize: 32),
+
+
+  AdaptiveThemeMode? themeMode;
+  Future<void> _getMode() async {
+    themeMode = await AdaptiveTheme.getThemeMode();
+    setState(() {});
+  }
+
+  Future<void> _switchTheme() async {
+    if (themeMode!.isDark) {
+      AdaptiveTheme.of(context).setLight();
+    } else {
+      AdaptiveTheme.of(context).setDark();
+    }
+    await _getMode();
+  }
+
+  final GlobalKey<ScaffoldState> _key = GlobalKey();
+
+  List<Widget> screens = [];
+
+  bool IsNightMode = false;
+
+  @override
+  void initState() {
+    _getMode();
+    screens.insert(
+      0,
+      HomePage(
+        onTap: () => _key.currentState!.openDrawer(),
       ),
-    ),
-    OrdersPage(),
+    );
+    screens.insert(1, NotificationPage());
+    screens.insert(2, OrdersPage());
+    super.initState();
+  }
 
-  ];
-
+  _init() async {
+    print("INTERNET TURNED ON CALL ANY API");
+  }
 
 
   @override
   Widget build(BuildContext context) {
-
     return BlocProvider(
       create: (context) => BottomNavCubit(),
       child: BlocBuilder<BottomNavCubit, int>(
         builder: (context, state) {
+          BlocListener<ConnectivityCubit, ConnectivityState>(
+            listener: (context, state) {
+              if (state.connectivityResult == ConnectivityResult.none) {
+                Navigator.pushNamed(
+                  context,
+                  RouteName.noInternet,
+                  arguments: _init,
+                );
+              }
+            },
+            child: const SizedBox(),
+          );
           var index = context.watch<BottomNavCubit>().activePageIndex;
           return Scaffold(
+            key: _key,
+            drawer: MyDrawer(
+              onChanged: (value) {
+                setState(() {});
+                IsNightMode = !IsNightMode;
+                _switchTheme();
+              },
+              IsNightMode: IsNightMode,
+            ),
             body: screens[index],
             bottomNavigationBar: BottomNavyBar(
               iconSize: 30,
