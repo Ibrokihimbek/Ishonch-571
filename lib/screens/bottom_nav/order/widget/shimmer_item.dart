@@ -7,108 +7,85 @@ class ShimmerItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: [
-        Shimmer.fromColors(
-          highlightColor: Colors.white,
-          baseColor: Colors.grey,
-          child: Container(
-            height: 84,
-            width: 156,
-            alignment: Alignment.center,
-            decoration: BoxDecoration(
-                color: Colors.transparent,
-                border: Border.all(
-                  color: Colors.white, //                   <--- border color
-                  width: 0.7,
+    return Shimmer.fromColors(
+      highlightColor: Colors.white,
+      baseColor: Colors.grey,
+      child: Container(
+        padding: EdgeInsets.only(top: 8, left: 12, right: 8, bottom: 8).r,
+        alignment: Alignment.center,
+        decoration: BoxDecoration(
+            color: Colors.transparent,
+            border: Border.all(
+              color: Colors.white, //                   <--- border color
+              width: 0.7,
+            ),
+            borderRadius: BorderRadius.circular(15)),
+        child: Column(
+          children: [
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Container(
+                  height: 20.h,
+                  width: 95.w,
+                  alignment: Alignment.center,
+                  decoration: BoxDecoration(
+                      color: Colors.white.withOpacity(0.6),
+                      borderRadius: BorderRadius.circular(4.r)),
                 ),
-                borderRadius: BorderRadius.circular(15)),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children:  [
-                const Icon(Icons.person),
-                const SizedBox(width: 8,),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children:  [
-                    SizedBox(height: 20.h,),
-                    Container(
-                      margin: EdgeInsets.only(top: 4.h),
-                      height: 12.h,
-                      width: 60.w,
-                      alignment: Alignment.center,
-                      decoration: BoxDecoration(
-                          color: Colors.white.withOpacity(0.6),
-                          borderRadius: BorderRadius.circular(4.r)
-                      ),
-                    ),
-                    Container(
-                      margin: EdgeInsets.only(top: 4.h),
-                      height: 12.h,
-                      width: 30.w,
-                      alignment: Alignment.center,
-                      decoration: BoxDecoration(
-                          color: Colors.white.withOpacity(0.6),
-                          borderRadius: BorderRadius.circular(4.r)
-                      ),
-                    ),
-                  ],)
-
-
-              ],),
-          ),
+                SizedBox()
+              ],
+            ),
+            const SizedBox(height: 12),
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Container(
+                  height: 16.h,
+                  width: 70.w,
+                  alignment: Alignment.center,
+                  decoration: BoxDecoration(
+                      color: Colors.white.withOpacity(0.6),
+                      borderRadius: BorderRadius.circular(4.r)),
+                ),
+                Container(
+                  height: 19.h,
+                  width: 70.w,
+                  alignment: Alignment.center,
+                  decoration: BoxDecoration(
+                      color: Colors.white.withOpacity(0.6),
+                      borderRadius: BorderRadius.circular(4.r)),
+                ),
+              ],
+            ),
+            const SizedBox(height: 12),
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Container(
+                  height: 17.h,
+                  width: 60.w,
+                  alignment: Alignment.center,
+                  decoration: BoxDecoration(
+                      color: Colors.white.withOpacity(0.6),
+                      borderRadius: BorderRadius.circular(4.r)),
+                ),
+                Container(
+                  height: 17.h,
+                  width: 90.w,
+                  alignment: Alignment.center,
+                  decoration: BoxDecoration(
+                      color: Colors.white.withOpacity(0.6),
+                      borderRadius: BorderRadius.circular(4.r)),
+                ),
+              ],
+            ),
+          ],
         ),
-        SizedBox(width: 16.w),
-        Shimmer.fromColors(
-          highlightColor: Colors.white,
-          baseColor: Colors.grey,
-          child: Container(
-            height: 84,
-            width: 156,
-            alignment: Alignment.center,
-            decoration: BoxDecoration(
-                color: Colors.transparent,
-                border: Border.all(
-                  color: Colors.white, //                   <--- border color
-                  width: 0.7,
-                ),
-                borderRadius: BorderRadius.circular(15)),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children:  [
-                const Icon(Icons.person),
-                const SizedBox(width: 8,),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children:  [
-                    SizedBox(height: 20.h,),
-                    Container(
-                      margin: EdgeInsets.only(top: 4.h),
-                      height: 12.h,
-                      width: 60.w,
-                      alignment: Alignment.center,
-                      decoration: BoxDecoration(
-                          color: Colors.white.withOpacity(0.6),
-                          borderRadius: BorderRadius.circular(4.r)
-                      ),
-                    ),
-                    Container(
-                      margin: EdgeInsets.only(top: 4.h),
-                      height: 12.h,
-                      width: 30.w,
-                      alignment: Alignment.center,
-                      decoration: BoxDecoration(
-                          color: Colors.white.withOpacity(0.6),
-                          borderRadius: BorderRadius.circular(4.r)
-                      ),
-                    ),
-                  ],)
-
-
-              ],),
-          ),
-        )
-      ],
+      ),
     );
   }
 }
