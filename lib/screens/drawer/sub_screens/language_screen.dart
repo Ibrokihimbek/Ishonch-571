@@ -6,6 +6,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:ishonch/data/models/language/language_model.dart';
 import 'package:ishonch/screens/drawer/widgets/language_widget.dart';
+import 'package:ishonch/screens/widgets/global_appbar.dart';
 import 'package:ishonch/utils/app_colors.dart';
 import 'package:ishonch/utils/text_style.dart';
 import 'package:zoom_tap_animation/zoom_tap_animation.dart';
@@ -34,38 +35,15 @@ class _LanguageScreenState extends State<LanguageScreen> {
       default:
     }
     return Scaffold(
-      appBar: AppBar(
-        leading: Padding(
-          padding: const EdgeInsets.all(8).r,
-          child: InkWell(
-            borderRadius: BorderRadius.circular(20),
-            onTap: () => Navigator.pop(context),
-            child: Container(
-              padding: const EdgeInsets.all(10).r,
-              width: 10.w,
-              height: 10.h,
-              decoration: BoxDecoration(
-                  color: AppColors.black,
-                  borderRadius: BorderRadius.circular(100)),
-              child: SvgPicture.asset(
-                "assets/svg/arrow_back.svg",
-                width: 10.w,
-              ),
-            ),
-          ),
-        ),
-        backgroundColor: Colors.white,
-        elevation: 0,
-        iconTheme: const IconThemeData(color: AppColors.black),
-      ),
+      appBar:  GlobalAppBar(title: ''),
       body: Container(
-        color: AppColors.white,
         width: double.infinity,
         padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 24).r,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
+
               "Tilni_Tanlash".tr(),
               style: fontRobotoW700(appcolor: AppColors.black)
                   .copyWith(fontSize: 22.sp),
@@ -83,7 +61,12 @@ class _LanguageScreenState extends State<LanguageScreen> {
                         padding: const EdgeInsets.symmetric(horizontal: 24).r,
                         decoration: BoxDecoration(
                             boxShadow: selectedLang == 0
-                                ? []
+                                ? [
+                          const     BoxShadow(
+                                  color: Colors.grey,
+                                  spreadRadius: 2.5,
+                                  blurRadius: 8)
+                            ]
                                 : [
                                     const BoxShadow(
                                         color: Colors.grey,
@@ -145,7 +128,12 @@ class _LanguageScreenState extends State<LanguageScreen> {
                         padding: const EdgeInsets.symmetric(horizontal: 24).r,
                         decoration: BoxDecoration(
                             boxShadow: selectedLang == 1
-                                ? []
+                                ? [
+                              const     BoxShadow(
+                                  color: Colors.grey,
+                                  spreadRadius: 2.5,
+                                  blurRadius: 8)
+                            ]
                                 : [
                                     const BoxShadow(
                                         color: Colors.grey,
@@ -208,7 +196,12 @@ class _LanguageScreenState extends State<LanguageScreen> {
                         padding: const EdgeInsets.symmetric(horizontal: 24).r,
                         decoration: BoxDecoration(
                             boxShadow: selectedLang == 2
-                                ? []
+                                ? [
+                              const     BoxShadow(
+                                  color: Colors.grey,
+                                  spreadRadius: 2.5,
+                                  blurRadius: 8)
+                            ]
                                 : [
                                     const BoxShadow(
                                         color: Colors.grey,

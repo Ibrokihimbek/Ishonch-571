@@ -7,6 +7,9 @@ import 'package:ishonch/app/app.dart';
 import 'package:ishonch/app/app_bloc_observer.dart';
 import 'package:ishonch/data/storage_repository/storage_repository.dart';
 import 'package:ishonch/service/get_it/get_it.dart';
+// ignore: depend_on_referenced_packages
+import 'package:firebase_core/firebase_core.dart';
+import 'package:ishonch/service/notification_service/notification_service.dart';
 import 'package:firebase_core/firebase_core.dart';
 
 void main() async {
@@ -17,10 +20,12 @@ void main() async {
     ),
   );
   WidgetsFlutterBinding.ensureInitialized();
+  setup();
   await EasyLocalization.ensureInitialized();
   await Firebase.initializeApp();
   await FirebaseMessaging.instance.subscribeToTopic("ishonch_news");
-  setup();
+  FirebaseMessaging.onBackgroundMessage(getIt<NotificationService>().firebaseMessagingBackgroundHandler);
+
   StorageRepository.getInstance();
   Bloc.observer = AppBlocObserver();
   runApp(const App());
