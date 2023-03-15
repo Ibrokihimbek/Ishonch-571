@@ -12,15 +12,15 @@ class OnboardingModel {
   static List<OnboardingModel> onboard = [
     OnboardingModel(
       lottieName: AppImages.lottieItem,
-      title: 'Sevimli texnikalaringizni toping',
+      title: 'Sevimli_texnikalaringizni_toping',
     ),
     OnboardingModel(
       lottieName: AppImages.lottiePayment,
-      title: "Oson va xavfsiz to'lov",
+      title: "Oson_va_xavfsiz_to'lov",
     ),
     OnboardingModel(
       lottieName: AppImages.lottieDelivery,
-      title: 'Yetkazib berish xizmatini taqdim etishga tayyormiz',
+      title: 'Yetkazib_berish_xizmatini_taqdim_etishga_tayyormiz',
     ),
   ];
 }

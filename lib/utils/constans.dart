@@ -1,8 +1,1 @@
-const mapApiKey = "98766a71-a866-47bf-8184-2f9cb48187d2";
-
-const List<String> kindList = [
-  "house",
-  "metro",
-  "district",
-  "street",
-];
+const mapApiKey = "d2e35d55-a70a-44fe-98bb-a08271d6726e";

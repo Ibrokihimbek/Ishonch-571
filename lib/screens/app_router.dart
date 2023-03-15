@@ -1,14 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:ishonch/data/models/discount/discount_model.dart';
+import 'package:ishonch/data/models/helper/lat_long_model.dart';
 import 'package:ishonch/data/models/model_category/categories/category_model.dart';
 import 'package:ishonch/screens/bottom_nav/bottom_nav_page.dart';
-import 'package:ishonch/screens/bottom_nav/home/drawer/sub_screens/about_screen.dart';
-import 'package:ishonch/screens/bottom_nav/home/drawer/sub_screens/language_screen.dart';
-import 'package:ishonch/screens/bottom_nav/home/product_by_category/product_by_category.dart';
+import 'package:ishonch/screens/discount_product/discount_product_screen.dart';
+import 'package:ishonch/screens/drawer/sub_screens/about_screen.dart';
+import 'package:ishonch/screens/drawer/sub_screens/language_screen.dart';
 import 'package:ishonch/screens/no_internet/no_internet_screen.dart';
 import 'package:ishonch/screens/on_bording/on_bording_page.dart';
+import 'package:ishonch/screens/product_by_category/product_by_category.dart';
 import 'package:ishonch/screens/product_detail/product_detail_screen.dart';
 import 'package:ishonch/screens/product_detail/sub_screens/check_out/check_out_screen.dart';
+import 'package:ishonch/screens/product_detail/sub_screens/map/map_screen.dart';
+import 'package:ishonch/screens/product_detail/sub_screens/image_view/image_view_page.dart';
 import 'package:ishonch/screens/splash/splash_page.dart';
+
 
 abstract class RouteName {
   static const bottomNavigation = 'bottomNavigation';
@@ -19,16 +25,19 @@ abstract class RouteName {
   static const languageChange = '/languageChange';
   static const about = '/about';
   static const checkOut = '/checkOut';
+  static const map = '/map';
   static const noInternet = '/noInternet';
+  static const imageView = '/imageView';
+  static const discountProductDetail = '/discountProductDetail';
 }
 
 class AppRoutes {
   static Route generateRoute(RouteSettings settings) {
     switch (settings.name) {
       case RouteName.splash:
-        return MaterialPageRoute(builder: (_) => const SplashPage());
+        return MaterialPageRoute(builder: (_) =>  SplashPage());
       case RouteName.onBoarding:
-        return MaterialPageRoute(builder: (_) => const OnBoardingPage());
+        return MaterialPageRoute(builder: (_) =>  OnBoardingPage());
       case RouteName.productByCategory:
         return MaterialPageRoute(
           builder: (_) => ProductByCategory(
@@ -38,24 +47,46 @@ class AppRoutes {
       case RouteName.productDetail:
         return MaterialPageRoute(
           builder: (_) => ProductDetailScreen(
-            product: settings.arguments as int,
+            productId: settings.arguments as int,
+          ),
+        );
+      case RouteName.imageView:
+        return MaterialPageRoute(
+          builder: (_) => ImageView(
+            imageUrl: settings.arguments as String,
           ),
         );
       case RouteName.languageChange:
-        return MaterialPageRoute(builder: (_) => const LanguageScreen());
+        return MaterialPageRoute(builder: (_) =>  LanguageScreen());
       case RouteName.noInternet:
         return MaterialPageRoute(
-            builder: (_) => NoInternetScreen(
-                voidCallback: settings.arguments as VoidCallback));
+          builder: (_) => NoInternetScreen(
+            voidCallback: settings.arguments as VoidCallback,
+          ),
+        );
       case RouteName.about:
-        return MaterialPageRoute(builder: (_) => const AboutScreen());
-
+        return MaterialPageRoute(builder: (_) =>  AboutScreen());
       case RouteName.checkOut:
-        return MaterialPageRoute(builder: (_) => CheckOutScreen());
+        return MaterialPageRoute(
+          builder: (_) => CheckOutScreen(
+            latLong: settings.arguments as LatLongModel,
+            productId: settings.arguments as int,
+          ),
+        );
+      case RouteName.map:
+        return MaterialPageRoute(
+          builder: (_) => MapScreen(
+            latLongModel: settings.arguments as LatLongModel,
+          ),
+        );
+      case RouteName.discountProductDetail:
+        return MaterialPageRoute(
+            builder: (_) => DiscountProductDetailScreen(
+                discountProduct: settings.arguments as Discount));
       case RouteName.bottomNavigation:
-        return MaterialPageRoute(builder: (_) => const BottomNavPage());
+        return MaterialPageRoute(builder: (_) =>  BottomNavPage());
       default:
-        return MaterialPageRoute(builder: (_) => Scaffold());
+        return MaterialPageRoute(builder: (_) =>  Scaffold());
     }
   }
 }
