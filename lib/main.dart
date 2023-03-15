@@ -12,6 +12,16 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:ishonch/service/notification_service/notification_service.dart';
 import 'package:firebase_core/firebase_core.dart';
 
+import 'data/models/notification/notification_model.dart';
+import 'data/repositories/notification_repository.dart';
+
+Future<void> firebaseMessagingBackgroundHandler(RemoteMessage message) async {
+  getIt<NotificationsRepository>().addNotification(NotificationModel.fromJson(message.data));
+  print("Message keldi bratan");
+  print("Handling a background message: ${message.data}");
+}
+
+
 void main() async {
   SystemChrome.setSystemUIOverlayStyle(
     const SystemUiOverlayStyle(
@@ -24,7 +34,7 @@ void main() async {
   await EasyLocalization.ensureInitialized();
   await Firebase.initializeApp();
   await FirebaseMessaging.instance.subscribeToTopic("ishonch_news");
-  FirebaseMessaging.onBackgroundMessage(getIt<NotificationService>().firebaseMessagingBackgroundHandler);
+  FirebaseMessaging.onBackgroundMessage(firebaseMessagingBackgroundHandler);
 
   StorageRepository.getInstance();
   Bloc.observer = AppBlocObserver();

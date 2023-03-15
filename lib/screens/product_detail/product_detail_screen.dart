@@ -116,16 +116,14 @@ class ProductDetailScreen extends StatelessWidget {
                                             context, "ruxsat_topilmadi".tr());
                                       }
                                     },
-                                    child: Expanded(
-                                      child: ProductInfo(
-                                        product: state.product,
-                                        onTap: () {
-                                          BlocProvider.of<
-                                                      LocationPermissionCubit>(
-                                                  context)
-                                              .fetchCurrentLocation();
-                                        },
-                                      ),
+                                    child: ProductInfo(
+                                      product: state.product,
+                                      onTap: () {
+                                        BlocProvider.of<
+                                                    LocationPermissionCubit>(
+                                                context)
+                                            .fetchCurrentLocation();
+                                      },
                                     ),
                                   );
                                 },
