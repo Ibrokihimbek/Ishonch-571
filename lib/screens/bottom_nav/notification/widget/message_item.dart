@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../data/models/notification/notification_model.dart';
@@ -14,8 +15,8 @@ class MessageItem extends StatelessWidget {
       children: [
         SizedBox(
           width: 400.w,
-          child: const ListTile(
-            title: Text("title"),
+          child: ListTile(
+            title: Text("title".tr()),
           ),
         ),
         Container(

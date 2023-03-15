@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -10,7 +11,7 @@ class NotificationAppBar extends StatelessWidget implements PreferredSize {
   Widget build(BuildContext context) {
     return AppBar(
       title: Text(
-        "Notification",
+        "Notification".tr(),
         style: Theme.of(context).textTheme.headlineMedium,
       ),
       actions: [
@@ -23,16 +24,16 @@ class NotificationAppBar extends StatelessWidget implements PreferredSize {
             return [
               PopupMenuItem(
                 child: Row(
-                  children: const [
-                    Text("Mute Notification"),
+                  children: [
+                    Text("Mute Notification".tr()),
                   ],
                 ),
               ),
               PopupMenuItem(
                 onTap: onMute,
                 child: Row(
-                  children: const [
-                    Text("Clear All"),
+                  children: [
+                    Text("Clear All".tr()),
                   ],
                 ),
               ),
