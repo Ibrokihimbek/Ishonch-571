@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:ishonch/screens/bottom_nav/notification/widget/notification_appbar.dart';
 import 'package:ishonch/screens/bottom_nav/notification/widget/notification_item_widget.dart';
 import 'package:ishonch/utils/app_image.dart';
@@ -25,10 +26,11 @@ class NotificationPage extends StatelessWidget {
             return const Center(child: CircularProgressIndicator());
           } else if (state is ReadNotificationInFailury) {
             return Center(
-                child: Text(
-              state.status,
-              style: const TextStyle(color: Colors.black),
-            ));
+              child: Text(
+                state.status,
+                style: const TextStyle(color: Colors.black),
+              ),
+            );
           } else if (state is ReadNotificationInSuccess) {
             debugPrint("NOTIFICATION SUCCESS 1");
             return SizedBox(
@@ -40,14 +42,13 @@ class NotificationPage extends StatelessWidget {
                       itemCount: state.notifications.length,
                       itemBuilder: (context, index) {
                         return Padding(
-                            padding: const EdgeInsets.symmetric(horizontal: 24),
-                            child: NotificationCourseItem(
-                              id: state.notifications[index].id,
-                            )
-                            //Center(child: Text("${state.notifications[index].id}")));
-
-                            );
-                      }),
+                          padding: EdgeInsets.symmetric(horizontal: 24.w).w,
+                          child: NotificationCourseItem(
+                            id: state.notifications[index].id,
+                          ),
+                        );
+                      },
+                    ),
             );
           } else {
             debugPrint("NOTIFICATION SUCCESS 2");

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class NotificationAppBar extends StatelessWidget implements PreferredSize {
   const NotificationAppBar({Key? key, required this.onMute}) : super(key: key);
@@ -15,8 +16,9 @@ class NotificationAppBar extends StatelessWidget implements PreferredSize {
       actions: [
         PopupMenuButton<String>(
           onSelected: (value) {},
-          shape: const RoundedRectangleBorder(
-              borderRadius: BorderRadius.all(Radius.circular(20))),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.all(Radius.circular(20.r)),
+          ),
           itemBuilder: (context) {
             return [
               PopupMenuItem(
@@ -45,8 +47,5 @@ class NotificationAppBar extends StatelessWidget implements PreferredSize {
   Widget get child => throw UnimplementedError();
 
   @override
-  Size get preferredSize => const Size(
-        double.infinity,
-        56,
-      );
+  Size get preferredSize => Size(double.infinity, 56.h);
 }

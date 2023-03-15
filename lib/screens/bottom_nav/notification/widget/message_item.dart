@@ -12,23 +12,21 @@ class MessageItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        const SizedBox(
-            width: 400,
-            child: ListTile(
-              title: Text("title"),
-            )),
+        SizedBox(
+          width: 400.w,
+          child: const ListTile(
+            title: Text("title"),
+          ),
+        ),
         Container(
-            margin: const EdgeInsets.only(right: 20),
-            width: 400,
-            child: Text(
-              notification.id,
-              textAlign: TextAlign.end,
-            )),
+          margin: EdgeInsets.only(right: 20.w).w,
+          width: 400.w,
+          child: Text(notification.id, textAlign: TextAlign.end),
+        ),
         Padding(
-            padding: EdgeInsets.symmetric(horizontal: 20.h),
-            child: const Divider(
-              thickness: 0.2,
-            )),
+          padding: EdgeInsets.symmetric(horizontal: 20.w).w,
+          child: Divider(thickness: 0.2.w),
+        ),
       ],
     );
   }
