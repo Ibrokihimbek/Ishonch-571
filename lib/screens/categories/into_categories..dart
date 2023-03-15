@@ -26,13 +26,14 @@ class _IntoCategoriesState extends State<IntoCategories> {
         backgroundColor: const Color(0xFFFFFFFF),
         appBar: AppBar(
           leading: IconButton(
-              onPressed: () {
-                Navigator.pop(context);
-              },
-              icon: const Icon(
-                Icons.arrow_back,
-                color: Colors.black,
-              )),
+            onPressed: () {
+              Navigator.pop(context);
+            },
+            icon: const Icon(
+              Icons.arrow_back,
+              color: Colors.black,
+            ),
+          ),
           elevation: 0,
           backgroundColor: const Color(0xFFFFFFFF),
           title: Text(
