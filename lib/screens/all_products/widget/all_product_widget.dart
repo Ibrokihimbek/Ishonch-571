@@ -18,7 +18,7 @@ class AllProductsScreen extends StatelessWidget {
         ? Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Lottie.asset(AppImages.lottieDeliveryInTime),
+              Lottie.asset(AppImages.lotieDeliveryInTime),
               Text('The products are not available for now'.tr(),
                   textAlign: TextAlign.center,
                   style: Theme.of(context).textTheme.headlineMedium),
