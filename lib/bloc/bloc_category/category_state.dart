@@ -1,4 +1,4 @@
-import 'package:ishonch/data/models/model_category/categories/category_model.dart';
+part of 'category_bloc.dart';
 
 abstract class CategoriesState {}
 
@@ -8,12 +8,12 @@ class LoadCategoriesInProgress extends CategoriesState {}
 
 class LoadCategoriesInSuccess extends CategoriesState {
   final List<CategoryModel> categories;
- 
+
   LoadCategoriesInSuccess({required this.categories});
 }
 
 class LoadCategoriesInFailure extends CategoriesState {
   final String errorText;
- 
+
   LoadCategoriesInFailure({required this.errorText});
 }

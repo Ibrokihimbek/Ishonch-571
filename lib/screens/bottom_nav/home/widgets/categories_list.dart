@@ -40,7 +40,7 @@ class CategoriesList extends SliverPersistentHeaderDelegate {
                         image: DecorationImage(
                             scale: 4,
                             colorFilter: ColorFilter.mode(
-                                Color(0xFFDEE6E3).withOpacity(0.5),
+                                const Color(0xFFDEE6E3).withOpacity(0.5),
                                 BlendMode.darken),
                             image: NetworkImage(
                                 "http://146.190.207.16:3000/${data[index].categoryImage}")),
