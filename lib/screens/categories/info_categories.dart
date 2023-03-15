@@ -1,12 +1,13 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ishonch/bloc/bloc_category/category_bloc.dart';
 import 'package:ishonch/screens/app_router.dart';
 import 'package:ishonch/screens/categories/widgets/category_item.dart';
+import 'package:ishonch/screens/widgets/global_appbar.dart';
 import 'package:ishonch/utils/my_utils.dart';
 import 'package:zoom_tap_animation/zoom_tap_animation.dart';
 
-import 'widgets/categories_appbar.dart';
 
 class CategoriesInfoPage extends StatefulWidget {
   const CategoriesInfoPage({super.key});
@@ -19,8 +20,7 @@ class _CategoriesInfoPageState extends State<CategoriesInfoPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: const CategoriesAppBar(),
-        backgroundColor: const Color(0xFFFFFFFF),
+        appBar:  GlobalAppBar(title: "Kategoriyalar".tr()),
         body: BlocBuilder<CategoriesBloc, CategoriesState>(
           builder: (context, state) {
             if (state is LoadCategoriesInProgress) {

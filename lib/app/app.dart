@@ -3,6 +3,7 @@ import 'package:adaptive_theme/adaptive_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:ishonch/bloc/bloc_category/category_bloc.dart';
 import 'package:ishonch/bloc/bloc_product/product_bloc.dart';
 import 'package:ishonch/bloc/orders_bloc/orders_bloc.dart';
 import 'package:ishonch/cubit/connectivity/connectivity_cubit.dart';
@@ -71,6 +72,10 @@ class App extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) => DiscountCubit(),
+        ),
+        BlocProvider(
+          create: (context) =>
+              CategoriesBloc(CategoriesRepo())..add(FetchAllCategories()),
         ),
         BlocProvider(
           create: (context) => LocationPermissionCubit(),

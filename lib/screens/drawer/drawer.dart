@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:ishonch/utils/app_image.dart';
 
-
 class MyDrawer extends StatefulWidget {
   bool IsNightMode;
   ValueChanged onChanged;
@@ -43,9 +42,9 @@ class _MyDrawerState extends State<MyDrawer> {
                   width: 132.5.w,
                   height: 68.64.h,
                   child: Image.asset(
-                    Theme.of(context).dialogBackgroundColor == Colors.white ?
-                    AppImages.imageLogo : AppImages.imageLogoLight,
-
+                    Theme.of(context).dialogBackgroundColor == Colors.white
+                        ? AppImages.imageLogo
+                        : AppImages.imageLogoLight,
                   ),
                 ),
                 SizedBox(
@@ -69,7 +68,9 @@ class _MyDrawerState extends State<MyDrawer> {
                     title: Text(
                       "Til".tr(),
                       style: Theme.of(context).textTheme.titleLarge!.copyWith(
-                          fontSize: 16.sp, fontWeight: FontWeight.w500),
+                            fontSize: 16.sp,
+                            fontWeight: FontWeight.w700,
+                          ),
                     ),
                   ),
                 ),
@@ -80,12 +81,11 @@ class _MyDrawerState extends State<MyDrawer> {
                     style: Theme.of(context)
                         .textTheme
                         .titleLarge!
-                        .copyWith(fontSize: 16.sp, fontWeight: FontWeight.w500),
+                        .copyWith(fontSize: 16.sp, fontWeight: FontWeight.w700),
                   ),
                   trailing: Switch(
                       activeColor: Theme.of(context).cardColor,
                       inactiveThumbColor: Theme.of(context).cardColor,
-
                       value: widget.IsNightMode,
                       onChanged: widget.onChanged),
                 ),
@@ -93,7 +93,11 @@ class _MyDrawerState extends State<MyDrawer> {
                   onTap: () => Navigator.pushNamed(context, "/about"),
                   child: ListTile(
                     leading: const Icon(Icons.info_outline),
-                    title: Text("Haqimizda".tr()),
+                    title: Text(
+                      "Haqimizda".tr(),
+                      style: Theme.of(context).textTheme.titleLarge!.copyWith(
+                          fontSize: 16.sp, fontWeight: FontWeight.w700),
+                    ),
                   ),
                 )
               ],

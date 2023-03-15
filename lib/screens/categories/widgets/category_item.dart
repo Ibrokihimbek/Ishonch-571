@@ -25,6 +25,7 @@ class CategoryItem extends StatelessWidget {
               height: height(context) * 0.15,
               width: width(context) * 0.54,
               decoration: BoxDecoration(
+                color: Theme.of(context).primaryColor,
                   image: DecorationImage(
                       colorFilter: const ColorFilter.mode(
                           Color(0XFFF2F2F2), BlendMode.darken),
@@ -40,8 +41,7 @@ class CategoryItem extends StatelessWidget {
                   ),
                   Text(
                     data[index].categoryName,
-                    style: const TextStyle(
-                        fontSize: 18, fontWeight: FontWeight.w600),
+                    style: Theme.of(context).textTheme.headlineMedium!.copyWith(fontSize: 18,),
                   ),
                   SizedBox(
                     height: height(context) * 0.003,
