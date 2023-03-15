@@ -44,8 +44,10 @@ class AllCategoriesTitle extends SliverPersistentHeaderDelegate {
                   child: Text(
                     'Davomi'.tr(),
                     maxLines: 1,
-                    style: const TextStyle(
-                        color: Colors.black54, fontWeight: FontWeight.w500),
+                    style: Theme.of(context)
+                        .textTheme
+                        .headlineMedium!
+                        .copyWith(fontSize: 16),
                   ),
                 ),
               )),

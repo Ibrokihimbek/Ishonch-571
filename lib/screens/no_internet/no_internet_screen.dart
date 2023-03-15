@@ -31,6 +31,7 @@ class NoInternetScreen extends StatelessWidget {
                   child: Image.asset(
                     AppImages.noInternet,
                     fit: BoxFit.cover,
+                    color: Theme.of(context).cardColor,
                   ),
                 ),
               ),

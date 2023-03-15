@@ -18,16 +18,12 @@ class AllProduct extends StatelessWidget {
       create: (context) =>
           ProductsBloc(CategoriesRepo())..add(FetchAllProducts()),
       child: Scaffold(
-        appBar: GlobalAppBar(title: "All products".tr()),
+        appBar: GlobalAppBar(title: "Barcha_produktlar".tr()),
         body: BlocBuilder<ProductsBloc, ProductsState>(
           builder: (context, state) {
             if (state is InitialProductsState) {
               return const Center(
                 child: Text('hali data yoq'),
-              );
-            } else if (state is LoadProductsInProgress) {
-              return const Center(
-                child: CircularProgressIndicator(),
               );
             } else if (state is LoadProductsInSuccess) {
               return AllProductsScreen(data: state.products);

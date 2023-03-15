@@ -42,9 +42,8 @@ class NotificationCourseItem extends StatelessWidget {
                 child: Container(
                   margin: const EdgeInsets.only(top: 10, bottom: 10),
                   height: 70.h,
-                  width: 400.w,
                   decoration: BoxDecoration(
-                      color: Theme.of(context).cardColor,
+                      color: Theme.of(context).primaryColor,
                       borderRadius: BorderRadius.circular(10),
                       boxShadow: const [
                         BoxShadow(
@@ -56,11 +55,11 @@ class NotificationCourseItem extends StatelessWidget {
                   child: Row(
                     children: [
                       SizedBox(
-                        width: 10.w,
+                        width: 10.w
                       ),
                       Container(
-                        height: 60.h,
-                        width: 100.h,
+                        height: 80.h,
+                        width: 80.h,
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(4.h),
                             image: DecorationImage(

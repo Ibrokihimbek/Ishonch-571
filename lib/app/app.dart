@@ -34,7 +34,7 @@ class App extends StatelessWidget {
         Locale('en', 'EN'),
         Locale('uz', 'UZ')
       ],
-      startLocale: const Locale('en', 'EN'),
+      startLocale: const Locale('uz', 'UZ'),
       path: 'assets/translation',
       fallbackLocale: const Locale("uz", "UZ"),
       child: MultiBlocProvider(providers: [
@@ -99,7 +99,7 @@ class MyApp extends StatelessWidget {
             builder: (BuildContext context, Widget? child) => AdaptiveTheme(
               light: AppTheme.lightTheme,
               dark: AppTheme.darkTheme,
-              initial: AdaptiveThemeMode.light,
+              initial: AdaptiveThemeMode.system,
               builder: (light, dark) => MaterialApp(
                 initialRoute: RouteName.splash,
                 onGenerateRoute: AppRoutes.generateRoute,

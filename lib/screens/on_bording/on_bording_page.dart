@@ -7,7 +7,7 @@ import 'package:ishonch/screens/app_router.dart';
 import 'package:ishonch/screens/on_bording/widgets/on_boarding_item.dart';
 import 'package:ishonch/utils/app_colors.dart';
 import 'package:ishonch/utils/text_style.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+import 'package:zoom_tap_animation/zoom_tap_animation.dart';
 
 class OnBoardingPage extends StatefulWidget {
   const OnBoardingPage({super.key});
@@ -41,7 +41,9 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
                     },
                     child: Text(
                       "O'tkazib_yuborish".tr(),
-                      style: fontRobotoW400(appcolor: AppColors.black)
+                      style: Theme.of(context)
+                          .textTheme
+                          .headlineSmall!
                           .copyWith(fontSize: 16.sp),
                     ),
                   ),
@@ -78,7 +80,7 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
               child: Row(
                 children: [
                   const Spacer(),
-                  InkWell(
+                  ZoomTapAnimation(
                     onTap: () {
                       if (currentIndex == 1) {
                         nextButton = 'Boshlash'.tr();
