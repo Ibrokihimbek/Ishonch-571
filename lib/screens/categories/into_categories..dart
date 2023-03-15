@@ -36,8 +36,8 @@ class _IntoCategoriesState extends State<IntoCategories> {
           elevation: 0,
           backgroundColor: const Color(0xFFFFFFFF),
           title: Text(
-            'Kategoriyalar'.tr(),
-            style: TextStyle(color: Colors.black),
+            'Categories'.tr(),
+            style: const TextStyle(color: Colors.black),
           ),
         ),
         body: ListView.builder(
@@ -99,7 +99,7 @@ class _IntoCategoriesState extends State<IntoCategories> {
         decoration: BoxDecoration(
             image: DecorationImage(
                 colorFilter:
-                    ColorFilter.mode(Color(0XFFF2F2F2), BlendMode.darken),
+                    const ColorFilter.mode(Color(0XFFF2F2F2), BlendMode.darken),
                 alignment:
                     isTrue ? Alignment.centerLeft : Alignment.centerRight,
                 image: NetworkImage(
@@ -113,14 +113,14 @@ class _IntoCategoriesState extends State<IntoCategories> {
             ),
             Text(
               widget.data[index].categoryName,
-              style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
+              style: const TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
             ),
             SizedBox(
               height: height(context) * 0.003,
             ),
             Text(
-              '${widget.data[index].product.length} Produkt'.tr(),
-              style: TextStyle(fontWeight: FontWeight.w600),
+              '${widget.data[index].product.length} Product'.tr(),
+              style: const TextStyle(fontWeight: FontWeight.w600),
             )
           ],
         ));
