@@ -32,9 +32,9 @@ class _HomePageState extends State<HomePage> {
         body: BlocBuilder<CategoriesBloc, CategoriesState>(
           builder: (context, state) {
             if (state is InitialCategoriesState) {
-              return HomeScreenShimmerLoader();
+              return const HomeScreenShimmerLoader();
             } else if (state is LoadCategoriesInProgress) {
-              return HomeScreenShimmerLoader();
+              return const HomeScreenShimmerLoader();
             } else if (state is LoadCategoriesInSuccess) {
               return HomeWidget(data: state.categories);
             } else if (state is LoadCategoriesInFailure) {

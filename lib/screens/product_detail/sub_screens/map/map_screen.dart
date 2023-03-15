@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -42,7 +43,7 @@ class _MapScreenState extends State<MapScreen> {
                 lat: cameraPosition.target.latitude,
                 long: cameraPosition.target.longitude,
               ),
-              kind: "house",
+              kind: "Uy".tr(),
             );
             Navigator.pop(context);
           },
@@ -105,7 +106,7 @@ class _MapScreenState extends State<MapScreen> {
                     },
                     onCameraMoveStarted: () {
                       mapPickerController.mapMoving!();
-                      textController.text = "checking ...";
+                      textController.text = "tekshirish ...".tr();
                     },
                     onCameraMove: (cameraPosition1) {
                       cameraPosition = cameraPosition1;

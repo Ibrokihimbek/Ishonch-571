@@ -9,7 +9,9 @@ class BottomNavBar extends StatelessWidget {
   BottomNavBar({Key? key}) : super(key: key);
 
   ShapeBorder? bottomBarShape = RoundedRectangleBorder(
-    borderRadius: BorderRadius.all(Radius.circular(25.h)),
+    borderRadius: BorderRadius.all(
+      Radius.circular(25.r),
+    ),
   );
   SnakeBarBehaviour snakeBarStyle = SnakeBarBehaviour.floating;
   EdgeInsets padding = EdgeInsets.all(12.h);

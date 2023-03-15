@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -69,7 +70,6 @@ class ProductDetailScreen extends StatelessWidget {
                                   },
                                   child: Image.network(
                                     "http://146.190.207.16:3000/${state.product.media.media}",
-                                   
                                   ),
                                 ),
                               ),
@@ -113,7 +113,7 @@ class ProductDetailScreen extends StatelessWidget {
                                       if (state.myPermissionStatus ==
                                           MyPermissionStatus.Fail) {
                                         showInfoSnackBar(
-                                            context, "Permission not found");
+                                            context, "ruxsat_topilmadi".tr());
                                       }
                                     },
                                     child: Expanded(

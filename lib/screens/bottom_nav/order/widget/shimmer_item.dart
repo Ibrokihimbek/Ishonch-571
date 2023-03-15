@@ -11,15 +11,17 @@ class ShimmerItem extends StatelessWidget {
       highlightColor: Colors.white,
       baseColor: Colors.grey,
       child: Container(
-        padding: EdgeInsets.only(top: 8, left: 12, right: 8, bottom: 8).r,
+        padding:
+            EdgeInsets.only(top: 8.h, left: 12.w, right: 8.w, bottom: 8.h).r,
         alignment: Alignment.center,
         decoration: BoxDecoration(
-            color: Colors.transparent,
-            border: Border.all(
-              color: Colors.white, //                   <--- border color
-              width: 0.7,
-            ),
-            borderRadius: BorderRadius.circular(15)),
+          color: Colors.transparent,
+          border: Border.all(
+            color: Colors.white,
+            width: 0.7.w,
+          ),
+          borderRadius: BorderRadius.circular(15.r),
+        ),
         child: Column(
           children: [
             Row(
@@ -31,13 +33,14 @@ class ShimmerItem extends StatelessWidget {
                   width: 95.w,
                   alignment: Alignment.center,
                   decoration: BoxDecoration(
-                      color: Colors.white.withOpacity(0.6),
-                      borderRadius: BorderRadius.circular(4.r)),
+                    color: Colors.white.withOpacity(0.6),
+                    borderRadius: BorderRadius.circular(4.r),
+                  ),
                 ),
-                SizedBox()
+                const SizedBox()
               ],
             ),
-            const SizedBox(height: 12),
+            SizedBox(height: 12.h),
             Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -47,20 +50,22 @@ class ShimmerItem extends StatelessWidget {
                   width: 70.w,
                   alignment: Alignment.center,
                   decoration: BoxDecoration(
-                      color: Colors.white.withOpacity(0.6),
-                      borderRadius: BorderRadius.circular(4.r)),
+                    color: Colors.white.withOpacity(0.6),
+                    borderRadius: BorderRadius.circular(4.r),
+                  ),
                 ),
                 Container(
                   height: 19.h,
                   width: 70.w,
                   alignment: Alignment.center,
                   decoration: BoxDecoration(
-                      color: Colors.white.withOpacity(0.6),
-                      borderRadius: BorderRadius.circular(4.r)),
+                    color: Colors.white.withOpacity(0.6),
+                    borderRadius: BorderRadius.circular(4.r),
+                  ),
                 ),
               ],
             ),
-            const SizedBox(height: 12),
+            SizedBox(height: 12.h),
             Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -70,16 +75,18 @@ class ShimmerItem extends StatelessWidget {
                   width: 60.w,
                   alignment: Alignment.center,
                   decoration: BoxDecoration(
-                      color: Colors.white.withOpacity(0.6),
-                      borderRadius: BorderRadius.circular(4.r)),
+                    color: Colors.white.withOpacity(0.6),
+                    borderRadius: BorderRadius.circular(4.r),
+                  ),
                 ),
                 Container(
                   height: 17.h,
                   width: 90.w,
                   alignment: Alignment.center,
                   decoration: BoxDecoration(
-                      color: Colors.white.withOpacity(0.6),
-                      borderRadius: BorderRadius.circular(4.r)),
+                    color: Colors.white.withOpacity(0.6),
+                    borderRadius: BorderRadius.circular(4.r),
+                  ),
                 ),
               ],
             ),

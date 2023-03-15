@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:ishonch/data/models/model_category/categories/product/product_model.dart';
@@ -48,7 +49,7 @@ class ProductInfo extends StatelessWidget {
                       .textTheme
                       .headlineSmall!
                       .copyWith(fontSize: 18.sp),
-                  "Price",
+                  "Narxi".tr(),
                 ),
                 SizedBox(height: 5.h),
                 Text(
@@ -65,7 +66,7 @@ class ProductInfo extends StatelessWidget {
                       .textTheme
                       .displaySmall!
                       .copyWith(fontSize: 16.sp),
-                  "Description",
+                  "tavsif".tr(),
                 ),
                 SizedBox(height: 5.h),
                 Text(
@@ -81,7 +82,7 @@ class ProductInfo extends StatelessWidget {
                       .textTheme
                       .displaySmall!
                       .copyWith(fontSize: 16.sp),
-                  "Ma'lumotlar",
+                  "malumotlar".tr(),
                 ),
                 SizedBox(height: 10.h),
                 product.phoneCharacterics != 0
@@ -101,7 +102,7 @@ class ProductInfo extends StatelessWidget {
           bottom: 24.h,
           child: GlobalButton(
             isActive: true,
-            buttonText: "Buyurtma berish",
+            buttonText: "buyurtma_berish".tr(),
             onTap: onTap,
           ),
         ),

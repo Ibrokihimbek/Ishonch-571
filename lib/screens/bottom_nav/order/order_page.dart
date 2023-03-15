@@ -1,7 +1,5 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:ishonch/bloc/orders_bloc/orders_bloc.dart';
 import 'package:ishonch/bloc/orders_bloc/orders_event.dart';
 import 'package:ishonch/bloc/orders_bloc/orders_state.dart';
@@ -12,7 +10,6 @@ import 'package:ishonch/screens/bottom_nav/order/widget/order_shimmer.dart';
 import 'package:ishonch/utils/app_colors.dart';
 import 'package:ishonch/utils/app_image.dart';
 import 'package:lottie/lottie.dart';
-
 
 class OrdersPage extends StatelessWidget {
   const OrdersPage({Key? key}) : super(key: key);
@@ -37,7 +34,9 @@ class OrdersPage extends StatelessWidget {
                 child: OrderShimmer(),
               );
             } else if (state is LoadOrdersInFairlure) {
-              return Center(child: Text(state.errorText));
+              return Center(
+                child: Text(state.errorText),
+              );
             } else if (state is LoadOrdersInSuccess) {
               return state.orders.isEmpty
                   ? Center(
@@ -50,7 +49,9 @@ class OrdersPage extends StatelessWidget {
                       },
                     );
             } else if (state is LoadOrdersInFairlure) {
-              return Center(child: Text(state.errorText));
+              return Center(
+                child: Text(state.errorText),
+              );
             }
             return const SizedBox();
           },
