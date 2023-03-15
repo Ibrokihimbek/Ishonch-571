@@ -37,4 +37,6 @@ class AppImages {
   static const lotieDeliveryInTime = 'assets/loties/delivery_in_time.json';
   static const locationLoading = 'assets/loties/location_loading.json';
   static const noNotification = 'assets/loties/notifications.json';
+  static const lottieEmpty = 'assets/loties/emptyOrder.json';
+
 }

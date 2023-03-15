@@ -1,21 +1,19 @@
-// import 'package:adaptive_theme/adaptive_theme.dart';
 import 'package:adaptive_theme/adaptive_theme.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:ishonch/cubit/bottom_nav/bottom_nav_cubit.dart';
 import 'package:ishonch/screens/app_router.dart';
+import 'package:ishonch/screens/bottom_nav/bottom_nav_bar.dart';
 import 'package:ishonch/screens/drawer/drawer.dart';
 import 'package:ishonch/screens/bottom_nav/home/home_page.dart';
 import 'package:ishonch/screens/bottom_nav/notification/notification_page.dart';
 import 'package:ishonch/utils/app_image.dart';
-
-import '../../cubit/bottom_nav/bottom_nav_cubit.dart';
 import '../../cubit/connectivity/connectivity_cubit.dart';
 import '../../service/get_it/get_it.dart';
 import '../../service/notification_service/notification_service.dart';
-import 'bottom_navy_bar.dart';
 import 'order/order_page.dart';
 
 class BottomNavPage extends StatefulWidget {
@@ -29,7 +27,7 @@ class _BottomNavPageState extends State<BottomNavPage> {
   AdaptiveThemeMode? themeMode;
 
   Future<void> _getMode() async {
-     themeMode = await AdaptiveTheme.getThemeMode();
+    themeMode = await AdaptiveTheme.getThemeMode();
     setState(() {});
   }
 
@@ -88,7 +86,7 @@ class _BottomNavPageState extends State<BottomNavPage> {
                 IsNightMode: themeMode!.isDark,
               ),
               body: IndexedStack(index: index, children: screens),
-              bottomNavigationBar: BottomNavyBar(
+              bottomNavigationBar: BottomNavBar(
                 iconSize: 30,
                 selectedIndex: state,
                 showElevation: true,
@@ -96,7 +94,7 @@ class _BottomNavPageState extends State<BottomNavPage> {
                   context.read<BottomNavCubit>().changePageIndex(index);
                 },
                 items: [
-                  BottomNavyBarItem(
+                  BottomNavBarItem(
                     icon: (state == 0)
                         ? SvgPicture.asset(AppImages.home)
                         : SvgPicture.asset(AppImages.inactiveHome),
@@ -106,7 +104,7 @@ class _BottomNavPageState extends State<BottomNavPage> {
                     ),
                     activeColor: Colors.black,
                   ),
-                  BottomNavyBarItem(
+                  BottomNavBarItem(
                     icon: (state == 1)
                         ? SvgPicture.asset(AppImages.notification)
                         : SvgPicture.asset(AppImages.inactiveNotification),
@@ -116,7 +114,7 @@ class _BottomNavPageState extends State<BottomNavPage> {
                     ),
                     activeColor: Colors.black,
                   ),
-                  BottomNavyBarItem(
+                  BottomNavBarItem(
                     icon: (state == 2)
                         ? SvgPicture.asset(AppImages.cart)
                         : SvgPicture.asset(AppImages.inactiveCart),

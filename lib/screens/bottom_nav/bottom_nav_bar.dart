@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class BottomNavyBar extends StatelessWidget {
-  const BottomNavyBar({
+class BottomNavBar extends StatelessWidget {
+  const BottomNavBar({
     Key? key,
     this.selectedIndex = 0,
     this.showElevation = true,
@@ -24,7 +24,7 @@ class BottomNavyBar extends StatelessWidget {
   final Color? backgroundColor;
   final bool showElevation;
   final Duration animationDuration;
-  final List<BottomNavyBarItem> items;
+  final List<BottomNavBarItem> items;
   final ValueChanged<int> onItemSelected;
   final MainAxisAlignment mainAxisAlignment;
   final double itemCornerRadius;
@@ -82,7 +82,7 @@ class BottomNavyBar extends StatelessWidget {
 class _ItemWidget extends StatelessWidget {
   final double iconSize;
   final bool isSelected;
-  final BottomNavyBarItem item;
+  final BottomNavBarItem item;
   final Color backgroundColor;
   final double itemCornerRadius;
   final Duration animationDuration;
@@ -105,7 +105,7 @@ class _ItemWidget extends StatelessWidget {
       container: true,
       selected: isSelected,
       child: AnimatedContainer(
-        width: isSelected ? 100 : 50,
+        width: isSelected ? 100.w : 50.w,
         height: double.maxFinite,
         duration: animationDuration,
         curve: curve,
@@ -118,7 +118,7 @@ class _ItemWidget extends StatelessWidget {
           scrollDirection: Axis.horizontal,
           physics: NeverScrollableScrollPhysics(),
           child: Container(
-            width: isSelected ? 100 : 50,
+            width: isSelected ? 100.w : 50.w,
             child: Row(
               //mainAxisSize: MainAxisSize.max,
               mainAxisAlignment: MainAxisAlignment.start,
@@ -159,8 +159,8 @@ class _ItemWidget extends StatelessWidget {
   }
 }
 
-class BottomNavyBarItem {
-  BottomNavyBarItem({
+class BottomNavBarItem {
+  BottomNavBarItem({
     required this.icon,
     required this.title,
     this.activeColor = Colors.blue,

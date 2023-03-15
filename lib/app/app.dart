@@ -34,7 +34,7 @@ class App extends StatelessWidget {
         Locale('en', 'EN'),
         Locale('uz', 'UZ')
       ],
-      startLocale: const Locale('en', 'EN'),
+      startLocale: const Locale('uz', 'UZ'),
       path: 'assets/translation',
       fallbackLocale: const Locale("uz", "UZ"),
       child: MultiBlocProvider(providers: [
@@ -76,13 +76,13 @@ class App extends StatelessWidget {
         BlocProvider(
           create: (context) => LocationPermissionCubit(),
         )
-      ], child: const MyApp()),
+      ], child:  MyApp()),
     );
   }
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+   MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -99,7 +99,7 @@ class MyApp extends StatelessWidget {
             builder: (BuildContext context, Widget? child) => AdaptiveTheme(
               light: AppTheme.lightTheme,
               dark: AppTheme.darkTheme,
-              initial: AdaptiveThemeMode.light,
+              initial: AdaptiveThemeMode.system,
               builder: (light, dark) => MaterialApp(
                 initialRoute: RouteName.splash,
                 onGenerateRoute: AppRoutes.generateRoute,

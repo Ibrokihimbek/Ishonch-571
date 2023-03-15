@@ -12,8 +12,8 @@ class LoadCategoriesInSuccess extends CategoriesState {
   LoadCategoriesInSuccess({required this.categories});
 }
 
-class LoadCategoriesInFairlure extends CategoriesState {
+class LoadCategoriesInFailure extends CategoriesState {
   final String errorText;
  
-  LoadCategoriesInFairlure({required this.errorText});
+  LoadCategoriesInFailure({required this.errorText});
 }

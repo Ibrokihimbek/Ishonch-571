@@ -1,3 +1,5 @@
+import '../product/product_model.dart';
+
 class OrderModel {
   final int id;
   final String clientName;
@@ -5,6 +7,7 @@ class OrderModel {
   final String clientPhone;
   final String createdAt;
   final String updatedAt;
+  Product product;
 
   OrderModel({
     required this.id,
@@ -13,6 +16,7 @@ class OrderModel {
     required this.clientPhone,
     required this.createdAt,
     required this.updatedAt,
+    required this.product
   });
 
   factory OrderModel.fromJson(Map<String, dynamic> json) => OrderModel(
@@ -22,5 +26,6 @@ class OrderModel {
         clientPhone: json['client_phone'] as String? ?? "",
         createdAt: json['createdAt'] as String? ?? "",
         updatedAt: json['updatedAt'] as String? ?? "",
+        product: Product.fromJson(json['product'] as Map<String, dynamic>? ?? {}),
       );
 }
