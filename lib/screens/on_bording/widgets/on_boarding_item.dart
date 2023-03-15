@@ -2,8 +2,6 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:ishonch/data/models/onbording_model/onbording_model.dart';
-import 'package:ishonch/utils/app_colors.dart';
-import 'package:ishonch/utils/text_style.dart';
 import 'package:lottie/lottie.dart';
 
 class OnBoardingItem extends StatelessWidget {
@@ -25,7 +23,9 @@ class OnBoardingItem extends StatelessWidget {
               child: Text(
                 onboard.title.tr(),
                 textAlign: TextAlign.center,
-                style: fontRobotoW700(appcolor: AppColors.black)
+                style: Theme.of(context)
+                    .textTheme
+                    .displayMedium!
                     .copyWith(fontSize: 32.sp),
               ),
             ),

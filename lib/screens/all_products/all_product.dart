@@ -19,9 +19,7 @@ class AllProduct extends StatelessWidget {
         body: BlocBuilder<ProductsBloc, ProductsState>(
           builder: (context, state) {
             if (state is InitialProductsState) {
-              return const Center(
-                child: Text('hali data yoq'),
-              );
+              return const Center(child: Text('hali data yoq'));
             } else if (state is LoadProductsInSuccess) {
               return AllProductsScreen(data: state.products);
             } else if (state is LoadProductsInFairlure) {

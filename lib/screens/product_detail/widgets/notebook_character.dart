@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:ishonch/data/models/model_category/categories/product/product_model.dart';
@@ -14,37 +15,37 @@ class NotebookCharacter extends StatelessWidget {
     return Column(
       children: [
         infoMethod(
-          fieldName: "Color:",
+          fieldName: "rang:".tr(),
           product: product.notebook.color,
           context: context,
         ),
         SizedBox(height: 5.h),
         infoMethod(
-          fieldName: 'Display:',
+          fieldName: 'ekran:'.tr(),
           product: product.notebook.display,
           context: context,
         ),
         SizedBox(height: 5.h),
         infoMethod(
-          fieldName: 'Memory Ram:',
+          fieldName: 'xotira_RAM:'.tr(),
           product: product.notebook.memoryRam,
           context: context,
         ),
         SizedBox(height: 5.h),
         infoMethod(
-          fieldName: 'Memory Rom:',
+          fieldName: 'xotira_ROM:'.tr(),
           product: product.notebook.memoryRom,
           context: context,
         ),
         SizedBox(height: 5.h),
         infoMethod(
-          fieldName: 'Warranty:',
+          fieldName: 'kafolat:'.tr(),
           product: product.notebook.warranty,
           context: context,
         ),
         SizedBox(height: 5.h),
         infoMethod(
-          fieldName: 'Graphics card:',
+          fieldName: 'grafik_karta:'.tr(),
           product: product.notebook.videoCard,
           context: context,
         ),

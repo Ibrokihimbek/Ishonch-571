@@ -16,7 +16,7 @@ class NotificationCourseItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print("ID $id");
+    debugPrint("ID $id");
     return BlocProvider(
       create: (context) => ProductCubitById(id),
       child: BlocBuilder<ProductCubitById, ProductStateById>(
@@ -26,71 +26,86 @@ class NotificationCourseItem extends StatelessWidget {
           } else if (state is GettingProductInSuccess) {
             ProductModel productModel = state.product;
             String image = Uri.parse(
-                        "http://146.190.207.16:3000/${state.product.media.media.toString()}")
+                        "http://146.190.207.16:3000/${state.product.media.media}")
                     .isAbsolute
-                ? "http://146.190.207.16:3000/${state.product.media.media.toString()}"
+                ? "http://146.190.207.16:3000/${state.product.media.media}"
                 : "https://avatars.mds.yandex.net/i?id=6d2220ecdde320c636abeab21474d37c10c9a110-6335046-images-thumbs&n=13";
-            return Column(children: [
-              ZoomTapAnimation(
-                onTap: (() {
-                  Navigator.pushNamed(
-                    context,
-                    RouteName.productDetail,
-                    arguments: int.parse(id),
-                  );
-                }),
-                child: Container(
-                  margin: const EdgeInsets.only(top: 10, bottom: 10),
-                  height: 70.h,
-                  decoration: BoxDecoration(
-                      color: Theme.of(context).primaryColor,
-                      borderRadius: BorderRadius.circular(10),
-                      boxShadow: const [
-                        BoxShadow(
-                          color: Colors.black12,
-                          offset: Offset(2, 3), // horizontal, vertical
-                          blurRadius: 1,
-                        ),
-                      ]),
-                  child: Row(
-                    children: [
-                      SizedBox(
-                        width: 10.w
-                      ),
-                      Container(
-                        height: 80.h,
-                        width: 80.h,
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(4.h),
+            return Column(
+              children: [
+                ZoomTapAnimation(
+                  onTap: (() {
+                    Navigator.pushNamed(
+                      context,
+                      RouteName.productDetail,
+                      arguments: int.parse(id),
+                    );
+                  }),
+                  child: Container(
+                    margin: EdgeInsets.only(top: 10.h, bottom: 10.h).h,
+                    height: 70.h,
+                    decoration: BoxDecoration(
+                        color: Theme.of(context).primaryColor,
+                        borderRadius: BorderRadius.circular(10.r).r,
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.black12,
+                            offset: const Offset(2, 3), // horizontal, vertical
+                            blurRadius: 1.r,
+                          ),
+                        ]),
+                    child: Row(
+                      children: [
+                        SizedBox(width: 10.w),
+                        Container(
+                          height: 80.h,
+                          width: 80.h,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(4.r).r,
                             image: DecorationImage(
-                                image: NetworkImage(image), fit: BoxFit.cover)),
-                      ),
-                      SizedBox(
-                        width: 32.h,
-                      ),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          SizedBox(height: 5.h,),
-                          Text(productModel.brandName,
-                              style: Theme.of(context).textTheme.headlineMedium?.copyWith(fontSize: 16.sp,fontWeight: FontWeight.w600,color: Theme.of(context).cardColor)),
-                          Container(
-                            height: 40.h ,
-                            width: 180.w,
-                            padding: EdgeInsets.only(top: 5.h),
-                            child: Text(productModel.description,
-                              style: Theme.of(context).textTheme.headlineMedium?.copyWith(fontSize: 16.sp,fontWeight: FontWeight.w600,color: Theme.of(context).cardColor),
-
+                              image: NetworkImage(image),
+                              fit: BoxFit.cover,
                             ),
-                          )
-
-                        ],
-                      )
-                    ],
+                          ),
+                        ),
+                        SizedBox(width: 32.h),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            SizedBox(height: 5.h),
+                            Text(
+                              productModel.brandName,
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .headlineMedium
+                                  ?.copyWith(
+                                    fontSize: 16.sp,
+                                    fontWeight: FontWeight.w600,
+                                    color: Theme.of(context).cardColor,
+                                  ),
+                            ),
+                            Container(
+                              height: 40.h,
+                              width: 180.w,
+                              padding: EdgeInsets.only(top: 5.h).w,
+                              child: Text(
+                                productModel.description,
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .headlineMedium
+                                    ?.copyWith(
+                                        fontSize: 16.sp,
+                                        fontWeight: FontWeight.w600,
+                                        color: Theme.of(context).cardColor),
+                              ),
+                            )
+                          ],
+                        )
+                      ],
+                    ),
                   ),
                 ),
-              ),
-            ]);
+              ],
+            );
           }
 
           return Container();

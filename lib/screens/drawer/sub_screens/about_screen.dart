@@ -29,11 +29,9 @@ class AboutScreen extends StatelessWidget {
               width: 132.5.w,
               height: 68.64.h,
               child: Image.asset(
-
                 Theme.of(context).dialogBackgroundColor == Colors.white
                     ? AppImages.imageLogo
                     : AppImages.imageLogoLight,
-
               ),
             ),
             SizedBox(
@@ -47,8 +45,7 @@ class AboutScreen extends StatelessWidget {
             ),
             SizedBox(height: 10.h),
             Text(
-              "Ishonch 571 - bu professional elektron tijorat platformasi. Bu yerda biz sizga faqat qiziqarli kontentni taqdim etamiz, ular sizga juda yoqadi. Biz ishonchlilik va xaridlarga e'tibor qaratgan holda, sizga eng yaxshi elektron tijoratni taqdim etishga bag'ishlanganmiz. Biz elektron tijoratga bo'lgan ishtiyoqimizni rivojlanayotgan onlayn veb-saytga aylantirish ustida ishlamoqdamiz. Umid qilamizki, bizning elektron tijoratimiz biz ularni sizga taklif qilganimizdek sizga ham yoqadi."
-                  .tr(),
+              "about_text".tr(),
               style: Theme.of(context)
                   .textTheme
                   .titleLarge!

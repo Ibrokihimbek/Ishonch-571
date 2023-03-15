@@ -1,4 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -29,7 +30,8 @@ class ProductByCategoryItem extends StatelessWidget {
                       onTap: onTap,
                       child: Container(
                         decoration: BoxDecoration(
-                          border: Border.all(width: 1, color: Theme.of(context).hintColor),
+                          border: Border.all(
+                              width: 1, color: Theme.of(context).hintColor),
                           borderRadius: BorderRadius.circular(14.r),
                           color: Theme.of(context).primaryColor,
                         ),
@@ -71,15 +73,36 @@ class ProductByCategoryItem extends StatelessWidget {
                                   style: Theme.of(context)
                                       .textTheme
                                       .displayMedium!
-                                      .copyWith(fontSize: 16.sp,fontWeight: FontWeight.w600),
+                                      .copyWith(
+                                          fontSize: 16.sp,
+                                          fontWeight: FontWeight.w600),
                                 ),
-                                subtitle: Text(
-                                  'Price: ${state.product.productPrice}',
-                                  textAlign: TextAlign.center,
-                                  style: Theme.of(context)
-                                      .textTheme
-                                      .titleLarge!
-                                      .copyWith(fontSize: 14.sp,fontWeight: FontWeight.w600),
+                                subtitle: Center(
+                                  child: RichText(
+                                    text: TextSpan(
+                                      children: [
+                                        TextSpan(
+                                          text: "Price: ".tr(),
+                                          style: Theme.of(context)
+                                              .textTheme
+                                              .titleLarge!
+                                              .copyWith(
+                                                  fontSize: 14.sp,
+                                                  fontWeight: FontWeight.w600),
+                                        ),
+                                        TextSpan(
+                                          text:
+                                              '${state.product.productPrice} ${state.product.currency.currencyName}',
+                                          style: Theme.of(context)
+                                              .textTheme
+                                              .titleLarge!
+                                              .copyWith(
+                                                  fontSize: 14.sp,
+                                                  fontWeight: FontWeight.w600),
+                                        )
+                                      ],
+                                    ),
+                                  ),
                                 ),
                               ),
                             ),
@@ -87,11 +110,21 @@ class ProductByCategoryItem extends StatelessWidget {
                         ),
                       ),
                     )
-                  : Center(child: GestureDetector(
-              onTap: (){
-                BlocProvider.of<ProductsBloc>(context).add(FetchAllProducts());
-              },
-              child: const Text("REFRESH")));
+                  : Center(
+                      child: GestureDetector(
+                        onTap: () {
+                          BlocProvider.of<ProductsBloc>(context)
+                              .add(FetchAllProducts());
+                        },
+                        child: Text(
+                          "REFRESH".tr(),
+                          style: Theme.of(context)
+                              .textTheme
+                              .headlineSmall!
+                              .copyWith(fontSize: 16.sp),
+                        ),
+                      ),
+                    );
         },
       ),
     );
