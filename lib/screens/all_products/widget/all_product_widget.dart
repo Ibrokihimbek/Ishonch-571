@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:ishonch/data/models/model_category/categories/product/product_model.dart';
 import 'package:lottie/lottie.dart';
@@ -17,23 +18,20 @@ class AllProductsScreen extends StatelessWidget {
         ? Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Lottie.asset(AppImages.lotieDeliveryInTime),
-              Text(
-                'Hozircha Mahsulotlar mavjud emas',
-                textAlign: TextAlign.center,
-                style: Theme.of(context).textTheme.headlineMedium,
-              ),
+              Lottie.asset(AppImages.lottieDeliveryInTime),
+              Text('The products are not available for now'.tr(),
+                  textAlign: TextAlign.center,
+                  style: Theme.of(context).textTheme.headlineMedium),
             ],
           )
         : GridView(
             padding: const EdgeInsets.all(10),
             physics: const BouncingScrollPhysics(),
             gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 2,
-              childAspectRatio: 0.75,
-              mainAxisSpacing: 5,
-              crossAxisSpacing: 5,
-            ),
+                crossAxisCount: 2,
+                childAspectRatio: 0.75,
+                mainAxisSpacing: 5,
+                crossAxisSpacing: 5),
             children: List.generate(
               data.length,
               (index) => ProductByCategoryItem(
@@ -48,6 +46,5 @@ class AllProductsScreen extends StatelessWidget {
               ),
             ),
           );
-    ;
   }
 }

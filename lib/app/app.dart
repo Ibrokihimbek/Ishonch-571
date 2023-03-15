@@ -34,7 +34,7 @@ class App extends StatelessWidget {
         Locale('en', 'EN'),
         Locale('uz', 'UZ')
       ],
-      startLocale: const Locale('en', 'EN'),
+      startLocale: const Locale('uz', 'UZ'),
       path: 'assets/translation',
       fallbackLocale: const Locale("uz", "UZ"),
       child: MultiBlocProvider(providers: [

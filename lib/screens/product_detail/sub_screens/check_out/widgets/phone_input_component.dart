@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:ishonch/utils/app_colors.dart';
 import 'package:ishonch/utils/text_style.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
+import 'package:easy_localization/easy_localization.dart';
 
 class PhoneInputComponent extends StatefulWidget {
   const PhoneInputComponent({
@@ -58,7 +59,7 @@ class _PhoneInputComponentState extends State<PhoneInputComponent> {
           children: [
             SizedBox(width: 20.w),
             Text(
-              'Phone Number',
+              'telefon_raqami'.tr(),
               style: Theme.of(context).textTheme.headlineMedium!.copyWith(
                 fontSize: 16.sp,
               ),
