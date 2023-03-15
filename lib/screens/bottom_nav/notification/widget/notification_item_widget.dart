@@ -16,7 +16,7 @@ class NotificationCourseItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print("ID $id");
+    debugPrint("ID $id");
     return BlocProvider(
       create: (context) => ProductCubitById(id),
       child: BlocBuilder<ProductCubitById, ProductStateById>(
@@ -54,9 +54,7 @@ class NotificationCourseItem extends StatelessWidget {
                       ]),
                   child: Row(
                     children: [
-                      SizedBox(
-                        width: 10.w
-                      ),
+                      SizedBox(width: 10.w),
                       Container(
                         height: 80.h,
                         width: 80.h,
@@ -71,19 +69,32 @@ class NotificationCourseItem extends StatelessWidget {
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          SizedBox(height: 5.h,),
+                          SizedBox(
+                            height: 5.h,
+                          ),
                           Text(productModel.brandName,
-                              style: Theme.of(context).textTheme.headlineMedium?.copyWith(fontSize: 16.sp,fontWeight: FontWeight.w600,color: Theme.of(context).cardColor)),
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .headlineMedium
+                                  ?.copyWith(
+                                      fontSize: 16.sp,
+                                      fontWeight: FontWeight.w600,
+                                      color: Theme.of(context).cardColor)),
                           Container(
-                            height: 40.h ,
+                            height: 40.h,
                             width: 180.w,
                             padding: EdgeInsets.only(top: 5.h),
-                            child: Text(productModel.description,
-                              style: Theme.of(context).textTheme.headlineMedium?.copyWith(fontSize: 16.sp,fontWeight: FontWeight.w600,color: Theme.of(context).cardColor),
-
+                            child: Text(
+                              productModel.description,
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .headlineMedium
+                                  ?.copyWith(
+                                      fontSize: 16.sp,
+                                      fontWeight: FontWeight.w600,
+                                      color: Theme.of(context).cardColor),
                             ),
                           )
-
                         ],
                       )
                     ],

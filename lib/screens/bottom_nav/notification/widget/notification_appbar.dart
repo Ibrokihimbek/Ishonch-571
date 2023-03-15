@@ -1,7 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/svg.dart';
-import '../../../../utils/app_image.dart';
 
 class NotificationAppBar extends StatelessWidget implements PreferredSize {
   const NotificationAppBar({Key? key, required this.onMute}) : super(key: key);
@@ -14,7 +11,6 @@ class NotificationAppBar extends StatelessWidget implements PreferredSize {
       title: Text(
         "Notification",
         style: Theme.of(context).textTheme.headlineMedium,
-
       ),
       actions: [
         PopupMenuButton<String>(

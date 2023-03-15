@@ -5,7 +5,8 @@ import '../../../../data/models/notification/notification_model.dart';
 // ignore: must_be_immutable
 class MessageItem extends StatelessWidget {
   NotificationModel notification;
-  MessageItem({required this.notification,Key? key}) : super(key: key);
+
+  MessageItem({required this.notification, Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +20,10 @@ class MessageItem extends StatelessWidget {
         Container(
             margin: const EdgeInsets.only(right: 20),
             width: 400,
-            child: Text(notification.id,textAlign: TextAlign.end,)),
+            child: Text(
+              notification.id,
+              textAlign: TextAlign.end,
+            )),
         Padding(
             padding: EdgeInsets.symmetric(horizontal: 20.h),
             child: const Divider(

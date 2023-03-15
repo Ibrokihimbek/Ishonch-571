@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:ishonch/screens/bottom_nav/notification/widget/notification_appbar.dart';
 import 'package:ishonch/screens/bottom_nav/notification/widget/notification_item_widget.dart';
 import 'package:ishonch/utils/app_image.dart';
@@ -28,10 +27,10 @@ class NotificationPage extends StatelessWidget {
             return Center(
                 child: Text(
               state.status,
-              style: TextStyle(color: Colors.black),
+              style: const TextStyle(color: Colors.black),
             ));
           } else if (state is ReadNotificationInSuccess) {
-            print("NOTIFICATION SUCCESS 1");
+            debugPrint("NOTIFICATION SUCCESS 1");
             return SizedBox(
               height: MediaQuery.of(context).size.height,
               width: MediaQuery.of(context).size.width,
@@ -51,8 +50,7 @@ class NotificationPage extends StatelessWidget {
                       }),
             );
           } else {
-            print("NOTIFICATION SUCCESS 2");
-
+            debugPrint("NOTIFICATION SUCCESS 2");
             context.read<NotificationReaderBloc>().add(ReadNotificationEvent());
             return Lottie.asset(AppImages.noNotification);
           }
