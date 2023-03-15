@@ -1,4 +1,5 @@
 import 'package:device_info_plus/device_info_plus.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -72,7 +73,7 @@ class _CheckOutScreenState extends State<CheckOutScreen> {
       builder: (context, state) {
         _addressController.text = state.currentAddress;
         return Scaffold(
-          appBar: const GlobalAppBar(title: "Checkout"),
+          appBar: GlobalAppBar(title: 'tekshirish'.tr()),
           body: SingleChildScrollView(
             child: Form(
               key: _formKey,
@@ -80,22 +81,22 @@ class _CheckOutScreenState extends State<CheckOutScreen> {
                 children: [
                   SizedBox(height: 10.h),
                   MyTextField(
-                    title: "Name",
+                    title: "ism".tr(),
                     maxLines: 1,
                     controller: _fullNameController,
-                    hintText: "Enter your name",
+                    hintText: "ismingizni_kiriting".tr(),
                   ),
                   SizedBox(height: 30.h),
                   MyTextField(
                     maxLines: 4,
-                    title: "Address",
+                    title: "manzil".tr(),
                     controller: _addressController,
-                    hintText: "Enter your address",
+                    hintText: "manzilingizni_kiriting".tr(),
                   ),
                   SizedBox(height: 20.h),
                   GlobalButton(
                     isActive: true,
-                    buttonText: "Select on Map ",
+                    buttonText: "xaritadan_tanlang".tr(),
                     onTap: () {
                       Navigator.pushNamed(
                         context,
@@ -136,7 +137,7 @@ class _CheckOutScreenState extends State<CheckOutScreen> {
               ).w,
               child: GlobalButton(
                 isActive: true,
-                buttonText: "Purchase",
+                buttonText: "sotib_olish".tr(),
                 onTap: () async {
                   DeviceInfoPlugin deviceInfo = DeviceInfoPlugin();
                   AndroidDeviceInfo androidInfo = await deviceInfo.androidInfo;
@@ -167,7 +168,7 @@ class _CheckOutScreenState extends State<CheckOutScreen> {
                         // ignore: use_build_context_synchronously
                         return MySnackBar(
                           context,
-                          notification: "Enter your phone number.",
+                          notification: "telefon_raqamingizni_kiriting".tr(),
                           color: Colors.red,
                           icon: const Icon(
                             Icons.error,
@@ -179,7 +180,7 @@ class _CheckOutScreenState extends State<CheckOutScreen> {
                       // ignore: use_build_context_synchronously
                       return MySnackBar(
                         context,
-                        notification: "Enter your address",
+                        notification: "manzilingizni_kiriting".tr(),
                         color: Colors.red,
                         icon: const Icon(
                           Icons.error,
@@ -191,7 +192,7 @@ class _CheckOutScreenState extends State<CheckOutScreen> {
                     // ignore: use_build_context_synchronously
                     return MySnackBar(
                       context,
-                      notification: "Enter your name.",
+                      notification: "ismingizni_kiriting".tr(),
                       color: Colors.red,
                       icon: const Icon(
                         Icons.error,
