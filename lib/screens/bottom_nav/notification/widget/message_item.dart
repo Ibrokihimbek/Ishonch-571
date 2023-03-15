@@ -16,7 +16,7 @@ class MessageItem extends StatelessWidget {
         SizedBox(
           width: 400.w,
           child: ListTile(
-            title: Text("title".tr()),
+            title: Text("Title".tr()),
           ),
         ),
         Container(
