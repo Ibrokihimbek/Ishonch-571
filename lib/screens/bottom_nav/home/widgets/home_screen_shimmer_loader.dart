@@ -76,7 +76,6 @@ class HomeScreenShimmerLoader extends StatelessWidget {
             ),
           ),
           SizedBox(height: height(context) * 0.02),
-          
           Padding(
             padding: EdgeInsets.symmetric(horizontal: width(context) * 0.055),
             child: Container(
@@ -99,8 +98,7 @@ class HomeScreenShimmerLoader extends StatelessWidget {
                   childAspectRatio: 0.75),
               itemBuilder: (context, index) {
                 return Padding(
-                  padding:
-                      EdgeInsets.symmetric(horizontal:  10.w).r,
+                  padding: EdgeInsets.symmetric(horizontal: 10.w).r,
                   child: Container(
                     decoration: BoxDecoration(
                       color: AppColors.white,
