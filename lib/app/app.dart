@@ -3,6 +3,7 @@ import 'package:adaptive_theme/adaptive_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:ishonch/bloc/bloc_product/product_bloc.dart';
 import 'package:ishonch/bloc/orders_bloc/orders_bloc.dart';
 import 'package:ishonch/cubit/connectivity/connectivity_cubit.dart';
 import 'package:ishonch/cubit/mapping/map_cubit.dart';
@@ -11,14 +12,12 @@ import 'package:ishonch/cubit/discount/discount_cubit.dart';
 import 'package:ishonch/data/repositories/category_repo.dart';
 import 'package:ishonch/data/repositories/geocoding_repository.dart';
 import 'package:ishonch/screens/app_router.dart';
-import 'package:ishonch/screens/bottom_nav/home/bloc/bloc_product/product_bloc.dart';
 import 'package:ishonch/service/api_service/api_service.dart';
 
 import '../bloc/notifications_bloc/notification_reader_bloc/notification_reader_bloc.dart';
 
 import '../cubit/bottom_nav/bottom_nav_cubit.dart';
 import '../cubit/location_permission/location_permission_cubit.dart';
-import '../screens/bottom_nav/home/bloc/bloc_product/product_event.dart';
 
 import '../service/get_it/get_it.dart';
 import '../utils/theme.dart';
@@ -76,13 +75,13 @@ class App extends StatelessWidget {
         BlocProvider(
           create: (context) => LocationPermissionCubit(),
         )
-      ], child:  MyApp()),
+      ], child: MyApp()),
     );
   }
 }
 
 class MyApp extends StatelessWidget {
-   MyApp({super.key});
+  MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {

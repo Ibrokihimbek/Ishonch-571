@@ -2,13 +2,13 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class AllCategoriesTitle extends SliverPersistentHeaderDelegate {
+class CategoryTitleWidget extends SliverPersistentHeaderDelegate {
   final double screenHeight;
   final double screenWidth;
   final String title;
   final Widget page;
 
-  AllCategoriesTitle({
+  CategoryTitleWidget({
     required this.screenHeight,
     required this.screenWidth,
     required this.title,

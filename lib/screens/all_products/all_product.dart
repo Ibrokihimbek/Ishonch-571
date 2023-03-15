@@ -1,12 +1,9 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:ishonch/bloc/bloc_product/product_bloc.dart';
 import 'package:ishonch/data/repositories/category_repo.dart';
 import 'package:ishonch/screens/all_products/widget/all_product_widget.dart';
-import 'package:ishonch/screens/bottom_nav/home/bloc/bloc_product/product_event.dart';
-import 'package:ishonch/screens/bottom_nav/home/bloc/bloc_product/product_bloc.dart';
-import 'package:ishonch/screens/bottom_nav/home/bloc/bloc_product/product_state.dart';
-
 import '../widgets/global_appbar.dart';
 
 class AllProduct extends StatelessWidget {

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ishonch/data/models/model_category/categories/product/product_model.dart';
 import 'package:lottie/lottie.dart';
-
 import '../../../utils/app_image.dart';
 import '../../app_router.dart';
 import '../../product_by_category/widgets/product_item.dart';
@@ -48,6 +47,5 @@ class AllProductsScreen extends StatelessWidget {
               ),
             ),
           );
-    ;
   }
 }
