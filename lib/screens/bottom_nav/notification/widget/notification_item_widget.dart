@@ -107,7 +107,6 @@ class NotificationCourseItem extends StatelessWidget {
               ],
             );
           }
-
           return Container();
         },
       ),

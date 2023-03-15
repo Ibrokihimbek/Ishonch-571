@@ -19,9 +19,10 @@ class CategoriesList extends SliverPersistentHeaderDelegate {
       BuildContext context, double shrinkOffset, bool overlapsContent) {
     return Container(
         padding: EdgeInsets.only(
-            left: screenWidth * 0.055, top: screenHeight * 0.01),
+            top: screenHeight * 0.01),
         height: screenHeight * 0.15,
         child: ListView.separated(
+          padding: const EdgeInsets.symmetric(horizontal: 12),
           physics: const BouncingScrollPhysics(),
           scrollDirection: Axis.horizontal,
           itemCount: data.length,
