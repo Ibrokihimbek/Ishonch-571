@@ -7,7 +7,6 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:ishonch/cubit/mapping/map_cubit.dart';
 import 'package:ishonch/data/repositories/geocoding_repository.dart';
 import 'package:ishonch/service/api_service/api_service.dart';
-import 'package:ishonch/utils/app_colors.dart';
 import 'package:ishonch/utils/app_image.dart';
 import 'dart:async';
 import 'package:map_picker/map_picker.dart';
