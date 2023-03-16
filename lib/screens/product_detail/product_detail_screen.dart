@@ -39,6 +39,7 @@ class ProductDetailScreen extends StatelessWidget {
                 : state is GettingProductInSuccess
                     ? SafeArea(
                         child: CustomScrollView(
+                          physics: const BouncingScrollPhysics(),
                           slivers: [
                             SliverAppBar(
                               expandedHeight: 350.h,

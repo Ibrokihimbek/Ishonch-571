@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ishonch/bloc/bloc_product/product_bloc.dart';
 import 'package:ishonch/data/repositories/category_repo.dart';
+import 'package:ishonch/screens/all_products/widget/all_product_shimmer.dart';
 import 'package:ishonch/screens/all_products/widget/all_product_widget.dart';
 import '../widgets/global_appbar.dart';
 
@@ -24,6 +25,8 @@ class AllProduct extends StatelessWidget {
               return AllProductsScreen(data: state.products);
             } else if (state is LoadProductsInFairlure) {
               return Text(state.errorText);
+            } else if (state is LoadProductsInProgress) {
+              return const AllProductShimmerWidget();
             }
             return const SizedBox();
           },

@@ -27,10 +27,11 @@ class AllProductsScreen extends StatelessWidget {
             padding: const EdgeInsets.all(10),
             physics: const BouncingScrollPhysics(),
             gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 2,
-                childAspectRatio: 0.75,
-                mainAxisSpacing: 5,
-                crossAxisSpacing: 5),
+              crossAxisCount: 2,
+              childAspectRatio: 0.75,
+              mainAxisSpacing: 5,
+              crossAxisSpacing: 5,
+            ),
             children: List.generate(
               data.length,
               (index) => ProductByCategoryItem(

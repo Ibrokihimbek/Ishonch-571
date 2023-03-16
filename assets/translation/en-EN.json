@@ -58,10 +58,11 @@
     "xotira_RAM:" : "Memory Ram:",
     "xotira_ROM:" : "Memory Rom:",
     "grafik_karta:" : "Graphics card:",
-    "Tavsif:" : "Description:",
-    "malumotlar:" : "Information:",
-    "buyurtma_berish:" : "Place an order:",
-    "ruxsat_topilmadi:" : "Permission not found:"
->>>>>>> main
+    "tavsif" : "Description:",
+    "malumotlar" : "Information:",
+    "buyurtma_berish" : "Place an order",
+    "ruxsat_topilmadi" : "Permission not found:",
+    "get_now" : "Get now",
+    "Off" : "Off"
 
 }
