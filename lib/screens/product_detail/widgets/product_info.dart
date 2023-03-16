@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:ishonch/data/models/model_category/categories/product/product_model.dart';
@@ -24,15 +25,11 @@ class ProductInfo extends StatelessWidget {
           padding: EdgeInsets.only(
             left: 24.w,
             right: 24.w,
-            top: 10.h,
-            bottom: 80.h,
+            top: 24.h,
+            bottom: 100.h,
           ).r,
           decoration: BoxDecoration(
             color: Theme.of(context).primaryColor,
-            borderRadius: BorderRadius.only(
-              topLeft: Radius.circular(25.w).w,
-              topRight: Radius.circular(25.w).w,
-            ),
           ),
           child: SingleChildScrollView(
             physics: const BouncingScrollPhysics(),
@@ -52,7 +49,7 @@ class ProductInfo extends StatelessWidget {
                       .textTheme
                       .headlineSmall!
                       .copyWith(fontSize: 18.sp),
-                  "Price",
+                  "Narxi".tr(),
                 ),
                 SizedBox(height: 5.h),
                 Text(
@@ -69,7 +66,7 @@ class ProductInfo extends StatelessWidget {
                       .textTheme
                       .displaySmall!
                       .copyWith(fontSize: 16.sp),
-                  "Description",
+                  "tavsif".tr(),
                 ),
                 SizedBox(height: 5.h),
                 Text(
@@ -85,9 +82,9 @@ class ProductInfo extends StatelessWidget {
                       .textTheme
                       .displaySmall!
                       .copyWith(fontSize: 16.sp),
-                  "Ma'lumotlar",
+                  "malumotlar".tr(),
                 ),
-                SizedBox(height: 5.h),
+                SizedBox(height: 10.h),
                 product.phoneCharacterics != 0
                     ? PhoneCharacter(product: product)
                     : product.notebookCharacterics != 0
@@ -102,10 +99,10 @@ class ProductInfo extends StatelessWidget {
         Positioned(
           left: 12.w,
           right: 12.w,
-          bottom: 16.h,
+          bottom: 24.h,
           child: GlobalButton(
             isActive: true,
-            buttonText: "Buyurtma berish",
+            buttonText: "buyurtma_berish".tr(),
             onTap: onTap,
           ),
         ),

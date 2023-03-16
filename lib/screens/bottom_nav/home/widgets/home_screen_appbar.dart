@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 
 import '../../../../../utils/app_image.dart';
@@ -19,7 +20,7 @@ class HomeScreenAppBar extends StatelessWidget implements PreferredSize {
           Theme.of(context).appBarTheme.backgroundColor==Colors.white?AppImages.iconMenu:AppImages.iconMenuLight,
         ),
       ),
-      title: Text(title, style: Theme.of(context).textTheme.headlineMedium),
+      title: Text(title, style: Theme.of(context).textTheme.displayLarge?.copyWith(fontSize: 25.sp)),
     );
   }
 

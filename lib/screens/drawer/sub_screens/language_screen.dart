@@ -1,11 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:ishonch/data/models/language/language_model.dart';
-import 'package:ishonch/screens/drawer/widgets/language_widget.dart';
 import 'package:ishonch/screens/widgets/global_appbar.dart';
 import 'package:ishonch/utils/app_colors.dart';
 import 'package:ishonch/utils/text_style.dart';
@@ -62,10 +58,7 @@ class _LanguageScreenState extends State<LanguageScreen> {
                         decoration: BoxDecoration(
                             boxShadow: selectedLang == 0
                                 ? [
-                          const     BoxShadow(
-                                  color: Colors.grey,
-                                  spreadRadius: 2.5,
-                                  blurRadius: 8)
+
                             ]
                                 : [
                                     const BoxShadow(
@@ -129,10 +122,6 @@ class _LanguageScreenState extends State<LanguageScreen> {
                         decoration: BoxDecoration(
                             boxShadow: selectedLang == 1
                                 ? [
-                              const     BoxShadow(
-                                  color: Colors.grey,
-                                  spreadRadius: 2.5,
-                                  blurRadius: 8)
                             ]
                                 : [
                                     const BoxShadow(
@@ -197,10 +186,6 @@ class _LanguageScreenState extends State<LanguageScreen> {
                         decoration: BoxDecoration(
                             boxShadow: selectedLang == 2
                                 ? [
-                              const     BoxShadow(
-                                  color: Colors.grey,
-                                  spreadRadius: 2.5,
-                                  blurRadius: 8)
                             ]
                                 : [
                                     const BoxShadow(

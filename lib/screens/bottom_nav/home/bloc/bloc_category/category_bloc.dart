@@ -18,7 +18,7 @@ class CategoriesBloc extends Bloc<CategoriesEvent, CategoriesState> {
   if(myResponse.error.isEmpty){
     emit(LoadCategoriesInSuccess(categories: myResponse.data));
   } else {
-    emit(LoadCategoriesInFairlure(errorText: myResponse.error));
+    emit(LoadCategoriesInFailure(errorText: myResponse.error));
   }
  }
 }

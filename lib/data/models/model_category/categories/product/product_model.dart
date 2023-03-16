@@ -60,7 +60,7 @@ class ProductModel {
         jsonData['appliances'] as Map<String, dynamic>? ?? {},
       ),
       currency: Currency.fromJson(
-        jsonData['currensy'] as Map<String, dynamic>? ?? {},
+        jsonData['currency'] as Map<String, dynamic>? ?? {},
       ),
       phone: Phone.fromJson(
         jsonData['phone'] as Map<String, dynamic>? ?? {},

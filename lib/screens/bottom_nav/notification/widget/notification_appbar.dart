@@ -1,7 +1,6 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/svg.dart';
-import '../../../../utils/app_image.dart';
 
 class NotificationAppBar extends StatelessWidget implements PreferredSize {
   const NotificationAppBar({Key? key, required this.onMute}) : super(key: key);
@@ -11,34 +10,30 @@ class NotificationAppBar extends StatelessWidget implements PreferredSize {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-
-     leading: Padding(
-         padding: const EdgeInsets.all(10),
-         child: SvgPicture.asset(AppImages.iconBackArrow)),
       title: Text(
-        "Notification",
+        "Notification".tr(),
         style: Theme.of(context).textTheme.headlineMedium,
-
       ),
       actions: [
         PopupMenuButton<String>(
           onSelected: (value) {},
-          shape: const RoundedRectangleBorder(
-              borderRadius: BorderRadius.all(Radius.circular(20))),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.all(Radius.circular(20.r)),
+          ),
           itemBuilder: (context) {
             return [
               PopupMenuItem(
                 child: Row(
-                  children: const [
-                    Text("Mute Notification"),
+                  children: [
+                    Text("Mute Notification".tr()),
                   ],
                 ),
               ),
               PopupMenuItem(
                 onTap: onMute,
                 child: Row(
-                  children: const [
-                    Text("Clear All"),
+                  children: [
+                    Text("Clear All".tr()),
                   ],
                 ),
               ),
@@ -53,8 +48,5 @@ class NotificationAppBar extends StatelessWidget implements PreferredSize {
   Widget get child => throw UnimplementedError();
 
   @override
-  Size get preferredSize => const Size(
-        double.infinity,
-        56,
-      );
+  Size get preferredSize => Size(double.infinity, 56.h);
 }

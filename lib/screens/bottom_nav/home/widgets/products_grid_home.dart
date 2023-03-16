@@ -1,12 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:ishonch/data/models/model_category/categories/product/product_model.dart';
-import 'package:ishonch/utils/my_utils.dart';
-
-import '../../../../app_router.dart';
-import '../../../../product_by_category/widgets/product_item.dart';
-import '../../bloc/bloc_product/product_bloc.dart';
-import '../../bloc/bloc_product/product_state.dart';
+import 'package:ishonch/screens/app_router.dart';
+import 'package:ishonch/screens/bottom_nav/home/bloc/bloc_product/product_bloc.dart';
+import 'package:ishonch/screens/bottom_nav/home/bloc/bloc_product/product_state.dart';
+import 'package:ishonch/screens/product_by_category/widgets/product_item.dart';
 
 class ProductsGridWidget extends StatelessWidget {
   const ProductsGridWidget({super.key});
@@ -15,13 +12,7 @@ class ProductsGridWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<ProductsBloc, ProductsState>(
       builder: (context, state) {
-        if (state is LoadProductsInProgress) {
-          return const SliverToBoxAdapter(
-            child: Center(
-              child: CircularProgressIndicator(),
-            ),
-          );
-        } else if (state is LoadProductsInSuccess) {
+       if (state is LoadProductsInSuccess) {
           return SliverGrid(
             delegate: SliverChildBuilderDelegate(
               (context, index) {
