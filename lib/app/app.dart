@@ -95,23 +95,20 @@ class MyApp extends StatelessWidget {
         minTextAdapt: true,
         splitScreenMode: true,
         builder: (BuildContext context, Widget? child) {
-          return MaterialApp(
-            debugShowCheckedModeBanner: false,
-            supportedLocales: context.supportedLocales,
-            localizationsDelegates: context.localizationDelegates,
-            locale: context.locale,
-            builder: (BuildContext context, Widget? child) => AdaptiveTheme(
-              light: AppTheme.lightTheme,
-              dark: AppTheme.darkTheme,
-              initial: AdaptiveThemeMode.system,
-              builder: (light, dark) => MaterialApp(
-                initialRoute: RouteName.splash,
-                onGenerateRoute: AppRoutes.generateRoute,
-                debugShowCheckedModeBanner: false,
-                title: 'Ishonch 571',
-                theme: light,
-                darkTheme: dark,
-              ),
+          return AdaptiveTheme(
+            light: AppTheme.lightTheme,
+            dark: AppTheme.darkTheme,
+            initial: AdaptiveThemeMode.system,
+            builder: (light, dark) => MaterialApp(
+              debugShowCheckedModeBanner: false,
+              supportedLocales: context.supportedLocales,
+              localizationsDelegates: context.localizationDelegates,
+              locale: context.locale,
+              initialRoute: RouteName.splash,
+              onGenerateRoute: AppRoutes.generateRoute,
+              title: 'Ishonch 571',
+              theme: light,
+              darkTheme: dark,
             ),
           );
         });

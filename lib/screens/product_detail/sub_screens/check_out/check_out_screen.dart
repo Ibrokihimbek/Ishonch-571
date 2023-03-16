@@ -19,6 +19,7 @@ import 'package:ishonch/utils/app_image.dart';
 import 'package:lottie/lottie.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import '../../../../bloc/orders_bloc/orders_event.dart';
+import '../../../../utils/my_utils.dart';
 
 class CheckOutScreen extends StatefulWidget {
   const CheckOutScreen({
@@ -34,11 +35,10 @@ class CheckOutScreen extends StatefulWidget {
   State<CheckOutScreen> createState() => _CheckOutScreenState();
 }
 
-final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-late TextEditingController _fullNameController;
-late TextEditingController _addressController;
-late TextEditingController _phoneController;
-late MaskTextInputFormatter phoneMaskInputFormatter;
+TextEditingController? _fullNameController;
+TextEditingController? _addressController;
+TextEditingController? _phoneController;
+MaskTextInputFormatter? phoneMaskInputFormatter;
 final FocusNode cardFocusNode = FocusNode();
 
 String phoneNumber = '';
@@ -55,15 +55,15 @@ class _CheckOutScreenState extends State<CheckOutScreen> {
         '#': RegExp(r'[0-9]'),
       },
     );
-    _phoneController.text = phoneMaskInputFormatter.maskText('');
+    _phoneController?.text = phoneMaskInputFormatter?.maskText('') ?? "";
     super.initState();
   }
 
   @override
   void dispose() {
-    _fullNameController.dispose();
-    _addressController.dispose();
-    _phoneController.dispose();
+    _fullNameController?.dispose();
+    _addressController?.dispose();
+    _phoneController?.dispose();
     super.dispose();
   }
 
@@ -71,138 +71,126 @@ class _CheckOutScreenState extends State<CheckOutScreen> {
   Widget build(BuildContext context) {
     return BlocBuilder<MapCubit, MapState>(
       builder: (context, state) {
-        _addressController.text = state.currentAddress;
+        _addressController!.text = state.currentAddress;
         return Scaffold(
+          resizeToAvoidBottomInset: false,
           appBar: GlobalAppBar(title: 'tekshirish'.tr()),
-          body: SingleChildScrollView(
-            child: Form(
-              key: _formKey,
-              child: Column(
-                children: [
-                  SizedBox(height: 10.h),
-                  MyTextField(
-                    title: "ism".tr(),
-                    maxLines: 1,
-                    controller: _fullNameController,
-                    hintText: "ismingizni_kiriting".tr(),
-                  ),
-                  SizedBox(height: 30.h),
-                  MyTextField(
-                    maxLines: 4,
-                    title: "manzil".tr(),
-                    controller: _addressController,
-                    hintText: "manzilingizni_kiriting".tr(),
-                  ),
-                  SizedBox(height: 20.h),
-                  GlobalButton(
-                    isActive: true,
-                    buttonText: "xaritadan_tanlang".tr(),
-                    onTap: () {
-                      Navigator.pushNamed(
-                        context,
-                        RouteName.map,
-                        arguments: LatLongModel(
-                          lat: widget.latLong.lat,
-                          long: widget.latLong.long,
-                        ),
-                      );
-                    },
-                  ),
-                  SizedBox(height: 30.h),
-                  PhoneInputComponent(
-                    onChanged: (String v) {
-                      phoneNumber = v;
-                    },
-                    initialValue: '',
-                  ),
-                  SizedBox(height: 30.h),
-                ],
+          body: Column(
+            children: [
+              SizedBox(height: 10.h),
+              MyTextField(
+                title: "ism".tr(),
+                maxLines: 1,
+                controller: _fullNameController!,
+                hintText: "ismingizni_kiriting".tr(),
               ),
-            ),
-          ),
-          bottomNavigationBar: BlocListener<OrderCreateCubit, OrderCreateState>(
-            listener: (context, state) {
-              if (state is OrderCreateLoading) {}
-              if (state is OrderCreateSuccess) {
-                Navigator.pushNamed(context, RouteName.bottomNavigation);
-                BlocProvider.of<OrdersBloc>(context).add(FetchAllOrders());
-              }
-            },
-            child: Padding(
-              padding: EdgeInsets.only(
-                left: 16.w,
-                right: 16.w,
-                bottom: 20.h,
-                top: 20.h,
-              ).w,
-              child: GlobalButton(
+              SizedBox(height: 30.h),
+              MyTextField(
+                maxLines: 4,
+                title: "manzil".tr(),
+                controller: _addressController!,
+                hintText: "manzilingizni_kiriting".tr(),
+              ),
+              SizedBox(height: 20.h),
+              GlobalButton(
                 isActive: true,
-                buttonText: "sotib_olish".tr(),
-                onTap: () async {
-                  DeviceInfoPlugin deviceInfo = DeviceInfoPlugin();
-                  AndroidDeviceInfo androidInfo = await deviceInfo.androidInfo;
-                  debugPrint('DEVICE MODEL ${androidInfo.model}');
-                  // ignore: use_build_context_synchronously
-                  if (_fullNameController.text.length >= 3) {
-                    if (_addressController.text.length >= 5) {
-                      if (phoneNumber.length == 17) {
-                        // ignore: use_build_context_synchronously
-                        context.read<OrderCreateCubit>().createOrder(
-                              CreateOrderDto(
-                                productId: widget.productId,
-                                clientName: _fullNameController.text,
-                                clientAddress:
-                                    "${state.latLongModel.lat}/${state.latLongModel.long}",
-                                clientPhone: phoneNumber,
-                                deviceId: androidInfo.model,
-                              ),
-                            );
-                        // ignore: use_build_context_synchronously
-                        showDialog(
-                            barrierDismissible: false,
-                            builder: (context) => LoadingDialog(
-                                  widget: Lottie.asset(AppImages.lottiePayment),
-                                ),
-                            context: context);
-                      } else {
-                        // ignore: use_build_context_synchronously
-                        return MySnackBar(
-                          context,
-                          notification: "telefon_raqamingizni_kiriting".tr(),
-                          color: Colors.red,
-                          icon: const Icon(
-                            Icons.error,
-                            color: Colors.white,
-                          ),
-                        );
-                      }
-                    } else {
-                      // ignore: use_build_context_synchronously
-                      return MySnackBar(
-                        context,
-                        notification: "manzilingizni_kiriting".tr(),
-                        color: Colors.red,
-                        icon: const Icon(
-                          Icons.error,
-                          color: Colors.white,
-                        ),
-                      );
-                    }
-                  } else {
-                    // ignore: use_build_context_synchronously
-                    return MySnackBar(
-                      context,
-                      notification: "ismingizni_kiriting".tr(),
-                      color: Colors.red,
-                      icon: const Icon(
-                        Icons.error,
-                        color: Colors.white,
-                      ),
-                    );
-                  }
+                buttonText: "xaritadan_tanlang".tr(),
+                onTap: () {
+                  Navigator.pushNamed(
+                    context,
+                    RouteName.map,
+                    arguments: LatLongModel(
+                      lat: widget.latLong.lat,
+                      long: widget.latLong.long,
+                    ),
+                  );
                 },
               ),
-            ),
+              SizedBox(height: 30.h),
+              PhoneInputComponent(
+                onChanged: (String v) {
+                  phoneNumber = v;
+                },
+                initialValue: '',
+              ),
+              SizedBox(height: 30.h),
+              const Spacer(),
+              BlocListener<OrderCreateCubit, OrderCreateState>(
+                listener: (context, state) {
+                  if (state is OrderCreateLoading) {}
+                  if (state is OrderCreateSuccess) {
+                    Navigator.pushNamedAndRemoveUntil(
+                      context,
+                      RouteName.bottomNavigation,
+                      (route) => false,
+                    );
+                    BlocProvider.of<OrdersBloc>(context).add(FetchAllOrders());
+                  }
+                },
+                child: Padding(
+                  padding: EdgeInsets.only(
+                    left: 16.w,
+                    right: 16.w,
+                    bottom: 20.h,
+                    top: 20.h,
+                  ).w,
+                  child: GlobalButton(
+                    isActive: true,
+                    buttonText: "sotib_olish".tr(),
+                    onTap: () async {
+                      DeviceInfoPlugin deviceInfo = DeviceInfoPlugin();
+                      AndroidDeviceInfo androidInfo =
+                          await deviceInfo.androidInfo;
+                      debugPrint('DEVICE MODEL ${androidInfo.model}');
+                      // ignore: use_build_context_synchronously
+                      if (_fullNameController!.text.length >= 3) {
+                        if (_addressController!.text.length >= 5) {
+                          if (phoneNumber.length == 17) {
+                            // ignore: use_build_context_synchronously
+                            context.read<OrderCreateCubit>().createOrder(
+                                  CreateOrderDto(
+                                    productId: widget.productId,
+                                    clientName: _fullNameController!.text,
+                                    clientAddress:
+                                        "${state.latLongModel.lat}/${state.latLongModel.long}",
+                                    clientPhone: phoneNumber,
+                                    deviceId: androidInfo.model,
+                                  ),
+                                );
+                            // ignore: use_build_context_synchronously
+                            showDialog(
+                                barrierDismissible: false,
+                                builder: (context) => LoadingDialog(
+                                      widget:
+                                          Lottie.asset(AppImages.lottiePayment),
+                                    ),
+                                context: context);
+                          } else {
+                            // ignore: use_build_context_synchronously
+                            return showInfoSnackBar(
+                              context,
+                              "telefon_raqamingizni_kiriting".tr(),
+                            );
+                          }
+                        } else {
+                          // ignore: use_build_context_synchronously
+                          return showInfoSnackBar(
+                            context,
+                            "manzilingizni_kiriting".tr(),
+                          );
+                        }
+                      } else {
+                        // ignore: use_build_context_synchronously
+                        return showInfoSnackBar(
+                          context,
+                          "ismingizni_kiriting".tr(),
+                        );
+                      }
+                    },
+                  ),
+                ),
+              ),
+            ],
           ),
         );
       },
