@@ -83,7 +83,6 @@ class _BottomNavPageState extends State<BottomNavPage> {
                   setState(() {});
                   _switchTheme();
                 },
-                IsNightMode: themeMode!.isDark,
               ),
               body: IndexedStack(index: index, children: screens),
               bottomNavigationBar: BottomNavBar(

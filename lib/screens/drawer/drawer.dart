@@ -2,13 +2,13 @@ import 'package:adaptive_theme/adaptive_theme.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:ishonch/utils/app_colors.dart';
 import 'package:ishonch/utils/app_image.dart';
 
 class MyDrawer extends StatefulWidget {
-  bool IsNightMode;
   ValueChanged onChanged;
 
-  MyDrawer({super.key, required this.IsNightMode, required this.onChanged});
+  MyDrawer({super.key, required this.onChanged});
 
   @override
   State<MyDrawer> createState() => _MyDrawerState();
@@ -25,7 +25,6 @@ class _MyDrawerState extends State<MyDrawer> {
   @override
   void initState() {
     _getMode();
-
     super.initState();
   }
 
@@ -84,9 +83,9 @@ class _MyDrawerState extends State<MyDrawer> {
                         .copyWith(fontSize: 16.sp, fontWeight: FontWeight.w700),
                   ),
                   trailing: Switch(
-                      activeColor: Theme.of(context).cardColor,
-                      inactiveThumbColor: Theme.of(context).cardColor,
-                      value: widget.IsNightMode,
+                      activeColor: AppColors.white,
+                      inactiveThumbColor: AppColors.black,
+                      value: themeMode!.isDark,
                       onChanged: widget.onChanged),
                 ),
                 InkWell(
