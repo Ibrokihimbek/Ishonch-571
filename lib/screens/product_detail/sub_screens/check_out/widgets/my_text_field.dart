@@ -40,7 +40,7 @@ class MyTextField extends StatelessWidget {
         ),
         SizedBox(height: 5.h),
         Padding(
-          padding: const EdgeInsets.only(left: 16, right: 16),
+          padding: const EdgeInsets.only(left: 16, right: 16,),
           child: title == "Address"
               ? TextField(
                   maxLines: maxLines,
@@ -80,7 +80,7 @@ class MyTextField extends StatelessWidget {
                     hintStyle: TextStyle(color: Colors.grey, fontSize: 20.sp),
                     filled: true,
                     hintText: hintText,
-                    contentPadding: const EdgeInsets.only(left: 20),
+                    contentPadding: const EdgeInsets.all(12),
                     fillColor: Colors.white,
                     border: const OutlineInputBorder(),
                     enabledBorder: const OutlineInputBorder(

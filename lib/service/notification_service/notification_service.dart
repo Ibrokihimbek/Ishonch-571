@@ -8,11 +8,7 @@ import '../navigation_service/navigation_service.dart';
 
 class NotificationService{
 
-  Future<void> firebaseMessagingBackgroundHandler(RemoteMessage message) async {
-    getIt<NotificationsRepository>().addNotification(NotificationModel.fromJson(message.data));
-    print("Message keldi bratan");
-    print("Handling a background message: ${message.data}");
-  }
+
 
   handleFirebaseNotificationMessages() async {
     //Foregrounddan kelgan messagelarni tutib olamiz

@@ -17,10 +17,16 @@ class HomeScreenAppBar extends StatelessWidget implements PreferredSize {
       leading: IconButton(
         onPressed: onTap,
         icon: SvgPicture.asset(
-          Theme.of(context).appBarTheme.backgroundColor==Colors.white?AppImages.iconMenu:AppImages.iconMenuLight,
+          Theme.of(context).appBarTheme.backgroundColor == Colors.white
+              ? AppImages.iconMenu
+              : AppImages.iconMenuLight,
         ),
       ),
-      title: Text(title, style: Theme.of(context).textTheme.displayLarge?.copyWith(fontSize: 25.sp)),
+      title: Text(
+        title,
+        style:
+            Theme.of(context).textTheme.displayLarge?.copyWith(fontSize: 22.sp),
+      ),
     );
   }
 

@@ -1,6 +1,9 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:ishonch/utils/date_format.dart';
+import 'package:shimmer/shimmer.dart';
 import 'package:zoom_tap_animation/zoom_tap_animation.dart';
 import '../../../../cubit/product_detail/product_detail_cubit.dart';
 import '../../../../cubit/product_detail/product_detail_state.dart';
@@ -8,15 +11,13 @@ import '../../../../data/models/model_category/categories/product/product_model.
 import '../../../app_router.dart';
 import 'notification_shimmer.dart';
 
-// ignore: must_be_immutable
-class NotificationCourseItem extends StatelessWidget {
+class NotificationProductItem extends StatelessWidget {
   final String id;
 
-  const NotificationCourseItem({Key? key, required this.id}) : super(key: key);
+  const NotificationProductItem({Key? key, required this.id}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    debugPrint("ID $id");
     return BlocProvider(
       create: (context) => ProductCubitById(id),
       child: BlocBuilder<ProductCubitById, ProductStateById>(
@@ -29,7 +30,7 @@ class NotificationCourseItem extends StatelessWidget {
                         "http://146.190.207.16:3000/${state.product.media.media}")
                     .isAbsolute
                 ? "http://146.190.207.16:3000/${state.product.media.media}"
-                : "https://avatars.mds.yandex.net/i?id=6d2220ecdde320c636abeab21474d37c10c9a110-6335046-images-thumbs&n=13";
+                : "https://cdn3d.iconscout.com/3d/premium/thumb/product-5806313-4863042.png";
             return Column(
               children: [
                 ZoomTapAnimation(
@@ -42,7 +43,6 @@ class NotificationCourseItem extends StatelessWidget {
                   }),
                   child: Container(
                     margin: EdgeInsets.only(top: 10.h, bottom: 10.h).h,
-                    height: 70.h,
                     decoration: BoxDecoration(
                         color: Theme.of(context).primaryColor,
                         borderRadius: BorderRadius.circular(10.r).r,
@@ -55,16 +55,27 @@ class NotificationCourseItem extends StatelessWidget {
                         ]),
                     child: Row(
                       children: [
-                        SizedBox(width: 10.w),
-                        Container(
-                          height: 80.h,
-                          width: 80.h,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(4.r).r,
-                            image: DecorationImage(
-                              image: NetworkImage(image),
-                              fit: BoxFit.cover,
-                            ),
+                        ClipRRect(
+                          borderRadius: BorderRadius.circular(10),
+                          child: CachedNetworkImage(
+                            imageUrl: image,
+                            width: 80.w,
+                            height: 80.h,
+                            fit: BoxFit.cover,
+                            placeholder: (context, url) {
+                              return Shimmer.fromColors(
+                                period: const Duration(seconds: 2),
+                                baseColor: Colors.grey.shade300,
+                                highlightColor: Colors.grey.shade100,
+                                child: Container(
+                                  width: 120,
+                                  height: 100,
+                                  color: Colors.white,
+                                ),
+                              );
+                            },
+                            errorWidget: (context, url, error) =>
+                                const Icon(Icons.error),
                           ),
                         ),
                         SizedBox(width: 32.h),
@@ -92,12 +103,21 @@ class NotificationCourseItem extends StatelessWidget {
                                 style: Theme.of(context)
                                     .textTheme
                                     .headlineMedium
-                                    ?.copyWith(
-                                        fontSize: 16.sp,
-                                        fontWeight: FontWeight.w600,
-                                        color: Theme.of(context).cardColor),
+                                    ?.copyWith(fontSize: 16.sp),
                               ),
-                            )
+                            ),
+                            Text(
+                              TimeUtils.formatDate(
+                                DateTime.parse(productModel.createdAt),
+                              ),
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .headlineSmall
+                                  ?.copyWith(
+                                    fontSize: 14.sp,
+                                  ),
+                            ),
+                            SizedBox(height: 5.h),
                           ],
                         )
                       ],
@@ -107,8 +127,7 @@ class NotificationCourseItem extends StatelessWidget {
               ],
             );
           }
-
-          return Container();
+          return const SizedBox();
         },
       ),
     );

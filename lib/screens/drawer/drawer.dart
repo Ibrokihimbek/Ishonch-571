@@ -67,7 +67,9 @@ class _MyDrawerState extends State<MyDrawer> {
                     title: Text(
                       "Til".tr(),
                       style: Theme.of(context).textTheme.titleLarge!.copyWith(
-                          fontSize: 16.sp, fontWeight: FontWeight.w500),
+                            fontSize: 16.sp,
+                            fontWeight: FontWeight.w700,
+                          ),
                     ),
                   ),
                 ),
@@ -78,7 +80,7 @@ class _MyDrawerState extends State<MyDrawer> {
                     style: Theme.of(context)
                         .textTheme
                         .titleLarge!
-                        .copyWith(fontSize: 16.sp, fontWeight: FontWeight.w500),
+                        .copyWith(fontSize: 16.sp, fontWeight: FontWeight.w700),
                   ),
                   trailing: Switch(
                       activeColor: AppColors.white,
@@ -90,7 +92,11 @@ class _MyDrawerState extends State<MyDrawer> {
                   onTap: () => Navigator.pushNamed(context, "/about"),
                   child: ListTile(
                     leading: const Icon(Icons.info_outline),
-                    title: Text("Haqimizda".tr()),
+                    title: Text(
+                      "Haqimizda".tr(),
+                      style: Theme.of(context).textTheme.titleLarge!.copyWith(
+                          fontSize: 16.sp, fontWeight: FontWeight.w700),
+                    ),
                   ),
                 )
               ],

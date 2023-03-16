@@ -39,6 +39,7 @@ class ProductDetailScreen extends StatelessWidget {
                 : state is GettingProductInSuccess
                     ? SafeArea(
                         child: CustomScrollView(
+                          physics: const BouncingScrollPhysics(),
                           slivers: [
                             SliverAppBar(
                               expandedHeight: 350.h,
@@ -116,16 +117,14 @@ class ProductDetailScreen extends StatelessWidget {
                                             context, "ruxsat_topilmadi".tr());
                                       }
                                     },
-                                    child: Expanded(
-                                      child: ProductInfo(
-                                        product: state.product,
-                                        onTap: () {
-                                          BlocProvider.of<
-                                                      LocationPermissionCubit>(
-                                                  context)
-                                              .fetchCurrentLocation();
-                                        },
-                                      ),
+                                    child: ProductInfo(
+                                      product: state.product,
+                                      onTap: () {
+                                        BlocProvider.of<
+                                                    LocationPermissionCubit>(
+                                                context)
+                                            .fetchCurrentLocation();
+                                      },
                                     ),
                                   );
                                 },

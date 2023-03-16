@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:ishonch/bloc/bloc_product/product_bloc.dart';
 import 'package:ishonch/screens/app_router.dart';
-import 'package:ishonch/screens/bottom_nav/home/bloc/bloc_product/product_bloc.dart';
-import 'package:ishonch/screens/bottom_nav/home/bloc/bloc_product/product_state.dart';
 import 'package:ishonch/screens/product_by_category/widgets/product_item.dart';
 
 class ProductsGridWidget extends StatelessWidget {
@@ -12,7 +11,7 @@ class ProductsGridWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<ProductsBloc, ProductsState>(
       builder: (context, state) {
-       if (state is LoadProductsInSuccess) {
+        if (state is LoadProductsInSuccess) {
           return SliverGrid(
             delegate: SliverChildBuilderDelegate(
               (context, index) {
@@ -40,7 +39,7 @@ class ProductsGridWidget extends StatelessWidget {
           return SliverToBoxAdapter(
               child: Center(child: Text(state.errorText)));
         }
-        return SliverToBoxAdapter(child: const SizedBox());
+        return const SliverToBoxAdapter(child: SizedBox());
       },
     );
   }
