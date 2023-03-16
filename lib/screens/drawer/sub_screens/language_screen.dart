@@ -1,6 +1,5 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:ishonch/screens/widgets/global_appbar.dart';
 import 'package:ishonch/utils/app_colors.dart';
@@ -31,7 +30,7 @@ class _LanguageScreenState extends State<LanguageScreen> {
       default:
     }
     return Scaffold(
-      appBar:  GlobalAppBar(title: ''),
+      appBar: GlobalAppBar(title: ''),
       body: Container(
         width: double.infinity,
         padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 24).r,
@@ -39,9 +38,10 @@ class _LanguageScreenState extends State<LanguageScreen> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-
               "Tilni_Tanlash".tr(),
-              style: fontRobotoW700(appcolor: AppColors.black)
+              style: Theme.of(context)
+                  .textTheme
+                  .displayMedium!
                   .copyWith(fontSize: 22.sp),
             ),
             SizedBox(height: 24.h),
@@ -57,9 +57,7 @@ class _LanguageScreenState extends State<LanguageScreen> {
                         padding: const EdgeInsets.symmetric(horizontal: 24).r,
                         decoration: BoxDecoration(
                             boxShadow: selectedLang == 0
-                                ? [
-
-                            ]
+                                ? []
                                 : [
                                     const BoxShadow(
                                         color: Colors.grey,
@@ -121,8 +119,7 @@ class _LanguageScreenState extends State<LanguageScreen> {
                         padding: const EdgeInsets.symmetric(horizontal: 24).r,
                         decoration: BoxDecoration(
                             boxShadow: selectedLang == 1
-                                ? [
-                            ]
+                                ? []
                                 : [
                                     const BoxShadow(
                                         color: Colors.grey,
@@ -185,8 +182,7 @@ class _LanguageScreenState extends State<LanguageScreen> {
                         padding: const EdgeInsets.symmetric(horizontal: 24).r,
                         decoration: BoxDecoration(
                             boxShadow: selectedLang == 2
-                                ? [
-                            ]
+                                ? []
                                 : [
                                     const BoxShadow(
                                         color: Colors.grey,

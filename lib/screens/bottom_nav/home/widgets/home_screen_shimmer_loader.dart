@@ -62,12 +62,15 @@ class HomeScreenShimmerLoader extends StatelessWidget {
                     SizedBox(
                       height: height(context) * 0.005,
                     ),
-                    Container(
-                      width: width(context) * 0.2,
-                      height: 17.h,
-                      decoration: BoxDecoration(
-                        color: AppColors.white,
-                        borderRadius: BorderRadius.circular(10.r),
+                    Padding(
+                      padding: EdgeInsets.only(right: 10.w).r,
+                      child: Container(
+                        width: width(context) * 0.2,
+                        height: 17.h,
+                        decoration: BoxDecoration(
+                          color: AppColors.white,
+                          borderRadius: BorderRadius.circular(10.r),
+                        ),
                       ),
                     ),
                   ],

@@ -4,10 +4,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ishonch/bloc/bloc_category/category_bloc.dart';
 import 'package:ishonch/screens/app_router.dart';
 import 'package:ishonch/screens/categories/widgets/category_item.dart';
+import 'package:ishonch/screens/categories/widgets/category_shimmer.dart';
 import 'package:ishonch/screens/widgets/global_appbar.dart';
 import 'package:ishonch/utils/my_utils.dart';
 import 'package:zoom_tap_animation/zoom_tap_animation.dart';
-
 
 class CategoriesInfoPage extends StatefulWidget {
   const CategoriesInfoPage({super.key});
@@ -20,11 +20,11 @@ class _CategoriesInfoPageState extends State<CategoriesInfoPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar:  GlobalAppBar(title: "Kategoriyalar".tr()),
+        appBar: GlobalAppBar(title: "Kategoriyalar".tr()),
         body: BlocBuilder<CategoriesBloc, CategoriesState>(
           builder: (context, state) {
             if (state is LoadCategoriesInProgress) {
-              return const Center(child: CircularProgressIndicator());
+              return const Center(child: CategoryShimmerWidget());
             }
             if (state is LoadCategoriesInSuccess) {
               var data = state.categories;
@@ -44,33 +44,13 @@ class _CategoriesInfoPageState extends State<CategoriesInfoPage> {
                       },
                       child: Container(
                         padding: EdgeInsets.symmetric(
-                            horizontal: width(context) * 0.04),
+                            horizontal: width(context) * 0.02),
                         height: height(context) * 0.15,
                         width: width(context),
                         decoration: BoxDecoration(
-                          color: const Color(0XFFF2F2F2),
-                          boxShadow: const [
-                            BoxShadow(
-                              offset: Offset(-1, -1),
-                              color: Colors.grey,
-                              blurRadius: 2,
-                            ),
-                            BoxShadow(
-                              offset: Offset(1, 1),
-                              color: Colors.grey,
-                              blurRadius: 2,
-                            ),
-                            BoxShadow(
-                              offset: Offset(1, -1),
-                              color: Colors.grey,
-                              blurRadius: 2,
-                            ),
-                            BoxShadow(
-                              offset: Offset(-1, 1),
-                              color: Colors.grey,
-                              blurRadius: 2,
-                            ),
-                          ],
+                          color: Theme.of(context).primaryColor,
+                          border: Border.all(
+                              width: 1, color: Theme.of(context).hintColor),
                           borderRadius:
                               BorderRadius.circular(width(context) * 0.04),
                         ),

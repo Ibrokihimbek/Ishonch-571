@@ -11,16 +11,8 @@ class ShimmerWidgetByDiscount extends StatelessWidget {
     return SingleChildScrollView(
       physics: const NeverScrollableScrollPhysics(),
       child: SizedBox(
-        height: height(context) * 0.19,
-        child: ListView(
-          physics: const BouncingScrollPhysics(),
-          scrollDirection: Axis.horizontal,
-          children: [
-            shimmerMethod(width: 200.w, height: height(context) * 0.19),
-            SizedBox(width: 4.w),
-            shimmerMethod(width: 200.w, height: height(context) * 0.19),
-          ],
-        ),
+        height: height(context) * 0.16,
+        child: shimmerMethod(width: 280.w, height: height(context) * 0.19),
       ),
     );
   }

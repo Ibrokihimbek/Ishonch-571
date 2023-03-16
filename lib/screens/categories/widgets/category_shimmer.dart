@@ -9,18 +9,27 @@ class CategoryShimmerWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
-        physics: const NeverScrollableScrollPhysics(),
-        child: Padding(
-          padding: const EdgeInsets.all(12).r,
-          child: shimmerMethod(
-            myHeight: height(context) * 0.15,
-            myWidth: width(context),
-            context: context,
+      physics: const NeverScrollableScrollPhysics(),
+      child: Column(
+        children: List.generate(
+          12,
+          (index) => Padding(
+            padding: const EdgeInsets.all(12).r,
+            child: shimmerMethod(
+              myHeight: height(context) * 0.15,
+              myWidth: width(context),
+              context: context,
+            ),
           ),
-        ));
+        ),
+      ),
+    );
   }
 
-  Shimmer shimmerMethod({required num myWidth, required num myHeight,required BuildContext context}) {
+  Shimmer shimmerMethod(
+      {required num myWidth,
+      required num myHeight,
+      required BuildContext context}) {
     return Shimmer.fromColors(
       baseColor: Colors.grey[300]!,
       highlightColor: Colors.grey[400]!,

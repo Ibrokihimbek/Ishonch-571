@@ -1,8 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:ishonch/utils/app_colors.dart';
-import 'package:ishonch/utils/text_style.dart';
 
 class GlobalButton extends StatelessWidget {
   const GlobalButton({
@@ -35,7 +33,7 @@ class GlobalButton extends StatelessWidget {
           ),
         ),
         child: Text(
-          buttonText,
+          buttonText.tr(),
           style: TextStyle(fontWeight: FontWeight.w600,fontSize: 17.sp),
         ),
       ),

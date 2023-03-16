@@ -56,10 +56,11 @@
     "xotira_RAM:" : "Память ОЗУ:",
     "xotira_ROM:" : "Память ПЗУ:",
     "grafik_karta:" : "Видеокарта:",
-    "tavsif:" : "Описание:",
-    "malumotlar:" : "Информация:",
-    "buyurtma_berish:" : "Разместить заказ:",
-    "ruxsat_topilmadi:" : "Разрешение не найдено:"
-
+    "tavsif" : "Описание:",
+    "malumotlar" : "Информация:",
+    "buyurtma_berish" : "Разместить заказ",
+    "ruxsat_topilmadi:" : "Разрешение не найдено:",
+    "get_now" : "Получить сейчас",
+    "Off" : "Скидка"
 
 }

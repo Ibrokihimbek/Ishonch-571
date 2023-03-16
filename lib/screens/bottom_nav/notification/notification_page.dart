@@ -32,7 +32,6 @@ class NotificationPage extends StatelessWidget {
               ),
             );
           } else if (state is ReadNotificationInSuccess) {
-            debugPrint("NOTIFICATION SUCCESS 1");
             return SizedBox(
               height: MediaQuery.of(context).size.height,
               width: MediaQuery.of(context).size.width,
@@ -43,7 +42,7 @@ class NotificationPage extends StatelessWidget {
                       itemBuilder: (context, index) {
                         return Padding(
                           padding: EdgeInsets.symmetric(horizontal: 24.w).w,
-                          child: NotificationCourseItem(
+                          child: NotificationProductItem(
                             id: state.notifications[index].id,
                           ),
                         );
@@ -51,7 +50,6 @@ class NotificationPage extends StatelessWidget {
                     ),
             );
           } else {
-            debugPrint("NOTIFICATION SUCCESS 2");
             context.read<NotificationReaderBloc>().add(ReadNotificationEvent());
             return Lottie.asset(AppImages.noNotification);
           }

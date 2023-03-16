@@ -12,7 +12,10 @@ class NotificationAppBar extends StatelessWidget implements PreferredSize {
     return AppBar(
       title: Text(
         "Notification".tr(),
-        style: Theme.of(context).textTheme.headlineMedium,
+        style: Theme.of(context)
+            .textTheme
+            .headlineMedium!
+            .copyWith(fontSize: 22.sp),
       ),
       actions: [
         PopupMenuButton<String>(
