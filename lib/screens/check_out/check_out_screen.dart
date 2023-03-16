@@ -9,17 +9,16 @@ import 'package:ishonch/cubit/order_create/order_create_cubit.dart';
 import 'package:ishonch/data/models/create_order_dto/create_order_dto.dart';
 import 'package:ishonch/data/models/helper/lat_long_model.dart';
 import 'package:ishonch/screens/app_router.dart';
-import 'package:ishonch/screens/product_detail/sub_screens/check_out/widgets/my_text_field.dart';
-import 'package:ishonch/screens/product_detail/sub_screens/check_out/widgets/phone_input_component.dart';
-import 'package:ishonch/screens/widgets/animated_snackbar.dart';
+import 'package:ishonch/screens/check_out/widgets/my_text_field.dart';
+import 'package:ishonch/screens/check_out/widgets/phone_input_component.dart';
 import 'package:ishonch/screens/widgets/dialog_widget.dart';
 import 'package:ishonch/screens/widgets/global_appbar.dart';
 import 'package:ishonch/screens/widgets/global_button.dart';
 import 'package:ishonch/utils/app_image.dart';
 import 'package:lottie/lottie.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
-import '../../../../bloc/orders_bloc/orders_event.dart';
-import '../../../../utils/my_utils.dart';
+import '../../bloc/orders_bloc/orders_event.dart';
+import '../../utils/my_utils.dart';
 
 class CheckOutScreen extends StatefulWidget {
   const CheckOutScreen({

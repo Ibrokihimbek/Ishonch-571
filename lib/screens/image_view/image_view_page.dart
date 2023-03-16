@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ishonch/screens/widgets/global_appbar.dart';
 import 'package:ishonch/utils/app_colors.dart';
 import 'package:photo_view/photo_view.dart';
 
@@ -9,6 +10,7 @@ class ImageView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: GlobalAppBar(title: ''),
       body: Center(
         child: PhotoView(
           imageProvider: NetworkImage(imageUrl),

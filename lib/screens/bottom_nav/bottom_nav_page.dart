@@ -79,6 +79,7 @@ class _BottomNavPageState extends State<BottomNavPage> {
             return Scaffold(
               key: _key,
               drawer: MyDrawer(
+                isNightMode: themeMode?.isDark ?? false,
                 onChanged: (value) {
                   setState(() {});
                   _switchTheme();

@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -11,9 +12,11 @@ import 'package:ishonch/screens/discount_product/widgets/discount_product_info.d
 import 'package:ishonch/screens/widgets/dialog_widget.dart';
 import 'package:ishonch/utils/app_image.dart';
 import 'package:lottie/lottie.dart';
+import 'package:shimmer/shimmer.dart';
+import 'package:zoom_tap_animation/zoom_tap_animation.dart';
 
 import '../../utils/my_utils.dart';
-import '../product_detail/sub_screens/check_out/check_out_screen.dart';
+import '../check_out/check_out_screen.dart';
 
 class DiscountProductDetailScreen extends StatelessWidget {
   final Discount discountProduct;
@@ -26,86 +29,108 @@ class DiscountProductDetailScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        children: [
-          SizedBox(height: 40.h),
-          Container(
-            width: double.infinity,
-            height: 300,
-            color: Colors.transparent,
-            child: Stack(
-              children: [
-                SizedBox(height: 30.h),
-                GestureDetector(
+      body: SafeArea(
+        child: CustomScrollView(
+          physics: const BouncingScrollPhysics(),
+          slivers: [
+            SliverAppBar(
+              expandedHeight: 350.h,
+              stretch: true,
+              leading: Padding(
+                padding: const EdgeInsets.all(8),
+                child: ZoomTapAnimation(
+                  onTap: () {
+                    Navigator.pop(context);
+                  },
+                  child: SvgPicture.asset(
+                    Theme.of(context).appBarTheme.backgroundColor ==
+                            Colors.white
+                        ? AppImages.iconBackArrow
+                        : AppImages.iconBackArrowLight,
+                  ),
+                ),
+              ),
+              pinned: true,
+              flexibleSpace: FlexibleSpaceBar(
+                background: GestureDetector(
                   onTap: () {
                     Navigator.pushNamed(context, RouteName.imageView,
                         arguments:
                             'http://146.190.207.16:3000/${discountProduct.media.media}');
                   },
-                  child: Center(
-                    child: Image.network(
-                      'http://146.190.207.16:3000/${discountProduct.media.media}',
-                    ),
+                  child: CachedNetworkImage(
+                    imageUrl:
+                        'http://146.190.207.16:3000/${discountProduct.media.media}',
+                    width: 120.w,
+                    height: 100.h,
+                    fit: BoxFit.cover,
+                    placeholder: (context, url) {
+                      return Shimmer.fromColors(
+                        period: const Duration(seconds: 2),
+                        baseColor: Colors.grey.shade300,
+                        highlightColor: Colors.grey.shade100,
+                        child: Container(
+                          width: 120,
+                          height: 100,
+                          color: Colors.white,
+                        ),
+                      );
+                    },
+                    errorWidget: (context, url, error) =>
+                        const Icon(Icons.error),
                   ),
                 ),
-                Positioned(
-                  left: 10.w,
-                  child: Padding(
-                    padding: const EdgeInsets.all(8),
-                    child: GestureDetector(
-                      onTap: () {
-                        Navigator.pop(context);
-                      },
-                      child: SvgPicture.asset(
-                        AppImages.iconBackArrow,
-                      ),
-                    ),
-                  ),
-                ),
-              ],
+              ),
             ),
-          ),
-          SizedBox(height: 10.h),
-          BlocListener<LocationPermissionCubit, LocationPermissionState>(
-            listener: (context, state) {
-              if (state.myPermissionStatus == MyPermissionStatus.Loading) {}
-              if (state.myPermissionStatus == MyPermissionStatus.Success) {
-                BlocProvider.of<MapCubit>(context).fetchAddress(
-                  latLongModel: state.latLongModel!,
-                  kind: "house",
-                );
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (_) => CheckOutScreen(
-                      latLong: state.latLongModel!,
-                      productId: discountProduct.id,
+            SliverList(
+              delegate: SliverChildBuilderDelegate(
+                childCount: 1,
+                (BuildContext context, int index) {
+                  return BlocListener<LocationPermissionCubit,
+                      LocationPermissionState>(
+                    listener: (context, state) {
+                      if (state.myPermissionStatus ==
+                          MyPermissionStatus.Loading) {}
+                      if (state.myPermissionStatus ==
+                          MyPermissionStatus.Success) {
+                        BlocProvider.of<MapCubit>(context).fetchAddress(
+                          latLongModel: state.latLongModel!,
+                          kind: "house",
+                        );
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (_) => CheckOutScreen(
+                              latLong: state.latLongModel!,
+                              productId: discountProduct.id,
+                            ),
+                          ),
+                        );
+                      }
+                      if (state.myPermissionStatus == MyPermissionStatus.Fail) {
+                        showInfoSnackBar(context, "Permission not found");
+                      }
+                    },
+                    child: DiscountProductInfo(
+                      product: discountProduct,
+                      onTap: () {
+                        BlocProvider.of<LocationPermissionCubit>(context)
+                            .fetchCurrentLocation();
+                        showDialog(
+                          barrierDismissible: false,
+                          builder: (context) => LoadingDialog(
+                            widget: Lottie.asset(AppImages.locationLoading),
+                          ),
+                          context: context,
+                        );
+                      },
                     ),
-                  ),
-                );
-              }
-              if (state.myPermissionStatus == MyPermissionStatus.Fail) {
-                showInfoSnackBar(context, "Permission not found");
-              }
-            },
-            child: Expanded(
-              child: DiscountProductInfo(
-                product: discountProduct,
-                onTap: () {
-                  BlocProvider.of<LocationPermissionCubit>(context)
-                      .fetchCurrentLocation();
-                  showDialog(
-                    barrierDismissible: false,
-                    builder: (context) => LoadingDialog(
-                      widget: Lottie.asset(AppImages.locationLoading),
-                    ),
-                    context: context,
                   );
                 },
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

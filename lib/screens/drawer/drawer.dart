@@ -7,8 +7,9 @@ import 'package:ishonch/utils/app_image.dart';
 
 class MyDrawer extends StatefulWidget {
   ValueChanged onChanged;
+  bool isNightMode;
 
-  MyDrawer({super.key, required this.onChanged});
+  MyDrawer({super.key, required this.onChanged, required this.isNightMode});
 
   @override
   State<MyDrawer> createState() => _MyDrawerState();
@@ -85,7 +86,7 @@ class _MyDrawerState extends State<MyDrawer> {
                   trailing: Switch(
                       activeColor: AppColors.white,
                       inactiveThumbColor: AppColors.black,
-                      value: themeMode!.isDark,
+                      value: widget.isNightMode,
                       onChanged: widget.onChanged),
                 ),
                 InkWell(

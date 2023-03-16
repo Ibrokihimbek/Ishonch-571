@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:ishonch/data/models/discount/discount_model.dart';
@@ -29,10 +30,6 @@ class DiscountProductInfo extends StatelessWidget {
           ).r,
           decoration: BoxDecoration(
             color: Theme.of(context).primaryColor,
-            borderRadius: BorderRadius.only(
-              topLeft: Radius.circular(25.w).w,
-              topRight: Radius.circular(25.w).w,
-            ),
           ),
           child: SingleChildScrollView(
             physics: const BouncingScrollPhysics(),
@@ -52,7 +49,7 @@ class DiscountProductInfo extends StatelessWidget {
                       .textTheme
                       .headlineSmall!
                       .copyWith(fontSize: 18.sp),
-                  "Price",
+                  "Narxi".tr(),
                 ),
                 SizedBox(height: 5.h),
                 Text(
@@ -69,7 +66,7 @@ class DiscountProductInfo extends StatelessWidget {
                       .textTheme
                       .displaySmall!
                       .copyWith(fontSize: 16.sp),
-                  "Description",
+                  "tavsif".tr(),
                 ),
                 SizedBox(height: 5.h),
                 Text(
@@ -85,7 +82,7 @@ class DiscountProductInfo extends StatelessWidget {
                       .textTheme
                       .displaySmall!
                       .copyWith(fontSize: 16.sp),
-                  "Ma'lumotlar",
+                  "malumotlar".tr(),
                 ),
                 SizedBox(height: 5.h),
                 product.phoneCharacterics != 0
@@ -105,7 +102,7 @@ class DiscountProductInfo extends StatelessWidget {
           bottom: 16.h,
           child: GlobalButton(
             isActive: true,
-            buttonText: "Buyurtma berish",
+            buttonText: "buyurtma_berish".tr(),
             onTap: onTap,
           ),
         ),

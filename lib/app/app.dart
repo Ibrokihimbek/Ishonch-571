@@ -91,26 +91,27 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(
-        designSize: const Size(360, 800),
-        minTextAdapt: true,
-        splitScreenMode: true,
-        builder: (BuildContext context, Widget? child) {
-          return AdaptiveTheme(
-            light: AppTheme.lightTheme,
-            dark: AppTheme.darkTheme,
-            initial: AdaptiveThemeMode.system,
-            builder: (light, dark) => MaterialApp(
-              debugShowCheckedModeBanner: false,
-              supportedLocales: context.supportedLocales,
-              localizationsDelegates: context.localizationDelegates,
-              locale: context.locale,
-              initialRoute: RouteName.splash,
-              onGenerateRoute: AppRoutes.generateRoute,
-              title: 'Ishonch 571',
-              theme: light,
-              darkTheme: dark,
-            ),
-          );
-        });
+      designSize: const Size(360, 800),
+      minTextAdapt: true,
+      splitScreenMode: true,
+      builder: (BuildContext context, Widget? child) {
+        return AdaptiveTheme(
+          light: AppTheme.lightTheme,
+          dark: AppTheme.darkTheme,
+          initial: AdaptiveThemeMode.light,
+          builder: (light, dark) => MaterialApp(
+            debugShowCheckedModeBanner: false,
+            supportedLocales: context.supportedLocales,
+            localizationsDelegates: context.localizationDelegates,
+            locale: context.locale,
+            initialRoute: RouteName.splash,
+            onGenerateRoute: AppRoutes.generateRoute,
+            title: 'Ishonch 571',
+            theme: light,
+            darkTheme: dark,
+          ),
+        );
+      },
+    );
   }
 }

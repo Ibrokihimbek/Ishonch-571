@@ -79,7 +79,7 @@ class _PhoneInputComponentState extends State<PhoneInputComponent> {
             shadowColor: Colors.blue.withOpacity(0.12),
             elevation: 25,
             child: TextField(
-              cursorColor: AppColors.black,
+              cursorColor: Theme.of(context).cardColor,
               controller: controller,
               inputFormatters: [phoneMaskFormatter],
               keyboardType: const TextInputType.numberWithOptions(
@@ -98,9 +98,12 @@ class _PhoneInputComponentState extends State<PhoneInputComponent> {
               decoration: InputDecoration(
                 hintText: "90 123-45-67",
                 contentPadding: EdgeInsets.only(left: 20.w).w,
-                hintStyle: TextStyle(color: Colors.grey, fontSize: 20.sp),
+                hintStyle: Theme.of(context)
+                        .textTheme
+                        .headlineSmall!
+                        .copyWith(fontSize: 18.sp),
                 filled: true,
-                fillColor: Colors.white,
+                fillColor: Theme.of(context).primaryColor,
                 border: const OutlineInputBorder(),
                 enabledBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.all(Radius.circular(30.r).r),

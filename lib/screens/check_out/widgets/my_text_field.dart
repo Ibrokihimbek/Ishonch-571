@@ -40,18 +40,27 @@ class MyTextField extends StatelessWidget {
         ),
         SizedBox(height: 5.h),
         Padding(
-          padding: const EdgeInsets.only(left: 16, right: 16,),
+          padding: const EdgeInsets.only(
+            left: 16,
+            right: 16,
+          ),
           child: title == "Address"
               ? TextField(
                   maxLines: maxLines,
-                  style: TextStyle(color: Colors.black, fontSize: 20.sp),
-                  cursorColor: AppColors.black,
+                  style: Theme.of(context)
+                      .textTheme
+                      .headlineSmall!
+                      .copyWith(fontSize: 18.sp),
+                  cursorColor: Theme.of(context).cardColor,
                   controller: controller,
                   decoration: InputDecoration(
-                    hintStyle: TextStyle(color: Colors.grey, fontSize: 20.sp),
+                    hintStyle: Theme.of(context)
+                        .textTheme
+                        .headlineSmall!
+                        .copyWith(fontSize: 18.sp),
                     filled: true,
                     contentPadding: const EdgeInsets.all(12),
-                    fillColor: Colors.white,
+                    fillColor: Theme.of(context).primaryColor,
                     border: const OutlineInputBorder(),
                     enabledBorder: const OutlineInputBorder(
                       borderRadius: BorderRadius.all(Radius.circular(16)),
@@ -73,15 +82,21 @@ class MyTextField extends StatelessWidget {
                 )
               : TextField(
                   maxLines: maxLines,
-                  style: TextStyle(color: Colors.black, fontSize: 20.sp),
-                  cursorColor: AppColors.black,
+                  style: Theme.of(context)
+                      .textTheme
+                      .headlineSmall!
+                      .copyWith(fontSize: 18.sp),
+                  cursorColor: Theme.of(context).cardColor,
                   controller: controller,
                   decoration: InputDecoration(
-                    hintStyle: TextStyle(color: Colors.grey, fontSize: 20.sp),
+                    hintStyle: Theme.of(context)
+                        .textTheme
+                        .headlineSmall!
+                        .copyWith(fontSize: 18.sp),
                     filled: true,
                     hintText: hintText,
                     contentPadding: const EdgeInsets.all(12),
-                    fillColor: Colors.white,
+                    fillColor: Theme.of(context).primaryColor,
                     border: const OutlineInputBorder(),
                     enabledBorder: const OutlineInputBorder(
                       borderRadius: BorderRadius.all(Radius.circular(16)),
