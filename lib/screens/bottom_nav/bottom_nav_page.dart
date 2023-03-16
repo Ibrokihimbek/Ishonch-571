@@ -29,7 +29,7 @@ class _BottomNavPageState extends State<BottomNavPage> {
   AdaptiveThemeMode? themeMode;
 
   Future<void> _getMode() async {
-     themeMode = await AdaptiveTheme.getThemeMode();
+    themeMode = await AdaptiveTheme.getThemeMode();
     setState(() {});
   }
 
@@ -85,7 +85,6 @@ class _BottomNavPageState extends State<BottomNavPage> {
                   setState(() {});
                   _switchTheme();
                 },
-                IsNightMode: themeMode!.isDark,
               ),
               body: IndexedStack(index: index, children: screens),
               bottomNavigationBar: BottomNavyBar(

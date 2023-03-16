@@ -8,10 +8,9 @@ import 'package:ishonch/utils/app_image.dart';
 import '../../utils/text_style.dart';
 
 class MyDrawer extends StatefulWidget {
-  bool IsNightMode;
   ValueChanged onChanged;
 
-  MyDrawer({super.key, required this.IsNightMode, required this.onChanged});
+  MyDrawer({super.key, required this.onChanged});
 
   @override
   State<MyDrawer> createState() => _MyDrawerState();
@@ -25,19 +24,9 @@ class _MyDrawerState extends State<MyDrawer> {
     setState(() {});
   }
 
-  Future<void> _switchTheme() async {
-    if (themeMode!.isDark) {
-      AdaptiveTheme.of(context).setLight();
-    } else {
-      AdaptiveTheme.of(context).setDark();
-    }
-    await _getMode();
-  }
-
   @override
   void initState() {
     _getMode();
-
     super.initState();
   }
 
@@ -54,9 +43,9 @@ class _MyDrawerState extends State<MyDrawer> {
                   width: 132.5.w,
                   height: 68.64.h,
                   child: Image.asset(
-                    Theme.of(context).dialogBackgroundColor == Colors.white ?
-                    AppImages.imageLogo : AppImages.imageLogoLight,
-
+                    Theme.of(context).dialogBackgroundColor == Colors.white
+                        ? AppImages.imageLogo
+                        : AppImages.imageLogoLight,
                   ),
                 ),
                 SizedBox(
@@ -95,7 +84,7 @@ class _MyDrawerState extends State<MyDrawer> {
                   ),
                   trailing: Switch(
                       activeColor: AppColors.black,
-                      value: widget.IsNightMode,
+                      value: themeMode!.isDark,
                       onChanged: widget.onChanged),
                 ),
                 InkWell(
