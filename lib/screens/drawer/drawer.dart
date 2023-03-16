@@ -2,6 +2,7 @@ import 'package:adaptive_theme/adaptive_theme.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:ishonch/utils/app_colors.dart';
 import 'package:ishonch/utils/app_image.dart';
 
 class MyDrawer extends StatefulWidget {
@@ -80,8 +81,9 @@ class _MyDrawerState extends State<MyDrawer> {
                         .copyWith(fontSize: 16.sp, fontWeight: FontWeight.w500),
                   ),
                   trailing: Switch(
-                      activeColor: AppColors.black,
-                      value: widget.IsNightMode,
+                      activeColor: AppColors.white,
+                      inactiveThumbColor: AppColors.black,
+                      value: themeMode!.isDark,
                       onChanged: widget.onChanged),
                 ),
                 InkWell(
