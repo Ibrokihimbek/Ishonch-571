@@ -7,6 +7,7 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:ishonch/cubit/mapping/map_cubit.dart';
 import 'package:ishonch/data/repositories/geocoding_repository.dart';
 import 'package:ishonch/service/api_service/api_service.dart';
+import 'package:ishonch/utils/app_colors.dart';
 import 'package:ishonch/utils/app_image.dart';
 import 'dart:async';
 import 'package:map_picker/map_picker.dart';
@@ -37,20 +38,21 @@ class _MapScreenState extends State<MapScreen> {
           MapCubit(geocodingRepo: GeocodingRepo(apiService: ApiService())),
       child: Scaffold(
         floatingActionButton: FloatingActionButton(
+            backgroundColor: Theme.of(context).primaryColor,
           onPressed: () {
             BlocProvider.of<MapCubit>(context).fetchAddress(
               latLongModel: LatLongModel(
                 lat: cameraPosition.target.latitude,
                 long: cameraPosition.target.longitude,
               ),
-              kind: "Uy".tr(),
+              kind: "house",
             );
             Navigator.pop(context);
           },
-          child: const Icon(Icons.done),
+          child: Icon(Icons.done, color: Theme.of(context).cardColor),
         ),
         appBar: AppBar(
-          backgroundColor: Colors.white,
+
           elevation: 0,
           leading: Padding(
             padding: const EdgeInsets.all(8),
@@ -59,26 +61,27 @@ class _MapScreenState extends State<MapScreen> {
                 Navigator.pop(context);
               },
               child: SvgPicture.asset(
-                AppImages.iconBackArrow,
+                Theme.of(context).appBarTheme.backgroundColor == Colors.white
+                    ? AppImages.iconBackArrow
+                    : AppImages.iconBackArrowLight,
               ),
             ),
           ),
           centerTitle: true,
           title: Column(
             children: [
-              TextFormField(
-                maxLines: 3,
-                textAlign: TextAlign.center,
-                readOnly: true,
-                decoration: const InputDecoration(
-                  contentPadding: EdgeInsets.zero,
-                  border: InputBorder.none,
-                ),
-                controller: textController,
-                style: TextStyle(
-                  color: Colors.black,
-                  fontWeight: FontWeight.w600,
-                  fontSize: 13.sp,
+              Padding(
+                padding: EdgeInsets.only(top: 12.h).r,
+                child: TextFormField(
+                  maxLines: 3,
+                  textAlign: TextAlign.center,
+                  readOnly: true,
+                  decoration: const InputDecoration(
+                    contentPadding: EdgeInsets.zero,
+                    border: InputBorder.none,
+                  ),
+                  controller: textController,
+                  style: Theme.of(context).textTheme.displaySmall!.copyWith(fontSize: 14.sp),
                 ),
               ),
             ],
