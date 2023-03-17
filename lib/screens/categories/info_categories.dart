@@ -20,7 +20,7 @@ class _CategoriesInfoPageState extends State<CategoriesInfoPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: GlobalAppBar(title: "Kategoriyalar".tr()),
+        appBar: GlobalAppBar(title: "Kategoriyalar"),
         body: BlocBuilder<CategoriesBloc, CategoriesState>(
           builder: (context, state) {
             if (state is LoadCategoriesInProgress) {

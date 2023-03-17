@@ -24,7 +24,7 @@ class CategoryTitleWidget extends SliverPersistentHeaderDelegate {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Text(
-            title,
+            title.tr(),
             style: Theme.of(context)
                 .textTheme
                 .bodyMedium

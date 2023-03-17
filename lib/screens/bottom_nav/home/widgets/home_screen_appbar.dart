@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
@@ -23,7 +24,7 @@ class HomeScreenAppBar extends StatelessWidget implements PreferredSize {
         ),
       ),
       title: Text(
-        title,
+        title.tr(),
         style:
             Theme.of(context).textTheme.displayLarge?.copyWith(fontSize: 22.sp),
       ),

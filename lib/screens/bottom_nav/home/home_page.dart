@@ -24,7 +24,7 @@ class _HomePageState extends State<HomePage> {
           CategoriesBloc(CategoriesRepo())..add(FetchAllCategories()),
       child: Scaffold(
         appBar: HomeScreenAppBar(
-          title: 'Xush_Kelibsiz'.tr(),
+          title: 'Xush_Kelibsiz',
           onTap: widget.onTap,
         ),
         body: BlocBuilder<CategoriesBloc, CategoriesState>(

@@ -28,7 +28,7 @@ class HomeWidget extends StatelessWidget {
           delegate: CategoryTitleWidget(
             screenHeight: height(context),
             screenWidth: width(context),
-            title: 'Kategoriyalar'.tr(),
+            title: 'Kategoriyalar',
             page: const CategoriesInfoPage(),
           ),
         ),
@@ -43,7 +43,7 @@ class HomeWidget extends StatelessWidget {
           delegate: CategoryTitleWidget(
             screenHeight: height(context),
             screenWidth: width(context),
-            title: 'Barcha_produktlar'.tr(),
+            title: 'Barcha_produktlar',
             page: const AllProduct(),
           ),
         ),
