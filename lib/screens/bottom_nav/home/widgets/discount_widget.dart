@@ -6,7 +6,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:ishonch/cubit/discount/discount_cubit.dart';
 import 'package:ishonch/cubit/discount/discount_state.dart';
+import 'package:ishonch/data/models/discount_empty/discount_empty.dart';
 import 'package:ishonch/screens/app_router.dart';
+import 'package:ishonch/utils/app_colors.dart';
 import 'package:ishonch/utils/app_image.dart';
 import 'package:ishonch/utils/my_utils.dart';
 import 'package:lottie/lottie.dart';
@@ -32,14 +34,52 @@ class DiscountWidget extends SliverPersistentHeaderDelegate {
                         width: width(context),
                         child: CarouselSlider(
                           items: List.generate(
-                            3,
+                            DiscountEmpty.discountEmpty.length,
                             (index) => Container(
-                              height: screenHeight * 0.18,
+                              height: screenHeight * 0.19,
                               width: double.infinity,
                               decoration: BoxDecoration(
+                                border: Border.all(
+                                    color: Theme.of(context).cardColor),
                                 borderRadius:
                                     BorderRadius.circular(screenHeight * 0.025),
-                                color: const Color(0xFFDEE6E3).withOpacity(0.7),
+                                color: Theme.of(context).primaryColor,
+                              ),
+                              child: Column(
+                                children: [
+                                  SizedBox(height: 8.h),
+                                  Image.asset(
+                                    Theme.of(context).scaffoldBackgroundColor ==
+                                            AppColors.white
+                                        ? AppImages.imageLogo
+                                        : AppImages.imageLogoLight,
+                                    width: 100.w,
+                                  ),
+                                  Text(
+                                    'Ishonch 571',
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .displayMedium!
+                                        .copyWith(fontSize: 18.sp),
+                                  ),
+                                  Padding(
+                                    padding:
+                                        EdgeInsets.symmetric(horizontal: 32.w)
+                                            .r,
+                                    child: Divider(
+                                      thickness: 1,
+                                      color: Theme.of(context).cardColor,
+                                    ),
+                                  ),
+                                  Text(
+                                    DiscountEmpty.discountEmpty[index].tr(),
+                                    textAlign: TextAlign.center,
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .headlineSmall!
+                                        .copyWith(fontSize: 16.sp),
+                                  )
+                                ],
                               ),
                             ),
                           ),
@@ -257,10 +297,10 @@ class DiscountWidget extends SliverPersistentHeaderDelegate {
   }
 
   @override
-  double get maxExtent => screenHeight * 0.18;
+  double get maxExtent => screenHeight * 0.19;
 
   @override
-  double get minExtent => screenHeight * 0.18;
+  double get minExtent => screenHeight * 0.19;
 
   @override
   bool shouldRebuild(covariant SliverPersistentHeaderDelegate oldDelegate) =>
