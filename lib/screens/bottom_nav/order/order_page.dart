@@ -1,5 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:ishonch/bloc/orders_bloc/orders_bloc.dart';
 import 'package:ishonch/bloc/orders_bloc/orders_event.dart';
 import 'package:ishonch/bloc/orders_bloc/orders_state.dart';
@@ -24,7 +25,10 @@ class OrdersPage extends StatelessWidget {
           iconTheme: const IconThemeData(color: AppColors.black),
           title: Text(
             "Buyurtmalar_bolimi".tr(),
-            style: Theme.of(context).textTheme.headlineMedium,
+            style: Theme.of(context)
+                .textTheme
+                .headlineMedium!
+                .copyWith(fontSize: 22.sp),
           ),
         ),
         body: BlocBuilder<OrdersBloc, OrdersState>(
