@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:ishonch/utils/app_colors.dart';
 import 'package:ishonch/utils/text_style.dart';
 
 class MyTextField extends StatelessWidget {
