@@ -61,8 +61,8 @@ class _PhoneInputComponentState extends State<PhoneInputComponent> {
             Text(
               'telefon_raqami'.tr(),
               style: Theme.of(context).textTheme.headlineMedium!.copyWith(
-                fontSize: 16.sp,
-              ),
+                    fontSize: 16.sp,
+                  ),
             ),
             Text(
               '*',
@@ -94,14 +94,14 @@ class _PhoneInputComponentState extends State<PhoneInputComponent> {
                   shadowText = updateShadowText(value);
                 });
               },
-              style: TextStyle(color: Colors.black, fontSize: 20.sp),
+              style: Theme.of(context)
+                  .textTheme
+                  .headlineSmall!
+                  .copyWith(fontSize: 18.sp),
               decoration: InputDecoration(
                 hintText: "90 123-45-67",
                 contentPadding: EdgeInsets.only(left: 20.w).w,
-                hintStyle: Theme.of(context)
-                        .textTheme
-                        .headlineSmall!
-                        .copyWith(fontSize: 18.sp),
+                hintStyle: TextStyle(color: Theme.of(context).hintColor),
                 filled: true,
                 fillColor: Theme.of(context).primaryColor,
                 border: const OutlineInputBorder(),

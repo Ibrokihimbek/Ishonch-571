@@ -54,10 +54,7 @@ class MyTextField extends StatelessWidget {
                   cursorColor: Theme.of(context).cardColor,
                   controller: controller,
                   decoration: InputDecoration(
-                    hintStyle: Theme.of(context)
-                        .textTheme
-                        .headlineSmall!
-                        .copyWith(fontSize: 18.sp),
+                    hintStyle: TextStyle(color: Theme.of(context).hintColor),
                     filled: true,
                     contentPadding: const EdgeInsets.all(12),
                     fillColor: Theme.of(context).primaryColor,
@@ -89,10 +86,7 @@ class MyTextField extends StatelessWidget {
                   cursorColor: Theme.of(context).cardColor,
                   controller: controller,
                   decoration: InputDecoration(
-                    hintStyle: Theme.of(context)
-                        .textTheme
-                        .headlineSmall!
-                        .copyWith(fontSize: 18.sp),
+                    hintStyle: TextStyle(color: Theme.of(context).hintColor),
                     filled: true,
                     hintText: hintText,
                     contentPadding: const EdgeInsets.all(12),
