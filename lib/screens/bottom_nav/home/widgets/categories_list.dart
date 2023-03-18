@@ -1,9 +1,9 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:ishonch/data/models/model_category/categories/category_model.dart';
 import 'package:ishonch/screens/app_router.dart';
 import 'package:shimmer/shimmer.dart';
-import '../../../../../data/models/model_category/categories/category_model.dart';
 
 class CategoriesList extends SliverPersistentHeaderDelegate {
   final double screenHeight;
