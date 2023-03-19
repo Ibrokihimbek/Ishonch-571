@@ -6,6 +6,7 @@ import 'package:ishonch/data/models/discount_empty/discount_empty.dart';
 import 'package:ishonch/utils/app_colors.dart';
 import 'package:ishonch/utils/app_image.dart';
 import 'package:ishonch/utils/my_utils.dart';
+import 'package:ishonch/utils/text_style.dart';
 
 class DiscountEmptyWidget extends StatelessWidget {
   const DiscountEmptyWidget({super.key});
@@ -24,38 +25,33 @@ class DiscountEmptyWidget extends StatelessWidget {
             decoration: BoxDecoration(
               border: Border.all(color: Theme.of(context).cardColor),
               borderRadius: BorderRadius.circular(height(context) * 0.025),
-              color: Theme.of(context).primaryColor,
+              color: DiscountEmpty.discountEmpty[index].color,
             ),
             child: Column(
               children: [
                 SizedBox(height: 8.h),
                 Image.asset(
-                  Theme.of(context).scaffoldBackgroundColor == AppColors.white
-                      ? AppImages.imageLogo
-                      : AppImages.imageLogoLight,
-                  width: 100.w,
+                  DiscountEmpty.discountEmpty[index].image,
+                  width: DiscountEmpty.discountEmpty[index].image ==
+                          'assets/images/home_appliance.png'
+                      ? 130.w
+                      : 100.w,
+                  height: 70.h,
+                  fit: BoxFit.cover,
                 ),
-                Text(
-                  'Ishonch 571',
-                  style: Theme.of(context)
-                      .textTheme
-                      .displayMedium!
-                      .copyWith(fontSize: 18.sp),
-                ),
+                SizedBox(height: 8.h),
                 Padding(
                   padding: EdgeInsets.symmetric(horizontal: 32.w).r,
+                  // ignore: prefer_const_constructors
                   child: Divider(
                     thickness: 1,
-                    color: Theme.of(context).cardColor,
+                    color: AppColors.white,
                   ),
                 ),
                 Text(
-                  DiscountEmpty.discountEmpty[index].tr(),
+                  DiscountEmpty.discountEmpty[index].description.tr(),
                   textAlign: TextAlign.center,
-                  style: Theme.of(context)
-                      .textTheme
-                      .headlineSmall!
-                      .copyWith(fontSize: 16.sp),
+                  style: fontRobotoW400(appcolor: AppColors.white),
                 )
               ],
             ),
