@@ -38,6 +38,7 @@ class NotificationPage extends StatelessWidget {
               child: state.notifications.isEmpty
                   ? Lottie.asset(AppImages.noNotification)
                   : ListView.builder(
+                      physics: const BouncingScrollPhysics(),
                       itemCount: state.notifications.length,
                       itemBuilder: (context, index) {
                         return Padding(

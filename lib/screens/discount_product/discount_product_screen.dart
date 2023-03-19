@@ -97,6 +97,7 @@ class DiscountProductDetailScreen extends StatelessWidget {
                           latLongModel: state.latLongModel!,
                           kind: "house",
                         );
+                        Navigator.pop(context);
                         Navigator.push(
                           context,
                           MaterialPageRoute(

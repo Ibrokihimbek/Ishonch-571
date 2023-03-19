@@ -62,5 +62,8 @@
     "ismingizni_kiriting" : "Ismingizni kiriting",
     "buyurtma_berish":"Buyurtma berish",
     "bizning_manzil" : "Manzil:",
-    "telefon_raqam" : "Telefon raqam:"
+    "telefon_raqam" : "Telefon raqam:",
+    "New" : "Yangi",
+    "Old" : "Eski",
+    "Holati" : "Holati"
 }

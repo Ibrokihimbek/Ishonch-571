@@ -65,6 +65,10 @@
     "get_now" : "Get now",
     "Off" : "Off",
     "bizning_manzil" : "Address:",
-    "telefon_raqam" : "Phone number:"
+    "telefon_raqam" : "Phone number:",
+    "New" : "New",
+    "Old" : "Old",
+    "Holati" : "Status"
+
 
 }

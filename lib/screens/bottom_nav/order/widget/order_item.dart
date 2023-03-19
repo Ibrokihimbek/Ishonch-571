@@ -11,7 +11,7 @@ class OrderItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.only(top: 8, left: 12, right: 8, bottom: 8).r,
-      margin: const EdgeInsets.only(bottom: 15, right: 30, left: 30, top: 30).r,
+      margin: const EdgeInsets.only(bottom: 16, right: 16, left: 16).r,
       decoration: BoxDecoration(
         border: Border.all(width: 1, color: Theme.of(context).hintColor),
         borderRadius: BorderRadius.circular(13.r),
@@ -47,7 +47,7 @@ class OrderItem extends StatelessWidget {
                     .copyWith(fontSize: 16.sp),
               ),
               Text(
-                "\$ ${order.product.productPrice.toString()}",
+                "${order.product.productPrice} ${order.product.currencyId == 1 ? 'UZS' : 'USD'}",
                 style: TextStyle(fontSize: 18.sp, fontWeight: FontWeight.w600),
               ),
             ],
@@ -56,14 +56,14 @@ class OrderItem extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
-                "Holati",
+                "Holati".tr(),
                 style: Theme.of(context)
                     .textTheme
                     .headlineSmall!
                     .copyWith(fontSize: 16.sp),
               ),
               Text(
-                order.product.isNew == true ? "new" : "old",
+                order.product.isNew == true ? "New".tr() : "Old".tr(),
                 style: Theme.of(context)
                     .textTheme
                     .headlineSmall!

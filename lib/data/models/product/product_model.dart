@@ -6,6 +6,7 @@ class Product {
   final String description;
   final bool isNew;
   final String status;
+  final int currencyId;
 
   Product({
     required this.id,
@@ -14,15 +15,17 @@ class Product {
     required this.brandName,
     required this.isNew,
     required this.status,
-    required this.description
+    required this.description,
+    required this.currencyId,
   });
 
   factory Product.fromJson(Map<String, dynamic> json) => Product(
+        currencyId: json['currency_id'] as int? ?? 0,
         id: json['id'] as int? ?? 0,
         productName: json['product_name'] as String? ?? "",
         productPrice: json['product_price'] as int? ?? 0,
         brandName: json['brand_name'] as String? ?? "",
-    description: json['description'] as String? ?? "",
+        description: json['description'] as String? ?? "",
         isNew: json['is_new'] as bool? ?? false,
         status: json['status'] as String? ?? "",
       );

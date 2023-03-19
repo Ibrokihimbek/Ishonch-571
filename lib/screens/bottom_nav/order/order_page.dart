@@ -47,6 +47,7 @@ class OrdersPage extends StatelessWidget {
                       child: Lottie.asset(AppImages.lottieEmpty),
                     )
                   : ListView.builder(
+                      physics: const BouncingScrollPhysics(),
                       itemCount: state.orders.length,
                       itemBuilder: (context, index) {
                         return OrderItem(order: state.orders[index]);
