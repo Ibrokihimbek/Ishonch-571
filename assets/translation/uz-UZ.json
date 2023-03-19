@@ -60,5 +60,7 @@
     "get_now" : "Hoziroq oling",
     "Off" : "Chegirma",
     "ismingizni_kiriting" : "Ismingizni kiriting",
-    "buyurtma_berish":"Buyurtma berish"
+    "buyurtma_berish":"Buyurtma berish",
+    "bizning_manzil" : "Manzil:",
+    "telefon_raqam" : "Telefon raqam:"
 }
