@@ -10,7 +10,7 @@ import 'package:ishonch/service/api_service/api_service.dart';
 import 'package:ishonch/utils/app_image.dart';
 import 'dart:async';
 import 'package:map_picker/map_picker.dart';
-import '../../../../data/models/helper/lat_long_model.dart';
+import '../../../data/models/helper/lat_long_model.dart';
 
 class MapScreen extends StatefulWidget {
   const MapScreen({Key? key, required this.latLongModel}) : super(key: key);

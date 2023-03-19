@@ -11,7 +11,7 @@ import 'package:ishonch/screens/on_bording/on_bording_page.dart';
 import 'package:ishonch/screens/product_by_category/product_by_category.dart';
 import 'package:ishonch/screens/product_detail/product_detail_screen.dart';
 import 'package:ishonch/screens/check_out/check_out_screen.dart';
-import 'package:ishonch/screens/product_detail/sub_screens/map/map_screen.dart';
+import 'package:ishonch/screens/check_out/map/map_screen.dart';
 import 'package:ishonch/screens/image_view/image_view_page.dart';
 import 'package:ishonch/screens/splash/splash_page.dart';
 
