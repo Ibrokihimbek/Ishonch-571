@@ -1,3 +1,4 @@
+import 'package:device_info_plus/device_info_plus.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
@@ -33,8 +34,16 @@ void main() async {
   setup();
   await EasyLocalization.ensureInitialized();
   await Firebase.initializeApp();
-  await FirebaseMessaging.instance.subscribeToTopic("ishonch_news");
+  FirebaseMessaging.instance.subscribeToTopic("ishonch_news");
   FirebaseMessaging.onBackgroundMessage(firebaseMessagingBackgroundHandler);
+
+
+  DeviceInfoPlugin deviceInfo = DeviceInfoPlugin();
+  AndroidDeviceInfo androidInfo =
+  await deviceInfo.androidInfo;
+  debugPrint('DEVICE ID ${androidInfo.id}');
+  debugPrint('DEVICE MODEL ${androidInfo.model}');
+  debugPrint('DEVICE SERIAL  NUMBER ${androidInfo.serialNumber}');
 
   StorageRepository.getInstance();
   Bloc.observer = AppBlocObserver();

@@ -153,7 +153,7 @@ class _CheckOutScreenState extends State<CheckOutScreen> {
                                     clientAddress:
                                         "${state.latLongModel.lat}/${state.latLongModel.long}",
                                     clientPhone: phoneNumber,
-                                    deviceId: androidInfo.model,
+                                    deviceId: androidInfo.id,
                                   ),
                                 );
                             // ignore: use_build_context_synchronously
