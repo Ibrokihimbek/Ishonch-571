@@ -104,7 +104,7 @@ class AboutScreen extends StatelessWidget {
                 ),
                 ListTile(
                   title: Text(
-                    "Abdulaziz\n+998 90 024 94 24",
+                    "Muhiddin\n+998 90 125 44 15",
                     style: Theme.of(context)
                         .textTheme
                         .titleLarge!
@@ -118,7 +118,7 @@ class AboutScreen extends StatelessWidget {
                     ),
                     onTap: () async {
                       final Uri phoneUri =
-                          Uri(scheme: "tel", path: '+998900249424');
+                          Uri(scheme: "tel", path: '+998901254415');
                       try {
                         if (await canLaunchUrl(phoneUri)) {
                           await launchUrl(phoneUri);
