@@ -6,9 +6,9 @@ import 'package:ishonch/service/get_it/get_it.dart';
 import '../models/my_responce/my_responce.dart';
 
 class OrderRepository {
-  Future<MyResponse> createOrder(CreateOrderDto createOrderDto) async {
+  Future<MyResponse> createOrder(CreateOrderDto createOrderDto,bool isDiscount) async {
     MyResponse myResponse = MyResponse(error: '');
-     myResponse = await getIt<ApiService>().createOrder(createOrderDto);
+     myResponse = await getIt<ApiService>().createOrder(createOrderDto,isDiscount);
     return myResponse;
   }
 

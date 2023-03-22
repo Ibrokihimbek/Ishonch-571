@@ -66,13 +66,6 @@ class AppRoutes {
         );
       case RouteName.about:
         return MaterialPageRoute(builder: (_) =>  AboutScreen());
-      case RouteName.checkOut:
-        return MaterialPageRoute(
-          builder: (_) => CheckOutScreen(
-            latLong: settings.arguments as LatLongModel,
-            productId: settings.arguments as int,
-          ),
-        );
       case RouteName.map:
         return MaterialPageRoute(
           builder: (_) => MapScreen(

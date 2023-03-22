@@ -11,10 +11,10 @@ part 'order_create_state.dart';
 class OrderCreateCubit extends Cubit<OrderCreateState> {
   OrderCreateCubit() : super(OrderCreateInitial());
 
-  createOrder(CreateOrderDto createOrderDto) async {
+  createOrder(CreateOrderDto createOrderDto,bool isDiscount) async {
     emit(OrderCreateLoading());
     MyResponse myResponse =
-        await getIt.get<OrderRepository>().createOrder(createOrderDto);
+        await getIt.get<OrderRepository>().createOrder(createOrderDto,isDiscount);
     await Future.delayed( const Duration(seconds: 2));
     if (myResponse.error.isEmpty) {
       emit(OrderCreateSuccess());

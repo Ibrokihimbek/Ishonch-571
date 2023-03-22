@@ -25,10 +25,12 @@ class CheckOutScreen extends StatefulWidget {
     Key? key,
     required this.latLong,
     required this.productId,
+    required this.isDiscount,
   }) : super(key: key);
 
   final LatLongModel latLong;
   final int productId;
+  final bool isDiscount;
 
   @override
   State<CheckOutScreen> createState() => _CheckOutScreenState();
@@ -147,15 +149,15 @@ class _CheckOutScreenState extends State<CheckOutScreen> {
                           if (phoneNumber.length == 17) {
                             // ignore: use_build_context_synchronously
                             context.read<OrderCreateCubit>().createOrder(
-                                  CreateOrderDto(
-                                    productId: widget.productId,
-                                    clientName: _fullNameController!.text,
-                                    clientAddress:
-                                        "${state.latLongModel.lat}/${state.latLongModel.long}",
-                                    clientPhone: phoneNumber,
-                                    deviceId: androidInfo.id,
-                                  ),
-                                );
+                                CreateOrderDto(
+                                  productId: widget.productId,
+                                  clientName: _fullNameController!.text,
+                                  clientAddress:
+                                      "${state.latLongModel.lat}/${state.latLongModel.long}",
+                                  clientPhone: phoneNumber,
+                                  deviceId: androidInfo.id,
+                                ),
+                                widget.isDiscount,);
                             // ignore: use_build_context_synchronously
                             showDialog(
                                 barrierDismissible: false,

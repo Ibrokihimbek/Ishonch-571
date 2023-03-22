@@ -104,6 +104,7 @@ class DiscountProductDetailScreen extends StatelessWidget {
                             builder: (_) => CheckOutScreen(
                               latLong: state.latLongModel!,
                               productId: discountProduct.id,
+                              isDiscount: true,
                             ),
                           ),
                         );

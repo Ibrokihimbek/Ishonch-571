@@ -118,13 +118,17 @@ class ApiService extends ApiClient {
   }
 
 // ------------------- ORDERS -------------
-  Future<MyResponse> createOrder(CreateOrderDto createOrderDto) async {
+  Future<MyResponse> createOrder(
+      CreateOrderDto createOrderDto, bool isDiscount) async {
     MyResponse myResponse = MyResponse(error: '');
     try {
-      Response response = await dio.post(
-        '${dio.options.baseUrl}/order',
-        data: createOrderDto.toJson(),
-      );
+      Response response = await dio.post('${dio.options.baseUrl}/order', data: {
+        isDiscount ? "discount_id" : "product_id": createOrderDto.productId,
+        "client_name": createOrderDto.clientName,
+        "client_address": createOrderDto.clientAddress,
+        "client_phone": createOrderDto.clientPhone,
+        "device_id": createOrderDto.deviceId
+      });
       if (response.statusCode! >= 200 && response.statusCode! < 300) {
         myResponse.data = response.data["id"];
       }
