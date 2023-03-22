@@ -14,6 +14,7 @@ import 'package:ishonch/screens/drawer/drawer.dart';
 import 'package:ishonch/screens/bottom_nav/home/home_page.dart';
 import 'package:ishonch/screens/bottom_nav/notification/notification_page.dart';
 import 'package:ishonch/utils/app_image.dart';
+import '../../bloc/notifications_bloc/notification_reader_bloc/notification_reader_bloc.dart';
 import '../../cubit/connectivity/connectivity_cubit.dart';
 import '../../service/get_it/get_it.dart';
 import '../../service/notification_service/notification_service.dart';
@@ -62,8 +63,10 @@ class _BottomNavPageState extends State<BottomNavPage> {
   _init() async {
     print("INTERNET TURNED ON CALL ANY API");
     FirebaseMessaging.instance.subscribeToTopic("ishonch_news");
+    // getIt<ProductsBloc>().add(FetchAllProducts());
     BlocProvider.of<ProductsBloc>(context).add(FetchAllProducts());
     BlocProvider.of<CategoriesBloc>(context).add(FetchAllCategories());
+    getIt<NotificationReaderBloc>().add(ReadNotificationEvent());
   }
 
   @override
