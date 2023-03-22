@@ -67,10 +67,10 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
                 },
                 physics: const BouncingScrollPhysics(),
                 controller: pageController,
-                itemCount: OnboardingModel.onboard.length,
+                itemCount: OnBoardingModel.onboard.length,
                 itemBuilder: (BuildContext context, int index) {
                   return OnBoardingItem(
-                      onboard: OnboardingModel.onboard[index]);
+                      onboard: OnBoardingModel.onboard[index]);
                 },
               ),
             ),

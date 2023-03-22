@@ -1,24 +1,24 @@
 import 'package:ishonch/utils/app_image.dart';
 
-class OnboardingModel {
+class OnBoardingModel {
   String lottieName;
   String title;
 
-  OnboardingModel({
+  OnBoardingModel({
     required this.lottieName,
     required this.title,
   });
 
-  static List<OnboardingModel> onboard = [
-    OnboardingModel(
+  static List<OnBoardingModel> onboard = [
+    OnBoardingModel(
       lottieName: AppImages.lottieItem,
       title: 'Sevimli_texnikalaringizni_toping',
     ),
-    OnboardingModel(
+    OnBoardingModel(
       lottieName: AppImages.lottiePayment,
       title: "Oson_va_xavfsiz_to'lov",
     ),
-    OnboardingModel(
+    OnBoardingModel(
       lottieName: AppImages.lottieDelivery,
       title: 'Yetkazib_berish_xizmatini_taqdim_etishga_tayyormiz',
     ),

@@ -5,7 +5,7 @@ import 'package:ishonch/data/models/onbording_model/onbording_model.dart';
 import 'package:lottie/lottie.dart';
 
 class OnBoardingItem extends StatelessWidget {
-  final OnboardingModel onboard;
+  final OnBoardingModel onboard;
   const OnBoardingItem({super.key, required this.onboard});
 
   @override
