@@ -1,4 +1,3 @@
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ishonch/bloc/bloc_category/category_bloc.dart';
@@ -36,7 +35,12 @@ class _HomePageState extends State<HomePage> {
             } else if (state is LoadCategoriesInSuccess) {
               return HomeWidget(data: state.categories);
             } else if (state is LoadCategoriesInFailure) {
-              return Text(state.errorText);
+              return Center(
+                child: Text(
+                  state.errorText,
+                  style: Theme.of(context).textTheme.headlineSmall,
+                ),
+              );
             }
             return const SizedBox();
           },

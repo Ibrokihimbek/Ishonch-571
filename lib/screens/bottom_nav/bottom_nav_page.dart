@@ -64,7 +64,6 @@ class _BottomNavPageState extends State<BottomNavPage> {
     FirebaseMessaging.instance.subscribeToTopic("ishonch_news");
     BlocProvider.of<ProductsBloc>(context).add(FetchAllProducts());
     BlocProvider.of<CategoriesBloc>(context).add(FetchAllCategories());
-    BlocProvider.of<CategoriesBloc>(context).add(FetchAllCategories());
   }
 
   @override
