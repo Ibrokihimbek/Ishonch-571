@@ -8,6 +8,7 @@ import 'package:ishonch/utils/my_utils.dart';
 import 'package:shimmer/shimmer.dart';
 import 'category_shimmer.dart';
 
+// ignore: must_be_immutable
 class CategoryItem extends StatelessWidget {
   CategoryItem({Key? key, required this.index}) : super(key: key);
 

@@ -1,7 +1,6 @@
-// ignore: depend_on_referenced_packages
+// ignore_for_file: depend_on_referenced_packages
+import 'package:flutter/cupertino.dart';
 import 'package:sqflite/sqflite.dart';
-// ignore: depend_on_referenced_packages
-import 'package:sqflite/sqlite_api.dart';
 import '../models/notification/notification_model.dart';
 
 class NotificationsRepository{
@@ -41,7 +40,7 @@ class NotificationsRepository{
   Future addNotification(NotificationModel notificationModel) async {
     Database db = await getDb();
     var id = await db.insert(tableName, notificationModel.toJson());
-    print("Notification added to Sql");
+    debugPrint("Notification added to Sql");
 
   }
 

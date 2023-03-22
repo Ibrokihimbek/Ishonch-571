@@ -1,7 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:ishonch/data/models/onbording_model/onbording_model.dart';
+import 'package:ishonch/data/models/on_boarding_model/on_boarding_model.dart';
 import 'package:lottie/lottie.dart';
 
 class OnBoardingItem extends StatelessWidget {

@@ -56,12 +56,13 @@ class _BottomNavPageState extends State<BottomNavPage> {
     screens.insert(0, HomePage(onTap: () => _key.currentState!.openDrawer()));
     screens.insert(1, NotificationPage());
     screens.insert(2, OrdersPage());
+    _init();
 
     super.initState();
   }
 
   _init() async {
-    print("INTERNET TURNED ON CALL ANY API");
+    debugPrint("INTERNET TURNED ON CALL ANY API");
     FirebaseMessaging.instance.subscribeToTopic("ishonch_news");
     // getIt<ProductsBloc>().add(FetchAllProducts());
     BlocProvider.of<ProductsBloc>(context).add(FetchAllProducts());

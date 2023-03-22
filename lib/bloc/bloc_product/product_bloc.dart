@@ -20,7 +20,7 @@ class ProductsBloc extends Bloc<ProductsEvent, ProductsState> {
     if (myResponse.error.isEmpty) {
       emit(LoadProductsInSuccess(products: myResponse.data));
     } else {
-      emit(LoadProductsInFairlure(errorText: myResponse.error));
+      emit(LoadProductsInFailure(errorText: myResponse.error));
     }
   }
 }

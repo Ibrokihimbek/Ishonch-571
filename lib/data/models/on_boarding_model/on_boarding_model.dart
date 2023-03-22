@@ -9,7 +9,7 @@ class OnBoardingModel {
     required this.title,
   });
 
-  static List<OnBoardingModel> onboard = [
+  static List<OnBoardingModel> onBoard = [
     OnBoardingModel(
       lottieName: AppImages.lottieItem,
       title: 'Sevimli_texnikalaringizni_toping',

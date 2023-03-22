@@ -4,11 +4,11 @@ import '../../../data/models/notification/notification_model.dart';
 import '../../../data/repositories/notification_repository.dart';
 import '../../../service/get_it/get_it.dart';
 import '../notification_reader_bloc/notification_reader_bloc.dart';
-part 'notification_cacher_event.dart';
-part 'notification_cacher_state.dart';
+part 'notification_cached_event.dart';
+part 'notification_cached_state.dart';
 
-class NotificationCacherBloc extends Bloc<DoCachingNotificationEvent, NotificationCacherState> {
-  NotificationCacherBloc() : super(NotificationCacherState(notificationStatus: NotificationStatus.PURE,status: "")) {
+class NotificationCachedBloc extends Bloc<DoCachingNotificationEvent, NotificationCacherState> {
+  NotificationCachedBloc() : super(NotificationCacherState(notificationStatus: NotificationStatus.PURE,status: "")) {
     on<DoCachingNotificationEvent>(cacheNotification);
   }
 

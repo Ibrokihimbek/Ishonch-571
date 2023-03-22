@@ -68,7 +68,8 @@
     "telefon_raqam" : "Phone number:",
     "New" : "New",
     "Old" : "Old",
-    "Holati" : "Status"
+    "Holati" : "Status",
+    "Internetingizni yoqing!" : "Turn on your internet!"
 
 
 }

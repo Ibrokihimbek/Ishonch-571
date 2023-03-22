@@ -30,7 +30,7 @@ class _LanguageScreenState extends State<LanguageScreen> {
       default:
     }
     return Scaffold(
-      appBar: GlobalAppBar(title: ''),
+      appBar: const GlobalAppBar(title: ''),
       body: Container(
         width: double.infinity,
         padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 24).r,

@@ -35,7 +35,7 @@ class ProductsGridWidget extends StatelessWidget {
               crossAxisSpacing: 5,
             ),
           );
-        } else if (state is LoadProductsInFairlure) {
+        } else if (state is LoadProductsInFailure) {
           return SliverToBoxAdapter(
               child: Center(child: Text(state.errorText)));
         }

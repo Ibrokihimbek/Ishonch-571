@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:ishonch/utils/app_colors.dart';
 import 'package:ishonch/utils/text_style.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:easy_localization/easy_localization.dart';
@@ -36,7 +35,7 @@ class _PhoneInputComponentState extends State<PhoneInputComponent> {
     phoneMaskFormatter = MaskTextInputFormatter(
       mask: '+998 ## ###-##-##',
       filter: {
-        "#": RegExp(r'[0-9]'),
+        "#": RegExp(r"[0-9]"),
       },
     );
     controller.text = phoneMaskFormatter.maskText(widget.initialValue);

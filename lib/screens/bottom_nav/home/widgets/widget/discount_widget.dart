@@ -159,7 +159,7 @@ class DiscountWidget extends SliverPersistentHeaderDelegate {
                       ),
                     ),
                   )
-                : state is GettingDiscountInFailury
+                : state is GettingDiscountInFailure
                     ? Center(
                         child: Lottie.asset(
                           AppImages.lottieItem,

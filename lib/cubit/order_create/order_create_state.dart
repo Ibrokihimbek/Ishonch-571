@@ -1,6 +1,5 @@
 part of 'order_create_cubit.dart';
 
-@immutable
 abstract class OrderCreateState {}
 
 class OrderCreateInitial extends OrderCreateState {}
