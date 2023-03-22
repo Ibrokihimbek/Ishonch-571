@@ -142,12 +142,12 @@ class ApiService extends ApiClient {
   Future<MyResponse> getAllOrders() async {
     DeviceInfoPlugin deviceInfo = DeviceInfoPlugin();
     AndroidDeviceInfo androidInfo = await deviceInfo.androidInfo;
-    print('DEVICE MODEL ${androidInfo.model}');
+    print('PHONE DEVICE ID ${androidInfo.id}');
 
     MyResponse myResponse = MyResponse(error: '');
     try {
       Response response = await dio.post('${dio.options.baseUrl}/order/device',
-          data: {"deviceId": androidInfo.model});
+          data: {"deviceId": androidInfo.id});
       if (response.statusCode! >= 200 && response.statusCode! < 300) {
         myResponse.data = (response.data as List?)
                 ?.map((e) => OrderModel.fromJson(e))

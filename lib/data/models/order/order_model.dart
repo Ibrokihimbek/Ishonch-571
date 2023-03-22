@@ -26,6 +26,6 @@ class OrderModel {
         clientPhone: json['client_phone'] as String? ?? "",
         createdAt: json['createdAt'] as String? ?? "",
         updatedAt: json['updatedAt'] as String? ?? "",
-        product: Product.fromJson(json['product'] as Map<String, dynamic>? ?? {}),
+        product:json['product'] !=null?  Product.fromJson(json['product'] as Map<String, dynamic>? ?? {}): Product.fromJson(json['discount'] as Map<String, dynamic>? ?? {}),
       );
 }
