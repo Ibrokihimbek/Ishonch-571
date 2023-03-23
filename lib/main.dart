@@ -8,18 +8,20 @@ import 'package:ishonch/app/app.dart';
 import 'package:ishonch/app/app_bloc_observer.dart';
 import 'package:ishonch/data/storage_repository/storage_repository.dart';
 import 'package:ishonch/service/get_it/get_it.dart';
+
 // ignore: depend_on_referenced_packages
 import 'package:firebase_core/firebase_core.dart';
+import 'dart:io' show Platform;
 
 import 'data/models/notification/notification_model.dart';
 import 'data/repositories/notification_repository.dart';
 
 Future<void> firebaseMessagingBackgroundHandler(RemoteMessage message) async {
-  getIt<NotificationsRepository>().addNotification(NotificationModel.fromJson(message.data));
+  getIt<NotificationsRepository>()
+      .addNotification(NotificationModel.fromJson(message.data));
   debugPrint("Message keldi bratan");
   debugPrint("Handling a background message: ${message.data}");
 }
-
 
 void main() async {
   SystemChrome.setSystemUIOverlayStyle(
@@ -31,17 +33,20 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   setup();
   await EasyLocalization.ensureInitialized();
-  await Firebase.initializeApp();
-  FirebaseMessaging.instance.subscribeToTopic("ishonch_news");
-  FirebaseMessaging.onBackgroundMessage(firebaseMessagingBackgroundHandler);
+  //await Firebase.initializeApp();
+  // FirebaseMessaging.instance.subscribeToTopic("ishonch_news");
+  //FirebaseMessaging.onBackgroundMessage(firebaseMessagingBackgroundHandler);
 
 
-  DeviceInfoPlugin deviceInfo = DeviceInfoPlugin();
-  AndroidDeviceInfo androidInfo =
-  await deviceInfo.androidInfo;
-  debugPrint('DEVICE ID ${androidInfo.id}');
-  debugPrint('DEVICE MODEL ${androidInfo.model}');
-  debugPrint('DEVICE SERIAL  NUMBER ${androidInfo.serialNumber}');
+  if (Platform.isAndroid) {
+    DeviceInfoPlugin deviceInfo = DeviceInfoPlugin();
+    AndroidDeviceInfo androidInfo = await deviceInfo.androidInfo;
+    debugPrint('DEVICE ID ${androidInfo.id}');
+    debugPrint('DEVICE MODEL ${androidInfo.model}');
+    debugPrint('DEVICE SERIAL  NUMBER ${androidInfo.serialNumber}');
+  } else if (Platform.isIOS) {
+    // iOS-specific code
+  }
 
   StorageRepository.getInstance();
   Bloc.observer = AppBlocObserver();
