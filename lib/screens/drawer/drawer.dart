@@ -5,6 +5,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:ishonch/utils/app_colors.dart';
 import 'package:ishonch/utils/app_image.dart';
 
+// ignore: must_be_immutable
 class MyDrawer extends StatefulWidget {
   ValueChanged onChanged;
   bool isNightMode;

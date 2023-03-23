@@ -6,10 +6,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:ishonch/cubit/discount/discount_cubit.dart';
 import 'package:ishonch/cubit/discount/discount_state.dart';
-import 'package:ishonch/data/models/discount_empty/discount_empty.dart';
 import 'package:ishonch/screens/app_router.dart';
 import 'package:ishonch/screens/bottom_nav/home/widgets/widget/discount_empty_widget.dart';
-import 'package:ishonch/utils/app_colors.dart';
 import 'package:ishonch/utils/app_image.dart';
 import 'package:ishonch/utils/my_utils.dart';
 import 'package:lottie/lottie.dart';
@@ -30,7 +28,7 @@ class DiscountWidget extends SliverPersistentHeaderDelegate {
             ? const Center(child: ShimmerWidgetByDiscount())
             : state is GettingDiscountInSuccess
                 ? state.discount.isEmpty
-                    ? DiscountEmptyWidget()
+                    ? const DiscountEmptyWidget()
                     
                     : SizedBox(
                         height: 200,
@@ -224,7 +222,7 @@ class DiscountWidget extends SliverPersistentHeaderDelegate {
                           ),
                         ),
                       )
-                : state is GettingDiscountInFailury
+                : state is GettingDiscountInFailure
                     ? Center(
                         child: Lottie.asset(
                           AppImages.lottieItem,

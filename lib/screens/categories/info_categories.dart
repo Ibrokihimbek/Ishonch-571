@@ -1,4 +1,3 @@
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ishonch/bloc/bloc_category/category_bloc.dart';
@@ -20,7 +19,7 @@ class _CategoriesInfoPageState extends State<CategoriesInfoPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: GlobalAppBar(title: "Kategoriyalar"),
+        appBar: const GlobalAppBar(title: "Kategoriyalar"),
         body: BlocBuilder<CategoriesBloc, CategoriesState>(
           builder: (context, state) {
             if (state is LoadCategoriesInProgress) {
@@ -63,6 +62,6 @@ class _CategoriesInfoPageState extends State<CategoriesInfoPage> {
             }
             return const SizedBox();
           },
-        ));
+        ),);
   }
 }

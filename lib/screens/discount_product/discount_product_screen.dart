@@ -90,9 +90,9 @@ class DiscountProductDetailScreen extends StatelessWidget {
                       LocationPermissionState>(
                     listener: (context, state) {
                       if (state.myPermissionStatus ==
-                          MyPermissionStatus.Loading) {}
+                          MyPermissionStatus.loading) {}
                       if (state.myPermissionStatus ==
-                          MyPermissionStatus.Success) {
+                          MyPermissionStatus.success) {
                         BlocProvider.of<MapCubit>(context).fetchAddress(
                           latLongModel: state.latLongModel!,
                           kind: "house",
@@ -109,7 +109,7 @@ class DiscountProductDetailScreen extends StatelessWidget {
                           ),
                         );
                       }
-                      if (state.myPermissionStatus == MyPermissionStatus.Fail) {
+                      if (state.myPermissionStatus == MyPermissionStatus.fail) {
                         showInfoSnackBar(context, "Permission not found");
                       }
                     },

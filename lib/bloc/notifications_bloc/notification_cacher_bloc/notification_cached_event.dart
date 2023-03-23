@@ -1,4 +1,4 @@
-part of 'notification_cacher_bloc.dart';
+part of 'notification_cached_bloc.dart';
 
 class DoCachingNotificationEvent {
   NotificationModel notificationModel;

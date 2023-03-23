@@ -1,3 +1,4 @@
+// ignore: depend_on_referenced_packages
 import 'package:json_annotation/json_annotation.dart';
 import 'geocoder_meta_data.dart';
 part 'meta_data_property.g.dart';

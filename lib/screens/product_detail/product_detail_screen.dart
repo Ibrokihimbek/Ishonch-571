@@ -103,7 +103,7 @@ class ProductDetailScreen extends StatelessWidget {
                                       LocationPermissionState>(
                                     listener: (context, state) {
                                       if (state.myPermissionStatus ==
-                                          MyPermissionStatus.Loading) {
+                                          MyPermissionStatus.loading) {
                                         showDialog(
                                           barrierDismissible: false,
                                           builder: (context) => LoadingDialog(
@@ -114,7 +114,7 @@ class ProductDetailScreen extends StatelessWidget {
                                         );
                                       }
                                       if (state.myPermissionStatus ==
-                                          MyPermissionStatus.Success) {
+                                          MyPermissionStatus.success) {
                                         BlocProvider.of<MapCubit>(context)
                                             .fetchAddress(
                                           latLongModel: state.latLongModel!,
@@ -133,7 +133,7 @@ class ProductDetailScreen extends StatelessWidget {
                                         );
                                       }
                                       if (state.myPermissionStatus ==
-                                          MyPermissionStatus.Fail) {
+                                          MyPermissionStatus.fail) {
                                         showInfoSnackBar(
                                             context, "ruxsat_topilmadi".tr());
                                       }

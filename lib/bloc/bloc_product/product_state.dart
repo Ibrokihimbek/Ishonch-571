@@ -11,8 +11,8 @@ class LoadProductsInSuccess extends ProductsState {
   LoadProductsInSuccess({required this.products});
 }
 
-class LoadProductsInFairlure extends ProductsState {
+class LoadProductsInFailure extends ProductsState {
   final String errorText;
 
-  LoadProductsInFairlure({required this.errorText});
+  LoadProductsInFailure({required this.errorText});
 }

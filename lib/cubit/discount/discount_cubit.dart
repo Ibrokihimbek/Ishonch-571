@@ -15,7 +15,7 @@ class DiscountCubit extends Cubit<DiscountState> {
     if (myResponse.error.isEmpty) {
        emit(GettingDiscountInSuccess(discount: myResponse.data));
     } else {
-      emit(GettingDiscountInFailury(status: myResponse.error));
+      emit(GettingDiscountInFailure(status: myResponse.error));
     }
   }
 }

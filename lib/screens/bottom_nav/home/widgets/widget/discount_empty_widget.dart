@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:ishonch/data/models/discount_empty/discount_empty.dart';
 import 'package:ishonch/utils/app_colors.dart';
-import 'package:ishonch/utils/app_image.dart';
 import 'package:ishonch/utils/my_utils.dart';
 import 'package:ishonch/utils/text_style.dart';
 

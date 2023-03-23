@@ -23,7 +23,7 @@ class AllProduct extends StatelessWidget {
               return const Center(child: Text('hali data yoq'));
             } else if (state is LoadProductsInSuccess) {
               return AllProductsScreen(data: state.products);
-            } else if (state is LoadProductsInFairlure) {
+            } else if (state is LoadProductsInFailure) {
               return Text(state.errorText);
             } else if (state is LoadProductsInProgress) {
               return const AllProductShimmerWidget();

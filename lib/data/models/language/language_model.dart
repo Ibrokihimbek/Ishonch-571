@@ -1,19 +1,19 @@
 import 'package:flutter/material.dart';
 
 class LanguageModel {
-  String ImgUrl;
-  String Name;
-  bool IsSelected;
+  String imgUrl;
+  String name;
+  bool isSelected;
 
   LanguageModel(
-      {required this.ImgUrl, required this.Name, required this.IsSelected});
+      {required this.imgUrl, required this.name, required this.isSelected});
 
   static List<LanguageModel> languages = [
     LanguageModel(
-        ImgUrl: "assets/images/usa.png", Name: "English", IsSelected: true),
+        imgUrl: "assets/images/usa.png", name: "English", isSelected: true),
     LanguageModel(
-        ImgUrl: "assets/images/russia.png", Name: "Russian", IsSelected: false),
+        imgUrl: "assets/images/russia.png", name: "Russian", isSelected: false),
     LanguageModel(
-        ImgUrl: "assets/images/uzbek.png", Name: "Uzbek", IsSelected: false),
+        imgUrl: "assets/images/uzbek.png", name: "Uzbek", isSelected: false),
   ];
 }

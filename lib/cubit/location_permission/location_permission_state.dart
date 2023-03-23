@@ -26,8 +26,8 @@ class LocationPermissionState extends Equatable {
 }
 
 enum MyPermissionStatus {
-  Pure,
-  Loading,
-  Success,
-  Fail,
+  pure,
+  loading,
+  success,
+  fail,
 }

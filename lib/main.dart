@@ -10,16 +10,14 @@ import 'package:ishonch/data/storage_repository/storage_repository.dart';
 import 'package:ishonch/service/get_it/get_it.dart';
 // ignore: depend_on_referenced_packages
 import 'package:firebase_core/firebase_core.dart';
-import 'package:ishonch/service/notification_service/notification_service.dart';
-import 'package:firebase_core/firebase_core.dart';
 
 import 'data/models/notification/notification_model.dart';
 import 'data/repositories/notification_repository.dart';
 
 Future<void> firebaseMessagingBackgroundHandler(RemoteMessage message) async {
   getIt<NotificationsRepository>().addNotification(NotificationModel.fromJson(message.data));
-  print("Message keldi bratan");
-  print("Handling a background message: ${message.data}");
+  debugPrint("Message keldi bratan");
+  debugPrint("Handling a background message: ${message.data}");
 }
 
 

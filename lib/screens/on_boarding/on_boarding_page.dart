@@ -1,10 +1,10 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:ishonch/data/models/onbording_model/onbording_model.dart';
+import 'package:ishonch/data/models/on_boarding_model/on_boarding_model.dart';
 import 'package:ishonch/data/storage_repository/storage_repository.dart';
 import 'package:ishonch/screens/app_router.dart';
-import 'package:ishonch/screens/on_bording/widgets/on_boarding_item.dart';
+import 'package:ishonch/screens/on_boarding/widgets/on_boarding_item.dart';
 import 'package:ishonch/utils/app_colors.dart';
 import 'package:ishonch/utils/text_style.dart';
 import 'package:zoom_tap_animation/zoom_tap_animation.dart';
@@ -67,10 +67,10 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
                 },
                 physics: const BouncingScrollPhysics(),
                 controller: pageController,
-                itemCount: OnboardingModel.onboard.length,
+                itemCount: OnBoardingModel.onBoard.length,
                 itemBuilder: (BuildContext context, int index) {
                   return OnBoardingItem(
-                      onboard: OnboardingModel.onboard[index]);
+                      onboard: OnBoardingModel.onBoard[index]);
                 },
               ),
             ),
