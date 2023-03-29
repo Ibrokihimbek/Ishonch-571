@@ -33,9 +33,9 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   setup();
   await EasyLocalization.ensureInitialized();
-  //await Firebase.initializeApp();
-  // FirebaseMessaging.instance.subscribeToTopic("ishonch_news");
-  //FirebaseMessaging.onBackgroundMessage(firebaseMessagingBackgroundHandler);
+  await Firebase.initializeApp();
+  FirebaseMessaging.instance.subscribeToTopic("ishonch_news");
+  FirebaseMessaging.onBackgroundMessage(firebaseMessagingBackgroundHandler);
 
 
   if (Platform.isAndroid) {
@@ -45,7 +45,9 @@ void main() async {
     debugPrint('DEVICE MODEL ${androidInfo.model}');
     debugPrint('DEVICE SERIAL  NUMBER ${androidInfo.serialNumber}');
   } else if (Platform.isIOS) {
-    // iOS-specific code
+    DeviceInfoPlugin deviceInfo = DeviceInfoPlugin();
+    IosDeviceInfo iosDeviceInfo = await deviceInfo.iosInfo;
+    String deviceID = iosDeviceInfo.identifierForVendor.toString();
   }
 
   StorageRepository.getInstance();

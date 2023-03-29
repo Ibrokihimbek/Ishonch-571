@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:device_info_plus/device_info_plus.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
@@ -139,10 +141,25 @@ class _CheckOutScreenState extends State<CheckOutScreen> {
                     isActive: true,
                     buttonText: "sotib_olish".tr(),
                     onTap: () async {
+
+                      String deviceID = "";
                       DeviceInfoPlugin deviceInfo = DeviceInfoPlugin();
-                      AndroidDeviceInfo androidInfo =
-                          await deviceInfo.androidInfo;
-                      debugPrint('DEVICE MODEL ${androidInfo.model}');
+
+                      if (Platform.isAndroid) {
+                        AndroidDeviceInfo androidInfo = await deviceInfo.androidInfo;
+                        debugPrint('DEVICE ID ${androidInfo.id}');
+                        debugPrint('DEVICE MODEL ${androidInfo.model}');
+                        debugPrint('DEVICE SERIAL  NUMBER ${androidInfo.serialNumber}');
+                        deviceID = androidInfo.id;
+                      } else if (Platform.isIOS) {
+                        IosDeviceInfo iosDeviceInfo = await deviceInfo.iosInfo;
+                        deviceID = iosDeviceInfo.identifierForVendor.toString();
+                        // iOS-specific code
+                      }
+
+
+
+                      debugPrint('DEVICE MODEL ${deviceID}');
                       // ignore: use_build_context_synchronously
                       if (_fullNameController!.text.length >= 3) {
                         if (_addressController!.text.length >= 5) {
@@ -155,7 +172,7 @@ class _CheckOutScreenState extends State<CheckOutScreen> {
                                   clientAddress:
                                       "${state.latLongModel.lat}/${state.latLongModel.long}",
                                   clientPhone: phoneNumber,
-                                  deviceId: androidInfo.id,
+                                  deviceId: deviceID,
                                 ),
                                 widget.isDiscount,);
                             // ignore: use_build_context_synchronously
