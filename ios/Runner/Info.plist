@@ -61,5 +61,9 @@
 	<key>NSCameraUsageDescription</key>
         <string>Ishonch 571 needs to access the camera to take a picture of user.
         </string>
+
+    <key>NSPhotoLibraryUsageDescription</key>
+    <string>Allow photos to access to them </string>
+
 </dict>
 </plist>
