@@ -37,7 +37,6 @@ void main() async {
   FirebaseMessaging.instance.subscribeToTopic("ishonch_news");
   FirebaseMessaging.onBackgroundMessage(firebaseMessagingBackgroundHandler);
 
-
   if (Platform.isAndroid) {
     DeviceInfoPlugin deviceInfo = DeviceInfoPlugin();
     AndroidDeviceInfo androidInfo = await deviceInfo.androidInfo;
@@ -54,3 +53,19 @@ void main() async {
   Bloc.observer = AppBlocObserver();
   runApp(App());
 }
+
+var myData = [
+  MyModel(myStatus: MyStatus.clients, name: "Abdulloh"),
+  MyModel(myStatus: MyStatus.others, name: "Abdulloh"),
+  MyModel(myStatus: MyStatus.users, name: "Abdulloh"),
+];
+
+class MyModel {
+  final String name;
+
+  final MyStatus myStatus;
+
+  MyModel({required this.myStatus, required this.name});
+}
+
+enum MyStatus { users, clients, others }
