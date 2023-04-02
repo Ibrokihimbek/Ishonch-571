@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:ishonch/data/models/discount/discount_model.dart';
@@ -14,79 +15,73 @@ class AppliancesCharacterDiscount extends StatelessWidget {
     return Column(
       children: [
         infoMethod(
-          fieldName: "Color:",
+          fieldName: "rang:".tr(),
           product: product.appliances.color,
           context: context,
         ),
         SizedBox(height: 5.h),
         infoMethod(
-          fieldName: 'Energy consumption:',
+          fieldName: "energiya_iste'moli:".tr(),
           product: product.appliances.classenergopotrebleniya,
           context: context,
         ),
         SizedBox(height: 5.h),
         infoMethod(
-          fieldName: 'Warranty:',
+          fieldName: 'kafolat:'.tr(),
           product: product.appliances.warranty,
           context: context,
         ),
         SizedBox(height: 5.h),
         infoMethod(
-          fieldName: 'Freezer location:',
+          fieldName: 'muzlatgichning_joylashuvi:'.tr(),
           product: product.appliances.freezerLocation,
           context: context,
         ),
         SizedBox(height: 5.h),
         infoMethod(
-          fieldName: 'Capacity:',
+          fieldName: 'sigimi:'.tr(),
           product: product.appliances.capacity,
           context: context,
         ),
         SizedBox(height: 5.h),
         infoMethod(
-          fieldName: 'Depth sm:',
+          fieldName: 'chuqurlik_sm:'.tr(),
           product: product.appliances.depthCm,
           context: context,
         ),
         SizedBox(height: 5.h),
         infoMethod(
-          fieldName: 'Dioganal:',
+          fieldName: 'diagonal:'.tr(),
           product: product.appliances.diagonal,
           context: context,
         ),
         SizedBox(height: 5.h),
         infoMethod(
-          fieldName: 'Freezer volume L:',
+          fieldName: 'muzlatgich_ovozi:'.tr(),
           product: product.appliances.freezerVolumeL,
           context: context,
         ),
         SizedBox(height: 5.h),
         infoMethod(
-          fieldName: 'Depth sm:',
+          fieldName: 'balandligi_sm:'.tr(),
           product: product.appliances.depthCm,
           context: context,
         ),
         SizedBox(height: 5.h),
         infoMethod(
-          fieldName: 'Height sm:',
+          fieldName: 'kengligi_sm:'.tr(),
           product: product.appliances.heightCm,
           context: context,
         ),
         SizedBox(height: 5.h),
         infoMethod(
-          fieldName: 'Width sm:',
-          product: product.appliances.widthCm,
-          context: context,
-        ),
-        SizedBox(height: 5.h),
-        infoMethod(
-          fieldName: 'Volume L:',
+          fieldName: 'ovozi:'.tr(),
           product: product.appliances.volumeL,
           context: context,
         ),
         SizedBox(height: 5.h),
         infoMethod(
-          fieldName: 'Volume of refrigerator compartment L:',
+          fieldName: 'sovutgich_kamerasining_hajmi:'.tr(),
           product: product.appliances.volumeOfRefrigeratorCompartmentL,
           context: context,
         ),

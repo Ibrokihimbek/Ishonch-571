@@ -1,3 +1,5 @@
+import 'package:flutter/cupertino.dart';
+
 class NotificationModel {
 
   final String id;
@@ -15,7 +17,7 @@ class NotificationModel {
   }
 
   toJson() {
-    print("MANAAAAAAAA");
+    debugPrint("MANAAAAAAAA");
 
     return {
       "id": id.toString(),

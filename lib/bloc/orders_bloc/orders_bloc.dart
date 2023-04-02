@@ -2,7 +2,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ishonch/bloc/orders_bloc/orders_event.dart';
 import 'package:ishonch/bloc/orders_bloc/orders_state.dart';
 import 'package:ishonch/data/models/my_responce/my_responce.dart';
-import 'package:ishonch/data/models/order/order_model.dart';
 import 'package:ishonch/data/repositories/category_repo.dart';
 import 'package:ishonch/data/repositories/order_repository.dart';
 import 'package:ishonch/service/get_it/get_it.dart';

@@ -1,5 +1,6 @@
-import 'dart:io';
+import 'dart:io' show Platform;
 import 'package:dio/dio.dart';
+import 'package:flutter/foundation.dart';
 import 'package:ishonch/data/geocoding/geocoding.dart';
 import 'package:ishonch/data/models/create_order_dto/create_order_dto.dart';
 import 'package:ishonch/data/models/discount/discount_model.dart';
@@ -65,7 +66,7 @@ class ApiService extends ApiClient {
         queryParameters: queryParams,
       );
 
-      if (response.statusCode! == HttpStatus.ok) {
+      if (response.statusCode! == 200) {
         Geocoding geocoding = Geocoding.fromJson(response.data);
         if (geocoding.response.geoObjectCollection.featureMember.isNotEmpty) {
           text = geocoding.response.geoObjectCollection.featureMember[0]
@@ -118,13 +119,17 @@ class ApiService extends ApiClient {
   }
 
 // ------------------- ORDERS -------------
-  Future<MyResponse> createOrder(CreateOrderDto createOrderDto) async {
+  Future<MyResponse> createOrder(
+      CreateOrderDto createOrderDto, bool isDiscount) async {
     MyResponse myResponse = MyResponse(error: '');
     try {
-      Response response = await dio.post(
-        '${dio.options.baseUrl}/order',
-        data: createOrderDto.toJson(),
-      );
+      Response response = await dio.post('${dio.options.baseUrl}/order', data: {
+        isDiscount ? "discount_id" : "product_id": createOrderDto.productId,
+        "client_name": createOrderDto.clientName,
+        "client_address": createOrderDto.clientAddress,
+        "client_phone": createOrderDto.clientPhone,
+        "device_id": createOrderDto.deviceId
+      });
       if (response.statusCode! >= 200 && response.statusCode! < 300) {
         myResponse.data = response.data["id"];
       }
@@ -136,14 +141,25 @@ class ApiService extends ApiClient {
   }
 
   Future<MyResponse> getAllOrders() async {
+    String deviceID = "";
     DeviceInfoPlugin deviceInfo = DeviceInfoPlugin();
-    AndroidDeviceInfo androidInfo = await deviceInfo.androidInfo;
-    print('DEVICE MODEL ${androidInfo.model}');
+
+    if (Platform.isAndroid) {
+      AndroidDeviceInfo androidInfo = await deviceInfo.androidInfo;
+      debugPrint('DEVICE ID ${androidInfo.id}');
+      debugPrint('DEVICE MODEL ${androidInfo.model}');
+      debugPrint('DEVICE SERIAL  NUMBER ${androidInfo.serialNumber}');
+      deviceID = androidInfo.id;
+    } else if (Platform.isIOS) {
+      IosDeviceInfo iosDeviceInfo = await deviceInfo.iosInfo;
+      deviceID = iosDeviceInfo.identifierForVendor.toString();
+      // iOS-specific code
+    }
 
     MyResponse myResponse = MyResponse(error: '');
     try {
       Response response = await dio.post('${dio.options.baseUrl}/order/device',
-          data: {"deviceId": androidInfo.model});
+          data: {"deviceId": deviceID});
       if (response.statusCode! >= 200 && response.statusCode! < 300) {
         myResponse.data = (response.data as List?)
                 ?.map((e) => OrderModel.fromJson(e))

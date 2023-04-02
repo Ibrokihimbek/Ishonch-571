@@ -1,7 +1,7 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:ishonch/data/models/model_category/categories/product/product_model.dart';
 import 'package:lottie/lottie.dart';
-
 import '../../../utils/app_image.dart';
 import '../../app_router.dart';
 import '../../product_by_category/widgets/product_item.dart';
@@ -18,11 +18,9 @@ class AllProductsScreen extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Lottie.asset(AppImages.lotieDeliveryInTime),
-              Text(
-                'Hozircha Mahsulotlar mavjud emas',
-                textAlign: TextAlign.center,
-                style: Theme.of(context).textTheme.headlineMedium,
-              ),
+              Text('The products are not available for now'.tr(),
+                  textAlign: TextAlign.center,
+                  style: Theme.of(context).textTheme.headlineMedium),
             ],
           )
         : GridView(
@@ -48,6 +46,5 @@ class AllProductsScreen extends StatelessWidget {
               ),
             ),
           );
-    ;
   }
 }

@@ -1,13 +1,11 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:ishonch/screens/widgets/global_appbar.dart';
-import 'package:ishonch/utils/app_colors.dart';
+import 'package:ishonch/service/lat_long/lat_long.dart';
 import 'package:ishonch/utils/app_image.dart';
-import 'package:ishonch/utils/text_style.dart';
+import 'package:url_launcher/url_launcher.dart';
+import 'package:zoom_tap_animation/zoom_tap_animation.dart';
 
 class AboutScreen extends StatelessWidget {
   const AboutScreen({super.key});
@@ -19,7 +17,7 @@ class AboutScreen extends StatelessWidget {
       body: Container(
         margin: const EdgeInsets.all(10).r,
         width: double.infinity,
-        padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 30).r,
+        padding: const EdgeInsets.symmetric(vertical: 30).r,
         decoration: BoxDecoration(
             border: Border.all(color: Theme.of(context).shadowColor),
             borderRadius: BorderRadius.circular(15.r)),
@@ -29,11 +27,9 @@ class AboutScreen extends StatelessWidget {
               width: 132.5.w,
               height: 68.64.h,
               child: Image.asset(
-
                 Theme.of(context).dialogBackgroundColor == Colors.white
                     ? AppImages.imageLogo
                     : AppImages.imageLogoLight,
-
               ),
             ),
             SizedBox(
@@ -46,14 +42,94 @@ class AboutScreen extends StatelessWidget {
               ),
             ),
             SizedBox(height: 10.h),
-            Text(
-              "Ishonch 571 - bu professional elektron tijorat platformasi. Bu yerda biz sizga faqat qiziqarli kontentni taqdim etamiz, ular sizga juda yoqadi. Biz ishonchlilik va xaridlarga e'tibor qaratgan holda, sizga eng yaxshi elektron tijoratni taqdim etishga bag'ishlanganmiz. Biz elektron tijoratga bo'lgan ishtiyoqimizni rivojlanayotgan onlayn veb-saytga aylantirish ustida ishlamoqdamiz. Umid qilamizki, bizning elektron tijoratimiz biz ularni sizga taklif qilganimizdek sizga ham yoqadi."
-                  .tr(),
-              style: Theme.of(context)
-                  .textTheme
-                  .titleLarge!
-                  .copyWith(fontSize: 16.sp, fontWeight: FontWeight.w500),
-            )
+            Padding(
+              padding: const EdgeInsets.all(16).r,
+              child: Text(
+                "about_text".tr(),
+                style: Theme.of(context)
+                    .textTheme
+                    .titleLarge!
+                    .copyWith(fontSize: 16.sp, fontWeight: FontWeight.w500),
+              ),
+            ),
+            const Spacer(),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 16).r,
+                  child: Text(
+                    'bizning_manzil'.tr(),
+                    style: Theme.of(context)
+                        .textTheme
+                        .titleLarge!
+                        .copyWith(fontSize: 16.sp, fontWeight: FontWeight.w500),
+                  ),
+                ),
+                ListTile(
+                  title: Text(
+                    "Buyuk Ipak yo'li, Bekabad, Bekabad, Tashkent Region, Uzbekistan",
+                    style: Theme.of(context)
+                        .textTheme
+                        .titleLarge!
+                        .copyWith(fontSize: 16.sp, fontWeight: FontWeight.w500),
+                  ),
+                  trailing: ZoomTapAnimation(
+                    child: Icon(
+                      Icons.location_on,
+                      size: 32.sp,
+                      color: Theme.of(context).cardColor,
+                    ),
+                    onTap: () {
+                      LatLong.openMap(40.213734, 69.265442);
+                    },
+                  ),
+                ),
+              ],
+            ),
+            SizedBox(height: 16.h),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 16).r,
+                  child: Text(
+                    'telefon_raqam'.tr(),
+                    style: Theme.of(context)
+                        .textTheme
+                        .titleLarge!
+                        .copyWith(fontSize: 16.sp, fontWeight: FontWeight.w500),
+                  ),
+                ),
+                ListTile(
+                  title: Text(
+                    "Muhiddin\n+998 90 125 44 15",
+                    style: Theme.of(context)
+                        .textTheme
+                        .titleLarge!
+                        .copyWith(fontSize: 16.sp, fontWeight: FontWeight.w500),
+                  ),
+                  trailing: ZoomTapAnimation(
+                    child: Icon(
+                      Icons.phone,
+                      size: 32.sp,
+                      color: Theme.of(context).cardColor,
+                    ),
+                    onTap: () async {
+                      final Uri phoneUri =
+                          Uri(scheme: "tel", path: '+998901254415');
+                      try {
+                        if (await canLaunchUrl(phoneUri)) {
+                          await launchUrl(phoneUri);
+                        }
+                      } catch (error) {
+                        throw ("Cannot dial");
+                      }
+                    },
+                  ),
+                ),
+              ],
+            ),
           ],
         ),
       ),

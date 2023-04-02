@@ -9,7 +9,7 @@ class GettingDiscountInSuccess extends DiscountState{
   List<Discount> discount;
   GettingDiscountInSuccess({required this.discount});
 }
-class GettingDiscountInFailury extends DiscountState{
+class GettingDiscountInFailure extends DiscountState{
   String status;
-  GettingDiscountInFailury({required this.status});
+  GettingDiscountInFailure({required this.status});
 }

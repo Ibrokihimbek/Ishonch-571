@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:ishonch/data/models/discount/discount_model.dart';
@@ -14,37 +15,37 @@ class PhoneCharacterDiscount extends StatelessWidget {
     return Column(
       children: [
         infoMethod(
-          fieldName: "Color:",
+          fieldName: "rang:".tr(),
           product: product.phone.color,
           context: context,
         ),
         SizedBox(height: 5.h),
         infoMethod(
-          fieldName: 'Display:',
+          fieldName: 'ekran'.tr(),
           product: product.phone.display,
           context: context,
         ),
         SizedBox(height: 5.h),
         infoMethod(
-          fieldName: 'Memory Ram:',
+          fieldName: 'xotira_RAM:'.tr(),
           product: product.phone.memoryRam,
           context: context,
         ),
         SizedBox(height: 5.h),
         infoMethod(
-          fieldName: 'Memory Rom:',
+          fieldName: 'xotira_ROM:'.tr(),
           product: product.phone.memoryRom,
           context: context,
         ),
         SizedBox(height: 5.h),
         infoMethod(
-          fieldName: 'Warranty:',
+          fieldName: 'kafolat:'.tr(),
           product: product.phone.warranty,
           context: context,
         ),
         SizedBox(height: 5.h),
         infoMethod(
-          fieldName: 'Graphics card:',
+          fieldName: 'grafik_karta:'.tr(),
           product: product.phone.videoCard,
           context: context,
         ),

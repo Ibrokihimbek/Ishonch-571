@@ -7,12 +7,11 @@ import 'package:ishonch/screens/discount_product/discount_product_screen.dart';
 import 'package:ishonch/screens/drawer/sub_screens/about_screen.dart';
 import 'package:ishonch/screens/drawer/sub_screens/language_screen.dart';
 import 'package:ishonch/screens/no_internet/no_internet_screen.dart';
-import 'package:ishonch/screens/on_bording/on_bording_page.dart';
+import 'package:ishonch/screens/on_boarding/on_boarding_page.dart';
 import 'package:ishonch/screens/product_by_category/product_by_category.dart';
 import 'package:ishonch/screens/product_detail/product_detail_screen.dart';
-import 'package:ishonch/screens/product_detail/sub_screens/check_out/check_out_screen.dart';
-import 'package:ishonch/screens/product_detail/sub_screens/map/map_screen.dart';
-import 'package:ishonch/screens/product_detail/sub_screens/image_view/image_view_page.dart';
+import 'package:ishonch/screens/check_out/map/map_screen.dart';
+import 'package:ishonch/screens/image_view/image_view_page.dart';
 import 'package:ishonch/screens/splash/splash_page.dart';
 
 
@@ -66,13 +65,6 @@ class AppRoutes {
         );
       case RouteName.about:
         return MaterialPageRoute(builder: (_) =>  AboutScreen());
-      case RouteName.checkOut:
-        return MaterialPageRoute(
-          builder: (_) => CheckOutScreen(
-            latLong: settings.arguments as LatLongModel,
-            productId: settings.arguments as int,
-          ),
-        );
       case RouteName.map:
         return MaterialPageRoute(
           builder: (_) => MapScreen(

@@ -1,7 +1,5 @@
-import 'dart:async';
 import 'package:bloc/bloc.dart';
-// ignore: depend_on_referenced_packages
-import 'package:meta/meta.dart';
+import 'package:flutter/cupertino.dart';
 import '../../../data/models/notification/notification_model.dart';
 import '../../../data/repositories/notification_repository.dart';
 import '../../../service/get_it/get_it.dart';
@@ -27,7 +25,7 @@ class NotificationReaderBloc extends Bloc<ReadNotificationEvent, NotificationRea
 
 
   deleteNotifications(event, emit) async {
-    print("DELETED");
+    debugPrint("DELETED");
     getIt<NotificationsRepository>().deleteNotifications();
     add(ReadNotificationEvent());
   }

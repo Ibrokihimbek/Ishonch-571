@@ -1,9 +1,12 @@
 import 'package:adaptive_theme/adaptive_theme.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:easy_localization/easy_localization.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:ishonch/bloc/bloc_category/category_bloc.dart';
+import 'package:ishonch/bloc/bloc_product/product_bloc.dart';
 import 'package:ishonch/cubit/bottom_nav/bottom_nav_cubit.dart';
 import 'package:ishonch/screens/app_router.dart';
 import 'package:ishonch/screens/bottom_nav/bottom_nav_bar.dart';
@@ -11,6 +14,7 @@ import 'package:ishonch/screens/drawer/drawer.dart';
 import 'package:ishonch/screens/bottom_nav/home/home_page.dart';
 import 'package:ishonch/screens/bottom_nav/notification/notification_page.dart';
 import 'package:ishonch/utils/app_image.dart';
+import '../../bloc/notifications_bloc/notification_reader_bloc/notification_reader_bloc.dart';
 import '../../cubit/connectivity/connectivity_cubit.dart';
 import '../../service/get_it/get_it.dart';
 import '../../service/notification_service/notification_service.dart';
@@ -46,17 +50,24 @@ class _BottomNavPageState extends State<BottomNavPage> {
 
   @override
   void initState() {
-    getIt<NotificationService>().handleFirebaseNotificationMessages();
-    getIt<NotificationService>().setupInteractedMessage();
+   getIt<NotificationService>().handleFirebaseNotificationMessages();
+   getIt<NotificationService>().setupInteractedMessage();
     _getMode();
     screens.insert(0, HomePage(onTap: () => _key.currentState!.openDrawer()));
     screens.insert(1, NotificationPage());
     screens.insert(2, OrdersPage());
+    _init();
+
     super.initState();
   }
 
   _init() async {
-    print("INTERNET TURNED ON CALL ANY API");
+    debugPrint("INTERNET TURNED ON CALL ANY API");
+   FirebaseMessaging.instance.subscribeToTopic("ishonch_news");
+    getIt<ProductsBloc>().add(FetchAllProducts());
+    BlocProvider.of<ProductsBloc>(context).add(FetchAllProducts());
+    BlocProvider.of<CategoriesBloc>(context).add(FetchAllCategories());
+    getIt<NotificationReaderBloc>().add(ReadNotificationEvent());
   }
 
   @override
@@ -79,11 +90,11 @@ class _BottomNavPageState extends State<BottomNavPage> {
             return Scaffold(
               key: _key,
               drawer: MyDrawer(
+                isNightMode: themeMode?.isDark ?? false,
                 onChanged: (value) {
                   setState(() {});
                   _switchTheme();
                 },
-                IsNightMode: themeMode!.isDark,
               ),
               body: IndexedStack(index: index, children: screens),
               bottomNavigationBar: BottomNavBar(

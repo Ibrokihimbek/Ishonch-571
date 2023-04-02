@@ -9,15 +9,14 @@ class OrderModel {
   final String updatedAt;
   Product product;
 
-  OrderModel({
-    required this.id,
-    required this.clientName,
-    required this.clientAddress,
-    required this.clientPhone,
-    required this.createdAt,
-    required this.updatedAt,
-    required this.product
-  });
+  OrderModel(
+      {required this.id,
+      required this.clientName,
+      required this.clientAddress,
+      required this.clientPhone,
+      required this.createdAt,
+      required this.updatedAt,
+      required this.product});
 
   factory OrderModel.fromJson(Map<String, dynamic> json) => OrderModel(
         id: json['id'] as int? ?? 0,
@@ -26,6 +25,8 @@ class OrderModel {
         clientPhone: json['client_phone'] as String? ?? "",
         createdAt: json['createdAt'] as String? ?? "",
         updatedAt: json['updatedAt'] as String? ?? "",
-        product: Product.fromJson(json['product'] as Map<String, dynamic>? ?? {}),
+        product: json['product'] != null
+            ? Product.fromJson(json['product'] as Map<String, dynamic>? ?? {})
+            : Product.fromJson(json['discount'] as Map<String, dynamic>? ?? {}),
       );
 }

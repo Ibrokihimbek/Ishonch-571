@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-TextStyle fontRobotoW900({required Color appcolor}) {
+TextStyle fontRobotoW900({required Color appColor}) {
   return TextStyle(
-      fontSize: 18.sp, color: appcolor, fontWeight: FontWeight.w900);
+      fontSize: 18.sp, color: appColor, fontWeight: FontWeight.w900);
 }
 
 TextStyle fontRobotoW800({required Color appcolor}) {

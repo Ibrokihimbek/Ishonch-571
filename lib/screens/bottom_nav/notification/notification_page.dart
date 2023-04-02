@@ -26,33 +26,31 @@ class NotificationPage extends StatelessWidget {
             return const Center(child: CircularProgressIndicator());
           } else if (state is ReadNotificationInFailury) {
             return Center(
-                child: Text(
-              state.status,
-              style: TextStyle(color: Colors.black),
-            ));
+              child: Text(
+                state.status,
+                style: const TextStyle(color: Colors.black),
+              ),
+            );
           } else if (state is ReadNotificationInSuccess) {
-            print("NOTIFICATION SUCCESS 1");
             return SizedBox(
               height: MediaQuery.of(context).size.height,
               width: MediaQuery.of(context).size.width,
               child: state.notifications.isEmpty
                   ? Lottie.asset(AppImages.noNotification)
                   : ListView.builder(
+                      physics: const BouncingScrollPhysics(),
                       itemCount: state.notifications.length,
                       itemBuilder: (context, index) {
                         return Padding(
-                            padding: const EdgeInsets.symmetric(horizontal: 24),
-                            child: NotificationCourseItem(
-                              id: state.notifications[index].id,
-                            )
-                            //Center(child: Text("${state.notifications[index].id}")));
-
-                            );
-                      }),
+                          padding: EdgeInsets.symmetric(horizontal: 24.w).w,
+                          child: NotificationProductItem(
+                            id: state.notifications[index].id,
+                          ),
+                        );
+                      },
+                    ),
             );
           } else {
-            print("NOTIFICATION SUCCESS 2");
-
             context.read<NotificationReaderBloc>().add(ReadNotificationEvent());
             return Lottie.asset(AppImages.noNotification);
           }

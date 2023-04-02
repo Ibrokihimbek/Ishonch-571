@@ -1,8 +1,8 @@
 part of 'connectivity_cubit.dart';
 
-@immutable
+
 class ConnectivityState extends Equatable {
-  ConnectivityState({required this.connectivityResult});
+  const ConnectivityState({required this.connectivityResult});
 
   final ConnectivityResult connectivityResult;
 

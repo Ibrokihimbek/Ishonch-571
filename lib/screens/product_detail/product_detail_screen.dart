@@ -1,3 +1,5 @@
+import 'package:cached_network_image/cached_network_image.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -14,9 +16,10 @@ import 'package:ishonch/screens/widgets/dialog_widget.dart';
 import 'package:ishonch/utils/app_image.dart';
 import 'package:ishonch/utils/my_utils.dart';
 import 'package:lottie/lottie.dart';
+import 'package:shimmer/shimmer.dart';
 import 'package:zoom_tap_animation/zoom_tap_animation.dart';
 
-import 'sub_screens/check_out/check_out_screen.dart';
+import '../check_out/check_out_screen.dart';
 
 class ProductDetailScreen extends StatelessWidget {
   final int productId;
@@ -38,6 +41,7 @@ class ProductDetailScreen extends StatelessWidget {
                 : state is GettingProductInSuccess
                     ? SafeArea(
                         child: CustomScrollView(
+                          physics: const BouncingScrollPhysics(),
                           slivers: [
                             SliverAppBar(
                               expandedHeight: 350.h,
@@ -67,9 +71,26 @@ class ProductDetailScreen extends StatelessWidget {
                                         arguments:
                                             'http://146.190.207.16:3000/${state.product.media.media}');
                                   },
-                                  child: Image.network(
-                                    "http://146.190.207.16:3000/${state.product.media.media}",
-                                   
+                                  child: CachedNetworkImage(
+                                    imageUrl:
+                                        "http://146.190.207.16:3000/${state.product.media.media}",
+                                    width: 120.w,
+                                    height: 100.h,
+                                    fit: BoxFit.cover,
+                                    placeholder: (context, url) {
+                                      return Shimmer.fromColors(
+                                        period: const Duration(seconds: 2),
+                                        baseColor: Colors.grey.shade300,
+                                        highlightColor: Colors.grey.shade100,
+                                        child: Container(
+                                          width: 120,
+                                          height: 100,
+                                          color: Colors.white,
+                                        ),
+                                      );
+                                    },
+                                    errorWidget: (context, url, error) =>
+                                        const Icon(Icons.error),
                                   ),
                                 ),
                               ),
@@ -82,7 +103,7 @@ class ProductDetailScreen extends StatelessWidget {
                                       LocationPermissionState>(
                                     listener: (context, state) {
                                       if (state.myPermissionStatus ==
-                                          MyPermissionStatus.Loading) {
+                                          MyPermissionStatus.loading) {
                                         showDialog(
                                           barrierDismissible: false,
                                           builder: (context) => LoadingDialog(
@@ -93,7 +114,7 @@ class ProductDetailScreen extends StatelessWidget {
                                         );
                                       }
                                       if (state.myPermissionStatus ==
-                                          MyPermissionStatus.Success) {
+                                          MyPermissionStatus.success) {
                                         BlocProvider.of<MapCubit>(context)
                                             .fetchAddress(
                                           latLongModel: state.latLongModel!,
@@ -106,26 +127,25 @@ class ProductDetailScreen extends StatelessWidget {
                                             builder: (_) => CheckOutScreen(
                                               latLong: state.latLongModel!,
                                               productId: productId,
+                                              isDiscount: false,
                                             ),
                                           ),
                                         );
                                       }
                                       if (state.myPermissionStatus ==
-                                          MyPermissionStatus.Fail) {
+                                          MyPermissionStatus.fail) {
                                         showInfoSnackBar(
-                                            context, "Permission not found");
+                                            context, "ruxsat_topilmadi".tr());
                                       }
                                     },
-                                    child: Expanded(
-                                      child: ProductInfo(
-                                        product: state.product,
-                                        onTap: () {
-                                          BlocProvider.of<
-                                                      LocationPermissionCubit>(
-                                                  context)
-                                              .fetchCurrentLocation();
-                                        },
-                                      ),
+                                    child: ProductInfo(
+                                      product: state.product,
+                                      onTap: () {
+                                        BlocProvider.of<
+                                                    LocationPermissionCubit>(
+                                                context)
+                                            .fetchCurrentLocation();
+                                      },
                                     ),
                                   );
                                 },

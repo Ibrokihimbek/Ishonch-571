@@ -2,7 +2,6 @@ import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:ishonch/data/models/helper/lat_long_model.dart';
 import 'package:location/location.dart';
-import 'package:meta/meta.dart';
 
 part 'location_permission_state.dart';
 
@@ -10,7 +9,7 @@ class LocationPermissionCubit extends Cubit<LocationPermissionState> {
   LocationPermissionCubit()
       : super(
           const LocationPermissionState(
-            myPermissionStatus: MyPermissionStatus.Pure,
+            myPermissionStatus: MyPermissionStatus.pure,
           ),
         );
 
@@ -36,7 +35,7 @@ class LocationPermissionCubit extends Cubit<LocationPermissionState> {
         return;
       }
     }
-    emit(state.copyWith(myPermissionStatus: MyPermissionStatus.Loading));
+    emit(state.copyWith(myPermissionStatus: MyPermissionStatus.loading));
     LocationData locationData = await location.getLocation();
     // await Future.delayed(const Duration(seconds: 3));
     latLongModel = LatLongModel(
@@ -45,10 +44,10 @@ class LocationPermissionCubit extends Cubit<LocationPermissionState> {
     );
     if (latLongModel != null) {
       emit(state.copyWith(
-          myPermissionStatus: MyPermissionStatus.Success,
+          myPermissionStatus: MyPermissionStatus.success,
           latLongModel: latLongModel));
     } else {
-      emit(state.copyWith(myPermissionStatus: MyPermissionStatus.Fail));
+      emit(state.copyWith(myPermissionStatus: MyPermissionStatus.fail));
     }
   }
 }

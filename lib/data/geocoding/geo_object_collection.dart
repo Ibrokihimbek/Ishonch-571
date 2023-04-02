@@ -1,3 +1,4 @@
+// ignore: depend_on_referenced_packages
 import 'package:json_annotation/json_annotation.dart';
 import 'feature_member.dart';
 part 'geo_object_collection.g.dart';
