@@ -12,7 +12,7 @@ import 'discount_widget.dart';
 class HomeWidget extends StatelessWidget {
   final List<CategoryModel> data;
 
-   HomeWidget({super.key, required this.data});
+   const HomeWidget({super.key, required this.data});
 
   @override
   Widget build(BuildContext context) {
