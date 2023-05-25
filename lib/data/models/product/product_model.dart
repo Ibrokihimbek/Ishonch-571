@@ -27,7 +27,7 @@ class Product {
         id: json['id'] as int? ?? 0,
         productName: json['product_name'] as String? ?? "",
         // Do not touch, product_price could be int and string
-        productPrice: int.parse(json['product_price'].toString()) as int? ?? 0,
+        productPrice: int.parse(json['product_price'].toString()),
         brandName: json['brand_name'] as String? ?? "",
         description: json['description'] as String? ?? "",
         isNew: json['is_new'] as bool? ?? false,

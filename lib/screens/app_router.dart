@@ -14,7 +14,6 @@ import 'package:ishonch/screens/check_out/map/map_screen.dart';
 import 'package:ishonch/screens/image_view/image_view_page.dart';
 import 'package:ishonch/screens/splash/splash_page.dart';
 
-
 abstract class RouteName {
   static const bottomNavigation = 'bottomNavigation';
   static const splash = 'splash';
@@ -34,9 +33,9 @@ class AppRoutes {
   static Route generateRoute(RouteSettings settings) {
     switch (settings.name) {
       case RouteName.splash:
-        return MaterialPageRoute(builder: (_) =>  SplashPage());
+        return MaterialPageRoute(builder: (_) => const SplashPage());
       case RouteName.onBoarding:
-        return MaterialPageRoute(builder: (_) =>  OnBoardingPage());
+        return MaterialPageRoute(builder: (_) => const OnBoardingPage());
       case RouteName.productByCategory:
         return MaterialPageRoute(
           builder: (_) => ProductByCategory(
@@ -56,7 +55,7 @@ class AppRoutes {
           ),
         );
       case RouteName.languageChange:
-        return MaterialPageRoute(builder: (_) =>  LanguageScreen());
+        return MaterialPageRoute(builder: (_) => const LanguageScreen());
       case RouteName.noInternet:
         return MaterialPageRoute(
           builder: (_) => NoInternetScreen(
@@ -64,7 +63,7 @@ class AppRoutes {
           ),
         );
       case RouteName.about:
-        return MaterialPageRoute(builder: (_) =>  AboutScreen());
+        return MaterialPageRoute(builder: (_) => const AboutScreen());
       case RouteName.map:
         return MaterialPageRoute(
           builder: (_) => MapScreen(
@@ -76,9 +75,9 @@ class AppRoutes {
             builder: (_) => DiscountProductDetailScreen(
                 discountProduct: settings.arguments as Discount));
       case RouteName.bottomNavigation:
-        return MaterialPageRoute(builder: (_) =>  BottomNavPage());
+        return MaterialPageRoute(builder: (_) => const BottomNavPage());
       default:
-        return MaterialPageRoute(builder: (_) =>  Scaffold());
+        return MaterialPageRoute(builder: (_) => const Scaffold());
     }
   }
 }

@@ -45,5 +45,5 @@ void main() async {
 
   StorageRepository.getInstance();
   Bloc.observer = AppBlocObserver();
-  runApp(App());
+  runApp(const App());
 }

@@ -33,6 +33,7 @@ class BottomNavBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // ignore: deprecated_member_use
     final bgColor = backgroundColor ?? Theme.of(context).bottomAppBarColor;
 
     return Container(

@@ -59,7 +59,6 @@ class ApiService extends ApiClient {
         'rspn': '1',
         'results': '1',
       };
-      print("QueryParams>>>>>>>>>>$queryParams");
       response = await dio.get(
         "https://geocode-maps.yandex.ru/1.x/",
         queryParameters: queryParams,
@@ -70,7 +69,6 @@ class ApiService extends ApiClient {
         if (geocoding.response.geoObjectCollection.featureMember.isNotEmpty) {
           text = geocoding.response.geoObjectCollection.featureMember[0]
               .geoObject.metaDataProperty.geocoderMetaData.text;
-          print("text>>>>>>>>>>>> $text");
         } else {
           text = 'Aniqlanmagan hudud';
         }
@@ -142,7 +140,6 @@ class ApiService extends ApiClient {
   Future<MyResponse> getAllOrders() async {
     DeviceInfoPlugin deviceInfo = DeviceInfoPlugin();
     AndroidDeviceInfo androidInfo = await deviceInfo.androidInfo;
-    print('PHONE DEVICE ID ${androidInfo.id}');
 
     MyResponse myResponse = MyResponse(error: '');
     try {
