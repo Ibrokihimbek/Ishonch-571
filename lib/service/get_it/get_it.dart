@@ -1,4 +1,6 @@
 import 'package:get_it/get_it.dart';
+import 'package:ishonch/bloc/bloc_product/product_bloc.dart';
+import 'package:ishonch/data/repositories/category_repo.dart';
 import 'package:ishonch/data/repositories/notification_repository.dart';
 import 'package:ishonch/data/repositories/discount_repo.dart';
 import 'package:ishonch/data/repositories/order_repository.dart';
@@ -19,6 +21,7 @@ void setup() {
   getIt.registerLazySingleton(() => NotificationService());
   getIt.registerLazySingleton(() => NotificationCachedBloc());
   getIt.registerLazySingleton(() => NotificationReaderBloc());
+  getIt.registerLazySingleton(() => ProductsBloc(CategoriesRepo()));
 
 
   getIt.registerLazySingleton(() => OrderRepository());
