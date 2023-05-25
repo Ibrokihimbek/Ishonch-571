@@ -3,9 +3,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:sqflite/sqflite.dart';
 import '../models/notification/notification_model.dart';
 
-class NotificationsRepository{
+class NotificationsRepository {
   Database? database;
-  String tableName="notifications";
+  String tableName = "notifications";
 
   NotificationsRepository();
 
@@ -17,9 +17,7 @@ class NotificationsRepository{
     return database!;
   }
 
-
   createDatabase() async {
-
     String databasesPath = await getDatabasesPath();
     String dbPath = '${databasesPath}notifications.db';
 
@@ -39,23 +37,21 @@ class NotificationsRepository{
 
   Future addNotification(NotificationModel notificationModel) async {
     Database db = await getDb();
-    var id = await db.insert(tableName, notificationModel.toJson());
+    await db.insert(tableName, notificationModel.toJson());
     debugPrint("Notification added to Sql");
-
   }
 
   Future<List> getNotifications() async {
     Database db = await getDb();
 
-    var result = await db.query(tableName, columns: ["id", "description", "dateTime", "image","courseId"]);
+    var result = await db.query(tableName,
+        columns: ["id", "description", "dateTime", "image", "courseId"]);
 
     return result.toList();
   }
 
-  Future deleteNotifications() async{
+  Future deleteNotifications() async {
     Database db = await getDb();
     db.delete(tableName);
   }
-
-
 }

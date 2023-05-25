@@ -7,8 +7,8 @@ part 'connectivity_state.dart';
 
 class ConnectivityCubit extends Cubit<ConnectivityState> {
   ConnectivityCubit()
-      : super(
-      ConnectivityState(connectivityResult: ConnectivityResult.mobile)) {
+      : super(const ConnectivityState(
+            connectivityResult: ConnectivityResult.mobile)) {
     checkInternet();
   }
 
