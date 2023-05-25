@@ -141,15 +141,16 @@ class _CheckOutScreenState extends State<CheckOutScreen> {
                     isActive: true,
                     buttonText: "sotib_olish".tr(),
                     onTap: () async {
-
                       String deviceID = "";
                       DeviceInfoPlugin deviceInfo = DeviceInfoPlugin();
 
                       if (Platform.isAndroid) {
-                        AndroidDeviceInfo androidInfo = await deviceInfo.androidInfo;
+                        AndroidDeviceInfo androidInfo =
+                            await deviceInfo.androidInfo;
                         debugPrint('DEVICE ID ${androidInfo.id}');
                         debugPrint('DEVICE MODEL ${androidInfo.model}');
-                        debugPrint('DEVICE SERIAL  NUMBER ${androidInfo.serialNumber}');
+                        debugPrint(
+                            'DEVICE SERIAL  NUMBER ${androidInfo.serialNumber}');
                         deviceID = androidInfo.id;
                       } else if (Platform.isIOS) {
                         IosDeviceInfo iosDeviceInfo = await deviceInfo.iosInfo;
@@ -157,24 +158,22 @@ class _CheckOutScreenState extends State<CheckOutScreen> {
                         // iOS-specific code
                       }
 
-
-
-                      debugPrint('DEVICE MODEL ${deviceID}');
                       // ignore: use_build_context_synchronously
                       if (_fullNameController!.text.length >= 3) {
                         if (_addressController!.text.length >= 5) {
                           if (phoneNumber.length == 17) {
                             // ignore: use_build_context_synchronously
                             context.read<OrderCreateCubit>().createOrder(
-                                CreateOrderDto(
-                                  productId: widget.productId,
-                                  clientName: _fullNameController!.text,
-                                  clientAddress:
-                                      "${state.latLongModel.lat}/${state.latLongModel.long}",
-                                  clientPhone: phoneNumber,
-                                  deviceId: deviceID,
-                                ),
-                                widget.isDiscount,);
+                                  CreateOrderDto(
+                                    productId: widget.productId,
+                                    clientName: _fullNameController!.text,
+                                    clientAddress:
+                                        "${state.latLongModel.lat}/${state.latLongModel.long}",
+                                    clientPhone: phoneNumber,
+                                    deviceId: deviceID,
+                                  ),
+                                  widget.isDiscount,
+                                );
                             // ignore: use_build_context_synchronously
                             showDialog(
                                 barrierDismissible: false,
