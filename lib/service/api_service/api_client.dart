@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:ishonch/service/api_service/custom_exceptions.dart';
-const String baseUrl= "http://146.190.207.16:3000/api/v2";
+const String baseUrl= "http://18.159.37.206:3000/api/v2";
 
 class ApiClient{
 
@@ -22,7 +22,7 @@ class ApiClient{
 
     dio.interceptors.add(InterceptorsWrapper(
       onError: (DioError error, ErrorInterceptorHandler handler){
-        print("ON ERRORGA KIRDI:${error.toString()}");
+        debugPrint("ON ERRORGA KIRDI:${error.toString()}");
         switch (error.type) {
           case DioErrorType.connectTimeout:
           case DioErrorType.sendTimeout:
@@ -54,17 +54,15 @@ class ApiClient{
       return handler.next(error);
       },
       onRequest: (RequestOptions requestOptions,RequestInterceptorHandler handler){
-        print("SO'ROV YUBORILDI");
+        debugPrint("SO'ROV YUBORILDI");
         String currentLocale = "uz";
-        // requestOptions.headers["Authorization"];
-        // "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjQsImlzX2FjdGl2ZSI6dHJ1ZSwiaXNfYWRtaW4iOnRydWUsImlzX2NyZWF0b3IiOmZhbHNlLCJpYXQiOjE2NzgyODAwNjcsImV4cCI6MTY3ODI4Mjc2N30.GAZp87aVO4e6i_TMO4Mwftim07vxZBqPk66VdqvRE7A";
         requestOptions.headers["Accept"] = "application/json";
         requestOptions.headers["Accept-Language"] =
         currentLocale.isEmpty ? "ru" : currentLocale;
       return  handler.next(requestOptions);
       },
       onResponse: (Response response,ResponseInterceptorHandler handler ){
-        print("URAAA RESPONSE KELDI");
+        debugPrint("URAAA RESPONSE KELDI");
       return handler.next(response);
       }
     ));
