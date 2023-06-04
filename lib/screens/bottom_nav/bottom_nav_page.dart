@@ -54,8 +54,8 @@ class _BottomNavPageState extends State<BottomNavPage> {
    getIt<NotificationService>().setupInteractedMessage();
     _getMode();
     screens.insert(0, HomePage(onTap: () => _key.currentState!.openDrawer()));
-    screens.insert(1, NotificationPage());
-    screens.insert(2, OrdersPage());
+    screens.insert(1, const NotificationPage());
+    screens.insert(2, const OrdersPage());
     _init();
 
     super.initState();
